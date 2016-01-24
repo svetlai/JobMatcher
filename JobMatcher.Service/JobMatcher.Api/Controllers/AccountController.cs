@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using JobMatcher.Data.Contracts;
 using JobMatcher.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -22,17 +23,19 @@ namespace JobMatcher.Service.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : BaseController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController(IJobMatcherData data)
+            : base(data)
         {
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat, IJobMatcherData data)
+            : base(data)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
@@ -126,7 +129,7 @@ namespace JobMatcher.Service.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -259,9 +262,9 @@ namespace JobMatcher.Service.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -338,6 +341,29 @@ namespace JobMatcher.Service.Controllers
                 return GetErrorResult(result);
             }
 
+            switch (user.ProfileType)
+            {
+                case ProfileType.JobSeeker:
+                    var jobSeeker = new JobSeekerProfile
+                    {
+                        UserId = user.Id
+                    };
+
+                    this.data.JobSeekerProfiles.Add(jobSeeker);
+
+                    break;
+                case ProfileType.Recruiter:
+                    var recruiter = new RecruiterProfile
+                    {
+                        UserId = user.Id
+                    };
+
+                    this.data.RecruiterProfiles.Add(recruiter);
+                    break;
+            }
+
+            this.data.SaveChanges();
+
             return Ok();
         }
 
@@ -369,7 +395,7 @@ namespace JobMatcher.Service.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
