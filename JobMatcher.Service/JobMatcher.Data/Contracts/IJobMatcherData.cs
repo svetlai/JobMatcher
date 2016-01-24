@@ -9,6 +9,24 @@
 
         IRepository<User> Users { get; }
 
+        IRepository<Education> Eductaion { get; }
+
+        IRepository<Experience> Experience { get; }
+
+        IRepository<JobOffer> JobOffers { get; }
+
+        IRepository<JobSeekerProfile> JobSeekerProfiles { get; }
+
+        IRepository<Location> Locations { get; }
+
+        IRepository<Organization> Organizations { get; }
+
+        IRepository<Project> Projects { get; }
+
+        IRepository<Skill> Skills { get; }
+
+        IRepository<RecruiterProfile> RecruiterProfiles { get; }
+
         void SaveChanges();
     }
 }

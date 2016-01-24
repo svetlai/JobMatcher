@@ -35,6 +35,78 @@ namespace JobMatcher.Data
             }
         }
 
+        public IRepository<Education> Eductaion
+        {
+            get
+            {
+                return this.GetRepository<Education>();
+            }
+        }
+
+        public IRepository<Experience> Experience
+        {
+            get
+            {
+                return this.GetRepository<Experience>();
+            }
+        }
+
+        public IRepository<JobOffer> JobOffers
+        {
+            get
+            {
+                return this.GetRepository<JobOffer>();
+            }
+        }
+
+        public IRepository<JobSeekerProfile> JobSeekerProfiles
+        {
+            get
+            {
+                return this.GetRepository<JobSeekerProfile>();
+            }
+        }
+
+        public IRepository<Location> Locations
+        {
+            get
+            {
+                return this.GetRepository<Location>();
+            }
+        }
+
+        public IRepository<Organization> Organizations
+        {
+            get
+            {
+                return this.GetRepository<Organization>();
+            }
+        }
+
+        public IRepository<Project> Projects
+        {
+            get
+            {
+                return this.GetRepository<Project>();
+            }
+        }
+
+        public IRepository<Skill> Skills
+        {
+            get
+            {
+                return this.GetRepository<Skill>();
+            }
+        }
+
+        public IRepository<RecruiterProfile> RecruiterProfiles
+        {
+            get
+            {
+                return this.GetRepository<RecruiterProfile>();
+            }
+        }
+
         public void SaveChanges()
         {
             this.db.SaveChanges();

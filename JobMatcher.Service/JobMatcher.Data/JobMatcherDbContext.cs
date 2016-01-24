@@ -1,7 +1,7 @@
 ﻿namespace JobMatcher.Data
 {
     using System.Data.Entity;
-    
+
     using Microsoft.AspNet.Identity.EntityFramework;
 
     using JobMatcher.Models;
@@ -15,6 +15,24 @@
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<JobMatcherDbContext, Configuration>());
         }
+
+        public IDbSet<Education> Eductaion { get; set; }
+
+        public IDbSet<Experience> Experience { get; set; }
+
+        public IDbSet<JobOffer> JobOffers { get; set; }
+
+        public IDbSet<JobSeekerProfile> JobSeekerProfiles { get; set; }
+
+        public IDbSet<Location> Locations { get; set; }
+
+        public IDbSet<Organization> Organizations { get; set; }
+
+        public IDbSet<Project> Projects { get; set; }
+
+        public IDbSet<Skill> Skills { get; set; }
+
+        public IDbSet<RecruiterProfile> RecruiterProfiles { get; set; }
 
         public static JobMatcherDbContext Create()
         {

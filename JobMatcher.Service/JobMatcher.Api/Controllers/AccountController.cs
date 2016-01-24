@@ -329,7 +329,7 @@ namespace JobMatcher.Service.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Email, Email = model.Email, ProfileType = (ProfileType)Enum.Parse(typeof(ProfileType), model.ProfileType) };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

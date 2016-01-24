@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JobMatcher.Common
+﻿namespace JobMatcher.Common
 {
     public class GlobalConstants
     {
+        public const string RecruiterRole = "Recruiter";
+        public const string JobSeekerRole = "JobSeeker";
     }
 }

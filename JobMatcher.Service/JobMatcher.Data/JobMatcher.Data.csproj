@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IJobMatcherData.cs" />
     <Compile Include="Contracts\IJobMatcherDbContext.cs" />
+    <Compile Include="DataSeeder.cs" />
     <Compile Include="JobMatcherData.cs" />
     <Compile Include="JobMatcherDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -67,6 +68,10 @@
     <Compile Include="Repositories\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JobMatcher.Common\JobMatcher.Common.csproj">
+      <Project>{ac4e2927-e58d-425b-84d3-55a455b475de}</Project>
+      <Name>JobMatcher.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMatcher.Models\JobMatcher.Models.csproj">
       <Project>{981507a0-cdb8-4e6f-a8fb-f90f7214b236}</Project>
       <Name>JobMatcher.Models</Name>

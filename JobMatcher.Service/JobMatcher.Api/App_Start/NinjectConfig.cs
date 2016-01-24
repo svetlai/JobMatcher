@@ -32,7 +32,7 @@
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
             kernel.Bind<DbContext>().To<JobMatcherDbContext>().InRequestScope();
             kernel.Bind<IJobMatcherDbContext>().To<JobMatcherDbContext>();
-            kernel.Bind<IJobMatcherData>().To<JobMatcherData>();
+            kernel.Bind<IJobMatcherData>().To<JobMatcherData>().WithConstructorArgument("db", context => new JobMatcherDbContext()); ;
         }   
     }
 }

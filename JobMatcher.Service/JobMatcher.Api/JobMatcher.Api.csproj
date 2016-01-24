@@ -269,6 +269,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -282,6 +283,8 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
+    <Compile Include="ViewModels\JobOfferViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -345,6 +348,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\JobOffer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -355,6 +359,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JobMatcher.Common\JobMatcher.Common.csproj">
+      <Project>{ac4e2927-e58d-425b-84d3-55a455b475de}</Project>
+      <Name>JobMatcher.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMatcher.Data\JobMatcher.Data.csproj">
       <Project>{04591657-44c3-4cf1-ab8f-5e8addb5bb7c}</Project>
       <Name>JobMatcher.Data</Name>
