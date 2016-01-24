@@ -14,6 +14,7 @@
 		9BFEBAFF1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBAFD1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodeld */; };
 		9BFEBB011C552BFC00B83A52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BFEBB001C552BFC00B83A52 /* Assets.xcassets */; };
 		9BFEBB041C552BFC00B83A52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BFEBB021C552BFC00B83A52 /* LaunchScreen.storyboard */; };
+		9BFEBB0E1C552CEA00B83A52 /* HttpRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBB0D1C552CEA00B83A52 /* HttpRequester.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		9BFEBB001C552BFC00B83A52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BFEBB031C552BFC00B83A52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BFEBB051C552BFC00B83A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BFEBB0C1C552CEA00B83A52 /* HttpRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpRequester.h; path = Data/HttpRequester.h; sourceTree = "<group>"; };
+		9BFEBB0D1C552CEA00B83A52 /* HttpRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpRequester.m; path = Data/HttpRequester.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,11 @@
 		9BFEBAF01C552BFC00B83A52 /* JobMatcher.iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9BFEBB121C552E6000B83A52 /* Helpers */,
+				9BFEBB111C552E3F00B83A52 /* ViewControllers */,
+				9BFEBB101C552E3900B83A52 /* Views */,
+				9BFEBB0F1C552E0400B83A52 /* Models */,
+				9BFEBB0B1C552C6C00B83A52 /* Data */,
 				9BFEBAF41C552BFC00B83A52 /* AppDelegate.h */,
 				9BFEBAF51C552BFC00B83A52 /* AppDelegate.m */,
 				9BFEBAF71C552BFC00B83A52 /* ViewController.h */,
@@ -80,6 +88,43 @@
 				9BFEBAF21C552BFC00B83A52 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9BFEBB0B1C552C6C00B83A52 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9BFEBB0C1C552CEA00B83A52 /* HttpRequester.h */,
+				9BFEBB0D1C552CEA00B83A52 /* HttpRequester.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		9BFEBB0F1C552E0400B83A52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9BFEBB101C552E3900B83A52 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9BFEBB111C552E3F00B83A52 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9BFEBB121C552E6000B83A52 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BFEBB0E1C552CEA00B83A52 /* HttpRequester.m in Sources */,
 				9BFEBAFF1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodeld in Sources */,
 				9BFEBAF91C552BFC00B83A52 /* ViewController.m in Sources */,
 				9BFEBAF61C552BFC00B83A52 /* AppDelegate.m in Sources */,
