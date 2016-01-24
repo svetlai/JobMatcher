@@ -5,6 +5,7 @@ namespace JobMatcher.Models
 {
     public class Match
     {
+        [Key]
         public int Id { get; set; }
 
         [ForeignKey("RecruiterProfile")]

@@ -9,6 +9,7 @@ using JobMatcher.Data.Contracts;
 using JobMatcher.Data.Repositories;
 using JobMatcher.Service.App_Start;
 using Microsoft.Owin;
+using Newtonsoft.Json;
 using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.Common.OwinHost;
@@ -29,6 +30,8 @@ namespace JobMatcher.Service
             WebApiConfig.Register(config);
             app.UseNinjectMiddleware(() => NinjectConfig.CreateKernel.Value);
             app.UseNinjectWebApi(config);
+
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         }
     }
 }
