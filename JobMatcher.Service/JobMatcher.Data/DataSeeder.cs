@@ -79,7 +79,7 @@ namespace JobMatcher.Data
                     Description = "We need you!",
                     Title = "C# Developer",
                     Salary = 2000,
-                    RecruiterProfileId = recruiters[0].Id
+                    RecruiterProfileId = recruiters[0].RecruiterProfileId
                 },
                     new JobOffer()
                 {
@@ -89,7 +89,7 @@ namespace JobMatcher.Data
                     Description = "Join our awesome team!",
                     Title = "iOS Developer",
                     Salary = 2100,
-                    RecruiterProfileId = recruiters[1].Id
+                    RecruiterProfileId = recruiters[1].RecruiterProfileId
                 }
             };
 
@@ -159,6 +159,7 @@ namespace JobMatcher.Data
             {
                 new Experience()
                 {
+                    Position = "Awesome Dev",
                     Industry = Industry.InformationTechnology,
                     OrganizationId = 1,
                     Description = "Did some things.",
@@ -167,6 +168,7 @@ namespace JobMatcher.Data
                 },
                 new Experience()
                 {
+                    Position = "Cool Dev",
                     Industry = Industry.InformationTechnology,
                     OrganizationId = 2,
                     Description = "None",

@@ -107,6 +107,14 @@ namespace JobMatcher.Data
             }
         }
 
+        public IRepository<Match> Matches
+        {
+            get
+            {
+                return this.GetRepository<Match>();
+            }
+        }
+
         public void SaveChanges()
         {
             this.db.SaveChanges();

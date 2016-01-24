@@ -33,6 +33,8 @@
         public IDbSet<Skill> Skills { get; set; }
 
         public IDbSet<RecruiterProfile> RecruiterProfiles { get; set; }
+        
+        public IDbSet<Match> Matches { get; set; }
 
         public static JobMatcherDbContext Create()
         {

@@ -268,7 +268,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
+    <Compile Include="Controllers\ExperienceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MatchController.cs" />
+    <Compile Include="Controllers\JobSeekerProfileController.cs" />
+    <Compile Include="Controllers\RecruiterProfileController.cs" />
+    <Compile Include="Controllers\SkillController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -283,7 +290,18 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AddEducationViewModel.cs" />
     <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
+    <Compile Include="ViewModels\AddExperienceViewModel.cs" />
+    <Compile Include="ViewModels\AddMatchViewModel.cs" />
+    <Compile Include="ViewModels\EducationViewModel.cs" />
+    <Compile Include="ViewModels\ExperienceViewModel.cs" />
+    <Compile Include="ViewModels\AddProjectViewModel.cs" />
+    <Compile Include="ViewModels\AddSkillViewModel.cs" />
+    <Compile Include="ViewModels\JobSeekerProfileViewModel.cs" />
+    <Compile Include="ViewModels\RecruiterProfileViewModel.cs" />
+    <Compile Include="ViewModels\SkillViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\JobOfferViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

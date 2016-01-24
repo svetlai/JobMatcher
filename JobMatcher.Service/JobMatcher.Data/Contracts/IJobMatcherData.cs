@@ -27,6 +27,8 @@
 
         IRepository<RecruiterProfile> RecruiterProfiles { get; }
 
+        IRepository<Match> Matches { get; }
+
         void SaveChanges();
     }
 }

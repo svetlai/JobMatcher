@@ -2,16 +2,19 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    // TODO remove city/country?
     public class Location
     {
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        public string Latitude { get; set; }
+
+        public string Longtitude { get; set; }
+
         [StringLength(50)]
         public string Country { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string City { get; set; }
 

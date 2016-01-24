@@ -7,7 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using LikeIt.Web.Infrastructure.Mapping;
+using JobMatcher.Service.Mapping;
 
 namespace JobMatcher.Service
 {

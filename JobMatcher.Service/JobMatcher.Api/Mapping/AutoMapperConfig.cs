@@ -1,12 +1,11 @@
-﻿namespace LikeIt.Web.Infrastructure.Mapping
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using AutoMapper;
+
+namespace JobMatcher.Service.Mapping
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-
-    using AutoMapper;
-
     public class AutoMapperConfig
     {
         private Assembly assembly;

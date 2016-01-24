@@ -30,36 +30,43 @@ namespace JobMatcher.Service.Controllers
             return this.Ok(jobOffers);
         }
 
-        //[HttpGet]
-        //public IHttpActionResult Details(int? id)
-        //{
-        //    var jobOffer = this.data.JobOffers.All()
-        //        .Where(x => x.Id == id)
-        //        .ProjectTo<JobOfferViewModel>()
-        //        .FirstOrDefault();
+        [HttpGet]
+        public IHttpActionResult Details(int? id)
+        {
+            var jobOffer = this.data.JobOffers.All()
+                .Where(x => x.Id == id)
+                .ProjectTo<JobOfferViewModel>()
+                .FirstOrDefault();
 
-        //    return this.Ok(jobOffer);
-        //}
+            return this.Ok(jobOffer);
+        }
 
         [HttpPost]
-        public IHttpActionResult Create(AddJobOfferViewModel model)
+        public IHttpActionResult Add(AddJobOfferViewModel model)
         {
             if (model != null && ModelState.IsValid)
             {
-                var page = AutoMapper.Mapper.Map<JobOffer>(model);
+                var jobOffer = AutoMapper.Mapper.Map<JobOffer>(model);
 
-                this.data.JobOffers.Add(page);
+                var location = this.GetLocation(model);
+                jobOffer.Location = location;
+                jobOffer.LocationId = location.Id;
+
+                this.data.JobOffers.Add(jobOffer);
                 this.data.SaveChanges();
 
-                model.Id = page.Id;
+                model.Id = jobOffer.Id;
 
                 this.data.SaveChanges();
+
+                return this.Ok(model);
             }
 
-            return this.Ok(model);
+            return this.BadRequest();
         }
 
-        //TODO Edit Offer
+        //TODO edit offer
+        //TODO filter by location - range
 
         [HttpGet]
         public IHttpActionResult FilterByIndustry(int industryId)
@@ -70,6 +77,23 @@ namespace JobMatcher.Service.Controllers
                 .ToList();
 
             return this.Ok(jobOffers);
+        }
+
+        private Location GetLocation(AddJobOfferViewModel model)
+        {
+            var location = new Location()
+            {
+                Longtitude = model.Longtitude,
+                Latitude = model.Latitude,
+                Country = model.Country,
+                City = model.City,
+                PostCode = model.PostCode
+            };
+
+            this.data.Locations.Add(location);
+            this.data.SaveChanges();
+
+            return location;
         }
     }
 }

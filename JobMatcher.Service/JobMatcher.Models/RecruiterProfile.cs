@@ -1,4 +1,6 @@
-﻿namespace JobMatcher.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace JobMatcher.Models
 {
 using System.Collections.Generic;
 
@@ -7,11 +9,12 @@ using System.Collections.Generic;
         public RecruiterProfile()
         {
             this.JobOffers = new HashSet<JobOffer>();
-            this.SelectedJobSeekers = new HashSet<JobSeekerProfile>();
+            this.Matches = new HashSet<Match>();
             this.Messages = new HashSet<Message>();
         }
 
-        public int Id { get; set; }
+        [Key]
+        public int RecruiterProfileId { get; set; }
 
         public string UserId { get; set; }
 
@@ -19,7 +22,7 @@ using System.Collections.Generic;
 
         public virtual ICollection<JobOffer> JobOffers { get; set; }
 
-        public virtual ICollection<JobSeekerProfile> SelectedJobSeekers { get; set; }
+        public virtual ICollection<Match> Matches { get; set; }
 
         public virtual ICollection<Message> Messages { get; set; } 
     }

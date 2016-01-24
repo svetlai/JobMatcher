@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using JobMatcher.Models;
+using JobMatcher.Service.Mapping;
 
 namespace JobMatcher.Service.ViewModels
 {
-    public class AddJobOfferViewModel
+    public class AddJobOfferViewModel : IMapFrom<JobOffer>, IHaveCustomMappings
     {
         [Key]
         public int Id { get; set; }
@@ -23,7 +20,15 @@ namespace JobMatcher.Service.ViewModels
         [Required]
         public int Industry { get; set; }
 
-        public string Location { get; set; }
+        public string Latitude { get; set; }
+
+        public string Longtitude { get; set; }
+
+        public string Country { get; set; }
+
+        public string City { get; set; }
+
+        public string PostCode { get; set; }
 
         public int WorkHours { get; set; }
 
@@ -34,7 +39,11 @@ namespace JobMatcher.Service.ViewModels
         public void CreateMappings(AutoMapper.IConfiguration configuration)
         {
             configuration.CreateMap<JobOffer, AddJobOfferViewModel>()
-                .ForMember(m => m.Location, opt => opt.MapFrom(x => x.Location.Country + " / " + x.Location.City))
+                .ForMember(m => m.Country, opt => opt.MapFrom(x => x.Location.Country))
+                .ForMember(m => m.City, opt => opt.MapFrom(x => x.Location.City))
+                .ForMember(m => m.PostCode, opt => opt.MapFrom(x => x.Location.PostCode))
+                .ForMember(m => m.Latitude, opt => opt.MapFrom(x => x.Location.Latitude))
+                .ForMember(m => m.Longtitude, opt => opt.MapFrom(x => x.Location.Longtitude))
                 .ForMember(m => m.Industry, opt => opt.MapFrom(x => (int)x.Industry))
                 .ForMember(m => m.WorkHours, opt => opt.MapFrom(x => (int)x.WorkHours))
                 .ReverseMap();

@@ -27,6 +27,9 @@ namespace JobMatcher.Data.Contracts
 
         IDbSet<RecruiterProfile> RecruiterProfiles { get; set; }
 
+        IDbSet<Match> Matches { get; set; }
+
+
         int SaveChanges();
     }
 }

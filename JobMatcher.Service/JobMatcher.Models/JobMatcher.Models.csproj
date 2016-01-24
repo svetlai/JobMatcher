@@ -60,6 +60,7 @@
     <Compile Include="Enums\Degree.cs" />
     <Compile Include="Enums\Level.cs" />
     <Compile Include="Image.cs" />
+    <Compile Include="Match.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Education.cs" />

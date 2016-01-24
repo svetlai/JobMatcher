@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using JobMatcher.Models;
-using LikeIt.Web.Infrastructure.Mapping;
+using JobMatcher.Service.Mapping;
 
 namespace JobMatcher.Service.ViewModels
 {
