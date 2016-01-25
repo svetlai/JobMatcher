@@ -1,13 +1,13 @@
 //
-//  HelperMethods.h
+//  HelperMethods.m
 //  JobMatcher.iOS
 //
 //  Created by s i on 1/25/16.
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "HelperMethods.h"
 
-@interface HelperMethods : NSObject
+@implementation HelperMethods
 
 @end
