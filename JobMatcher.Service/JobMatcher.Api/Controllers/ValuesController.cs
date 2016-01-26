@@ -10,6 +10,8 @@ namespace JobMatcher.Service.Controllers
 {
     public class ValuesController : BaseController
     {
+        static List<string> data = new List<string> { "value1", "value2" };
+
         public ValuesController(IJobMatcherData data)
             : base(data)
         {
@@ -18,7 +20,7 @@ namespace JobMatcher.Service.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return data;
         }
 
         // GET api/values/5
@@ -30,6 +32,7 @@ namespace JobMatcher.Service.Controllers
         // POST api/values
         public void Post([FromBody]string value)
         {
+            data.Add(value);
         }
 
         // PUT api/values/5

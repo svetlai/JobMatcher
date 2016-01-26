@@ -268,7 +268,7 @@ namespace JobMatcher.Service.Controllers
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName, user.ProfileType.ToString());
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else

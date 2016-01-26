@@ -1,8 +1,8 @@
 ﻿namespace JobMatcher.Models
 {
     public enum ProfileType
-    {
-        Recruiter,
-        JobSeeker
+    {        
+        JobSeeker = 0,
+        Recruiter = 1
     }
 }
