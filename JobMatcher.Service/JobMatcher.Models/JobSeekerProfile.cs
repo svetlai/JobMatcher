@@ -15,6 +15,8 @@ namespace JobMatcher.Models
             this.Skills = new HashSet<Skill>();
             this.Messages = new HashSet<Message>();
             this.Matches = new HashSet<Match>();
+            this.DislikedJobOffers = new HashSet<Dislike>();
+            this.LikedJobOffers = new HashSet<Like>();
         }
 
         [Key]
@@ -23,6 +25,12 @@ namespace JobMatcher.Models
         public string UserId { get; set; }
 
         public virtual User User { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string CurrentPosition { get; set; }
 
         public string Summary { get; set; }
 
@@ -40,6 +48,10 @@ namespace JobMatcher.Models
 
         public virtual ICollection<Match> Matches { get; set; }
 
-        public virtual ICollection<Message> Messages { get; set; } 
+        public virtual ICollection<Message> Messages { get; set; }
+
+        public ICollection<Dislike> DislikedJobOffers { get; set; }
+
+        public ICollection<Like> LikedJobOffers { get; set; }
     }
 }

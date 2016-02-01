@@ -9,6 +9,8 @@ namespace JobMatcher.Service.ViewModels
 {
     public class ExperienceViewModel : IMapFrom<Experience>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public string Position { get; set; }
 
         public string OrganizationName { get; set; }

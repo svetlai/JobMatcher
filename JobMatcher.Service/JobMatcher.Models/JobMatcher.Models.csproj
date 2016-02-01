@@ -57,9 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dislike.cs" />
     <Compile Include="Enums\Degree.cs" />
     <Compile Include="Enums\Level.cs" />
     <Compile Include="Image.cs" />
+    <Compile Include="Like.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Organization.cs" />

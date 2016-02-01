@@ -107,6 +107,22 @@ namespace JobMatcher.Data
             }
         }
 
+        public IRepository<Like> Likes
+        {
+            get
+            {
+                return this.GetRepository<Like>();
+            }
+        }
+
+        public IRepository<Dislike> Dislikes
+        {
+            get
+            {
+                return this.GetRepository<Dislike>();
+            }
+        }
+
         public IRepository<Match> Matches
         {
             get

@@ -271,6 +271,8 @@
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperienceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LikeController.cs" />
+    <Compile Include="Controllers\DislikeController.cs" />
     <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\JobSeekerProfileController.cs" />
     <Compile Include="Controllers\RecruiterProfileController.cs" />
@@ -293,6 +295,8 @@
     <Compile Include="ViewModels\AddEducationViewModel.cs" />
     <Compile Include="ViewModels\AddJobOfferViewModel.cs" />
     <Compile Include="ViewModels\AddExperienceViewModel.cs" />
+    <Compile Include="ViewModels\AddLikeViewModel.cs" />
+    <Compile Include="ViewModels\AddDislikeViewModel.cs" />
     <Compile Include="ViewModels\AddMatchViewModel.cs" />
     <Compile Include="ViewModels\EducationViewModel.cs" />
     <Compile Include="ViewModels\ExperienceViewModel.cs" />

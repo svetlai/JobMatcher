@@ -6,7 +6,11 @@ namespace JobMatcher.Service.ViewModels
 {
     public class EducationViewModel : IMapFrom<Education>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public Degree Degree { get; set; }
+
+        public string Specialty { get; set; }
 
         public string OrganizationName { get; set; }
 

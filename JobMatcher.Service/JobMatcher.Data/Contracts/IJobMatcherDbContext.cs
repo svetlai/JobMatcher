@@ -29,6 +29,10 @@ namespace JobMatcher.Data.Contracts
 
         IDbSet<Match> Matches { get; set; }
 
+        IDbSet<Like> Likes { get; set; }
+
+        IDbSet<Dislike> Dislikes { get; set; }
+
 
         int SaveChanges();
     }

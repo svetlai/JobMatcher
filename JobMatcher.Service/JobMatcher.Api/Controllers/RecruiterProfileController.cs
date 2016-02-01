@@ -40,5 +40,16 @@ namespace JobMatcher.Service.Controllers
 
             return this.Ok(recruiter);
         }
+
+        [HttpGet]
+        public IHttpActionResult Details()
+        {
+            var recruiter = this.data.RecruiterProfiles.All()
+                .Where(x => x.UserId == this.CurrentUserId)
+                .ProjectTo<JobSeekerProfileViewModel>()
+                .FirstOrDefault();
+
+            return this.Ok(recruiter);
+        }
     }
 }

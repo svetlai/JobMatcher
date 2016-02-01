@@ -29,6 +29,10 @@
 
         IRepository<Match> Matches { get; }
 
+        IRepository<Like> Likes { get; }
+
+        IRepository<Dislike> Dislikes { get; }
+
         void SaveChanges();
     }
 }

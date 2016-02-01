@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JobMatcher.Models
 {
@@ -11,6 +12,8 @@ using System.Collections.Generic;
             this.JobOffers = new HashSet<JobOffer>();
             this.Matches = new HashSet<Match>();
             this.Messages = new HashSet<Message>();
+            this.DislikedJobSeekers = new HashSet<Dislike>();
+            this.LikedJobSeekers = new HashSet<Like>();
         }
 
         [Key]
@@ -24,6 +27,10 @@ using System.Collections.Generic;
 
         public virtual ICollection<Match> Matches { get; set; }
 
-        public virtual ICollection<Message> Messages { get; set; } 
+        public virtual ICollection<Message> Messages { get; set; }
+
+        public ICollection<Dislike> DislikedJobSeekers { get; set; }
+
+        public ICollection<Like> LikedJobSeekers { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult GetByUser()
         {
             var projects = this.data.Projects.All()
-                .Where(x => x.JosSeekerProfile.UserId == this.CurrentUser.Id)
+                .Where(x => x.JosSeekerProfile.UserId == this.CurrentUserId)
                 .ProjectTo<ProjectViewModel>()
                 .ToList();
 
@@ -39,7 +39,7 @@ namespace JobMatcher.Service.Controllers
                 var project = AutoMapper.Mapper.Map<Project>(model);
 
                 project.JosSeekerProfile =
-                                  this.data.JobSeekerProfiles.All().FirstOrDefault(x => x.UserId == this.CurrentUser.Id);
+                                  this.data.JobSeekerProfiles.All().FirstOrDefault(x => x.UserId == this.CurrentUserId);
 
                 this.data.Projects.Add(project);
                 this.data.SaveChanges();

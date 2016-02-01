@@ -4,7 +4,7 @@ namespace JobMatcher.Service.ViewModels
 {
     using JobMatcher.Models;
 
-    public class AddMatchViewModel : IMapFrom<Match>, IHaveCustomMappings
+    public class AddLikeViewModel : IMapFrom<Like>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -12,9 +12,11 @@ namespace JobMatcher.Service.ViewModels
 
         public int JobSeekerProfileId { get; set; }
 
+        public ProfileType LikeInitiatorType { get; set; }
+
         public void CreateMappings(AutoMapper.IConfiguration configuration)
         {
-            configuration.CreateMap<Match, AddMatchViewModel>()
+            configuration.CreateMap<Like, AddLikeViewModel>()
                 .ReverseMap();
         }
     }

@@ -36,6 +36,10 @@
         
         public IDbSet<Match> Matches { get; set; }
 
+        public IDbSet<Like> Likes { get; set; }
+
+        public IDbSet<Dislike> Dislikes { get; set; }
+
         public static JobMatcherDbContext Create()
         {
             return new JobMatcherDbContext();

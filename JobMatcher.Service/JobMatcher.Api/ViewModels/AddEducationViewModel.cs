@@ -10,6 +10,8 @@ namespace JobMatcher.Service.ViewModels
 
         public int Degree { get; set; }
 
+        public string Specialty { get; set; }
+
         public string OrganizationName { get; set; }
 
         public int Industry { get; set; }

@@ -15,6 +15,13 @@ namespace JobMatcher.Service.Controllers
 {
     public class JobSeekerProfileController : BaseController
     {
+        private static Random random;
+
+        static JobSeekerProfileController()
+        {
+            random = new Random();
+        }
+
         public JobSeekerProfileController(IJobMatcherData data)
             : base(data)
         {
@@ -31,10 +38,79 @@ namespace JobMatcher.Service.Controllers
         }
 
         [HttpGet]
+        public IHttpActionResult Random()
+        {
+            var recruiter = this.data.RecruiterProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            if (recruiter == null)
+            {
+                return this.BadRequest("You must be a recruiter to do that.");
+            }
+
+            var recruiterMatches = recruiter.Matches
+                .Select(x => x.JobSeekerProfileId).ToList();
+
+            var recruiterLikes = recruiter.LikedJobSeekers
+                .Where(x => x.LikeInitiatorType == ProfileType.Recruiter)
+                .Select(x => x.JobSeekerProfileId).ToList();
+
+            var recruiterDislikes = recruiter.DislikedJobSeekers
+                .Where(x => x.DislikeInitiatorType == ProfileType.Recruiter)
+                .Select(x => x.JobSeekerProfileId).ToList();
+
+            var allJobSeekers = this.data.JobSeekerProfiles.All()
+                .Where(x => !recruiterMatches.Contains(x.JobSeekerProfileId) 
+                    && !recruiterLikes.Contains(x.JobSeekerProfileId) 
+                    && !recruiterDislikes.Contains(x.JobSeekerProfileId))
+                    .Select(x => x)
+                    .ToList();
+            
+            // TODO: improve
+            int randomIndex = random.Next(0, allJobSeekers.Count);
+
+            int selectedId = allJobSeekers[randomIndex].JobSeekerProfileId;
+
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .Where(x => x.JobSeekerProfileId == selectedId)
+                .ProjectTo<JobSeekerProfileViewModel>()
+                .FirstOrDefault();
+
+            //var jobSeeker = this.data.JobSeekerProfiles.All()
+            //    .Where(x => !recruiter.LikedJobSeekers.Contains(x.JobSeekerProfileId) && !recruiter.DislikedJobSeekers.Contains(x.JobSeekerProfileId))
+            //    .ProjectTo<JobSeekerProfileViewModel>()
+            //    .FirstOrDefault();
+
+            return this.Ok(jobSeeker);
+        }
+
+        [HttpGet]
         public IHttpActionResult Details(int? id)
         {
             var jobSeeker = this.data.JobSeekerProfiles.All()
                 .Where(x => x.JobSeekerProfileId == id)
+                .ProjectTo<JobSeekerProfileViewModel>()
+                .FirstOrDefault();
+
+            return this.Ok(jobSeeker);
+        }
+
+        [HttpGet]
+        public IHttpActionResult Details(string email)
+        {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .Where(x => x.User.Email == email)
+                .ProjectTo<JobSeekerProfileViewModel>()
+                .FirstOrDefault();
+
+            return this.Ok(jobSeeker);
+        }
+
+        [HttpGet]
+        public IHttpActionResult Details()
+        {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .Where(x => x.UserId == this.CurrentUserId)
                 .ProjectTo<JobSeekerProfileViewModel>()
                 .FirstOrDefault();
 

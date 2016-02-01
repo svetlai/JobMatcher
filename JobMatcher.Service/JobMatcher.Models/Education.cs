@@ -10,6 +10,8 @@ namespace JobMatcher.Models
 
         public Degree Degree { get; set; }
 
+        public string Specialty { get; set; }
+
         public int OrganizationId { get; set; }
 
         public virtual Organization Organization { get; set; }
