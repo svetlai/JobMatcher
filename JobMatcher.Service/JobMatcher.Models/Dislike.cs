@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JobMatcher.Models
@@ -19,5 +20,7 @@ namespace JobMatcher.Models
         public virtual JobSeekerProfile JobSeekerProfile { get; set; }
 
         public ProfileType DislikeInitiatorType { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }

@@ -48,15 +48,16 @@ namespace JobMatcher.Service.Controllers
                 return this.BadRequest("You must be a recruiter to do that.");
             }
 
-            var recruiterMatches = recruiter.Matches
+            var recruiterMatches = this.data.Matches.All()
+                .Where(x => x.RecruiterProfileId == recruiter.RecruiterProfileId)
                 .Select(x => x.JobSeekerProfileId).ToList();
 
-            var recruiterLikes = recruiter.LikedJobSeekers
-                .Where(x => x.LikeInitiatorType == ProfileType.Recruiter)
+            var recruiterLikes = this.data.Likes.All()
+                .Where(x => x.RecruiterProfileId == recruiter.RecruiterProfileId && x.LikeInitiatorType == ProfileType.Recruiter)
                 .Select(x => x.JobSeekerProfileId).ToList();
 
-            var recruiterDislikes = recruiter.DislikedJobSeekers
-                .Where(x => x.DislikeInitiatorType == ProfileType.Recruiter)
+            var recruiterDislikes = this.data.Dislikes.All()
+                .Where(x => x.RecruiterProfileId == recruiter.RecruiterProfileId && x.DislikeInitiatorType == ProfileType.Recruiter)
                 .Select(x => x.JobSeekerProfileId).ToList();
 
             var allJobSeekers = this.data.JobSeekerProfiles.All()
