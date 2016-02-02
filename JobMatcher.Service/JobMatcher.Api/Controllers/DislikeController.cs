@@ -64,6 +64,7 @@ namespace JobMatcher.Service.Controllers
             if (existingDislike == null)
             {
                 var dislike = AutoMapper.Mapper.Map<Dislike>(model);
+                dislike.CreatedOn = DateTime.Now;
 
                 var existingLike =
                 this.data.Likes.All()

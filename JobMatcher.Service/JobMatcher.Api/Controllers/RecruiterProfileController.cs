@@ -46,7 +46,7 @@ namespace JobMatcher.Service.Controllers
         {
             var recruiter = this.data.RecruiterProfiles.All()
                 .Where(x => x.UserId == this.CurrentUserId)
-                .ProjectTo<JobSeekerProfileViewModel>()
+                .ProjectTo<RecruiterProfileViewModel>()
                 .FirstOrDefault();
 
             return this.Ok(recruiter);

@@ -10,6 +10,8 @@ namespace JobMatcher.Service.ViewModels
 {
     public class RecruiterProfileViewModel : IMapFrom<RecruiterProfile>, IHaveCustomMappings
     {
+        public int RecruiterProfileId { get; set; }
+
         public string Username { get; set; }
 
         public string Email { get; set; }
@@ -17,8 +19,6 @@ namespace JobMatcher.Service.ViewModels
         public ProfileType ProfileType { get; set; }
 
         public virtual ICollection<JobOfferViewModel> JobOffers { get; set; }
-
-        public virtual ICollection<JobSeekerProfileViewModel> SelectedJobSeekers { get; set; }
 
         public virtual ICollection<Match> Matches { get; set; }
 

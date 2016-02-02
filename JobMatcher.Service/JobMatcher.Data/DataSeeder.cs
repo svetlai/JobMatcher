@@ -136,7 +136,8 @@ namespace JobMatcher.Data
                     OrganizationId = 2,
                     Description = "None",
                     StartDate = new DateTime(2011, 9, 15),
-                    EndDate = new DateTime(2015, 5, 28)
+                    EndDate = new DateTime(2015, 5, 28),
+                    Specialty = "Engineer"
                 },
                 new Education()
                 {
@@ -145,7 +146,8 @@ namespace JobMatcher.Data
                     OrganizationId = 2,
                     Description = "None",
                     StartDate = new DateTime(2011, 9, 15),
-                    EndDate = new DateTime(2015, 5, 28)
+                    EndDate = new DateTime(2015, 5, 28),
+                    Specialty = "Software Developer"
                 }
             };
 
