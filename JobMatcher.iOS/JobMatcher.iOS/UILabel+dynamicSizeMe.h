@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UILabel_dynamicSizeMe : UIView
+@interface UILabel (dynamicSizeMe)
+
+-(float)resizeToFit;
+-(float)expectedHeight;
 
 @end

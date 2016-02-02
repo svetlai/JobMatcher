@@ -10,4 +10,15 @@
 
 @interface SkillViewModel : NSObject
 
+@property NSInteger skillId;
+@property (strong, nonatomic) NSString* name;
+@property NSInteger level;
+
+-(instancetype) initWithId:(NSInteger) skillId
+                   andName:(NSString*) name
+                  andLevel:(NSInteger) level;
+
++(SkillViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;
+
++(NSArray*) arrayOfSkillsFromJsonDictionary: (NSArray*) jsonArray;
 @end

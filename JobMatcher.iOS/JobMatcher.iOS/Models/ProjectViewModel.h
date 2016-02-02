@@ -10,4 +10,17 @@
 
 @interface ProjectViewModel : NSObject
 
+@property NSInteger projectId;
+@property (strong, nonatomic) NSString* title;
+@property (strong, nonatomic) NSString* projectDescription;
+@property (strong, nonatomic) NSString* url;
+
+-(instancetype) initWithId:(NSInteger) projectId
+                  andTitle:(NSString*) title
+               andDescription:(NSString*) description
+                andUrl:(NSString*) url;
+
++(ProjectViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;
+
++(NSArray*) arrayOfProjectsFromJsonDictionary: (NSArray*) jsonArray;
 @end

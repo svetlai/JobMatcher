@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface JobOfferService : NSObject
-
+-(void) getRandomOfferWithTarget:(NSObject*) target;
 @end

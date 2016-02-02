@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface RecruiterService : NSObject
-
+-(void) getProfileWithTarget:(NSObject*) target;
 @end

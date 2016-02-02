@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollapseClick.h"
 
-@interface RecruiterHomeViewController : UIViewController
+@interface RecruiterHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *recruiterHelloLabel;
+- (IBAction)browseJobSeekersButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *recruiterProfileImage;
+@property (weak, nonatomic) IBOutlet CollapseClick *recruiterCollapseClickScrollView;
+
 
 @end

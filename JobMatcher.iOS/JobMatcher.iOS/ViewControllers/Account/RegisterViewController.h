@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@property (weak, nonatomic) IBOutlet UIPickerView *accountTypePicker;
+@property (weak, nonatomic) IBOutlet UITextField *accountEmail;
+@property (weak, nonatomic) IBOutlet UITextField *accountPassword;
+@property (weak, nonatomic) IBOutlet UITextField *accountConfirmPassword;
+- (IBAction)registerButtonTap:(id)sender;
+- (IBAction)loginButtonTap:(id)sender;
+
 
 @end

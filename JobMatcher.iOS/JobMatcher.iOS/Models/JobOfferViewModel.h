@@ -10,4 +10,26 @@
 
 @interface JobOfferViewModel : NSObject
 
+@property NSInteger jobOfferId;
+@property (strong, nonatomic) NSString* title;
+@property (strong, nonatomic) NSString* location;
+@property (strong, nonatomic) NSString* jobOfferDescription;
+@property NSInteger industry;
+@property double salary;
+@property NSInteger workHours;
+@property NSInteger recruiterProfileId;
+
+-(instancetype) initWithId:(NSInteger) jobOfferId
+                  andTitle:(NSString*) title
+               andLocation:(NSString*) location
+            andDescription:(NSString*) jobOfferDescription
+               andIndustry:(NSInteger) industry
+                 andSalary:(double) salary
+              andWorkHours:(NSInteger)workHours
+     andRecruiterProfileId:(NSInteger)recruiterProfileId;
+
++(JobOfferViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;
+
++(NSArray*) arrayOfJobOffersFromJsonDictionary: (NSArray*) jsonArray;
+
 @end

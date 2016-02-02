@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ExperienceTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *experiencePositionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *experienceOrganizationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *experienceIndustryLevel;
+@property (weak, nonatomic) IBOutlet UILabel *experienceStartDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *experienceEndDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *experienceDescriptionLabel;
 
 @end

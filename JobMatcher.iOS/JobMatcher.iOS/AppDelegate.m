@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "GlobalConstants.h"
+#import "JobSeekerHomeViewController.h"
+#import "RecruiterHomeViewController.h"
+#import "UserDataModel.h"
 
 @interface AppDelegate ()
 
@@ -14,8 +18,13 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    [GlobalConstants fillArrays];
+   
+    if ([UserDataModel isLoggedIn]) {
+        [self loadLoggedInView];
+    }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     return YES;
 }
@@ -122,6 +131,21 @@
             abort();
         }
     }
+}
+
+-(void)loadLoggedInView{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    UserDataModel* userData = [[UserDataModel alloc] init];
+    UIViewController* controller = nil;
+    
+    if (userData.profileType == JobSeeker){
+        controller = (UIViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"navToJobSeekerHomeViewController"];
+    } else if(userData.profileType == Recruiter){
+        controller = (UIViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"navToRecruiterHomeViewController"];
+    }
+    
+    self.window.rootViewController = controller;
 }
 
 @end

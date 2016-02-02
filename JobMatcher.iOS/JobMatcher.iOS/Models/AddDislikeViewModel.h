@@ -9,5 +9,21 @@
 #import <Foundation/Foundation.h>
 
 @interface AddDislikeViewModel : NSObject
+@property NSString* dislikedId;
+@property NSString* myAccountType;
+@property NSString* jobOfferId;
 
+-(instancetype) initWithDisikedId:(NSString*)dislikedId
+                 andMyAccountType:(NSString*)myAccountType;
+
+-(instancetype) initWithDisikedId:(NSString*)dislikedId
+                 andMyAccountType:(NSString*)myAccountType
+                    andJobOfferId:(NSString*)jobOfferId;
+
++(AddDislikeViewModel*) dislikeWithDislikedId:(NSString*)dislikedId
+                             andMyAccountType:(NSString*)myAccountType;
+
++(AddDislikeViewModel*) dislikeWithDislikedId:(NSString*)dislikedId
+                             andMyAccountType:(NSString*)myAccountType
+                                andJobOfferId:(NSString*)jobOfferId;
 @end

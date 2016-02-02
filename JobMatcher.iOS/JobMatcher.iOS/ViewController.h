@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)toLoginButtonTap:(id)sender;
+- (IBAction)toRegisterButtonTap:(id)sender;
 
 @end
 

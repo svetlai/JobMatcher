@@ -6,8 +6,13 @@
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface Validator : NSObject
+@interface Validator : UIViewController
 
+-(BOOL) isValidLength: (int) length andParam:(NSString*)param;
+
+-(BOOL) arePasswordsEqual: (NSString*)password andConfirmPassword: (NSString*) confirmPassword;
+
+-(BOOL) isValidEmail: (NSString *) email;
 @end

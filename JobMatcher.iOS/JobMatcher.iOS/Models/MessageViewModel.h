@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface MessageViewModel : NSObject
++(MessageViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;
 
++(NSArray*) arrayOfMessagesFromJsonDictionary: (NSArray*) jsonArray;
 @end

@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "Reachability.h"
 
 @interface InternetConnectionChecker : NSObject
+
+-(NSString *)getConnectionSatus;
 
 @end

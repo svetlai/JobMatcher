@@ -10,4 +10,34 @@
 
 @implementation GlobalConstants
 
+NSString* const AppName = @"Job Matcher";
+NSString* const BaseUrl = @"http://svetlapc:61177/";
+NSArray* AccountTypes;
+NSArray* Industries;
+NSArray* WorkHours;
+NSArray* Degree;
+NSArray* Level;
+
++(void)fillArrays{
+    AccountTypes = [[NSArray alloc] initWithObjects:@"Job Seeker", @"Recruiter", nil];
+    Industries = [[NSArray alloc] initWithObjects:@"Accountancy Banking Finance", @"Business Consulting And Management",
+                      @"Charity And Voluntary Work", @"Creative Arts And Design",
+                      @"Energy And Utilities", @"Engineering And Manufacturing",
+                      @"Environment And Agriculture", @"Healthcare", @"Hospitality",
+                      @"Information Technology", @"Law",
+                      @"Law Enforcement And Security", @"Leisure Sports And Tourism",
+                      @"Marketing Advertising And PR", @"Media And Internet",
+                      @"Property And Construction", @"Public Services And Admin",
+                      @"Recruitment And HR", @"Retail",
+                      @"Sales", @"Science And Pharmaceuticals",
+                      @"Social Care", @"Teaching And Education",
+                      @"Transport AndLogistics",nil];
+    
+    WorkHours = [[NSArray alloc] initWithObjects:@"Full-Time", @"Part-Time", nil];
+    
+    Degree = [[NSArray alloc] initWithObjects:@"Bachelor", @"Master", @"HighSchool", @"Other", nil];
+
+    Level = [[NSArray alloc] initWithObjects:@"NotApplicable", @"Fundamental", @"Novice", @"Intermediate", @"Advanced", @"Expert", nil];
+}
+
 @end
