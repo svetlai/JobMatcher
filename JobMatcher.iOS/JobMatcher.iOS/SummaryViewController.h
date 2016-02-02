@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SummaryViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *sumLabel;
 
 @end

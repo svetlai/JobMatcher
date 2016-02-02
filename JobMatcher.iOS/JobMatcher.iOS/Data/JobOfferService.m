@@ -1,31 +1,30 @@
 //
-//  RecruiterService.m
+//  JobOfferService.m
 //  JobMatcher.iOS
 //
-//  Created by s i on 1/31/16.
+//  Created by s i on 2/2/16.
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
-#import "RecruiterService.h"
+#import "JobOfferService.h"
 #import "UserDataModel.h"
 #import "GlobalConstants.h"
 
-@implementation RecruiterService
-NSString* const RecruiterDetailsRoute = @"api/recruiterprofile/details";
+@implementation JobOfferService
+NSString* const JobOfferRandomRoute = @"api/JobOffer/Random";
 
-NSString* authorizationTokenRecruiter;
+NSString* authorizationTokenJobOffer;
 
 -(instancetype) init {
     if (self = [super init]) {
-        authorizationTokenRecruiter = [UserDataModel getToken];
+        authorizationTokenJobOffer = [UserDataModel getToken];
     }
     
     return self;
 }
 
--(void) getProfileWithTarget:(NSObject*) target{
-    
-    NSString* url = [NSString stringWithFormat:@"%@%@", BaseUrl, RecruiterDetailsRoute];
+-(void) getRandomOfferWithTarget:(NSObject*) target{
+    NSString* url = [NSString stringWithFormat:@"%@%@", BaseUrl, JobOfferRandomRoute];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
@@ -33,10 +32,9 @@ NSString* authorizationTokenRecruiter;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    [request setValue:authorizationTokenRecruiter forHTTPHeaderField:@"Authorization"];
+    [request setValue:authorizationTokenJobOffer forHTTPHeaderField:@"Authorization"];
     
     [NSURLConnection connectionWithRequest:request delegate:target];
 }
-
 
 @end

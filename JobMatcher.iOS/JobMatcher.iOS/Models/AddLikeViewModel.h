@@ -9,5 +9,21 @@
 #import <Foundation/Foundation.h>
 
 @interface AddLikeViewModel : NSObject
+@property NSString* likedId;
+@property NSString* myAccountType;
+@property NSString* jobOfferId;
 
+-(instancetype) initWithLikedId:(NSString*)likedId
+            andMyAccountType:(NSString*)myAccountType;
+
+-(instancetype) initWithLikedId:(NSString*)likedId
+               andMyAccountType:(NSString*)myAccountType
+                  andJobOfferId:(NSString*)jobOfferId;
+
++(AddLikeViewModel*) likeWithLikedId:(NSString*)likedId
+                 andMyAccountType:(NSString*)myAccountType;
+
++(AddLikeViewModel*) likeWithLikedId:(NSString*)likedId
+                    andMyAccountType:(NSString*)myAccountType
+                       andJobOfferId:(NSString*)jobOfferId;
 @end

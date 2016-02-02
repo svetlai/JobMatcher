@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *accountEmail;
+@property (weak, nonatomic) IBOutlet UITextField *accountPassword;
+- (IBAction)loginButtonTap:(id)sender;
+- (IBAction)registerButtonTap:(id)sender;
 
 @end

@@ -6,8 +6,12 @@
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface HelperMethods : NSObject
-
+@interface HelperMethods :  UIViewController
++(void) addAlert: (NSString*) message;
++(void) setPageTitle: (UIViewController*) page andTitle: (NSString*) title;
++(void) setSackBarButtonText: (UIViewController*) page andText: (NSString*) text;
++(NSDate*)getDateFromString: (NSString*) dateAsString;
++(NSString*)getShortDateString: (NSDate*) date;
 @end

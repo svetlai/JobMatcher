@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface JobOfferTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *jobOfferTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobOfferLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobOfferSalaryLabel;
 
 @end

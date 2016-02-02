@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface JobSeekerService : NSObject
-
+-(void) getProfileWithTarget:(NSObject*) target;
+-(void) getRandomProfileWithTarget:(NSObject*) target;
 @end

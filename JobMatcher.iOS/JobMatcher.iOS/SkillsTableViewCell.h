@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SkillsTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *skillNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *skillLevelLabel;
 
 @end

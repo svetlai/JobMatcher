@@ -12,7 +12,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
-}
+    [self.skillLevelLabel setBackgroundColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1] /*#cccccc*/];
+    self.skillLevelLabel.layer.masksToBounds = YES;
+    self.skillLevelLabel.layer.cornerRadius = 25.0;
+    }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "GlobalConstants.h"
+#import "HelperMethods.h"
 
 @interface ViewController ()
 
@@ -14,9 +16,14 @@
 
 @implementation ViewController
 
+NSString* const SegueToLoginScene = @"segueToLoginScene";
+NSString* const SegueToRegisterScene = @"segueToRegisterScene";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [HelperMethods setPageTitle:self andTitle:AppName];
+    [HelperMethods setSackBarButtonText:self andText:@""];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,4 +31,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)toLoginButtonTap:(id)sender {
+    [self performSegueWithIdentifier:SegueToLoginScene sender:self];
+};
+
+- (IBAction)toRegisterButtonTap:(id)sender {
+    [self performSegueWithIdentifier:SegueToRegisterScene sender:self];
+}
 @end

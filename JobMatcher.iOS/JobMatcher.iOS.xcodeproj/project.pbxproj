@@ -7,30 +7,155 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */; };
+		9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */; };
+		9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */; };
+		9B086B2D1C6003EB002E39D3 /* JobOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B2C1C6003EB002E39D3 /* JobOfferViewController.m */; };
+		9B086B301C60294D002E39D3 /* JobOfferService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B2F1C60294D002E39D3 /* JobOfferService.m */; };
+		9B93F0C81C5685A800E39663 /* AccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0C71C5685A800E39663 /* AccountService.m */; };
+		9B93F0CB1C56862700E39663 /* UserDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0CA1C56862700E39663 /* UserDataModel.m */; };
+		9B93F0CE1C56A1B500E39663 /* Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0CD1C56A1B500E39663 /* Validator.m */; };
+		9B93F0D11C56B66C00E39663 /* HelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0D01C56B66C00E39663 /* HelperMethods.m */; };
+		9B93F0D41C56DE1200E39663 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0D31C56DE1200E39663 /* HomeViewController.m */; };
+		9B93F0DD1C56EABB00E39663 /* KeychainUserPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0DC1C56EABB00E39663 /* KeychainUserPass.m */; };
+		9B93F1141C58081300E39663 /* RecruiterHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1131C58081300E39663 /* RecruiterHomeViewController.m */; };
+		9B93F1181C58084700E39663 /* JobSeekerHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1171C58084700E39663 /* JobSeekerHomeViewController.m */; };
+		9B93F1521C5CDC6F00E39663 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B93F1501C5CDC6F00E39663 /* Main.storyboard */; };
+		9B93F1571C5CEF9D00E39663 /* default_profile_img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B93F1561C5CEF9D00E39663 /* default_profile_img.jpg */; };
+		9B93F15A1C5CF99400E39663 /* JobSeekerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1591C5CF99400E39663 /* JobSeekerService.m */; };
+		9B93F15D1C5D0FF400E39663 /* JobSeekerProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F15C1C5D0FF400E39663 /* JobSeekerProfileViewModel.m */; };
+		9B93F1601C5D13FB00E39663 /* ProjectViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F15F1C5D13FB00E39663 /* ProjectViewModel.m */; };
+		9B93F1631C5D152A00E39663 /* EducationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1621C5D152A00E39663 /* EducationViewModel.m */; };
+		9B93F1661C5D155500E39663 /* ExperienceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1651C5D155500E39663 /* ExperienceViewModel.m */; };
+		9B93F1691C5D158E00E39663 /* SkillViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1681C5D158E00E39663 /* SkillViewModel.m */; };
+		9B93F16C1C5D15B600E39663 /* JobOfferViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F16B1C5D15B600E39663 /* JobOfferViewModel.m */; };
+		9B93F16F1C5D15D600E39663 /* MessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F16E1C5D15D600E39663 /* MessageViewModel.m */; };
+		9B93F1971C5D5F1B00E39663 /* ProjectsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1951C5D5F1B00E39663 /* ProjectsTableViewCell.m */; };
+		9B93F1981C5D5F1B00E39663 /* ProjectsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93F1961C5D5F1B00E39663 /* ProjectsTableViewCell.xib */; };
+		9B93F1AE1C5E0D8400E39663 /* CollapseClick.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1A81C5E0D8400E39663 /* CollapseClick.m */; };
+		9B93F1AF1C5E0D8400E39663 /* CollapseClickArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1AA1C5E0D8400E39663 /* CollapseClickArrow.m */; };
+		9B93F1B01C5E0D8400E39663 /* CollapseClickCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1AC1C5E0D8400E39663 /* CollapseClickCell.m */; };
+		9B93F1B11C5E0D8400E39663 /* CollapseClickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93F1AD1C5E0D8400E39663 /* CollapseClickCell.xib */; };
+		9B93F1BA1C5E1F0100E39663 /* UILabel+dynamicSizeMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1B91C5E1F0100E39663 /* UILabel+dynamicSizeMe.m */; };
+		9B93F1BE1C5E323B00E39663 /* SkillsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1BC1C5E323B00E39663 /* SkillsTableViewCell.m */; };
+		9B93F1BF1C5E323B00E39663 /* SkillsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93F1BD1C5E323B00E39663 /* SkillsTableViewCell.xib */; };
+		9B93F1C31C5E3F1100E39663 /* ExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1C11C5E3F1100E39663 /* ExperienceTableViewCell.m */; };
+		9B93F1C41C5E3F1100E39663 /* ExperienceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93F1C21C5E3F1100E39663 /* ExperienceTableViewCell.xib */; };
+		9B93F1C81C5E659300E39663 /* EducationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1C61C5E659300E39663 /* EducationTableViewCell.m */; };
+		9B93F1C91C5E659300E39663 /* EducationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93F1C71C5E659300E39663 /* EducationTableViewCell.xib */; };
+		9B93F1CC1C5E897800E39663 /* RecruiterService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1CB1C5E897800E39663 /* RecruiterService.m */; };
+		9B93F1CF1C5EA38700E39663 /* MatchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1CE1C5EA38700E39663 /* MatchService.m */; };
+		9B93F1D21C5EABF400E39663 /* AddLikeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1D11C5EABF400E39663 /* AddLikeViewModel.m */; };
+		9B93F1D51C5EC56300E39663 /* AddDislikeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F1D41C5EC56300E39663 /* AddDislikeViewModel.m */; };
 		9BFEBAF31C552BFC00B83A52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBAF21C552BFC00B83A52 /* main.m */; };
 		9BFEBAF61C552BFC00B83A52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBAF51C552BFC00B83A52 /* AppDelegate.m */; };
 		9BFEBAF91C552BFC00B83A52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBAF81C552BFC00B83A52 /* ViewController.m */; };
-		9BFEBAFC1C552BFC00B83A52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BFEBAFA1C552BFC00B83A52 /* Main.storyboard */; };
 		9BFEBAFF1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBAFD1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodeld */; };
 		9BFEBB011C552BFC00B83A52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BFEBB001C552BFC00B83A52 /* Assets.xcassets */; };
 		9BFEBB041C552BFC00B83A52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BFEBB021C552BFC00B83A52 /* LaunchScreen.storyboard */; };
 		9BFEBB0E1C552CEA00B83A52 /* HttpRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBB0D1C552CEA00B83A52 /* HttpRequester.m */; };
+		9BFEBB161C55368900B83A52 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBB151C55368900B83A52 /* LoginViewController.m */; };
+		9BFEBB191C553A2F00B83A52 /* GlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBB181C553A2F00B83A52 /* GlobalConstants.m */; };
+		9BFEBB1F1C554B9D00B83A52 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBB1E1C554B9D00B83A52 /* RegisterViewController.m */; };
+		9BFEBB221C555A5600B83A52 /* InternetConnectionChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBB211C555A5600B83A52 /* InternetConnectionChecker.m */; };
+		9BFEBB281C555B5400B83A52 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEBB271C555B5400B83A52 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterProfileViewModel.h; path = Models/RecruiterProfileViewModel.h; sourceTree = "<group>"; };
+		9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterProfileViewModel.m; path = Models/RecruiterProfileViewModel.m; sourceTree = "<group>"; };
+		9B086B261C5FD9CE002E39D3 /* JobOfferTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobOfferTableViewCell.h; sourceTree = "<group>"; };
+		9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobOfferTableViewCell.m; sourceTree = "<group>"; };
+		9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobOfferTableViewCell.xib; sourceTree = "<group>"; };
+		9B086B2B1C6003EB002E39D3 /* JobOfferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobOfferViewController.h; path = ViewControllers/Recruiter/JobOfferViewController.h; sourceTree = "<group>"; };
+		9B086B2C1C6003EB002E39D3 /* JobOfferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobOfferViewController.m; path = ViewControllers/Recruiter/JobOfferViewController.m; sourceTree = "<group>"; };
+		9B086B2E1C60294D002E39D3 /* JobOfferService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobOfferService.h; path = Data/JobOfferService.h; sourceTree = "<group>"; };
+		9B086B2F1C60294D002E39D3 /* JobOfferService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobOfferService.m; path = Data/JobOfferService.m; sourceTree = "<group>"; };
+		9B93F0C61C5685A800E39663 /* AccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountService.h; path = Data/AccountService.h; sourceTree = "<group>"; };
+		9B93F0C71C5685A800E39663 /* AccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountService.m; path = Data/AccountService.m; sourceTree = "<group>"; };
+		9B93F0C91C56862700E39663 /* UserDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDataModel.h; path = Models/UserDataModel.h; sourceTree = "<group>"; };
+		9B93F0CA1C56862700E39663 /* UserDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDataModel.m; path = Models/UserDataModel.m; sourceTree = "<group>"; };
+		9B93F0CC1C56A1B500E39663 /* Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Validator.h; path = Helpers/Validator.h; sourceTree = "<group>"; };
+		9B93F0CD1C56A1B500E39663 /* Validator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Validator.m; path = Helpers/Validator.m; sourceTree = "<group>"; };
+		9B93F0CF1C56B66C00E39663 /* HelperMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelperMethods.h; path = Helpers/HelperMethods.h; sourceTree = "<group>"; };
+		9B93F0D01C56B66C00E39663 /* HelperMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelperMethods.m; path = Helpers/HelperMethods.m; sourceTree = "<group>"; };
+		9B93F0D21C56DE1200E39663 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewControllers/HomeViewController.h; sourceTree = "<group>"; };
+		9B93F0D31C56DE1200E39663 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewControllers/HomeViewController.m; sourceTree = "<group>"; };
+		9B93F0DB1C56EABB00E39663 /* KeychainUserPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainUserPass.h; sourceTree = "<group>"; };
+		9B93F0DC1C56EABB00E39663 /* KeychainUserPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainUserPass.m; sourceTree = "<group>"; };
+		9B93F1121C58081300E39663 /* RecruiterHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterHomeViewController.h; path = ViewControllers/Recruiter/RecruiterHomeViewController.h; sourceTree = "<group>"; };
+		9B93F1131C58081300E39663 /* RecruiterHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterHomeViewController.m; path = ViewControllers/Recruiter/RecruiterHomeViewController.m; sourceTree = "<group>"; };
+		9B93F1161C58084700E39663 /* JobSeekerHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobSeekerHomeViewController.h; path = ViewControllers/JobSeeker/JobSeekerHomeViewController.h; sourceTree = "<group>"; };
+		9B93F1171C58084700E39663 /* JobSeekerHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobSeekerHomeViewController.m; path = ViewControllers/JobSeeker/JobSeekerHomeViewController.m; sourceTree = "<group>"; };
+		9B93F1511C5CDC6F00E39663 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9B93F1561C5CEF9D00E39663 /* default_profile_img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_profile_img.jpg; sourceTree = "<group>"; };
+		9B93F1581C5CF99400E39663 /* JobSeekerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobSeekerService.h; path = Data/JobSeekerService.h; sourceTree = "<group>"; };
+		9B93F1591C5CF99400E39663 /* JobSeekerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobSeekerService.m; path = Data/JobSeekerService.m; sourceTree = "<group>"; };
+		9B93F15B1C5D0FF400E39663 /* JobSeekerProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobSeekerProfileViewModel.h; path = Models/JobSeekerProfileViewModel.h; sourceTree = "<group>"; };
+		9B93F15C1C5D0FF400E39663 /* JobSeekerProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobSeekerProfileViewModel.m; path = Models/JobSeekerProfileViewModel.m; sourceTree = "<group>"; };
+		9B93F15E1C5D13FB00E39663 /* ProjectViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectViewModel.h; path = Models/ProjectViewModel.h; sourceTree = "<group>"; };
+		9B93F15F1C5D13FB00E39663 /* ProjectViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectViewModel.m; path = Models/ProjectViewModel.m; sourceTree = "<group>"; };
+		9B93F1611C5D152A00E39663 /* EducationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EducationViewModel.h; path = Models/EducationViewModel.h; sourceTree = "<group>"; };
+		9B93F1621C5D152A00E39663 /* EducationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EducationViewModel.m; path = Models/EducationViewModel.m; sourceTree = "<group>"; };
+		9B93F1641C5D155500E39663 /* ExperienceViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExperienceViewModel.h; path = Models/ExperienceViewModel.h; sourceTree = "<group>"; };
+		9B93F1651C5D155500E39663 /* ExperienceViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExperienceViewModel.m; path = Models/ExperienceViewModel.m; sourceTree = "<group>"; };
+		9B93F1671C5D158E00E39663 /* SkillViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkillViewModel.h; path = Models/SkillViewModel.h; sourceTree = "<group>"; };
+		9B93F1681C5D158E00E39663 /* SkillViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkillViewModel.m; path = Models/SkillViewModel.m; sourceTree = "<group>"; };
+		9B93F16A1C5D15B600E39663 /* JobOfferViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobOfferViewModel.h; path = Models/JobOfferViewModel.h; sourceTree = "<group>"; };
+		9B93F16B1C5D15B600E39663 /* JobOfferViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobOfferViewModel.m; path = Models/JobOfferViewModel.m; sourceTree = "<group>"; };
+		9B93F16D1C5D15D600E39663 /* MessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageViewModel.h; path = Models/MessageViewModel.h; sourceTree = "<group>"; };
+		9B93F16E1C5D15D600E39663 /* MessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageViewModel.m; path = Models/MessageViewModel.m; sourceTree = "<group>"; };
+		9B93F1941C5D5F1B00E39663 /* ProjectsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsTableViewCell.h; sourceTree = "<group>"; };
+		9B93F1951C5D5F1B00E39663 /* ProjectsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsTableViewCell.m; sourceTree = "<group>"; };
+		9B93F1961C5D5F1B00E39663 /* ProjectsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsTableViewCell.xib; sourceTree = "<group>"; };
+		9B93F1A71C5E0D8400E39663 /* CollapseClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollapseClick.h; sourceTree = "<group>"; };
+		9B93F1A81C5E0D8400E39663 /* CollapseClick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollapseClick.m; sourceTree = "<group>"; };
+		9B93F1A91C5E0D8400E39663 /* CollapseClickArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollapseClickArrow.h; sourceTree = "<group>"; };
+		9B93F1AA1C5E0D8400E39663 /* CollapseClickArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollapseClickArrow.m; sourceTree = "<group>"; };
+		9B93F1AB1C5E0D8400E39663 /* CollapseClickCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollapseClickCell.h; sourceTree = "<group>"; };
+		9B93F1AC1C5E0D8400E39663 /* CollapseClickCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollapseClickCell.m; sourceTree = "<group>"; };
+		9B93F1AD1C5E0D8400E39663 /* CollapseClickCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollapseClickCell.xib; sourceTree = "<group>"; };
+		9B93F1B81C5E1F0100E39663 /* UILabel+dynamicSizeMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+dynamicSizeMe.h"; sourceTree = "<group>"; };
+		9B93F1B91C5E1F0100E39663 /* UILabel+dynamicSizeMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+dynamicSizeMe.m"; sourceTree = "<group>"; };
+		9B93F1BB1C5E323B00E39663 /* SkillsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillsTableViewCell.h; sourceTree = "<group>"; };
+		9B93F1BC1C5E323B00E39663 /* SkillsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillsTableViewCell.m; sourceTree = "<group>"; };
+		9B93F1BD1C5E323B00E39663 /* SkillsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillsTableViewCell.xib; sourceTree = "<group>"; };
+		9B93F1C01C5E3F1100E39663 /* ExperienceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperienceTableViewCell.h; sourceTree = "<group>"; };
+		9B93F1C11C5E3F1100E39663 /* ExperienceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperienceTableViewCell.m; sourceTree = "<group>"; };
+		9B93F1C21C5E3F1100E39663 /* ExperienceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExperienceTableViewCell.xib; sourceTree = "<group>"; };
+		9B93F1C51C5E659300E39663 /* EducationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EducationTableViewCell.h; sourceTree = "<group>"; };
+		9B93F1C61C5E659300E39663 /* EducationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EducationTableViewCell.m; sourceTree = "<group>"; };
+		9B93F1C71C5E659300E39663 /* EducationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationTableViewCell.xib; sourceTree = "<group>"; };
+		9B93F1CA1C5E897800E39663 /* RecruiterService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterService.h; path = Data/RecruiterService.h; sourceTree = "<group>"; };
+		9B93F1CB1C5E897800E39663 /* RecruiterService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterService.m; path = Data/RecruiterService.m; sourceTree = "<group>"; };
+		9B93F1CD1C5EA38700E39663 /* MatchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MatchService.h; path = Data/MatchService.h; sourceTree = "<group>"; };
+		9B93F1CE1C5EA38700E39663 /* MatchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MatchService.m; path = Data/MatchService.m; sourceTree = "<group>"; };
+		9B93F1D01C5EABF400E39663 /* AddLikeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddLikeViewModel.h; path = Models/AddLikeViewModel.h; sourceTree = "<group>"; };
+		9B93F1D11C5EABF400E39663 /* AddLikeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddLikeViewModel.m; path = Models/AddLikeViewModel.m; sourceTree = "<group>"; };
+		9B93F1D31C5EC56300E39663 /* AddDislikeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddDislikeViewModel.h; path = Models/AddDislikeViewModel.h; sourceTree = "<group>"; };
+		9B93F1D41C5EC56300E39663 /* AddDislikeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddDislikeViewModel.m; path = Models/AddDislikeViewModel.m; sourceTree = "<group>"; };
 		9BFEBAEE1C552BFB00B83A52 /* JobMatcher.iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobMatcher.iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BFEBAF21C552BFC00B83A52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9BFEBAF41C552BFC00B83A52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BFEBAF51C552BFC00B83A52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9BFEBAF71C552BFC00B83A52 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9BFEBAF81C552BFC00B83A52 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9BFEBAFB1C552BFC00B83A52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BFEBAFE1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JobMatcher_iOS.xcdatamodel; sourceTree = "<group>"; };
 		9BFEBB001C552BFC00B83A52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BFEBB031C552BFC00B83A52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BFEBB051C552BFC00B83A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BFEBB0C1C552CEA00B83A52 /* HttpRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpRequester.h; path = Data/HttpRequester.h; sourceTree = "<group>"; };
 		9BFEBB0D1C552CEA00B83A52 /* HttpRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpRequester.m; path = Data/HttpRequester.m; sourceTree = "<group>"; };
+		9BFEBB141C55368900B83A52 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/Account/LoginViewController.h; sourceTree = "<group>"; };
+		9BFEBB151C55368900B83A52 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/Account/LoginViewController.m; sourceTree = "<group>"; };
+		9BFEBB171C553A2F00B83A52 /* GlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalConstants.h; path = Helpers/GlobalConstants.h; sourceTree = "<group>"; };
+		9BFEBB181C553A2F00B83A52 /* GlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalConstants.m; path = Helpers/GlobalConstants.m; sourceTree = "<group>"; };
+		9BFEBB1D1C554B9D00B83A52 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ViewControllers/Account/RegisterViewController.h; sourceTree = "<group>"; };
+		9BFEBB1E1C554B9D00B83A52 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/Account/RegisterViewController.m; sourceTree = "<group>"; };
+		9BFEBB201C555A5600B83A52 /* InternetConnectionChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternetConnectionChecker.h; path = Helpers/InternetConnectionChecker.h; sourceTree = "<group>"; };
+		9BFEBB211C555A5600B83A52 /* InternetConnectionChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InternetConnectionChecker.m; path = Helpers/InternetConnectionChecker.m; sourceTree = "<group>"; };
+		9BFEBB261C555B5400B83A52 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Helpers/Reachability.h; sourceTree = "<group>"; };
+		9BFEBB271C555B5400B83A52 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Helpers/Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +169,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B93F1111C5807E600E39663 /* Recruiter */ = {
+			isa = PBXGroup;
+			children = (
+				9B93F1121C58081300E39663 /* RecruiterHomeViewController.h */,
+				9B93F1131C58081300E39663 /* RecruiterHomeViewController.m */,
+				9B086B2B1C6003EB002E39D3 /* JobOfferViewController.h */,
+				9B086B2C1C6003EB002E39D3 /* JobOfferViewController.m */,
+			);
+			name = Recruiter;
+			sourceTree = "<group>";
+		};
+		9B93F1151C58082200E39663 /* JobSeeker */ = {
+			isa = PBXGroup;
+			children = (
+				9B93F1161C58084700E39663 /* JobSeekerHomeViewController.h */,
+				9B93F1171C58084700E39663 /* JobSeekerHomeViewController.m */,
+			);
+			name = JobSeeker;
+			sourceTree = "<group>";
+		};
+		9B93F1531C5CE97500E39663 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9BFEBB261C555B5400B83A52 /* Reachability.h */,
+				9BFEBB271C555B5400B83A52 /* Reachability.m */,
+				9BFEBB171C553A2F00B83A52 /* GlobalConstants.h */,
+				9BFEBB181C553A2F00B83A52 /* GlobalConstants.m */,
+				9BFEBB201C555A5600B83A52 /* InternetConnectionChecker.h */,
+				9BFEBB211C555A5600B83A52 /* InternetConnectionChecker.m */,
+				9B93F0CC1C56A1B500E39663 /* Validator.h */,
+				9B93F0CD1C56A1B500E39663 /* Validator.m */,
+				9B93F0CF1C56B66C00E39663 /* HelperMethods.h */,
+				9B93F0D01C56B66C00E39663 /* HelperMethods.m */,
+				9B93F0DB1C56EABB00E39663 /* KeychainUserPass.h */,
+				9B93F0DC1C56EABB00E39663 /* KeychainUserPass.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		9B93F1B21C5E0D8A00E39663 /* CollapseClick */ = {
+			isa = PBXGroup;
+			children = (
+				9B93F1A71C5E0D8400E39663 /* CollapseClick.h */,
+				9B93F1A81C5E0D8400E39663 /* CollapseClick.m */,
+				9B93F1A91C5E0D8400E39663 /* CollapseClickArrow.h */,
+				9B93F1AA1C5E0D8400E39663 /* CollapseClickArrow.m */,
+				9B93F1AB1C5E0D8400E39663 /* CollapseClickCell.h */,
+				9B93F1AC1C5E0D8400E39663 /* CollapseClickCell.m */,
+				9B93F1AD1C5E0D8400E39663 /* CollapseClickCell.xib */,
+			);
+			name = CollapseClick;
+			sourceTree = "<group>";
+		};
 		9BFEBAE51C552BFB00B83A52 = {
 			isa = PBXGroup;
 			children = (
@@ -63,7 +241,7 @@
 		9BFEBAF01C552BFC00B83A52 /* JobMatcher.iOS */ = {
 			isa = PBXGroup;
 			children = (
-				9BFEBB121C552E6000B83A52 /* Helpers */,
+				9B93F1531C5CE97500E39663 /* Common */,
 				9BFEBB111C552E3F00B83A52 /* ViewControllers */,
 				9BFEBB101C552E3900B83A52 /* Views */,
 				9BFEBB0F1C552E0400B83A52 /* Models */,
@@ -72,7 +250,7 @@
 				9BFEBAF51C552BFC00B83A52 /* AppDelegate.m */,
 				9BFEBAF71C552BFC00B83A52 /* ViewController.h */,
 				9BFEBAF81C552BFC00B83A52 /* ViewController.m */,
-				9BFEBAFA1C552BFC00B83A52 /* Main.storyboard */,
+				9B93F1501C5CDC6F00E39663 /* Main.storyboard */,
 				9BFEBB001C552BFC00B83A52 /* Assets.xcassets */,
 				9BFEBB021C552BFC00B83A52 /* LaunchScreen.storyboard */,
 				9BFEBB051C552BFC00B83A52 /* Info.plist */,
@@ -85,6 +263,7 @@
 		9BFEBAF11C552BFC00B83A52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B93F1561C5CEF9D00E39663 /* default_profile_img.jpg */,
 				9BFEBAF21C552BFC00B83A52 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -95,6 +274,16 @@
 			children = (
 				9BFEBB0C1C552CEA00B83A52 /* HttpRequester.h */,
 				9BFEBB0D1C552CEA00B83A52 /* HttpRequester.m */,
+				9B93F0C61C5685A800E39663 /* AccountService.h */,
+				9B93F0C71C5685A800E39663 /* AccountService.m */,
+				9B93F1581C5CF99400E39663 /* JobSeekerService.h */,
+				9B93F1591C5CF99400E39663 /* JobSeekerService.m */,
+				9B93F1CA1C5E897800E39663 /* RecruiterService.h */,
+				9B93F1CB1C5E897800E39663 /* RecruiterService.m */,
+				9B93F1CD1C5EA38700E39663 /* MatchService.h */,
+				9B93F1CE1C5EA38700E39663 /* MatchService.m */,
+				9B086B2E1C60294D002E39D3 /* JobOfferService.h */,
+				9B086B2F1C60294D002E39D3 /* JobOfferService.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -102,6 +291,28 @@
 		9BFEBB0F1C552E0400B83A52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9B93F0C91C56862700E39663 /* UserDataModel.h */,
+				9B93F0CA1C56862700E39663 /* UserDataModel.m */,
+				9B93F15B1C5D0FF400E39663 /* JobSeekerProfileViewModel.h */,
+				9B93F15C1C5D0FF400E39663 /* JobSeekerProfileViewModel.m */,
+				9B93F15E1C5D13FB00E39663 /* ProjectViewModel.h */,
+				9B93F15F1C5D13FB00E39663 /* ProjectViewModel.m */,
+				9B93F1611C5D152A00E39663 /* EducationViewModel.h */,
+				9B93F1621C5D152A00E39663 /* EducationViewModel.m */,
+				9B93F1641C5D155500E39663 /* ExperienceViewModel.h */,
+				9B93F1651C5D155500E39663 /* ExperienceViewModel.m */,
+				9B93F1671C5D158E00E39663 /* SkillViewModel.h */,
+				9B93F1681C5D158E00E39663 /* SkillViewModel.m */,
+				9B93F16A1C5D15B600E39663 /* JobOfferViewModel.h */,
+				9B93F16B1C5D15B600E39663 /* JobOfferViewModel.m */,
+				9B93F16D1C5D15D600E39663 /* MessageViewModel.h */,
+				9B93F16E1C5D15D600E39663 /* MessageViewModel.m */,
+				9B93F1D01C5EABF400E39663 /* AddLikeViewModel.h */,
+				9B93F1D11C5EABF400E39663 /* AddLikeViewModel.m */,
+				9B93F1D31C5EC56300E39663 /* AddDislikeViewModel.h */,
+				9B93F1D41C5EC56300E39663 /* AddDislikeViewModel.m */,
+				9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */,
+				9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -109,6 +320,24 @@
 		9BFEBB101C552E3900B83A52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9B93F1B21C5E0D8A00E39663 /* CollapseClick */,
+				9B93F1941C5D5F1B00E39663 /* ProjectsTableViewCell.h */,
+				9B93F1951C5D5F1B00E39663 /* ProjectsTableViewCell.m */,
+				9B93F1961C5D5F1B00E39663 /* ProjectsTableViewCell.xib */,
+				9B93F1B81C5E1F0100E39663 /* UILabel+dynamicSizeMe.h */,
+				9B93F1B91C5E1F0100E39663 /* UILabel+dynamicSizeMe.m */,
+				9B93F1BB1C5E323B00E39663 /* SkillsTableViewCell.h */,
+				9B93F1BC1C5E323B00E39663 /* SkillsTableViewCell.m */,
+				9B93F1BD1C5E323B00E39663 /* SkillsTableViewCell.xib */,
+				9B93F1C01C5E3F1100E39663 /* ExperienceTableViewCell.h */,
+				9B93F1C11C5E3F1100E39663 /* ExperienceTableViewCell.m */,
+				9B93F1C21C5E3F1100E39663 /* ExperienceTableViewCell.xib */,
+				9B93F1C51C5E659300E39663 /* EducationTableViewCell.h */,
+				9B93F1C61C5E659300E39663 /* EducationTableViewCell.m */,
+				9B93F1C71C5E659300E39663 /* EducationTableViewCell.xib */,
+				9B086B261C5FD9CE002E39D3 /* JobOfferTableViewCell.h */,
+				9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */,
+				9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -116,15 +345,24 @@
 		9BFEBB111C552E3F00B83A52 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9B93F1151C58082200E39663 /* JobSeeker */,
+				9B93F1111C5807E600E39663 /* Recruiter */,
+				9BFEBB131C55365800B83A52 /* Account */,
+				9B93F0D21C56DE1200E39663 /* HomeViewController.h */,
+				9B93F0D31C56DE1200E39663 /* HomeViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		9BFEBB121C552E6000B83A52 /* Helpers */ = {
+		9BFEBB131C55365800B83A52 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				9BFEBB141C55368900B83A52 /* LoginViewController.h */,
+				9BFEBB151C55368900B83A52 /* LoginViewController.m */,
+				9BFEBB1D1C554B9D00B83A52 /* RegisterViewController.h */,
+				9BFEBB1E1C554B9D00B83A52 /* RegisterViewController.m */,
 			);
-			name = Helpers;
+			name = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,9 +422,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B93F1521C5CDC6F00E39663 /* Main.storyboard in Resources */,
+				9B93F1B11C5E0D8400E39663 /* CollapseClickCell.xib in Resources */,
 				9BFEBB041C552BFC00B83A52 /* LaunchScreen.storyboard in Resources */,
 				9BFEBB011C552BFC00B83A52 /* Assets.xcassets in Resources */,
-				9BFEBAFC1C552BFC00B83A52 /* Main.storyboard in Resources */,
+				9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */,
+				9B93F1BF1C5E323B00E39663 /* SkillsTableViewCell.xib in Resources */,
+				9B93F1571C5CEF9D00E39663 /* default_profile_img.jpg in Resources */,
+				9B93F1981C5D5F1B00E39663 /* ProjectsTableViewCell.xib in Resources */,
+				9B93F1C41C5E3F1100E39663 /* ExperienceTableViewCell.xib in Resources */,
+				9B93F1C91C5E659300E39663 /* EducationTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,21 +442,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BFEBB191C553A2F00B83A52 /* GlobalConstants.m in Sources */,
+				9B93F15D1C5D0FF400E39663 /* JobSeekerProfileViewModel.m in Sources */,
+				9B93F1C81C5E659300E39663 /* EducationTableViewCell.m in Sources */,
+				9B93F0DD1C56EABB00E39663 /* KeychainUserPass.m in Sources */,
 				9BFEBB0E1C552CEA00B83A52 /* HttpRequester.m in Sources */,
+				9B93F0D11C56B66C00E39663 /* HelperMethods.m in Sources */,
+				9B93F1BE1C5E323B00E39663 /* SkillsTableViewCell.m in Sources */,
 				9BFEBAFF1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodeld in Sources */,
+				9B93F16F1C5D15D600E39663 /* MessageViewModel.m in Sources */,
+				9B93F1AF1C5E0D8400E39663 /* CollapseClickArrow.m in Sources */,
+				9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */,
+				9BFEBB161C55368900B83A52 /* LoginViewController.m in Sources */,
+				9B93F1141C58081300E39663 /* RecruiterHomeViewController.m in Sources */,
+				9B93F1D51C5EC56300E39663 /* AddDislikeViewModel.m in Sources */,
+				9B93F0C81C5685A800E39663 /* AccountService.m in Sources */,
+				9BFEBB281C555B5400B83A52 /* Reachability.m in Sources */,
+				9B93F15A1C5CF99400E39663 /* JobSeekerService.m in Sources */,
+				9B93F1BA1C5E1F0100E39663 /* UILabel+dynamicSizeMe.m in Sources */,
+				9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */,
+				9BFEBB221C555A5600B83A52 /* InternetConnectionChecker.m in Sources */,
+				9B93F0D41C56DE1200E39663 /* HomeViewController.m in Sources */,
+				9B93F0CE1C56A1B500E39663 /* Validator.m in Sources */,
+				9B93F1D21C5EABF400E39663 /* AddLikeViewModel.m in Sources */,
+				9B93F16C1C5D15B600E39663 /* JobOfferViewModel.m in Sources */,
+				9B086B301C60294D002E39D3 /* JobOfferService.m in Sources */,
+				9B93F1971C5D5F1B00E39663 /* ProjectsTableViewCell.m in Sources */,
+				9B93F1691C5D158E00E39663 /* SkillViewModel.m in Sources */,
 				9BFEBAF91C552BFC00B83A52 /* ViewController.m in Sources */,
+				9B93F1CC1C5E897800E39663 /* RecruiterService.m in Sources */,
+				9B93F1AE1C5E0D8400E39663 /* CollapseClick.m in Sources */,
 				9BFEBAF61C552BFC00B83A52 /* AppDelegate.m in Sources */,
+				9B93F1601C5D13FB00E39663 /* ProjectViewModel.m in Sources */,
+				9B086B2D1C6003EB002E39D3 /* JobOfferViewController.m in Sources */,
+				9B93F1B01C5E0D8400E39663 /* CollapseClickCell.m in Sources */,
+				9B93F1181C58084700E39663 /* JobSeekerHomeViewController.m in Sources */,
 				9BFEBAF31C552BFC00B83A52 /* main.m in Sources */,
+				9B93F1631C5D152A00E39663 /* EducationViewModel.m in Sources */,
+				9B93F1661C5D155500E39663 /* ExperienceViewModel.m in Sources */,
+				9BFEBB1F1C554B9D00B83A52 /* RegisterViewController.m in Sources */,
+				9B93F1C31C5E3F1100E39663 /* ExperienceTableViewCell.m in Sources */,
+				9B93F0CB1C56862700E39663 /* UserDataModel.m in Sources */,
+				9B93F1CF1C5EA38700E39663 /* MatchService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9BFEBAFA1C552BFC00B83A52 /* Main.storyboard */ = {
+		9B93F1501C5CDC6F00E39663 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9BFEBAFB1C552BFC00B83A52 /* Base */,
+				9B93F1511C5CDC6F00E39663 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -350,6 +632,7 @@
 				9BFEBB0A1C552BFC00B83A52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

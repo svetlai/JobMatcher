@@ -10,4 +10,26 @@
 
 @implementation Validator
 
+-(BOOL) isValidLength: (int) length andParam:(NSString*)param{
+    if (param.length >= length){        
+        return true;
+    }
+    
+    return false;
+}
+
+-(BOOL) arePasswordsEqual: (NSString*)password andConfirmPassword: (NSString*) confirmPassword{
+    if ([password isEqualToString:confirmPassword]){
+        return true;
+    }
+    
+    return false;
+}
+
+- (BOOL) isValidEmail: (NSString *) email {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    
+    return [emailTest evaluateWithObject:email];
+}
 @end
