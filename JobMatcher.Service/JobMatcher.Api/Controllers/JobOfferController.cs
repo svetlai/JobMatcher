@@ -15,6 +15,13 @@ namespace JobMatcher.Service.Controllers
 {
     public class JobOfferController : BaseController
     {
+        private static Random random;
+
+        static JobOfferController()
+        {
+            random = new Random();
+        }
+
         public JobOfferController(IJobMatcherData data)
             : base(data)
         {
@@ -37,6 +44,48 @@ namespace JobMatcher.Service.Controllers
                 .Where(x => x.Id == id)
                 .ProjectTo<JobOfferViewModel>()
                 .FirstOrDefault();
+
+            return this.Ok(jobOffer);
+        }
+
+        [HttpGet]
+        public IHttpActionResult Random()
+        {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            if (jobSeeker == null)
+            {
+                return this.BadRequest("You must be a jobSeeker to do that.");
+            }
+
+            //var jobSeekerMatches = this.data.Matches.All()
+            //    .Where(x => x.RecruiterProfileId == jobSeeker.JobSeekerProfileId)
+            //    .Select(x => x.RecruiterProfileId).ToList();
+
+            var jobSeekerLikes = this.data.Likes.All()
+                .Where(x => x.JobSeekerProfileId == jobSeeker.JobSeekerProfileId && x.LikeInitiatorType == ProfileType.JobSeeker)
+                .Select(x => x.JobOfferId).ToList();
+
+            var jobSeekerDislikes = this.data.Dislikes.All()
+                .Where(x => x.JobSeekerProfileId == jobSeeker.JobSeekerProfileId && x.DislikeInitiatorType == ProfileType.JobSeeker)
+                .Select(x => x.JobOfferId).ToList();
+
+            var allJobOffers = this.data.JobOffers.All()
+               .Where(x => !jobSeekerLikes.Contains(x.Id)
+                   && !jobSeekerDislikes.Contains(x.Id))
+                   .Select(x => x)
+                   .ToList();
+
+            // TODO: improve
+            int randomIndex = random.Next(0, allJobOffers.Count);
+
+            int selectedId = allJobOffers[randomIndex].Id;
+
+            var jobOffer = this.data.JobOffers.All()
+              .Where(x => x.Id == selectedId)
+              .ProjectTo<JobOfferViewModel>()
+              .FirstOrDefault();
 
             return this.Ok(jobOffer);
         }

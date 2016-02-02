@@ -74,21 +74,19 @@ namespace JobMatcher.Service.Controllers
                             x.RecruiterProfileId == model.RecruiterProfileId &&
                             x.JobSeekerProfileId == model.JobSeekerProfileId);
 
-                if (existingMatch != null)
+                if (existingMatch == null)
                 {
-                    return this.BadRequest("It's already a match.");
+                    var match = new Match()
+                    {
+                        JobSeekerProfileId = model.JobSeekerProfileId,
+                        RecruiterProfileId = model.RecruiterProfileId
+                    };
+
+                    this.data.Matches.Add(match);
+                    this.data.SaveChanges();
+
+                    return Ok("Match added.");
                 }
-
-                var match = new Match()
-                {
-                    JobSeekerProfileId = model.JobSeekerProfileId,
-                    RecruiterProfileId = model.RecruiterProfileId
-                };
-
-                this.data.Matches.Add(match);
-                this.data.SaveChanges();
-
-                return Ok("Match added.");
             }
 
             var like = AutoMapper.Mapper.Map<Like>(model);

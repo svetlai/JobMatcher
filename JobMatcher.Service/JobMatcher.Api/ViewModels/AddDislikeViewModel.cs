@@ -12,6 +12,8 @@ namespace JobMatcher.Service.ViewModels
 
         public int JobSeekerProfileId { get; set; }
 
+        public int? JobOfferId { get; set; }
+
         public ProfileType DislikeInitiatorType { get; set; }
 
         public void CreateMappings(AutoMapper.IConfiguration configuration)
