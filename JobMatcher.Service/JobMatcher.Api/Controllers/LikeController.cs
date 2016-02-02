@@ -72,24 +72,50 @@ namespace JobMatcher.Service.Controllers
                     .FirstOrDefault(
                         x =>
                             x.RecruiterProfileId == model.RecruiterProfileId &&
-                            x.JobSeekerProfileId == model.JobSeekerProfileId);
+                            x.JobSeekerProfileId == model.JobSeekerProfileId
+                            ); //x.JobOfferId == model.JobOfferId
 
                 if (existingMatch == null)
                 {
                     var match = new Match()
                     {
                         JobSeekerProfileId = model.JobSeekerProfileId,
-                        RecruiterProfileId = model.RecruiterProfileId
+                        RecruiterProfileId = model.RecruiterProfileId,
                     };
+
+                    if (model.JobOfferId == 0)
+                    {
+                        model.JobOfferId =
+                        this.data.Likes.All()
+                            .FirstOrDefault(x => x.JobSeekerProfileId == model.JobSeekerProfileId 
+                                && x.RecruiterProfileId == model.RecruiterProfileId)
+                            .JobOfferId;
+                    }
+
+                    if (model.JobOfferId == null)
+                    {
+                        return this.BadRequest("Job offer id cannot be null");
+                    }
+
+                    var jobSeeker = this.data.JobSeekerProfiles.All()
+                        .FirstOrDefault(x => x.JobSeekerProfileId == model.JobSeekerProfileId);
+
+                    var jobOffer = this.data.JobOffers.All().FirstOrDefault(x => x.Id == model.JobOfferId);
+                    
+                    jobSeeker.SelectedJobOffers.Add(jobOffer);
+                    jobOffer.InterestedJobSeekers.Add(jobSeeker);
+
+                    //match.JobOfferId = (int) model.JobOfferId;
 
                     this.data.Matches.Add(match);
                     this.data.SaveChanges();
 
-                    return Ok("Match added.");
+                    //return Ok("Match added.");
                 }
             }
 
             var like = AutoMapper.Mapper.Map<Like>(model);
+            like.JobOfferId = like.JobOfferId == 0 ? null : like.JobOfferId;
             like.CreatedOn = DateTime.Now;
 
             var existingDislike =
@@ -97,8 +123,9 @@ namespace JobMatcher.Service.Controllers
                 .FirstOrDefault(
                     x =>
                         x.RecruiterProfileId == model.RecruiterProfileId &&
-                        x.JobSeekerProfileId == model.JobSeekerProfileId && 
-                        x.DislikeInitiatorType == model.LikeInitiatorType);
+                        x.JobSeekerProfileId == model.JobSeekerProfileId &&
+                        x.DislikeInitiatorType == model.LikeInitiatorType && 
+                        ((model.JobOfferId != 0 && x.JobOfferId == model.JobOfferId) || model.JobOfferId == 0));
 
             if (existingDislike != null)
             {

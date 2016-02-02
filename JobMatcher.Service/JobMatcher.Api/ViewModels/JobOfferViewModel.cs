@@ -32,7 +32,7 @@ namespace JobMatcher.Service.ViewModels
 
         public int RecruiterProfileId { get; set; }
 
-       // public virtual ICollection<int> InterestedJobSeekersIds { get; set; }
+        public virtual ICollection<JobSeekerProfile> InterestedJobSeekers { get; set; }
 
         public void CreateMappings(AutoMapper.IConfiguration configuration)
         {

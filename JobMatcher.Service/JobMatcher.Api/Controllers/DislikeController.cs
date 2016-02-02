@@ -64,6 +64,7 @@ namespace JobMatcher.Service.Controllers
             if (existingDislike == null)
             {
                 var dislike = AutoMapper.Mapper.Map<Dislike>(model);
+                dislike.JobOfferId = dislike.JobOfferId == 0 ? null : dislike.JobOfferId;
                 dislike.CreatedOn = DateTime.Now;
 
                 var existingLike =
@@ -72,7 +73,8 @@ namespace JobMatcher.Service.Controllers
                         x =>
                             x.RecruiterProfileId == model.RecruiterProfileId &&
                             x.JobSeekerProfileId == model.JobSeekerProfileId &&
-                            x.LikeInitiatorType == model.DislikeInitiatorType);
+                            x.LikeInitiatorType == model.DislikeInitiatorType &&
+                            ((model.JobOfferId != 0 && x.JobOfferId == model.JobOfferId) || model.JobOfferId == 0));
 
                 if (existingLike != null)
                 {

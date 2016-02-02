@@ -38,6 +38,29 @@ namespace JobMatcher.Service.Controllers
         }
 
         [HttpGet]
+        public IHttpActionResult GetMatched()
+        {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            if (jobSeeker == null)
+            {
+                return this.BadRequest("You must be a job seeker to do that.");
+            }
+
+            //var matches = this.data.Matches.All()
+            //    .Where(x => x.JobSeekerProfileId == jobSeeker.JobSeekerProfileId)
+            //    .Select(x => x.Id).ToList();
+
+            var jobOffers = jobSeeker
+                .SelectedJobOffers.AsQueryable()
+                .ProjectTo<JobOfferViewModel>()
+                .ToList();
+
+            return this.Ok(jobOffers);
+        }
+
+        [HttpGet]
         public IHttpActionResult Details(int? id)
         {
             var jobOffer = this.data.JobOffers.All()
@@ -78,16 +101,21 @@ namespace JobMatcher.Service.Controllers
                    .ToList();
 
             // TODO: improve
-            int randomIndex = random.Next(0, allJobOffers.Count);
+            if (allJobOffers.Count > 0)
+            {
+                int randomIndex = random.Next(0, allJobOffers.Count);
 
-            int selectedId = allJobOffers[randomIndex].Id;
+                int selectedId = allJobOffers[randomIndex].Id;
 
-            var jobOffer = this.data.JobOffers.All()
-              .Where(x => x.Id == selectedId)
-              .ProjectTo<JobOfferViewModel>()
-              .FirstOrDefault();
+                var jobOffer = this.data.JobOffers.All()
+                  .Where(x => x.Id == selectedId)
+                  .ProjectTo<JobOfferViewModel>()
+                  .FirstOrDefault();
 
-            return this.Ok(jobOffer);
+                return this.Ok(jobOffer);
+            }
+
+            return this.BadRequest("No more job offers to browse.");
         }
 
         [HttpPost]
