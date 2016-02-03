@@ -16,6 +16,11 @@ namespace JobMatcher.Models
         [ForeignKey("JobSeekerProfile")]
         public int JobSeekerProfileId { get; set; }
 
+        //[ForeignKey("JobOffer")]
+        //public int JobOfferId { get; set; }
+
+        //public virtual JobOffer JobOffer { get; set; }
+
         public virtual JobSeekerProfile JobSeekerProfile { get; set; }
     }
 }

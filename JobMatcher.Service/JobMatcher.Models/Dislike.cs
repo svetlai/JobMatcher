@@ -19,6 +19,11 @@ namespace JobMatcher.Models
 
         public virtual JobSeekerProfile JobSeekerProfile { get; set; }
 
+        [ForeignKey("JobOffer")]
+        public int? JobOfferId { get; set; }
+
+        public virtual JobOffer JobOffer { get; set; }
+
         public ProfileType DislikeInitiatorType { get; set; }
 
         public DateTime CreatedOn { get; set; }

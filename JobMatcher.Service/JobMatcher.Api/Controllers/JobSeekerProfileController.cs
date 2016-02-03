@@ -68,21 +68,26 @@ namespace JobMatcher.Service.Controllers
                     .ToList();
             
             // TODO: improve
-            int randomIndex = random.Next(0, allJobSeekers.Count);
+            if (allJobSeekers.Count > 0)
+            {
+                int randomIndex = random.Next(0, allJobSeekers.Count);
+                int selectedId = allJobSeekers[randomIndex].JobSeekerProfileId;
 
-            int selectedId = allJobSeekers[randomIndex].JobSeekerProfileId;
-
-            var jobSeeker = this.data.JobSeekerProfiles.All()
+                var jobSeeker = this.data.JobSeekerProfiles.All()
                 .Where(x => x.JobSeekerProfileId == selectedId)
                 .ProjectTo<JobSeekerProfileViewModel>()
                 .FirstOrDefault();
 
-            //var jobSeeker = this.data.JobSeekerProfiles.All()
-            //    .Where(x => !recruiter.LikedJobSeekers.Contains(x.JobSeekerProfileId) && !recruiter.DislikedJobSeekers.Contains(x.JobSeekerProfileId))
-            //    .ProjectTo<JobSeekerProfileViewModel>()
-            //    .FirstOrDefault();
+                //var jobSeeker = this.data.JobSeekerProfiles.All()
+                //    .Where(x => !recruiter.LikedJobSeekers.Contains(x.JobSeekerProfileId) && !recruiter.DislikedJobSeekers.Contains(x.JobSeekerProfileId))
+                //    .ProjectTo<JobSeekerProfileViewModel>()
+                //    .FirstOrDefault();
 
-            return this.Ok(jobSeeker);
+                return this.Ok(jobSeeker);
+            }
+
+            return this.BadRequest("No more Job Seekers to browse.");
+
         }
 
         [HttpGet]

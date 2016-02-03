@@ -10,6 +10,8 @@ namespace JobMatcher.Models
         public JobOffer()
         {
             this.InterestedJobSeekers = new HashSet<JobSeekerProfile>();
+            //this.Likes = new HashSet<Like>();
+            //this.DisLikes = new HashSet<Dislike>();
         }
 
         [Key]
@@ -39,5 +41,9 @@ namespace JobMatcher.Models
         public virtual RecruiterProfile RecruiterProfile { get; set; }
 
         public virtual ICollection<JobSeekerProfile> InterestedJobSeekers { get; set; }
+
+        //public virtual ICollection<Like> Likes { get; set; }
+
+        //public virtual ICollection<Dislike> DisLikes { get; set; }
     }
 }
