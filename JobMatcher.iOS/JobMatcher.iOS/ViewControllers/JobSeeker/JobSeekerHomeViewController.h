@@ -10,7 +10,7 @@
 #import "CollapseClick.h"
 #import "JobSeekerProfileViewModel.h"
 
-@interface JobSeekerHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface JobSeekerHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *helloLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *jobSeekerLogoutButton;
 - (IBAction)jobSeekerLogoutButtonTap:(id)sender;
 
+@property (nonatomic,strong) UILongPressGestureRecognizer *jobSeekerLongPressRecognizer;
 //TODO make job seeker view model a property
 
 @end

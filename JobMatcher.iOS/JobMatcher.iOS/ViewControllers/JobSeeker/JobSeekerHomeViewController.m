@@ -145,14 +145,8 @@ static InternetConnectionChecker *internetCheker;
         }
     }
     
-    // swipe
-    UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                                   action:@selector(jobSeekerSwipe:)];
-    UISwipeGestureRecognizer *leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                                  action:@selector(jobSeekerSwipe:)];
-        leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:rightSwipeRecognizer];
-    [self.view addGestureRecognizer:leftSwipeRecognizer];
+    [self attachSwipeGesture];
+    [self attachLongPressGesture];
 
     // Do any additional setup after loading the view.
 }
@@ -576,6 +570,40 @@ static InternetConnectionChecker *internetCheker;
         JobSeekerMatchesViewController* toJobOfferViewController = segue.destinationViewController;
         toJobOfferViewController.jobOfferMatches = jobSeekerViewModel.selectedJobOffers;
     }
+}
+
+-(void)attachLongPressGesture{
+    self.jobSeekerLongPressRecognizer
+    = [[UILongPressGestureRecognizer alloc]
+       initWithTarget:self action:@selector(jobSeekerLongPress:)];
+    self.jobSeekerLongPressRecognizer.minimumPressDuration = .5; //seconds
+    self.jobSeekerLongPressRecognizer.delegate = self;
+    self.jobSeekerLongPressRecognizer.delaysTouchesBegan = YES;
+    self.profileImage.userInteractionEnabled = YES;
+    [self.profileImage addGestureRecognizer:self.jobSeekerLongPressRecognizer];
+}
+
+
+- (void)jobSeekerLongPress:(UILongPressGestureRecognizer *)sender
+{
+    if ([sender isEqual:self.jobSeekerLongPressRecognizer]) {
+        if (sender.state == UIGestureRecognizerStateBegan)
+        {
+            //TODO get camera
+            [HelperMethods addAlert:@"Long press yay!"];
+        }
+    }
+}
+
+-(void)attachSwipeGesture{
+    // swipe
+    UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(jobSeekerSwipe:)];
+    UISwipeGestureRecognizer *leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                              action:@selector(jobSeekerSwipe:)];
+    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:rightSwipeRecognizer];
+    [self.view addGestureRecognizer:leftSwipeRecognizer];
 }
 
 - (IBAction)browseJobOffersButtonTap:(id)sender {

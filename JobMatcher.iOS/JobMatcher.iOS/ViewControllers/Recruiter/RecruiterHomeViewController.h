@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CollapseClick.h"
 
-@interface RecruiterHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface RecruiterHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *recruiterHelloLabel;
 - (IBAction)browseJobSeekersButtonTap:(id)sender;
@@ -20,4 +20,5 @@
 - (IBAction)recruiterLogoutButtonTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *recruiterBrowseJobSeekersButton;
 @property (weak, nonatomic) IBOutlet UIButton *recruiterMatchesButton;
+@property (nonatomic,strong) UILongPressGestureRecognizer *recruiterLongPressRecognizer;
 @end

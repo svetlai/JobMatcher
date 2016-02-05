@@ -77,6 +77,8 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     [recruiterService getProfileWithTarget:self];
     
     accountRecruiterService = [[AccountService alloc] init];
+    
+    [self attachLongPressGesture];
     self.recruiterCollapseClickScrollView.CollapseClickDelegate = self;
     [self.recruiterCollapseClickScrollView reloadCollapseClick];
     // Do any additional setup after loading the view.
@@ -261,5 +263,29 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
 - (IBAction)recruiterLogoutButtonTap:(id)sender {
     [accountRecruiterService logout];
     [self performSegueWithIdentifier:SegueFromRecruiterHomeToLogin sender:self];
+}
+
+// gestures
+-(void)attachLongPressGesture{
+    self.recruiterLongPressRecognizer
+    = [[UILongPressGestureRecognizer alloc]
+       initWithTarget:self action:@selector(recruiterLongPress:)];
+    self.recruiterLongPressRecognizer.minimumPressDuration = .5; //seconds
+    self.recruiterLongPressRecognizer.delegate = self;
+    self.recruiterLongPressRecognizer.delaysTouchesBegan = YES;
+    self.recruiterProfileImage.userInteractionEnabled = YES;
+    [self.recruiterProfileImage addGestureRecognizer:self.recruiterLongPressRecognizer];
+}
+
+
+- (void)recruiterLongPress:(UILongPressGestureRecognizer *)sender
+{
+    if ([sender isEqual:self.recruiterLongPressRecognizer]) {
+        if (sender.state == UIGestureRecognizerStateBegan)
+        {
+            //TODO get camera
+            [HelperMethods addAlert:@"Long press yay!"];
+        }
+    }
 }
 @end
