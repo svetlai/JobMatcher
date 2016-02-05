@@ -14,6 +14,7 @@ using System.Collections.Generic;
             this.Messages = new HashSet<Message>();
             this.DislikedJobSeekers = new HashSet<Dislike>();
             this.LikedJobSeekers = new HashSet<Like>();
+            this.MatchedJobSeekers = new HashSet<JobSeekerProfile>();
         }
 
         [Key]
@@ -26,6 +27,8 @@ using System.Collections.Generic;
         public virtual ICollection<JobOffer> JobOffers { get; set; }
 
         public virtual ICollection<Match> Matches { get; set; }
+
+        public virtual ICollection<JobSeekerProfile> MatchedJobSeekers { get; set; }
 
         public virtual ICollection<Message> Messages { get; set; }
 

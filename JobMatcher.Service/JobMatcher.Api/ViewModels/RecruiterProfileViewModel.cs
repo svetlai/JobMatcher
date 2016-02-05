@@ -20,9 +20,11 @@ namespace JobMatcher.Service.ViewModels
 
         public virtual ICollection<JobOfferViewModel> JobOffers { get; set; }
 
+        public virtual ICollection<JobSeekerProfileViewModel> MatchedJobSeekers { get; set; }
+
         public virtual ICollection<Match> Matches { get; set; }
 
-        public virtual ICollection<Message> Messages { get; set; } 
+        public virtual ICollection<MessageViewModel> Messages { get; set; } 
 
         public void CreateMappings(AutoMapper.IConfiguration configuration)
         {

@@ -51,5 +51,26 @@ namespace JobMatcher.Service.Controllers
 
             return this.Ok(recruiter);
         }
+
+        [HttpGet]
+        public IHttpActionResult GetMessagesWithJobSeeker(int jobSeekerProfileId)
+        {
+            var recruiter = this.data.RecruiterProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            if (recruiter == null)
+            {
+                return this.BadRequest("You must be a job seeker to do that.");
+            }
+
+            var messages = recruiter.Messages
+                .Where(x => x.JobSeekerProfileId == jobSeekerProfileId)
+                .AsQueryable()
+                .OrderBy(x => x.Id) //TODO add date
+                .ProjectTo<MessageViewModel>()
+                .ToList(); //TODO check
+
+            return this.Ok(messages);
+        }
     }
 }

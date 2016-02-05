@@ -131,6 +131,14 @@ namespace JobMatcher.Data
             }
         }
 
+        public IRepository<Message> Messages
+        {
+            get
+            {
+                return this.GetRepository<Message>();
+            }
+        }
+
         public void SaveChanges()
         {
             this.db.SaveChanges();

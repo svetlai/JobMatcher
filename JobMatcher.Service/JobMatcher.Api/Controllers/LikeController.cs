@@ -101,9 +101,14 @@ namespace JobMatcher.Service.Controllers
                         .FirstOrDefault(x => x.JobSeekerProfileId == model.JobSeekerProfileId);
 
                     var jobOffer = this.data.JobOffers.All().FirstOrDefault(x => x.Id == model.JobOfferId);
+
+                    var recruiter =
+                        this.data.RecruiterProfiles.All()
+                            .FirstOrDefault(x => x.RecruiterProfileId == model.RecruiterProfileId);
                     
                     jobSeeker.SelectedJobOffers.Add(jobOffer);
                     jobOffer.InterestedJobSeekers.Add(jobSeeker);
+                    recruiter.MatchedJobSeekers.Add(jobSeeker);
 
                     //match.JobOfferId = (int) model.JobOfferId;
 

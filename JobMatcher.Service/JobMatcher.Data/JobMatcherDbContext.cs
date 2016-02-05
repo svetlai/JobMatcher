@@ -40,6 +40,8 @@
 
         public IDbSet<Dislike> Dislikes { get; set; }
 
+        public IDbSet<Message> Messages { get; set; }
+
         public static JobMatcherDbContext Create()
         {
             return new JobMatcherDbContext();

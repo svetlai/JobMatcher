@@ -33,6 +33,8 @@ namespace JobMatcher.Data.Contracts
 
         IDbSet<Dislike> Dislikes { get; set; }
 
+        IDbSet<Message> Messages { get; }
+
 
         int SaveChanges();
     }

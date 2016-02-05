@@ -4,16 +4,18 @@
     {
         public int Id { get; set; }
 
-        public string Sunject { get; set; }
+        public string Subject { get; set; }
 
         public string Content { get; set; }
 
         public int JobSeekerProfileId { get; set; }
 
-        public virtual JobSeekerProfile FirstParticipant { get; set; }
+        public virtual JobSeekerProfile JobSeekerProfile { get; set; }
 
         public int RecruiterProfileId { get; set; }
 
-        public virtual RecruiterProfile SecondParticipant { get; set; }
+        public virtual RecruiterProfile RecruiterProfile { get; set; }
+
+        public int SenderId { get; set; }
     }
 }

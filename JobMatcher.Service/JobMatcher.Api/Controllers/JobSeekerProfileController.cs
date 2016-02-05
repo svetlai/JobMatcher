@@ -38,6 +38,27 @@ namespace JobMatcher.Service.Controllers
         }
 
         [HttpGet]
+        public IHttpActionResult GetMessagesWithRecruiter(int recruiterProfileId)
+        {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            if (jobSeeker == null)
+            {
+                return this.BadRequest("You must be a job seeker to do that.");
+            }
+
+            var messages = jobSeeker.Messages
+                .Where(x => x.RecruiterProfileId == recruiterProfileId)
+                .AsQueryable()
+                .OrderBy(x => x.Id) //TODO add date
+                .ProjectTo<MessageViewModel>()
+                .ToList(); //TODO check
+
+            return this.Ok(messages);
+        }
+
+        [HttpGet]
         public IHttpActionResult Random()
         {
             var recruiter = this.data.RecruiterProfiles.All()

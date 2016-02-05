@@ -275,6 +275,7 @@
     <Compile Include="Controllers\DislikeController.cs" />
     <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\JobSeekerProfileController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\RecruiterProfileController.cs" />
     <Compile Include="Controllers\SkillController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -303,6 +304,8 @@
     <Compile Include="ViewModels\AddProjectViewModel.cs" />
     <Compile Include="ViewModels\AddSkillViewModel.cs" />
     <Compile Include="ViewModels\JobSeekerProfileViewModel.cs" />
+    <Compile Include="ViewModels\AddMessageViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\RecruiterProfileViewModel.cs" />
     <Compile Include="ViewModels\SkillViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />

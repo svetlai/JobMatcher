@@ -33,6 +33,8 @@
 
         IRepository<Dislike> Dislikes { get; }
 
+        IRepository<Message> Messages { get; }
+
         void SaveChanges();
     }
 }
