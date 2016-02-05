@@ -11,6 +11,8 @@
 @implementation JobSeekerMatchTableViewCell
 
 - (void)awakeFromNib {
+    [self.jobSeekerMatchMessageButton setBackgroundImage:[UIImage imageNamed:@"message-icon.png"]
+                                           forState:UIControlStateNormal];
     // Initialization code
 }
 

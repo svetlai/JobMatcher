@@ -14,6 +14,7 @@
 
 NSString* const DetailsRoute = @"api/jobseekerprofile/details";
 NSString* const RandomRoute = @"api/jobseekerprofile/random";
+NSString* const MessagesWithRecruiterRoute = @"api/jobseekerprofile/GetMessagesWithRecruiter";
 
 NSString* authorizationToken;
 
@@ -43,6 +44,21 @@ NSString* authorizationToken;
 -(void) getRandomProfileWithTarget:(NSObject*) target{
     
     NSString* url = [NSString stringWithFormat:@"%@%@", BaseUrl, RandomRoute];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
+    
+    [NSURLConnection connectionWithRequest:request delegate:target];
+}
+
+-(void) getJobSeekerMessagesWithRecruiterId: (NSInteger) recruiterId andTarget:(NSObject*) target{
+    
+    NSString* url = [NSString stringWithFormat:@"%@%@?recruiterProfileId=%ld", BaseUrl, MessagesWithRecruiterRoute, recruiterId];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     

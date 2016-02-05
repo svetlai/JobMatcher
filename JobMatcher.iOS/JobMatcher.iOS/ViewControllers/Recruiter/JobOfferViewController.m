@@ -14,6 +14,7 @@
 #import "AddDislikeViewModel.h"
 #import "MatchService.h"
 #import "JobOfferService.h"
+#import "InternetConnectionChecker.h"
 
 @interface JobOfferViewController (){
     UserDataModel* userData;
@@ -26,10 +27,21 @@
 @implementation JobOfferViewController
 static MatchService* jobOfferMatchService;
 static JobOfferService* jobOfferService;
+static InternetConnectionChecker *internetCheker;
 NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    internetCheker = [[InternetConnectionChecker alloc] init];
+    NSString *status = [internetCheker getConnectionSatus];
+    
+    if ([status isEqualToString:NotConnectedStatus]) {
+        [HelperMethods addAlert:NotConnectedMessage];
+        
+        return;
+    }
+    
     [HelperMethods setSackBarButtonText:self andText:@""];
     [HelperMethods setPageTitle:self andTitle:@"Job Offer"];
     
@@ -44,8 +56,6 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
         connectionType = @"GetOffer";
     }
 
- 
-    
     // swipe
     UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                                                action:@selector(jobOfferSwipe:)];
@@ -150,7 +160,7 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
 -(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text{
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
+//    CGFloat screenHeight = screenRect.size.height;
     
     [label setText: @""];
     UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y, screenWidth / 2, label.frame.size.height)];

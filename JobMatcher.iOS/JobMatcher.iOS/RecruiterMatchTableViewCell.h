@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface RecruiterMatchTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *recruiterMatchEmail;
+@property (weak, nonatomic) IBOutlet UILabel *recruiterMatchSummary;
+@property (weak, nonatomic) IBOutlet UIButton *recruiterMatchMessageButton;
+
 
 @end

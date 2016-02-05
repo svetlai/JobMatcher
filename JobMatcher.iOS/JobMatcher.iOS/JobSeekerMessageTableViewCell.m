@@ -11,6 +11,9 @@
 @implementation JobSeekerMessageTableViewCell
 
 - (void)awakeFromNib {
+//    [self.jobSeekerProfileLabel setBackgroundColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1] /*#cccccc*/];
+//    self.jobSeekerProfileLabel.layer.masksToBounds = YES;
+//    self.jobSeekerProfileLabel.layer.cornerRadius = 25.0;
     // Initialization code
 }
 

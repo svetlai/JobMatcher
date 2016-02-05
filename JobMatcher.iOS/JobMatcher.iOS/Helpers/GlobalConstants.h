@@ -46,6 +46,13 @@ extern NSArray* WorkHours;
 extern NSArray* Degree;
 extern NSArray* Level;
 
+// Account
+extern NSString* const KeyChainTokenKey;
+extern NSString* const KeyChainUsernameKey;
+extern NSString* const KeyChainProfileTypeKey;
+
+extern NSString* const NotConnectedMessage;
+
 +(void)fillArrays;
 
 @end

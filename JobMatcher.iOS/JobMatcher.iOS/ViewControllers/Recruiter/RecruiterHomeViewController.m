@@ -15,12 +15,17 @@
 #import "JobOfferTableViewCell.h"
 #import "JobOfferViewModel.h"
 #import "JobOfferViewController.h"
+#import "RecruiterMatchesViewController.h"
+#import "AccountService.h"
+#import "InternetConnectionChecker.h"
+#import "GlobalConstants.h"
 
 @interface RecruiterHomeViewController (){
     NSString* message;
     RecruiterProfileViewModel* recruiterProfileViewModel;
     UITableView* jobOffersTableView;
     JobOfferViewModel* selectedJobOffer;
+    UserDataModel* userData;
 }
 
 @end
@@ -28,23 +33,50 @@
 @implementation RecruiterHomeViewController
 NSString* const SegueFromRecruiterToJobSeeker = @"segueFromRecruiterToJobSeeker";
 NSString* const SegueFromRecruiterToJobOffer = @"segueFromRecruiterToJobOffer";
+NSString* const SegueFromRecruiterToMatches = @"segueFromRecruiterToMatches";
+NSString* const SegueFromRecruiterHomeToLogin = @"segueFromRecruiterHomeToLogin";
+
 int const NumberOfSectionsInRecruiter = 1;
-static RecruiterService* recruiterService;
 int const JobOffersTableRowHeight = 65;
+
+static RecruiterService* recruiterService;
+static AccountService* accountRecruiterService;
+static InternetConnectionChecker *internetCheker;
+
 static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    UserDataModel* userData = [[UserDataModel alloc] init];
+    
+    internetCheker = [[InternetConnectionChecker alloc] init];
+    NSString *status = [internetCheker getConnectionSatus];
+    
+    if ([status isEqualToString:NotConnectedStatus]) {
+        [HelperMethods addAlert:NotConnectedMessage];
+        
+        return;
+    }
+    
+    userData = [[UserDataModel alloc] init];
     self.recruiterHelloLabel.text = [NSString stringWithFormat:@"%@", userData.username];
     self.recruiterProfileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
+    
+    [self.recruiterBrowseJobSeekersButton setBackgroundImage:[UIImage imageNamed:@"job-seekers-icon.png"]
+                                           forState:UIControlStateNormal];
+    
+    [self.recruiterLogoutButton setBackgroundImage:[UIImage imageNamed:@"logout-icon.png"]
+                                           forState:UIControlStateNormal];
+    
+    [self.recruiterMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
+                                           forState:UIControlStateNormal];
+    
     [HelperMethods setSackBarButtonText:self andText:@""];
     [HelperMethods setPageTitle:self andTitle:@"Profile"];
     
     recruiterService = [[RecruiterService alloc] init];
     [recruiterService getProfileWithTarget:self];
     
+    accountRecruiterService = [[AccountService alloc] init];
     self.recruiterCollapseClickScrollView.CollapseClickDelegate = self;
     [self.recruiterCollapseClickScrollView reloadCollapseClick];
     // Do any additional setup after loading the view.
@@ -74,10 +106,13 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
 }
 
 -(void)connection:(NSURLRequest*) request didReceiveData:(NSData *)data{
+    NSError *error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
                                                          options:kNilOptions
-                                                           error:nil];
+                                                           error:&error];
     NSLog(@"%@", json);
+    if(error)
+        NSLog(@"%@",error.description);
     
 //    if ([connectionType isEqualToString:@"GetProfile"]){
         recruiterProfileViewModel = [RecruiterProfileViewModel fromJsonDictionary:json];
@@ -207,11 +242,24 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     if([segue.identifier isEqualToString:SegueFromRecruiterToJobOffer]){
         JobOfferViewController* toJobOfferViewController = segue.destinationViewController;
         toJobOfferViewController.jobOfferViewModel = selectedJobOffer;
+    } else if([segue.identifier isEqualToString:SegueFromRecruiterToMatches]){
+
+        NSArray* matches = recruiterProfileViewModel.matchedJobSeekers;
+        
+        RecruiterMatchesViewController* toMatchesViewController = segue.destinationViewController;
+        toMatchesViewController.recruiterMatches = matches;
     }
 }
 //------
 
 - (IBAction)browseJobSeekersButtonTap:(id)sender {
      [self performSegueWithIdentifier:SegueFromRecruiterToJobSeeker sender:self];
+}
+- (IBAction)toMatchesButtonTap:(id)sender {
+    [self performSegueWithIdentifier:SegueFromRecruiterToMatches sender:self];
+}
+- (IBAction)recruiterLogoutButtonTap:(id)sender {
+    [accountRecruiterService logout];
+    [self performSegueWithIdentifier:SegueFromRecruiterHomeToLogin sender:self];
 }
 @end

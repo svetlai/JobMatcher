@@ -63,12 +63,14 @@ NSString* const SegueToLoginFromRegister = @"segueToLoginFromRegister";
 }
 
 - (IBAction)registerButtonTap:(id)sender {
-        //NSString *status = [internetCheker getConnectionSatus];
+    NSString *status = [internetCheker getConnectionSatus];
     
-//    if ([status isEqualToString:@"Not connected"]) {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not connected" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//        [alertView show];
-//    } else {
+    if ([status isEqualToString:NotConnectedStatus]) {
+        [HelperMethods addAlert:NotConnectedMessage];
+        
+        return;
+    }
+    
     NSString *accountEmail = self.accountEmail.text;
     NSString *accountPassword = self.accountPassword.text;
     NSString *accountConfirmPassword = self.accountConfirmPassword.text;

@@ -11,6 +11,8 @@
 @implementation RecruiterMatchTableViewCell
 
 - (void)awakeFromNib {
+    [self.recruiterMatchMessageButton setBackgroundImage:[UIImage imageNamed:@"message-icon.png"]
+                                                forState:UIControlStateNormal];
     // Initialization code
 }
 
@@ -19,5 +21,4 @@
 
     // Configure the view for the selected state
 }
-
 @end

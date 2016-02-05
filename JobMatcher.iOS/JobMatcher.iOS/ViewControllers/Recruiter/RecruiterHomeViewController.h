@@ -15,6 +15,9 @@
 - (IBAction)browseJobSeekersButtonTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *recruiterProfileImage;
 @property (weak, nonatomic) IBOutlet CollapseClick *recruiterCollapseClickScrollView;
-
-
+- (IBAction)toMatchesButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *recruiterLogoutButton;
+- (IBAction)recruiterLogoutButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *recruiterBrowseJobSeekersButton;
+@property (weak, nonatomic) IBOutlet UIButton *recruiterMatchesButton;
 @end

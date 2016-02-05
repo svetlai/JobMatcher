@@ -14,13 +14,15 @@
 @property (strong, nonatomic) NSString* username;
 @property (strong, nonatomic) NSArray* jobOffers;
 @property (strong, nonatomic) NSArray* messages;
+@property (strong, nonatomic) NSArray* matchedJobSeekers;
 @property NSInteger profileType;
 
 -(instancetype) initWithId:(NSInteger) profileId
                   andEmail:(NSString*) email
                andUsername:(NSString*) username
                andJobOffers:(NSArray*) jobOffers
-               andMessages:(NSArray*)messages
+               andMessages:(NSArray*) messages
+      andMatchedJobSeekers:(NSArray*) matchedJobSeekers
             andProfileType:(NSInteger) profileType;
 
 +(RecruiterProfileViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;

@@ -44,4 +44,30 @@
     return[shortFormat stringFromDate:date];
 }
 
++(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text andTarget: (UIView*)view{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    //    CGFloat screenHeight = screenRect.size.height;
+    
+//    NSLog(@"%f",label.frame.size.width);
+//    NSLog(@"%f",view.frame.size.width);
+//    NSLog(@"%l",label.textAlignment);
+    
+    //TODO: width and text alignment
+    [label setText: @""];
+    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.size.width - 100, label.frame.size.height)];
+    [newLabel setTextColor: label.textColor];
+    [newLabel setBackgroundColor: [UIColor clearColor]];
+    [newLabel setFont: label.font];
+    [newLabel setText: text];
+    [newLabel setNumberOfLines:0];
+    [newLabel sizeToFit];
+    [newLabel setTextAlignment:label.textAlignment];
+    
+    
+    
+    [view addSubview:newLabel];
+    return newLabel;
+}
+
 @end

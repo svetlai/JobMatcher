@@ -61,4 +61,13 @@
             andProfileType:[[jsonDictionary objectForKey:@"ProfileType"] integerValue]];
 }
 
++(NSArray*) arrayOfJobOffersFromJsonDictionary: (NSArray*) jsonArray{
+    NSMutableArray *arr = [NSMutableArray array];
+    for (NSInteger i = 0; i < jsonArray.count; i++) {
+        [arr addObject:[JobSeekerProfileViewModel fromJsonDictionary:jsonArray[i]]];
+    }
+    
+    return [NSArray arrayWithArray:arr];
+}
+
 @end

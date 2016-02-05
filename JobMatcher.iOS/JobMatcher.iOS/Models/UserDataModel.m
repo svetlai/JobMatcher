@@ -8,12 +8,13 @@
 
 #import "UserDataModel.h"
 #import "KeychainUserPass.h"
+#import "GlobalConstants.h"
 
 @implementation UserDataModel
 
-NSString* const KeyChainTokenKey = @"access_token";
-NSString* const KeyChainUsernameKey = @"profile_type";
-NSString* const KeyChainProfileTypeKey = @"userName";
+//NSString* const KeyChainTokenKey = @"access_token";
+//NSString* const KeyChainUsernameKey = @"profile_type";
+//NSString* const KeyChainProfileTypeKey = @"userName";
 
 -(instancetype) init{
     if (self=[super init]) {
@@ -41,6 +42,15 @@ NSString* const KeyChainProfileTypeKey = @"userName";
 +(AccountType)getAccountType{
     NSString* profileType = [KeychainUserPass load:KeyChainProfileTypeKey];
     return [UserDataModel accountTypeEnumFromString: profileType];
+}
+
+-(void)logout{
+    [KeychainUserPass delete:KeyChainTokenKey];
+    [KeychainUserPass delete:KeyChainProfileTypeKey];
+    [KeychainUserPass delete:KeyChainUsernameKey];
+    self.token = nil;
+    self.username = nil;
+    self.profileType = -1;
 }
 
 +(AccountType)accountTypeEnumFromString: (NSString*) str{

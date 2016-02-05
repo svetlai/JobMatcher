@@ -14,4 +14,5 @@
 +(void) setSackBarButtonText: (UIViewController*) page andText: (NSString*) text;
 +(NSDate*)getDateFromString: (NSString*) dateAsString;
 +(NSString*)getShortDateString: (NSDate*) date;
++(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text andTarget: (UIView*)view;
 @end

@@ -10,4 +10,5 @@
 
 @interface RecruiterService : NSObject
 -(void) getProfileWithTarget:(NSObject*) target;
+-(void) getRecruiterMessagesWithJobSeekerId: (NSInteger) jobSeekerId andTarget:(NSObject*) target;
 @end

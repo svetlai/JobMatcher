@@ -18,6 +18,7 @@
 @property double salary;
 @property NSInteger workHours;
 @property NSInteger recruiterProfileId;
+@property (strong, nonatomic) NSArray* interestedJobSeekers;
 
 -(instancetype) initWithId:(NSInteger) jobOfferId
                   andTitle:(NSString*) title
@@ -26,7 +27,8 @@
                andIndustry:(NSInteger) industry
                  andSalary:(double) salary
               andWorkHours:(NSInteger)workHours
-     andRecruiterProfileId:(NSInteger)recruiterProfileId;
+     andRecruiterProfileId:(NSInteger)recruiterProfileId
+    andInteresteJobSeekers:(NSArray*) interestedJobSeekers;
 
 +(JobOfferViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;
 

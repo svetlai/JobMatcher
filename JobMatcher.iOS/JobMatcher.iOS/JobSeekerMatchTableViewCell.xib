@@ -1,18 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="JobSeekerMatchTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobSeekerMatchTableViewCell" rowHeight="65" id="KGk-i7-Jjw" customClass="JobSeekerMatchTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="420" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11X-U3-0ad">
+                        <rect key="frame" x="8" y="9" width="385" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.062745098040000002" green="0.1137254902" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEc-Ry-Ucf">
+                        <rect key="frame" x="8" y="38" width="143" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="143" id="E7F-HB-FZD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20784313730000001" green="0.44705882349999998" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2B-9V-Uot">
+                        <rect key="frame" x="218" y="38" width="193" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20784313730000001" green="0.44705882349999998" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5K-Zb-EeU">
+                        <rect key="frame" x="370" y="6" width="50" height="51"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="fTq-Qk-xqa"/>
+                        </constraints>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="T5K-Zb-EeU" secondAttribute="trailing" id="8Oj-KP-vSF"/>
+                    <constraint firstItem="T5K-Zb-EeU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="I01-95-WXT"/>
+                    <constraint firstItem="11X-U3-0ad" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="QkJ-yH-CDC"/>
+                    <constraint firstItem="AEc-Ry-Ucf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="SAV-Iq-gfa"/>
+                    <constraint firstItem="o2B-9V-Uot" firstAttribute="baseline" secondItem="AEc-Ry-Ucf" secondAttribute="firstBaseline" id="XiD-v3-PzF"/>
+                    <constraint firstItem="T5K-Zb-EeU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="eof-t4-AKd"/>
+                    <constraint firstItem="AEc-Ry-Ucf" firstAttribute="top" secondItem="11X-U3-0ad" secondAttribute="bottom" constant="8" symbolic="YES" id="fof-5a-lvb"/>
+                    <constraint firstItem="o2B-9V-Uot" firstAttribute="leading" secondItem="AEc-Ry-Ucf" secondAttribute="trailing" constant="67" id="hDS-j2-pfB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="AEc-Ry-Ucf" secondAttribute="bottom" constant="-5" id="pHA-eB-29H"/>
+                    <constraint firstItem="AEc-Ry-Ucf" firstAttribute="leading" secondItem="11X-U3-0ad" secondAttribute="leading" id="qSW-Tf-g5s"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="jobSeekerMatchLocationLabel" destination="AEc-Ry-Ucf" id="Dnp-cY-T6y"/>
+                <outlet property="jobSeekerMatchMessageButton" destination="T5K-Zb-EeU" id="cwQ-b9-KVC"/>
+                <outlet property="jobSeekerMatchSalaryLabel" destination="o2B-9V-Uot" id="iGZ-xq-urf"/>
+                <outlet property="jobSeekerMatchTitleLabel" destination="11X-U3-0ad" id="aiJ-Jz-W9g"/>
+            </connections>
+            <point key="canvasLocation" x="481" y="256.5"/>
         </tableViewCell>
     </objects>
 </document>

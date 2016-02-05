@@ -34,4 +34,6 @@
             andProfileType:(NSInteger) profileType;
 
 +(JobSeekerProfileViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;
+
++(NSArray*) arrayOfJobOffersFromJsonDictionary: (NSArray*) jsonArray;
 @end

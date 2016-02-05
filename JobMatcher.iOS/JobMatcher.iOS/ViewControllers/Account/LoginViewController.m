@@ -13,6 +13,7 @@
 #import "HelperMethods.h"
 #import "KeychainUserPass.h"
 #import "UserDataModel.h"
+#import "InternetConnectionChecker.h"
 
 @interface LoginViewController (){
      NSString* message;
@@ -23,6 +24,7 @@
 @implementation LoginViewController
 static AccountService* service;
 static Validator* validator;
+static InternetConnectionChecker *internetCheker;
 
 NSString* const SegueFromLoginToRegister = @"segueFromLoginToRegister";
 NSString* const SegueFromLoginToRecruiterHome = @"segueFromLoginToRecruiterHome";
@@ -36,6 +38,8 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
 
     validator = [[Validator alloc] init];
     service = [[AccountService alloc] init];
+    internetCheker = [[InternetConnectionChecker alloc] init];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +58,14 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
 */
 
 - (IBAction)loginButtonTap:(id)sender {
+    NSString *status = [internetCheker getConnectionSatus];
+    
+    if ([status isEqualToString:NotConnectedStatus]) {
+      [HelperMethods addAlert:NotConnectedMessage];
+        
+        return;
+    }
+    
     NSString *accountEmail = self.accountEmail.text;
     NSString *accountPassword = self.accountPassword.text;
     

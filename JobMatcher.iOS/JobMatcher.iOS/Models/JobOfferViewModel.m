@@ -7,6 +7,7 @@
 //
 
 #import "JobOfferViewModel.h"
+#import "JobSeekerProfileViewModel.h"
 
 @implementation JobOfferViewModel
 -(instancetype) initWithId:(NSInteger) jobOfferId
@@ -16,7 +17,8 @@
                andIndustry:(NSInteger) industry
                  andSalary:(double) salary
               andWorkHours:(NSInteger)workHours
-     andRecruiterProfileId:(NSInteger)recruiterProfileId;{
+     andRecruiterProfileId:(NSInteger)recruiterProfileId
+    andInteresteJobSeekers:(NSArray*) interestedJobSeekers{
     
     if (self = [super init]){
         self.jobOfferId = jobOfferId;
@@ -27,6 +29,7 @@
         self.salary = salary;
         self.workHours = workHours;
         self.recruiterProfileId = recruiterProfileId;
+        self.interestedJobSeekers = interestedJobSeekers;
     }
     
     return self;
@@ -41,7 +44,8 @@
             andIndustry:[[jsonDictionary objectForKey:@"Industry"] integerValue]
             andSalary:[[jsonDictionary objectForKey:@"Salary"] doubleValue]
             andWorkHours:[[jsonDictionary objectForKey:@"WorkHours"] integerValue]
-            andRecruiterProfileId:[[jsonDictionary objectForKey:@"RecruiterProfileId"] integerValue]];
+            andRecruiterProfileId:[[jsonDictionary objectForKey:@"RecruiterProfileId"] integerValue]
+            andInteresteJobSeekers:[JobSeekerProfileViewModel arrayOfJobOffersFromJsonDictionary:[jsonDictionary objectForKey:@"InteresteJobSeekers"]]];
 }
 
 +(NSArray*) arrayOfJobOffersFromJsonDictionary: (NSArray*) jsonArray{

@@ -7,11 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B01BE9B1C65261900691C74 /* message-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BE9A1C65261900691C74 /* message-icon.png */; };
+		9B01BEA11C6526EC00691C74 /* add-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BE9C1C6526EC00691C74 /* add-icon.png */; };
+		9B01BEA21C6526EC00691C74 /* delete-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BE9D1C6526EC00691C74 /* delete-icon.png */; };
+		9B01BEA31C6526EC00691C74 /* edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BE9E1C6526EC00691C74 /* edit-icon.png */; };
+		9B01BEA41C6526EC00691C74 /* matches-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BE9F1C6526EC00691C74 /* matches-icon.png */; };
+		9B01BEA51C6526EC00691C74 /* o-message-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEA01C6526EC00691C74 /* o-message-icon.png */; };
+		9B01BEA71C65531A00691C74 /* job-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEA61C65531A00691C74 /* job-icon.png */; };
+		9B01BEA91C65532400691C74 /* logout-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEA81C65532400691C74 /* logout-icon.png */; };
+		9B01BEAF1C655C8B00691C74 /* job-seekers-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEAE1C655C8B00691C74 /* job-seekers-icon.png */; };
 		9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */; };
 		9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */; };
 		9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */; };
 		9B086B2D1C6003EB002E39D3 /* JobOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B2C1C6003EB002E39D3 /* JobOfferViewController.m */; };
 		9B086B301C60294D002E39D3 /* JobOfferService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B2F1C60294D002E39D3 /* JobOfferService.m */; };
+		9B086B331C612E7D002E39D3 /* JobSeekerMatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B321C612E7D002E39D3 /* JobSeekerMatchesViewController.m */; };
+		9B086B411C626588002E39D3 /* JobSeekerMatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B3F1C626588002E39D3 /* JobSeekerMatchTableViewCell.m */; };
+		9B086B421C626588002E39D3 /* JobSeekerMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B401C626588002E39D3 /* JobSeekerMatchTableViewCell.xib */; };
+		9B086B451C627049002E39D3 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B441C627049002E39D3 /* ChatViewController.m */; };
+		9B086B4F1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B4D1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.m */; };
+		9B086B501C62BD66002E39D3 /* JobSeekerMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B4E1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.xib */; };
+		9B086B541C62BE8F002E39D3 /* RecruiterMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B521C62BE8F002E39D3 /* RecruiterMessageTableViewCell.m */; };
+		9B086B551C62BE8F002E39D3 /* RecruiterMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B531C62BE8F002E39D3 /* RecruiterMessageTableViewCell.xib */; };
+		9B086B581C64D846002E39D3 /* RecruiterMatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B571C64D846002E39D3 /* RecruiterMatchesViewController.m */; };
+		9B086B5C1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B5A1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.m */; };
+		9B086B5D1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B5B1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib */; };
 		9B93F0C81C5685A800E39663 /* AccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0C71C5685A800E39663 /* AccountService.m */; };
 		9B93F0CB1C56862700E39663 /* UserDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0CA1C56862700E39663 /* UserDataModel.m */; };
 		9B93F0CE1C56A1B500E39663 /* Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0CD1C56A1B500E39663 /* Validator.m */; };
@@ -62,6 +82,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B01BE9A1C65261900691C74 /* message-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-icon.png"; sourceTree = "<group>"; };
+		9B01BE9C1C6526EC00691C74 /* add-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-icon.png"; sourceTree = "<group>"; };
+		9B01BE9D1C6526EC00691C74 /* delete-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-icon.png"; sourceTree = "<group>"; };
+		9B01BE9E1C6526EC00691C74 /* edit-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon.png"; sourceTree = "<group>"; };
+		9B01BE9F1C6526EC00691C74 /* matches-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "matches-icon.png"; sourceTree = "<group>"; };
+		9B01BEA01C6526EC00691C74 /* o-message-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "o-message-icon.png"; sourceTree = "<group>"; };
+		9B01BEA61C65531A00691C74 /* job-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-icon.png"; sourceTree = "<group>"; };
+		9B01BEA81C65532400691C74 /* logout-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-icon.png"; sourceTree = "<group>"; };
+		9B01BEAE1C655C8B00691C74 /* job-seekers-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "job-seekers-icon.png"; sourceTree = "<group>"; };
 		9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterProfileViewModel.h; path = Models/RecruiterProfileViewModel.h; sourceTree = "<group>"; };
 		9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterProfileViewModel.m; path = Models/RecruiterProfileViewModel.m; sourceTree = "<group>"; };
 		9B086B261C5FD9CE002E39D3 /* JobOfferTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobOfferTableViewCell.h; sourceTree = "<group>"; };
@@ -71,6 +100,24 @@
 		9B086B2C1C6003EB002E39D3 /* JobOfferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobOfferViewController.m; path = ViewControllers/Recruiter/JobOfferViewController.m; sourceTree = "<group>"; };
 		9B086B2E1C60294D002E39D3 /* JobOfferService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobOfferService.h; path = Data/JobOfferService.h; sourceTree = "<group>"; };
 		9B086B2F1C60294D002E39D3 /* JobOfferService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobOfferService.m; path = Data/JobOfferService.m; sourceTree = "<group>"; };
+		9B086B311C612E7D002E39D3 /* JobSeekerMatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobSeekerMatchesViewController.h; path = ViewControllers/JobSeeker/JobSeekerMatchesViewController.h; sourceTree = "<group>"; };
+		9B086B321C612E7D002E39D3 /* JobSeekerMatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobSeekerMatchesViewController.m; path = ViewControllers/JobSeeker/JobSeekerMatchesViewController.m; sourceTree = "<group>"; };
+		9B086B3E1C626588002E39D3 /* JobSeekerMatchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobSeekerMatchTableViewCell.h; sourceTree = "<group>"; };
+		9B086B3F1C626588002E39D3 /* JobSeekerMatchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobSeekerMatchTableViewCell.m; sourceTree = "<group>"; };
+		9B086B401C626588002E39D3 /* JobSeekerMatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSeekerMatchTableViewCell.xib; sourceTree = "<group>"; };
+		9B086B431C627049002E39D3 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatViewController.h; path = ViewControllers/ChatViewController.h; sourceTree = "<group>"; };
+		9B086B441C627049002E39D3 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatViewController.m; path = ViewControllers/ChatViewController.m; sourceTree = "<group>"; };
+		9B086B4C1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobSeekerMessageTableViewCell.h; sourceTree = "<group>"; };
+		9B086B4D1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobSeekerMessageTableViewCell.m; sourceTree = "<group>"; };
+		9B086B4E1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSeekerMessageTableViewCell.xib; sourceTree = "<group>"; };
+		9B086B511C62BE8F002E39D3 /* RecruiterMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruiterMessageTableViewCell.h; sourceTree = "<group>"; };
+		9B086B521C62BE8F002E39D3 /* RecruiterMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruiterMessageTableViewCell.m; sourceTree = "<group>"; };
+		9B086B531C62BE8F002E39D3 /* RecruiterMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecruiterMessageTableViewCell.xib; sourceTree = "<group>"; };
+		9B086B561C64D846002E39D3 /* RecruiterMatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterMatchesViewController.h; path = ViewControllers/Recruiter/RecruiterMatchesViewController.h; sourceTree = "<group>"; };
+		9B086B571C64D846002E39D3 /* RecruiterMatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterMatchesViewController.m; path = ViewControllers/Recruiter/RecruiterMatchesViewController.m; sourceTree = "<group>"; };
+		9B086B591C64E2DF002E39D3 /* RecruiterMatchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruiterMatchTableViewCell.h; sourceTree = "<group>"; };
+		9B086B5A1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruiterMatchTableViewCell.m; sourceTree = "<group>"; };
+		9B086B5B1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecruiterMatchTableViewCell.xib; sourceTree = "<group>"; };
 		9B93F0C61C5685A800E39663 /* AccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountService.h; path = Data/AccountService.h; sourceTree = "<group>"; };
 		9B93F0C71C5685A800E39663 /* AccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountService.m; path = Data/AccountService.m; sourceTree = "<group>"; };
 		9B93F0C91C56862700E39663 /* UserDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDataModel.h; path = Models/UserDataModel.h; sourceTree = "<group>"; };
@@ -176,6 +223,8 @@
 				9B93F1131C58081300E39663 /* RecruiterHomeViewController.m */,
 				9B086B2B1C6003EB002E39D3 /* JobOfferViewController.h */,
 				9B086B2C1C6003EB002E39D3 /* JobOfferViewController.m */,
+				9B086B561C64D846002E39D3 /* RecruiterMatchesViewController.h */,
+				9B086B571C64D846002E39D3 /* RecruiterMatchesViewController.m */,
 			);
 			name = Recruiter;
 			sourceTree = "<group>";
@@ -185,6 +234,8 @@
 			children = (
 				9B93F1161C58084700E39663 /* JobSeekerHomeViewController.h */,
 				9B93F1171C58084700E39663 /* JobSeekerHomeViewController.m */,
+				9B086B311C612E7D002E39D3 /* JobSeekerMatchesViewController.h */,
+				9B086B321C612E7D002E39D3 /* JobSeekerMatchesViewController.m */,
 			);
 			name = JobSeeker;
 			sourceTree = "<group>";
@@ -263,6 +314,15 @@
 		9BFEBAF11C552BFC00B83A52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B01BEAE1C655C8B00691C74 /* job-seekers-icon.png */,
+				9B01BEA81C65532400691C74 /* logout-icon.png */,
+				9B01BEA61C65531A00691C74 /* job-icon.png */,
+				9B01BE9C1C6526EC00691C74 /* add-icon.png */,
+				9B01BE9D1C6526EC00691C74 /* delete-icon.png */,
+				9B01BE9E1C6526EC00691C74 /* edit-icon.png */,
+				9B01BE9F1C6526EC00691C74 /* matches-icon.png */,
+				9B01BEA01C6526EC00691C74 /* o-message-icon.png */,
+				9B01BE9A1C65261900691C74 /* message-icon.png */,
 				9B93F1561C5CEF9D00E39663 /* default_profile_img.jpg */,
 				9BFEBAF21C552BFC00B83A52 /* main.m */,
 			);
@@ -338,6 +398,18 @@
 				9B086B261C5FD9CE002E39D3 /* JobOfferTableViewCell.h */,
 				9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */,
 				9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */,
+				9B086B3E1C626588002E39D3 /* JobSeekerMatchTableViewCell.h */,
+				9B086B3F1C626588002E39D3 /* JobSeekerMatchTableViewCell.m */,
+				9B086B401C626588002E39D3 /* JobSeekerMatchTableViewCell.xib */,
+				9B086B4C1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.h */,
+				9B086B4D1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.m */,
+				9B086B4E1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.xib */,
+				9B086B511C62BE8F002E39D3 /* RecruiterMessageTableViewCell.h */,
+				9B086B521C62BE8F002E39D3 /* RecruiterMessageTableViewCell.m */,
+				9B086B531C62BE8F002E39D3 /* RecruiterMessageTableViewCell.xib */,
+				9B086B591C64E2DF002E39D3 /* RecruiterMatchTableViewCell.h */,
+				9B086B5A1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.m */,
+				9B086B5B1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -350,6 +422,8 @@
 				9BFEBB131C55365800B83A52 /* Account */,
 				9B93F0D21C56DE1200E39663 /* HomeViewController.h */,
 				9B93F0D31C56DE1200E39663 /* HomeViewController.m */,
+				9B086B431C627049002E39D3 /* ChatViewController.h */,
+				9B086B441C627049002E39D3 /* ChatViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -422,15 +496,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B01BEA91C65532400691C74 /* logout-icon.png in Resources */,
 				9B93F1521C5CDC6F00E39663 /* Main.storyboard in Resources */,
 				9B93F1B11C5E0D8400E39663 /* CollapseClickCell.xib in Resources */,
 				9BFEBB041C552BFC00B83A52 /* LaunchScreen.storyboard in Resources */,
 				9BFEBB011C552BFC00B83A52 /* Assets.xcassets in Resources */,
+				9B086B501C62BD66002E39D3 /* JobSeekerMessageTableViewCell.xib in Resources */,
 				9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */,
+				9B086B421C626588002E39D3 /* JobSeekerMatchTableViewCell.xib in Resources */,
 				9B93F1BF1C5E323B00E39663 /* SkillsTableViewCell.xib in Resources */,
+				9B01BEA71C65531A00691C74 /* job-icon.png in Resources */,
+				9B01BEA51C6526EC00691C74 /* o-message-icon.png in Resources */,
 				9B93F1571C5CEF9D00E39663 /* default_profile_img.jpg in Resources */,
+				9B01BEA41C6526EC00691C74 /* matches-icon.png in Resources */,
+				9B086B5D1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib in Resources */,
+				9B086B551C62BE8F002E39D3 /* RecruiterMessageTableViewCell.xib in Resources */,
 				9B93F1981C5D5F1B00E39663 /* ProjectsTableViewCell.xib in Resources */,
 				9B93F1C41C5E3F1100E39663 /* ExperienceTableViewCell.xib in Resources */,
+				9B01BEA31C6526EC00691C74 /* edit-icon.png in Resources */,
+				9B01BE9B1C65261900691C74 /* message-icon.png in Resources */,
+				9B01BEA21C6526EC00691C74 /* delete-icon.png in Resources */,
+				9B01BEA11C6526EC00691C74 /* add-icon.png in Resources */,
+				9B01BEAF1C655C8B00691C74 /* job-seekers-icon.png in Resources */,
 				9B93F1C91C5E659300E39663 /* EducationTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,23 +534,29 @@
 				9B93F1C81C5E659300E39663 /* EducationTableViewCell.m in Sources */,
 				9B93F0DD1C56EABB00E39663 /* KeychainUserPass.m in Sources */,
 				9BFEBB0E1C552CEA00B83A52 /* HttpRequester.m in Sources */,
+				9B086B5C1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.m in Sources */,
 				9B93F0D11C56B66C00E39663 /* HelperMethods.m in Sources */,
 				9B93F1BE1C5E323B00E39663 /* SkillsTableViewCell.m in Sources */,
 				9BFEBAFF1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodeld in Sources */,
 				9B93F16F1C5D15D600E39663 /* MessageViewModel.m in Sources */,
 				9B93F1AF1C5E0D8400E39663 /* CollapseClickArrow.m in Sources */,
+				9B086B4F1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.m in Sources */,
 				9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */,
 				9BFEBB161C55368900B83A52 /* LoginViewController.m in Sources */,
 				9B93F1141C58081300E39663 /* RecruiterHomeViewController.m in Sources */,
 				9B93F1D51C5EC56300E39663 /* AddDislikeViewModel.m in Sources */,
 				9B93F0C81C5685A800E39663 /* AccountService.m in Sources */,
 				9BFEBB281C555B5400B83A52 /* Reachability.m in Sources */,
+				9B086B411C626588002E39D3 /* JobSeekerMatchTableViewCell.m in Sources */,
+				9B086B451C627049002E39D3 /* ChatViewController.m in Sources */,
 				9B93F15A1C5CF99400E39663 /* JobSeekerService.m in Sources */,
 				9B93F1BA1C5E1F0100E39663 /* UILabel+dynamicSizeMe.m in Sources */,
 				9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */,
 				9BFEBB221C555A5600B83A52 /* InternetConnectionChecker.m in Sources */,
+				9B086B541C62BE8F002E39D3 /* RecruiterMessageTableViewCell.m in Sources */,
 				9B93F0D41C56DE1200E39663 /* HomeViewController.m in Sources */,
 				9B93F0CE1C56A1B500E39663 /* Validator.m in Sources */,
+				9B086B331C612E7D002E39D3 /* JobSeekerMatchesViewController.m in Sources */,
 				9B93F1D21C5EABF400E39663 /* AddLikeViewModel.m in Sources */,
 				9B93F16C1C5D15B600E39663 /* JobOfferViewModel.m in Sources */,
 				9B086B301C60294D002E39D3 /* JobOfferService.m in Sources */,
@@ -477,6 +570,7 @@
 				9B086B2D1C6003EB002E39D3 /* JobOfferViewController.m in Sources */,
 				9B93F1B01C5E0D8400E39663 /* CollapseClickCell.m in Sources */,
 				9B93F1181C58084700E39663 /* JobSeekerHomeViewController.m in Sources */,
+				9B086B581C64D846002E39D3 /* RecruiterMatchesViewController.m in Sources */,
 				9BFEBAF31C552BFC00B83A52 /* main.m in Sources */,
 				9B93F1631C5D152A00E39663 /* EducationViewModel.m in Sources */,
 				9B93F1661C5D155500E39663 /* ExperienceViewModel.m in Sources */,

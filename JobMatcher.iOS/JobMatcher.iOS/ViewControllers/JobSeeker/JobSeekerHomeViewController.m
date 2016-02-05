@@ -27,6 +27,9 @@
 #import "AddLikeViewModel.h"
 #import "AddDislikeViewModel.h"
 #import "GlobalConstants.h"
+#import "JobSeekerMatchesViewController.h"
+#import "AccountService.h"
+#import "InternetConnectionChecker.h"
 
 @interface JobSeekerHomeViewController (){
     NSString* message;
@@ -42,6 +45,7 @@
 @end
 
 @implementation JobSeekerHomeViewController
+
 int const NumberOfSections = 5;
 
 int const ProjectsTableRowHeight = 140;
@@ -55,23 +59,44 @@ int EducationTableRowHeight = 150;
 //NSString* const SegueFromProfileToProjects = @"segueFromProfileToProjects";
 NSString* const SegueFromJobSeekerToRecruiter = @"segueFromJobSeekerToRecruiter";
 NSString* const SegueFromJobSeekerToJobOffer = @"segueFromJobSeekerToJobOffer";
+NSString* const SegueFromJobSeekerToMatches = @"segueFromJobSeekerToMatches";
+NSString* const SegueFromJobSeekerHomeToLogin = @"segueFromJobSeekerHomeToLogin";
 static NSString* projectsTableCellIdentifier = @"ProjectsTableViewCell";
 static NSString* skillsTableCellIdentifier = @"SkillsTableViewCell";
 static NSString* experienceTableCellIdentifier = @"ExperienceTableViewCell";
 static NSString* educationTableCellIdentifier = @"EducationTableViewCell";
 static JobSeekerService* service;
 static MatchService* matchService;
+static AccountService* accountService;
+static InternetConnectionChecker *internetCheker;
+
 //SummaryViewController* myViewObject;
+
+- (void)viewDidUnload{
+    [super viewDidUnload];
+    self.jobSeekerProfileViewModel = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    internetCheker = [[InternetConnectionChecker alloc] init];
+    NSString *status = [internetCheker getConnectionSatus];
+    
+    if ([status isEqualToString:NotConnectedStatus]) {
+        [HelperMethods addAlert:NotConnectedMessage];
+        
+        return;
+    }
+    
     service = [[JobSeekerService alloc] init];
     matchService = [[MatchService alloc] init];
-    
+    accountService = [[AccountService alloc] init];
     userData = [[UserDataModel alloc] init];
-
+    
+    
     self.profileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
-////    self.tableViewProjects.layer.borderWidth = 1;
+    ////    self.tableViewProjects.layer.borderWidth = 1;
 ////    self.tableViewProjects.layer.borderColor = [UIColor lightGrayColor].CGColor;
 //    projectsTableView = [[UITableView alloc] initWithFrame:CGRectMake(101, 45, 100, 416)];
 //    [projectsTableView setDataSource:self];
@@ -90,16 +115,35 @@ static MatchService* matchService;
     
     connectionType = @"GetProfile";
     
+    self.collapseClickScrollView.CollapseClickDelegate = self;
+    [self.collapseClickScrollView reloadCollapseClick];
+    
     if (userData.profileType == JobSeeker){
         [service getProfileWithTarget:self];
         [HelperMethods setPageTitle:self andTitle:@"Profile"];
-           } else if (userData.profileType == Recruiter){
-        [service getRandomProfileWithTarget:self];
-        [HelperMethods setPageTitle:self andTitle:jobSeekerViewModel.username];
+        self.jobSeekerMatchesButton.hidden = NO;
+        self.jobSeekerBrowseOffersButton.hidden = NO;
+
+        [self.jobSeekerMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
+                       forState:UIControlStateNormal];
+        [self.jobSeekerBrowseOffersButton setBackgroundImage:[UIImage imageNamed:@"job-icon.png"]
+                                               forState:UIControlStateNormal];
+        [self.jobSeekerLogoutButton setBackgroundImage:[UIImage imageNamed:@"logout-icon.png"]
+                                               forState:UIControlStateNormal];
+
+    } else if (userData.profileType == Recruiter){
+        self.jobSeekerMatchesButton.hidden = YES;
+        self.jobSeekerBrowseOffersButton.hidden = YES;
+        if (self.jobSeekerProfileViewModel == nil){
+            [service getRandomProfileWithTarget:self];
+            [HelperMethods setPageTitle:self andTitle:jobSeekerViewModel.username];
+        } else {
+            jobSeekerViewModel = self.jobSeekerProfileViewModel;
+            [HelperMethods setPageTitle:self andTitle:self.jobSeekerProfileViewModel.username];
+            self.helloLabel.text = [NSString stringWithFormat:@"%@",jobSeekerViewModel.username];
+            [self reloadData];
+        }
     }
-    
-    self.collapseClickScrollView.CollapseClickDelegate = self;
-    [self.collapseClickScrollView reloadCollapseClick];
     
     // swipe
     UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
@@ -258,7 +302,7 @@ static MatchService* matchService;
 
 // connection
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    //    NSLog(@"%@", error);
+       NSLog(@"%@", error);
     if (error){
         message = @"Uh oh, something went wrong! Try again!";
         [HelperMethods addAlert:message];
@@ -266,10 +310,13 @@ static MatchService* matchService;
 }
 
 -(void)connection:(NSURLRequest*) request didReceiveData:(NSData *)data{
+    NSError *error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
                                                          options:kNilOptions
-                                                           error:nil];
+                                                           error:&error];
     NSLog(@"%@", json);
+    if(error)
+        NSLog(@"%@",error.description);
     
     if ([connectionType isEqualToString:@"GetProfile"]){
         jobSeekerViewModel = [JobSeekerProfileViewModel fromJsonDictionary:json];
@@ -522,7 +569,24 @@ static MatchService* matchService;
     connectionType = @"AddDislike";
     [matchService addDislikeWithModel:addDislikeModel andTarget:self];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:SegueFromJobSeekerToMatches]){
+        JobSeekerMatchesViewController* toJobOfferViewController = segue.destinationViewController;
+        toJobOfferViewController.jobOfferMatches = jobSeekerViewModel.selectedJobOffers;
+    }
+}
+
 - (IBAction)browseJobOffersButtonTap:(id)sender {
-      [self performSegueWithIdentifier:SegueFromJobSeekerToJobOffer sender:self];
+    [self performSegueWithIdentifier:SegueFromJobSeekerToJobOffer sender:self];
+}
+
+- (IBAction)matchesButtonTap:(id)sender {
+    [self performSegueWithIdentifier:SegueFromJobSeekerToMatches sender:self];
+}
+- (IBAction)jobSeekerLogoutButtonTap:(id)sender {
+    [accountService logout];
+    [self performSegueWithIdentifier:SegueFromJobSeekerHomeToLogin sender:self];
 }
 @end

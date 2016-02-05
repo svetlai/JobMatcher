@@ -8,6 +8,7 @@
 
 #import "AccountService.h"
 #import "GlobalConstants.h"
+#import "KeychainUserPass.h"
 
 @implementation AccountService
 
@@ -57,4 +58,9 @@ NSString* const LoginRoute = @"Token";
     [NSURLConnection connectionWithRequest:request delegate:target];
 }
 
+-(void) logout{
+    [KeychainUserPass delete:KeyChainTokenKey];
+    [KeychainUserPass delete:KeyChainProfileTypeKey];
+    [KeychainUserPass delete:KeyChainUsernameKey];
+}
 @end

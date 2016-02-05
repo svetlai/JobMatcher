@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatViewController : UIViewController
-
+@interface ChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *messagesTableView;
+@property NSInteger jobSeekerId;
+@property NSInteger recruiterId;
 @end
