@@ -40,6 +40,7 @@
     UITableView* educationTableView;
     NSString* connectionType;
     UserDataModel* userData;
+    UIImagePickerController *jobSeekerImagePicker;
 }
 
 @end
@@ -589,11 +590,37 @@ static InternetConnectionChecker *internetCheker;
     if ([sender isEqual:self.jobSeekerLongPressRecognizer]) {
         if (sender.state == UIGestureRecognizerStateBegan)
         {
-            //TODO get camera
-            [HelperMethods addAlert:@"Long press yay!"];
+            jobSeekerImagePicker = [[UIImagePickerController alloc] init];
+            jobSeekerImagePicker.delegate = self;
+            jobSeekerImagePicker.allowsEditing = NO; //YES
+            
+            if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+            {
+                 jobSeekerImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            } else {
+                 jobSeekerImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
+
+            [self presentModalViewController:jobSeekerImagePicker animated:YES];
+            
         }
     }
 }
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if (image == nil) {
+        image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    self.profileImage.image = image;
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 
 -(void)attachSwipeGesture{
     // swipe
