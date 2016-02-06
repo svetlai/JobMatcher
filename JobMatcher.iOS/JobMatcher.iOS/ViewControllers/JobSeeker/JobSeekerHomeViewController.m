@@ -6,6 +6,9 @@
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
+@import AddressBook;
 #import "JobSeekerHomeViewController.h"
 #import "UserDataModel.h"
 #import "HelperMethods.h"
@@ -30,6 +33,7 @@
 #import "JobSeekerMatchesViewController.h"
 #import "AccountService.h"
 #import "InternetConnectionChecker.h"
+#import "JobMatcherDatabase.h"
 
 @interface JobSeekerHomeViewController (){
     NSString* message;
@@ -41,6 +45,7 @@
     NSString* connectionType;
     UserDataModel* userData;
     UIImagePickerController *jobSeekerImagePicker;
+    JobMatcherDatabase* db;
 }
 
 @end
@@ -56,8 +61,6 @@ int const SkillsTableRowHeight = 50;
 int ExperienceTableRowHeight = 150;
 int EducationTableRowHeight = 150;
 
-//NSString* const CellProjectsIdentifier = @"projectsCell";
-//NSString* const SegueFromProfileToProjects = @"segueFromProfileToProjects";
 NSString* const SegueFromJobSeekerToRecruiter = @"segueFromJobSeekerToRecruiter";
 NSString* const SegueFromJobSeekerToJobOffer = @"segueFromJobSeekerToJobOffer";
 NSString* const SegueFromJobSeekerToMatches = @"segueFromJobSeekerToMatches";
@@ -71,7 +74,6 @@ static MatchService* matchService;
 static AccountService* accountService;
 static InternetConnectionChecker *internetCheker;
 
-//SummaryViewController* myViewObject;
 
 - (void)viewDidUnload{
     [super viewDidUnload];
@@ -94,9 +96,10 @@ static InternetConnectionChecker *internetCheker;
     matchService = [[MatchService alloc] init];
     accountService = [[AccountService alloc] init];
     userData = [[UserDataModel alloc] init];
-    
-    
-    self.profileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
+    db = [JobMatcherDatabase database];
+
+    [self setProfileImage];
+
     ////    self.tableViewProjects.layer.borderWidth = 1;
 ////    self.tableViewProjects.layer.borderColor = [UIColor lightGrayColor].CGColor;
 //    projectsTableView = [[UITableView alloc] initWithFrame:CGRectMake(101, 45, 100, 416)];
@@ -119,22 +122,19 @@ static InternetConnectionChecker *internetCheker;
     self.collapseClickScrollView.CollapseClickDelegate = self;
     [self.collapseClickScrollView reloadCollapseClick];
     
+    [UIView animateWithDuration:2.0 delay:0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^ {
+                         self.collapseClickScrollView.center = finalPosition;
+                     }
+                     completion:NULL];
+
+    
+    [self handleButtons];
     if (userData.profileType == JobSeeker){
         [service getProfileWithTarget:self];
         [HelperMethods setPageTitle:self andTitle:@"Profile"];
-        self.jobSeekerMatchesButton.hidden = NO;
-        self.jobSeekerBrowseOffersButton.hidden = NO;
-
-        [self.jobSeekerMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
-                       forState:UIControlStateNormal];
-        [self.jobSeekerBrowseOffersButton setBackgroundImage:[UIImage imageNamed:@"job-icon.png"]
-                                               forState:UIControlStateNormal];
-        [self.jobSeekerLogoutButton setBackgroundImage:[UIImage imageNamed:@"logout-icon.png"]
-                                               forState:UIControlStateNormal];
-
     } else if (userData.profileType == Recruiter){
-        self.jobSeekerMatchesButton.hidden = YES;
-        self.jobSeekerBrowseOffersButton.hidden = YES;
         if (self.jobSeekerProfileViewModel == nil){
             [service getRandomProfileWithTarget:self];
             [HelperMethods setPageTitle:self andTitle:jobSeekerViewModel.username];
@@ -150,6 +150,46 @@ static InternetConnectionChecker *internetCheker;
     [self attachLongPressGesture];
 
     // Do any additional setup after loading the view.
+}
+
+-(void) handleButtons{
+    [self.jobSeekerMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
+                                           forState:UIControlStateNormal];
+    [self.jobSeekerBrowseOffersButton setBackgroundImage:[UIImage imageNamed:@"job-icon.png"]
+                                                forState:UIControlStateNormal];
+    [self.jobSeekerLogoutButton setBackgroundImage:[UIImage imageNamed:@"logout-icon.png"]
+                                          forState:UIControlStateNormal];
+    
+    if (userData.profileType == JobSeeker){
+        self.jobSeekerMatchesButton.hidden = NO;
+        self.jobSeekerBrowseOffersButton.hidden = NO;
+        self.jobSeekerLogoutButton.hidden = NO;
+
+    } else if (userData.profileType == Recruiter){
+        self.jobSeekerMatchesButton.hidden = YES;
+        self.jobSeekerBrowseOffersButton.hidden = YES;
+        self.jobSeekerLogoutButton.hidden = YES;
+    }
+}
+
+- (void) setProfileImage{
+    NSString* imagePath = [db getImagePathWithEmail:userData.username];
+    NSURL* assetURL = [NSURL URLWithString:imagePath];
+    if (assetURL == nil){
+        self.profileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
+    }else{
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        [library assetForURL:assetURL resultBlock:^(ALAsset *asset)
+         {
+             UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullResolutionImage]];
+             NSLog(@"imageeeeee");
+             self.profileImage.image = copyOfOriginalImage;
+         }
+                failureBlock:^(NSError *error)
+         {
+             NSLog(@"%@", error.description);
+         }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -518,11 +558,6 @@ static InternetConnectionChecker *internetCheker;
     [view addSubview:label];
 }
 
-
-//- (IBAction)buttonTapToProjects:(id)sender {
-//    [self performSegueWithIdentifier:SegueFromProfileToProjects sender:self];
-//}
-
 - (IBAction)jobSeekerSwipe:(UISwipeGestureRecognizer *)sender {
     switch (sender.direction) {
         case UISwipeGestureRecognizerDirectionRight:
@@ -582,6 +617,15 @@ static InternetConnectionChecker *internetCheker;
     self.jobSeekerLongPressRecognizer.delaysTouchesBegan = YES;
     self.profileImage.userInteractionEnabled = YES;
     [self.profileImage addGestureRecognizer:self.jobSeekerLongPressRecognizer];
+    
+    self.jobSeekerLabelLongPressRecognizer
+    = [[UILongPressGestureRecognizer alloc]
+       initWithTarget:self action:@selector(jobSeekerLongPress:)];
+    self.jobSeekerLabelLongPressRecognizer.minimumPressDuration = .5; //seconds
+    self.jobSeekerLabelLongPressRecognizer.delegate = self;
+    self.jobSeekerLabelLongPressRecognizer.delaysTouchesBegan = YES;
+    self.jobSeekerPhoneLabel.userInteractionEnabled = YES;
+    [self.jobSeekerPhoneLabel addGestureRecognizer:self.jobSeekerLabelLongPressRecognizer];
 }
 
 
@@ -590,21 +634,87 @@ static InternetConnectionChecker *internetCheker;
     if ([sender isEqual:self.jobSeekerLongPressRecognizer]) {
         if (sender.state == UIGestureRecognizerStateBegan)
         {
-            jobSeekerImagePicker = [[UIImagePickerController alloc] init];
-            jobSeekerImagePicker.delegate = self;
-            jobSeekerImagePicker.allowsEditing = NO; //YES
-            
-            if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
-            {
-                 jobSeekerImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            } else {
-                 jobSeekerImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self captureImage];
+        }
+    }else if ([sender isEqual:self.jobSeekerLabelLongPressRecognizer]){
+        if (sender.state == UIGestureRecognizerStateBegan)
+        {
+            if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusDenied ||
+                ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusRestricted){
+                //1
+                NSLog(@"Denied");
+                [HelperMethods addAlert:@"Cannot add contact. Permission required."];
+            } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized){
+                //2
+                NSLog(@"Authorized");
+                  [self addContact];
+            } else{ //ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined
+                //3
+                NSLog(@"Not determined");
+                ABAddressBookRequestAccessWithCompletion(ABAddressBookCreateWithOptions(NULL, nil), ^(bool granted, CFErrorRef error) {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         if (!granted){
+                             //4
+                             NSLog(@"Just denied");
+                             [HelperMethods addAlert:@"Cannot add contact. Permission required."];
+                             return;
+                         }
+                         //5
+                         NSLog(@"Just authorized");
+                         [  self addContact];
+                     });
+                });
             }
-
-            [self presentModalViewController:jobSeekerImagePicker animated:YES];
-            
         }
     }
+}
+-(void)addContact{
+    NSString *firstName = userData.username;
+    NSString *phoneNumber = self.jobSeekerPhoneLabel.text;
+    NSData *image = UIImageJPEGRepresentation(self.profileImage.image, 0.7f);
+    
+    ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, nil);
+    ABRecordRef record = ABPersonCreate();
+    ABRecordSetValue(record, kABPersonFirstNameProperty, (__bridge CFStringRef)firstName, nil);
+    
+    ABMutableMultiValueRef phoneNumbers = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+    
+    ABMultiValueAddValueAndLabel(phoneNumbers, (__bridge CFStringRef)phoneNumber, kABPersonPhoneMainLabel, NULL);
+    ABRecordSetValue(record, kABPersonPhoneProperty, phoneNumbers, nil);
+    
+    ABPersonSetImageData(record, (__bridge CFDataRef)image, nil);
+    
+    // check for duplicates
+    NSArray *allContacts = (__bridge NSArray *)ABAddressBookCopyArrayOfAllPeople(addressBookRef);
+    for (id contact in allContacts){
+        ABRecordRef thisContact = (__bridge ABRecordRef)contact;
+        if (CFStringCompare(ABRecordCopyCompositeName(thisContact),
+                            ABRecordCopyCompositeName(record), 0) == kCFCompareEqualTo){
+            //The contact already exists!
+            [HelperMethods addAlert:@"Contact already exists."];
+            return;
+        }
+    }
+    
+    // save
+    ABAddressBookAddRecord(addressBookRef, record, nil);
+    ABAddressBookSave(addressBookRef, nil);
+    [HelperMethods addAlert:@"Contact added successfully."];
+}
+
+-(void)captureImage{
+    jobSeekerImagePicker = [[UIImagePickerController alloc] init];
+    jobSeekerImagePicker.delegate = self;
+    jobSeekerImagePicker.allowsEditing = NO; //YES
+    
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+    {
+        jobSeekerImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        jobSeekerImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [self presentModalViewController:jobSeekerImagePicker animated:YES];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
@@ -612,15 +722,42 @@ static InternetConnectionChecker *internetCheker;
     if (image == nil) {
         image = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
-    self.profileImage.image = image;
-    [self dismissModalViewControllerAnimated:YES];
     
+    self.profileImage.image = image;
+    
+     __block NSURL *imagePath;
+    if(jobSeekerImagePicker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        imagePath = [self saveImageToCameraRoll:image];
+    }else{
+        imagePath = (NSURL *)[info valueForKey:UIImagePickerControllerReferenceURL];
+    }
+    
+    NSString* imagePathAsString = imagePath.absoluteString;
+    [db addImagePath:imagePathAsString withEmail:userData.username];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self dismissModalViewControllerAnimated:YES];
 }
 
+-(NSURL *)saveImageToCameraRoll: (UIImage*)image{
+    __block NSURL *imagePath;
+    if(jobSeekerImagePicker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        // Request to save the image to camera roll
+        [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
+            if (error) {
+                [HelperMethods addAlert:@"Sorry, we couldn't save your photo."];
+            } else {
+                imagePath = assetURL;
+            }
+        }];
+    }
+    
+    return imagePath;
+}
 
 -(void)attachSwipeGesture{
     // swipe

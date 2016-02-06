@@ -6,6 +6,8 @@
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 #import "AccountService.h"
 #import "GlobalConstants.h"
 #import "KeychainUserPass.h"

@@ -6,6 +6,8 @@
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 #import "RecruiterService.h"
 #import "UserDataModel.h"
 #import "GlobalConstants.h"

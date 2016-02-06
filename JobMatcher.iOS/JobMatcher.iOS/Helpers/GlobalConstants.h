@@ -40,6 +40,8 @@ typedef enum
 
 extern NSString* const AppName;
 extern NSString* const BaseUrl;
+extern NSString* const JobMatcherDb;
+
 extern NSArray* AccountTypes;
 extern NSArray* Industries;
 extern NSArray* WorkHours;

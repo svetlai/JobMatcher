@@ -19,6 +19,7 @@
 #import "AccountService.h"
 #import "InternetConnectionChecker.h"
 #import "GlobalConstants.h"
+#import "JObMatcherDatabase.h"
 
 @interface RecruiterHomeViewController (){
     NSString* message;
@@ -26,6 +27,8 @@
     UITableView* jobOffersTableView;
     JobOfferViewModel* selectedJobOffer;
     UserDataModel* userData;
+    JobMatcherDatabase* db;
+    UIImagePickerController *recruiterImagePicker;
 }
 
 @end
@@ -43,6 +46,7 @@ static RecruiterService* recruiterService;
 static AccountService* accountRecruiterService;
 static InternetConnectionChecker *internetCheker;
 
+
 static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
 
 - (void)viewDidLoad {
@@ -57,9 +61,10 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
         return;
     }
     
+    db = [JobMatcherDatabase database];
     userData = [[UserDataModel alloc] init];
     self.recruiterHelloLabel.text = [NSString stringWithFormat:@"%@", userData.username];
-    self.recruiterProfileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
+    [self setProfileImage];
     
     [self.recruiterBrowseJobSeekersButton setBackgroundImage:[UIImage imageNamed:@"job-seekers-icon.png"]
                                            forState:UIControlStateNormal];
@@ -283,9 +288,84 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     if ([sender isEqual:self.recruiterLongPressRecognizer]) {
         if (sender.state == UIGestureRecognizerStateBegan)
         {
-            //TODO get camera
-            [HelperMethods addAlert:@"Long press yay!"];
+            recruiterImagePicker = [[UIImagePickerController alloc] init];
+            recruiterImagePicker.delegate = self;
+            recruiterImagePicker.allowsEditing = NO; //YES
+            
+            if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+            {
+                recruiterImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            } else {
+                recruiterImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
+            
+            [self presentModalViewController:recruiterImagePicker animated:YES];
+            
+
         }
     }
 }
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if (image == nil) {
+        image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    
+    self.recruiterProfileImage.image = image;
+    
+    __block NSURL *imagePath;
+    if(recruiterImagePicker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        imagePath = [self saveImageToCameraRoll:image];
+    }else{
+        imagePath = (NSURL *)[info valueForKey:UIImagePickerControllerReferenceURL];
+    }
+    
+    NSString* imagePathAsString = imagePath.absoluteString;
+    [db addImagePath:imagePathAsString withEmail:userData.username];
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(NSURL *)saveImageToCameraRoll: (UIImage*)image{
+    __block NSURL *imagePath;
+    if(recruiterImagePicker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        // Request to save the image to camera roll
+        [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
+            if (error) {
+                [HelperMethods addAlert:@"Sorry, we couldn't save your photo."];
+            } else {
+                imagePath = assetURL;
+            }
+        }];
+    }
+    
+    return imagePath;
+}
+
+
+- (void) setProfileImage{
+    NSString* imagePath = [db getImagePathWithEmail:userData.username];
+    NSURL* assetURL = [NSURL URLWithString:imagePath];
+    if (assetURL == nil){
+        self.recruiterProfileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
+    }else{
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        [library assetForURL:assetURL resultBlock:^(ALAsset *asset)
+         {
+             UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullResolutionImage]];
+             self.recruiterProfileImage.image = copyOfOriginalImage;
+         }
+                failureBlock:^(NSError *error)
+         {
+             NSLog(@"%@", error.description);
+         }];
+    }
+}
+
 @end

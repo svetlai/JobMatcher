@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface JobMatcherDatabase : NSObject
-
++(JobMatcherDatabase*)database;
+-(NSString*) getImagePathWithEmail: (NSString*) email;
+-(void) addImagePath: (NSString*) imagePath withEmail:(NSString*) email;
 @end

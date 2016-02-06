@@ -613,8 +613,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUg-s8-kW1" customClass="CollapseClick">
                                 <rect key="frame" x="20" y="150" width="560" height="430"/>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9F-Z6-cBF">
-                                <rect key="frame" x="128" y="72" width="452" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9F-Z6-cBF">
+                                <rect key="frame" x="128" y="68" width="452" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="452" id="bi7-Ua-FcM"/>
                                     <constraint firstAttribute="height" constant="34" id="vEB-z1-0OI"/>
@@ -658,6 +658,15 @@
                                     <outletCollection property="gestureRecognizers" destination="GCe-aI-ugf" appends="YES" id="dkg-gf-00l"/>
                                 </connections>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0888888888" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7my-Ih-8Zi">
+                                <rect key="frame" x="493" y="96" width="87" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="Yzz-JY-eAl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.062745098040000002" green="0.1137254902" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -668,6 +677,7 @@
                             <constraint firstItem="yUg-s8-kW1" firstAttribute="leading" secondItem="NEg-ym-G5j" secondAttribute="leadingMargin" id="4vQ-ym-HVk"/>
                             <constraint firstItem="xfY-Re-0h6" firstAttribute="leading" secondItem="h3v-QZ-ytq" secondAttribute="trailing" id="8sR-3q-rOL"/>
                             <constraint firstAttribute="bottom" secondItem="yUg-s8-kW1" secondAttribute="bottom" constant="20" symbolic="YES" id="EHe-sh-RL8"/>
+                            <constraint firstItem="7my-Ih-8Zi" firstAttribute="top" secondItem="VdX-Xw-GGU" secondAttribute="bottom" constant="23" id="FKR-qo-x3g"/>
                             <constraint firstItem="xfY-Re-0h6" firstAttribute="top" secondItem="NFI-9h-bBc" secondAttribute="bottom" constant="8" symbolic="YES" id="IQN-ry-qwA"/>
                             <constraint firstItem="VdX-Xw-GGU" firstAttribute="centerY" secondItem="xfY-Re-0h6" secondAttribute="centerY" id="KEK-F6-Z1G"/>
                             <constraint firstItem="xfY-Re-0h6" firstAttribute="baseline" secondItem="h3v-QZ-ytq" secondAttribute="firstBaseline" constant="-2" id="PdE-Yb-tGt"/>
@@ -675,9 +685,11 @@
                             <constraint firstItem="xfY-Re-0h6" firstAttribute="baseline" secondItem="h3v-QZ-ytq" secondAttribute="baseline" constant="-2" id="U7f-RK-32Z"/>
                             <constraint firstItem="yUg-s8-kW1" firstAttribute="top" secondItem="d9F-Z6-cBF" secondAttribute="bottom" constant="44" id="Wcc-Vn-PO7"/>
                             <constraint firstItem="VdX-Xw-GGU" firstAttribute="trailing" secondItem="d9F-Z6-cBF" secondAttribute="trailing" id="Xma-ES-sxn"/>
+                            <constraint firstItem="yUg-s8-kW1" firstAttribute="top" secondItem="7my-Ih-8Zi" secondAttribute="bottom" constant="33" id="Zlt-D9-LWx"/>
                             <constraint firstItem="yUg-s8-kW1" firstAttribute="top" secondItem="ecb-Aq-mOq" secondAttribute="bottom" constant="15" id="dQV-uV-Lzm"/>
                             <constraint firstItem="d9F-Z6-cBF" firstAttribute="top" secondItem="ecb-Aq-mOq" secondAttribute="top" constant="37" id="nmJ-lX-ygK"/>
                             <constraint firstItem="ecb-Aq-mOq" firstAttribute="top" secondItem="NFI-9h-bBc" secondAttribute="bottom" constant="15" id="q0O-IG-4VN"/>
+                            <constraint firstItem="7my-Ih-8Zi" firstAttribute="trailing" secondItem="d9F-Z6-cBF" secondAttribute="trailing" id="qLS-fW-cvc"/>
                             <constraint firstItem="VdX-Xw-GGU" firstAttribute="top" secondItem="NFI-9h-bBc" secondAttribute="bottom" constant="12" id="r1Z-yC-8qS"/>
                             <constraint firstItem="xfY-Re-0h6" firstAttribute="centerY" secondItem="h3v-QZ-ytq" secondAttribute="centerY" constant="-2.5" id="sGU-F6-lcT"/>
                             <constraint firstItem="yUg-s8-kW1" firstAttribute="trailing" secondItem="d9F-Z6-cBF" secondAttribute="trailing" id="tuS-2h-Wvb"/>
@@ -696,6 +708,7 @@
                         <outlet property="jobSeekerLogoutButton" destination="VdX-Xw-GGU" id="o04-EV-h45"/>
                         <outlet property="jobSeekerLongPressRecognizer" destination="GCe-aI-ugf" id="csm-BF-zmu"/>
                         <outlet property="jobSeekerMatchesButton" destination="xfY-Re-0h6" id="jGE-bW-qSY"/>
+                        <outlet property="jobSeekerPhoneLabel" destination="7my-Ih-8Zi" id="EDk-8X-Y4i"/>
                         <outlet property="profileImage" destination="ecb-Aq-mOq" id="O0l-ez-QXX"/>
                         <segue destination="sa7-DP-zd9" kind="show" identifier="segueFromJobSeekerToRecruiter" id="awB-kY-DB0"/>
                         <segue destination="IGg-Gl-XOt" kind="show" identifier="segueFromJobSeekerToJobOffer" id="F1C-C4-w35"/>
@@ -1107,11 +1120,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iuq-Um-KDv"/>
-        <segue reference="awB-kY-DB0"/>
+        <segue reference="Nyt-Ff-cIl"/>
         <segue reference="U8i-yP-YwS"/>
-        <segue reference="S7l-dB-G9D"/>
+        <segue reference="awB-kY-DB0"/>
         <segue reference="scb-wm-NOw"/>
+        <segue reference="F1C-C4-w35"/>
         <segue reference="XZu-Un-Iar"/>
     </inferredMetricsTieBreakers>
 </document>

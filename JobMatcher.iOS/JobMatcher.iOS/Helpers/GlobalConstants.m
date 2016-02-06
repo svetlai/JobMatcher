@@ -12,6 +12,7 @@
 
 NSString* const AppName = @"Job Matcher";
 NSString* const BaseUrl = @"http://svetlapc:61177/";
+NSString* const JobMatcherDb = @"JobMatcherDb";
 
 // Account
 NSString* const KeyChainTokenKey = @"access_token";

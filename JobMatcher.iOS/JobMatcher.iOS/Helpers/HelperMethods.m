@@ -6,9 +6,11 @@
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #import "HelperMethods.h"
 
 @implementation HelperMethods
+
 +(void) addAlert: (NSString*) message{
             [[[UIAlertView alloc] initWithTitle:nil message: message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]
              show];
