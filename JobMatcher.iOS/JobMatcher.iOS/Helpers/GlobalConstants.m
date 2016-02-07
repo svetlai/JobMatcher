@@ -18,6 +18,7 @@ NSString* const JobMatcherDb = @"JobMatcherDb";
 NSString* const KeyChainTokenKey = @"access_token";
 NSString* const KeyChainUsernameKey = @"profile_type";
 NSString* const KeyChainProfileTypeKey = @"userName";
+NSString* const KeyChainProfileIdKey = @"profile_id";
 
 NSString* const NotConnectedMessage = @"You're not connected to the Internet.";
 

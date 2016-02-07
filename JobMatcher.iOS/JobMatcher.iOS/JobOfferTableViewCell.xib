@@ -3,6 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,28 +17,80 @@
                 <rect key="frame" x="0.0" y="0.0" width="419" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uq-kd-RF0">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uq-kd-RF0">
                         <rect key="frame" x="8" y="8" width="403" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.062745098040000002" green="0.1137254902" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RV3-Sb-gv6">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RV3-Sb-gv6">
                         <rect key="frame" x="8" y="37" width="143" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="143" id="vkC-fx-aS4"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.20784313730000001" green="0.44705882349999998" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6S-yU-Kij">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6S-yU-Kij">
                         <rect key="frame" x="218" y="37" width="193" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.20784313730000001" green="0.44705882349999998" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDH-MA-64w">
+                        <rect key="frame" x="403" y="0.0" width="16" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="UN2-7K-5eh"/>
+                            <constraint firstAttribute="height" constant="15" id="m8F-UT-Yee"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaV-cT-Vmv">
+                        <rect key="frame" x="388" y="0.0" width="16" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="0F4-zj-wF4"/>
+                            <constraint firstAttribute="width" constant="16" id="fe6-y4-clr"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IA2-fV-EEX">
+                        <rect key="frame" x="373" y="0.0" width="15" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="bwP-cd-hYV"/>
+                            <constraint firstAttribute="width" constant="15" id="lVe-G8-8pa"/>
+                        </constraints>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="8Uq-kd-RF0" firstAttribute="leading" secondItem="RV3-Sb-gv6" secondAttribute="leading" id="2jp-vY-Y7g"/>
+                    <constraint firstItem="8Uq-kd-RF0" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="3y5-Is-3uG"/>
+                    <constraint firstItem="IA2-fV-EEX" firstAttribute="baseline" secondItem="GaV-cT-Vmv" secondAttribute="baseline" id="Eqx-6F-9hj"/>
+                    <constraint firstItem="IA2-fV-EEX" firstAttribute="firstBaseline" secondItem="hDH-MA-64w" secondAttribute="firstBaseline" id="GEH-ov-63f"/>
+                    <constraint firstItem="GaV-cT-Vmv" firstAttribute="firstBaseline" secondItem="IA2-fV-EEX" secondAttribute="firstBaseline" id="JXx-bx-hn2"/>
+                    <constraint firstItem="IA2-fV-EEX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Jzx-Y7-pEC"/>
+                    <constraint firstItem="RV3-Sb-gv6" firstAttribute="top" secondItem="8Uq-kd-RF0" secondAttribute="bottom" constant="8" symbolic="YES" id="KbU-pZ-IPc"/>
+                    <constraint firstItem="8Uq-kd-RF0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="NvA-Jo-HdM"/>
+                    <constraint firstItem="t6S-yU-Kij" firstAttribute="leading" secondItem="RV3-Sb-gv6" secondAttribute="trailing" constant="67" id="Obj-VA-NIm"/>
+                    <constraint firstItem="hDH-MA-64w" firstAttribute="top" secondItem="GaV-cT-Vmv" secondAttribute="top" id="P2q-Nq-agB"/>
+                    <constraint firstItem="GaV-cT-Vmv" firstAttribute="leading" secondItem="IA2-fV-EEX" secondAttribute="trailing" id="Pst-1R-ozP"/>
+                    <constraint firstItem="GaV-cT-Vmv" firstAttribute="top" secondItem="IA2-fV-EEX" secondAttribute="top" id="QwI-Ce-uiT"/>
+                    <constraint firstItem="t6S-yU-Kij" firstAttribute="trailing" secondItem="8Uq-kd-RF0" secondAttribute="trailing" id="SFe-Fe-GJ1"/>
+                    <constraint firstItem="t6S-yU-Kij" firstAttribute="firstBaseline" secondItem="RV3-Sb-gv6" secondAttribute="firstBaseline" id="Tzo-yz-PaH"/>
+                    <constraint firstItem="hDH-MA-64w" firstAttribute="baseline" secondItem="IA2-fV-EEX" secondAttribute="baseline" id="XcC-jJ-wtm"/>
+                    <constraint firstItem="RV3-Sb-gv6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="a4N-KN-Jg4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="RV3-Sb-gv6" secondAttribute="bottom" constant="-2" id="bj8-r1-4pS"/>
+                    <constraint firstItem="hDH-MA-64w" firstAttribute="firstBaseline" secondItem="GaV-cT-Vmv" secondAttribute="firstBaseline" id="c9Z-Ve-SGp"/>
+                    <constraint firstItem="hDH-MA-64w" firstAttribute="leading" secondItem="IA2-fV-EEX" secondAttribute="trailing" constant="15" id="cJ6-Hx-Y2a"/>
+                    <constraint firstAttribute="trailing" secondItem="hDH-MA-64w" secondAttribute="trailing" id="iin-yJ-QtY"/>
+                    <constraint firstItem="t6S-yU-Kij" firstAttribute="baseline" secondItem="RV3-Sb-gv6" secondAttribute="firstBaseline" id="nhE-22-GBd"/>
+                    <constraint firstItem="hDH-MA-64w" firstAttribute="baseline" secondItem="GaV-cT-Vmv" secondAttribute="baseline" id="oCe-lT-dMA"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="t6S-yU-Kij" secondAttribute="bottom" constant="2" id="wrG-De-C5C"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="jobOfferAddButton" destination="IA2-fV-EEX" id="CaG-TH-XLL"/>
+                <outlet property="jobOfferDeleteButton" destination="hDH-MA-64w" id="TUr-3D-Waa"/>
+                <outlet property="jobOfferEditButton" destination="GaV-cT-Vmv" id="czn-Mv-S0B"/>
                 <outlet property="jobOfferLocationLabel" destination="RV3-Sb-gv6" id="cuE-cK-Zmn"/>
                 <outlet property="jobOfferSalaryLabel" destination="t6S-yU-Kij" id="vGC-5f-IYd"/>
                 <outlet property="jobOfferTitleLabel" destination="8Uq-kd-RF0" id="0r2-xR-n1p"/>

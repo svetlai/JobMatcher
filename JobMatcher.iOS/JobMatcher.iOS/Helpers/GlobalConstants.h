@@ -52,6 +52,7 @@ extern NSArray* Level;
 extern NSString* const KeyChainTokenKey;
 extern NSString* const KeyChainUsernameKey;
 extern NSString* const KeyChainProfileTypeKey;
+extern NSString* const KeyChainProfileIdKey;
 
 extern NSString* const NotConnectedMessage;
 

@@ -73,7 +73,7 @@ public enum AlertStyle {
         titleLabel.text = ""
         titleLabel.numberOfLines = 3
         titleLabel.textAlignment = .Center
-        titleLabel.font = UIFont(name: kFont, size:16)
+        titleLabel.font = UIFont(name: kFont, size:14)
         titleLabel.textColor = UIColor.colorFromRGB(0xcccccc)
     }
     

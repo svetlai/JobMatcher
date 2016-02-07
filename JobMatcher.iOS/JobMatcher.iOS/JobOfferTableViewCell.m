@@ -11,6 +11,15 @@
 @implementation JobOfferTableViewCell
 
 - (void)awakeFromNib {
+    
+    [self.jobOfferDeleteButton setBackgroundImage:[UIImage imageNamed:@"delete-icon.png"]
+                                           forState:UIControlStateNormal];
+    
+    [self.jobOfferAddButton setBackgroundImage:[UIImage imageNamed:@"add-icon.png"]
+                                         forState:UIControlStateNormal];
+    
+    [self.jobOfferEditButton setBackgroundImage:[UIImage imageNamed:@"edit-icon.png"]
+                                         forState:UIControlStateNormal];
     // Initialization code
 }
 

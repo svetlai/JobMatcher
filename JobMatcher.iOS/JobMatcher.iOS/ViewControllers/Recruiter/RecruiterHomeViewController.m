@@ -5,6 +5,7 @@
 //  Created by s i on 1/26/16.
 //  Copyright © 2016 svetlai. All rights reserved.
 //
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 #import "RecruiterHomeViewController.h"
 #import "UserDataModel.h"
@@ -19,16 +20,19 @@
 #import "AccountService.h"
 #import "InternetConnectionChecker.h"
 #import "GlobalConstants.h"
-#import "JObMatcherDatabase.h"
+#import "JobMatcherDatabase.h"
+#import "JobOfferService.h"
 
 @interface RecruiterHomeViewController (){
     NSString* message;
+    NSString* connectionType;
     RecruiterProfileViewModel* recruiterProfileViewModel;
     UITableView* jobOffersTableView;
     JobOfferViewModel* selectedJobOffer;
     UserDataModel* userData;
     JobMatcherDatabase* db;
     UIImagePickerController *recruiterImagePicker;
+    NSInteger jobOfferSender;
 }
 
 @end
@@ -38,12 +42,14 @@ NSString* const SegueFromRecruiterToJobSeeker = @"segueFromRecruiterToJobSeeker"
 NSString* const SegueFromRecruiterToJobOffer = @"segueFromRecruiterToJobOffer";
 NSString* const SegueFromRecruiterToMatches = @"segueFromRecruiterToMatches";
 NSString* const SegueFromRecruiterHomeToLogin = @"segueFromRecruiterHomeToLogin";
+NSString* const SegueFromRecruiterToAddJobOffer = @"segueFromRecruiterToAddJobOffer";
 
 int const NumberOfSectionsInRecruiter = 1;
 int const JobOffersTableRowHeight = 65;
 
 static RecruiterService* recruiterService;
 static AccountService* accountRecruiterService;
+static JobOfferService* jobOfferRecruiterService;
 static InternetConnectionChecker *internetCheker;
 
 
@@ -66,14 +72,7 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     self.recruiterHelloLabel.text = [NSString stringWithFormat:@"%@", userData.username];
     [self setProfileImage];
     
-    [self.recruiterBrowseJobSeekersButton setBackgroundImage:[UIImage imageNamed:@"job-seekers-icon.png"]
-                                           forState:UIControlStateNormal];
-    
-    [self.recruiterLogoutButton setBackgroundImage:[UIImage imageNamed:@"logout-icon.png"]
-                                           forState:UIControlStateNormal];
-    
-    [self.recruiterMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
-                                           forState:UIControlStateNormal];
+    [self handleButtons];
     
     [HelperMethods setSackBarButtonText:self andText:@""];
     [HelperMethods setPageTitle:self andTitle:@"Profile"];
@@ -82,8 +81,10 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     [recruiterService getProfileWithTarget:self];
     
     accountRecruiterService = [[AccountService alloc] init];
+    jobOfferRecruiterService = [[JobOfferService alloc] init];
     
     [self attachLongPressGesture];
+    
     self.recruiterCollapseClickScrollView.minimumZoomScale=0.5;
     self.recruiterCollapseClickScrollView.maximumZoomScale=1.5;
     //self.collapseClickScrollView.contentSize=CGSizeMake(1280, 960);
@@ -99,6 +100,18 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     [super didReceiveMemoryWarning];
     //self.helloLabel.text = [NSString stringWithFormat:@"Hello, %@", userData.username];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleButtons{
+    [self.recruiterBrowseJobSeekersButton setBackgroundImage:[UIImage imageNamed:@"job-seekers-icon.png"]
+                                                    forState:UIControlStateNormal];
+    
+    [self.recruiterLogoutButton setBackgroundImage:[UIImage imageNamed:@"logout-icon.png"]
+                                          forState:UIControlStateNormal];
+    
+    [self.recruiterMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
+                                           forState:UIControlStateNormal];
+
 }
 
 /*
@@ -127,37 +140,41 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     if(error)
         NSLog(@"%@",error.description);
     
-//    if ([connectionType isEqualToString:@"GetProfile"]){
-        recruiterProfileViewModel = [RecruiterProfileViewModel fromJsonDictionary:json];
+    if ([connectionType isEqualToString:@"DeleteOffer"]){
+        connectionType = @"";
+        return;
+    }
+    
+    recruiterProfileViewModel = [RecruiterProfileViewModel fromJsonDictionary:json];
     [jobOffersTableView reloadData];
     
     [self.recruiterCollapseClickScrollView reloadCollapseClick];
-    [self.recruiterCollapseClickScrollView openCollapseClickCellAtIndex:0 animated:NO];    
+    [self.recruiterCollapseClickScrollView openCollapseClickCellAtIndex:0 animated:NO];
+//    NSIndexPath* ipath = [NSIndexPath indexPathForRow: recruiterProfileViewModel.jobOffers.count-1 inSection: 0];
+//    [jobOffersTableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
     
 }
 
-//- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-//    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-//    long code = [httpResponse statusCode];
-//    NSLog(@"%@", httpResponse);
-//    
-//    // TODO browse another profile
-//    if ([connectionType isEqualToString:@"AddLike"]){
-//        if (code == 200){
-//            message = @"Liked!";
-//            [HelperMethods addAlert:message];
-//        }
-//        
-//        connectionType = @"";
-//    }
-//    
-//    if (code != 200) {
-//        message = @"Nope. Try again!";
-//        [HelperMethods addAlert:message];
-//    }
-//}
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    long code = [httpResponse statusCode];
+    NSLog(@"%@", httpResponse);
+    
+    // TODO browse another profile
+    if ([connectionType isEqualToString:@"DeleteOffer"]){
+        if (code == 200){
+            message = @"Offer deleted successfully!";
+            [recruiterService getProfileWithTarget:self];
+            [HelperMethods addAlert:message];
+        }
+    }
+    
+    if (code != 200) {
+        message = @"Nope. Try again!";
+        [HelperMethods addAlert:message];
+    }
+}
 
-// collapse click
 // collapse click
 
 -(int)numberOfCellsForCollapseClick {
@@ -227,6 +244,8 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
             cell.jobOfferLocationLabel.text = jobOfferViewModel.location;
             cell.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", jobOfferViewModel.salary];
             
+            [cell.jobOfferDeleteButton addTarget:self action:@selector(deleteJobOfferButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+             [cell.jobOfferAddButton addTarget:self action:@selector(addJobOfferButtonTap:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
     }
@@ -250,6 +269,28 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     [self performSegueWithIdentifier:SegueFromRecruiterToJobOffer sender:tableView];
 }
 
+-(void)addJobOfferButtonTap:(UIButton*)sender
+{
+    [self performSegueWithIdentifier:SegueFromRecruiterToAddJobOffer sender:self];
+}
+
+-(void)deleteJobOfferButtonTap:(UIButton*)sender
+{
+    for (int i = 0; i < recruiterProfileViewModel.jobOffers.count; i++) {
+        if (sender.tag == i)
+        {
+            jobOfferSender = i;
+            JobOfferViewModel* currentOffer =[recruiterProfileViewModel.jobOffers objectAtIndex:i];
+            NSInteger currentId = currentOffer.jobOfferId;
+            [jobOfferRecruiterService deleteOfferWithId:currentId andTarget:self];
+            connectionType = @"DeleteOffer";
+            NSLog(@"clicked");
+            break;
+        }
+    }
+    
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:SegueFromRecruiterToJobOffer]){
@@ -261,6 +302,8 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
         
         RecruiterMatchesViewController* toMatchesViewController = segue.destinationViewController;
         toMatchesViewController.recruiterMatches = matches;
+    } else if([segue.identifier isEqualToString:SegueFromRecruiterToAddJobOffer]){
+        
     }
 }
 //------

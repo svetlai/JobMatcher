@@ -23,7 +23,7 @@
                             <nil key="highlightedColor"/>
                             <color key="shadowColor" white="0.15281607429999999" alpha="0.5" colorSpace="calibratedWhite"/>
                         </label>
-                        <view contentMode="scaleToFill" id="13" userLabel="Arrow" customClass="CollapseClickArrow">
+                        <view hidden="YES" contentMode="scaleToFill" id="13" userLabel="Arrow" customClass="CollapseClickArrow">
                             <rect key="frame" x="288" y="14" width="22" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -38,6 +38,14 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9CJ-3U-NrE">
+                            <rect key="frame" x="274" y="-1" width="50" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <state key="normal" title="+">
+                                <color key="titleColor" red="0.40784313729999999" green="0.66274509800000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="11">
                             <rect key="frame" x="0.0" y="-1" width="320" height="52"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +71,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="AddNewButton" destination="9CJ-3U-NrE" id="9Yp-5V-wB1"/>
                 <outlet property="ContentView" destination="9" id="10"/>
                 <outlet property="TitleArrow" destination="13" id="14"/>
                 <outlet property="TitleButton" destination="11" id="12"/>

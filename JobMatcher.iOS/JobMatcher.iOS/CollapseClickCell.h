@@ -21,10 +21,12 @@
 
 // Body
 @property (weak, nonatomic) IBOutlet UIView *ContentView;
+@property (weak, nonatomic) IBOutlet UIButton *AddNewButton;
 
 // Properties
 @property (nonatomic, assign) BOOL isClicked;
 @property (nonatomic, assign) int index;
+@property (nonatomic, assign) int senderIndex;
 
 // Init
 + (CollapseClickCell *)newCollapseClickCellWithTitle:(NSString *)title index:(int)index content:(UIView *)content;

@@ -12,19 +12,17 @@
 
 @implementation UserDataModel
 
-//NSString* const KeyChainTokenKey = @"access_token";
-//NSString* const KeyChainUsernameKey = @"profile_type";
-//NSString* const KeyChainProfileTypeKey = @"userName";
-
 -(instancetype) init{
     if (self=[super init]) {
         NSString* token = [KeychainUserPass load:KeyChainTokenKey];
         NSString* profileType = [KeychainUserPass load:KeyChainProfileTypeKey];
         NSString* username = [KeychainUserPass load:KeyChainUsernameKey];
+        NSString* profileId = [KeychainUserPass load:KeyChainProfileIdKey];
         
         self.token = token;
         self.username = username;
         self.profileType = [UserDataModel accountTypeEnumFromString: profileType];
+        self.profileId = [profileId integerValue];
     }
     
     return self;
@@ -48,9 +46,11 @@
     [KeychainUserPass delete:KeyChainTokenKey];
     [KeychainUserPass delete:KeyChainProfileTypeKey];
     [KeychainUserPass delete:KeyChainUsernameKey];
+    [KeychainUserPass delete:KeyChainProfileIdKey];
     self.token = nil;
     self.username = nil;
     self.profileType = -1;
+    self.profileId = -1;
 }
 
 +(AccountType)accountTypeEnumFromString: (NSString*) str{

@@ -94,10 +94,6 @@ static InternetConnectionChecker *internetCheker;
         return;
     }
     
-//    SweetAlert* sweetAlert = [[SweetAlert alloc] init];
-//    [sweetAlert showAlert:@"test"];
-//    
-    [HelperMethods addAlert:NotConnectedMessage];
     service = [[JobSeekerService alloc] init];
     matchService = [[MatchService alloc] init];
     accountService = [[AccountService alloc] init];
@@ -217,7 +213,11 @@ static InternetConnectionChecker *internetCheker;
     [summaryLabel setTextColor: [UIColor colorWithRed:0.263 green:0.522 blue:0.588 alpha:1]] /*#438596*/;//[UIColor colorWithRed:0.482 green:0.722 blue:0.765 alpha:1]] /*#7bb8c3*/;//[UIColor colorWithRed:0.106 green:0.255 blue:0.282 alpha:1]]; /*#1b4148*/
     [summaryLabel setBackgroundColor:[UIColor clearColor]];
     [summaryLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
-    [summaryLabel setText: jobSeekerViewModel.summary]; //@"some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text "]; //jobSeekerViewModel.summary
+    
+    if (jobSeekerViewModel.summary != nil){
+        [summaryLabel setText: jobSeekerViewModel.summary]; //@"some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text "];
+    }
+    
     [summaryLabel setNumberOfLines:0];
     [summaryLabel sizeToFit];
     [self.view addSubview:summaryLabel];

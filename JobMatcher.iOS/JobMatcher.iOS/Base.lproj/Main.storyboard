@@ -320,6 +320,156 @@
             </objects>
             <point key="canvasLocation" x="589.5" y="389"/>
         </scene>
+        <!--Add Job Offer View Controller-->
+        <scene sceneID="1wL-1A-veU">
+            <objects>
+                <viewController id="nJY-3C-qIY" customClass="AddJobOfferViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g8p-RG-Qaa"/>
+                        <viewControllerLayoutGuide type="bottom" id="qlp-fW-GpY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="liH-dX-F9K">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3nz-6O-hbq">
+                                <rect key="frame" x="20" y="77" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-HJ-SHa">
+                                <rect key="frame" x="20" y="270" width="560" height="173"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="173" id="OYb-ws-X6j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Salary" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eik-BG-CGL">
+                                <rect key="frame" x="20" y="206" width="164" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="G9C-IE-hTX"/>
+                                    <constraint firstAttribute="height" constant="30" id="iWO-cL-Tcw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Kk-Cf-qGX">
+                                <rect key="frame" x="20" y="115" width="560" height="83"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nJY-3C-qIY" id="BrR-3H-0v7"/>
+                                    <outlet property="delegate" destination="nJY-3C-qIY" id="TVO-c8-Jux"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHS-J5-H30">
+                                <rect key="frame" x="192" y="188" width="388" height="66"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nJY-3C-qIY" id="qDj-Ed-Lbq"/>
+                                    <outlet property="delegate" destination="nJY-3C-qIY" id="IQi-kL-oYC"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLa-dq-NoI">
+                                <rect key="frame" x="20" y="539" width="560" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addJobOfferButtonTap:" destination="nJY-3C-qIY" eventType="touchUpInside" id="9u7-Fu-bSs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Teg-bz-TJr">
+                                <rect key="frame" x="20" y="494" width="32" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="9BY-IT-aYX"/>
+                                    <constraint firstAttribute="height" constant="21" id="gTw-mj-ZL0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rie-F8-aUb">
+                                <rect key="frame" x="53" y="494" width="89" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="89" id="Wbo-nw-bwh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20784313730000001" green="0.44705882349999998" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXe-B5-vGY">
+                                <rect key="frame" x="192" y="494" width="388" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20784313730000001" green="0.44705882349999998" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your current location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ph-cB-FXE">
+                                <rect key="frame" x="20" y="458" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKc-xg-p5Y">
+                                <rect key="frame" x="160" y="494" width="32" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="JPi-Nu-gdF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Teg-bz-TJr" firstAttribute="top" secondItem="Rie-F8-aUb" secondAttribute="top" id="0CJ-0q-onF"/>
+                            <constraint firstItem="wiv-HJ-SHa" firstAttribute="trailing" secondItem="TLa-dq-NoI" secondAttribute="trailing" id="0cl-fK-9N0"/>
+                            <constraint firstItem="Eik-BG-CGL" firstAttribute="centerY" secondItem="bHS-J5-H30" secondAttribute="centerY" id="1no-2y-jNB"/>
+                            <constraint firstItem="bXe-B5-vGY" firstAttribute="trailing" secondItem="TLa-dq-NoI" secondAttribute="trailing" id="6m3-vo-GeK"/>
+                            <constraint firstItem="9Kk-Cf-qGX" firstAttribute="top" secondItem="3nz-6O-hbq" secondAttribute="bottom" constant="8" symbolic="YES" id="9K6-Ko-wzp"/>
+                            <constraint firstItem="3nz-6O-hbq" firstAttribute="trailing" secondItem="liH-dX-F9K" secondAttribute="trailingMargin" id="BAT-kL-Dxv"/>
+                            <constraint firstItem="Eik-BG-CGL" firstAttribute="top" secondItem="9Kk-Cf-qGX" secondAttribute="bottom" constant="8" symbolic="YES" id="BWl-sb-AcA"/>
+                            <constraint firstItem="bHS-J5-H30" firstAttribute="trailing" secondItem="9Kk-Cf-qGX" secondAttribute="trailing" id="DmA-cg-JGs"/>
+                            <constraint firstItem="Teg-bz-TJr" firstAttribute="firstBaseline" secondItem="yKc-xg-p5Y" secondAttribute="firstBaseline" id="HUc-4Z-n8S"/>
+                            <constraint firstItem="TLa-dq-NoI" firstAttribute="leading" secondItem="wiv-HJ-SHa" secondAttribute="leading" id="IWL-Me-Osx"/>
+                            <constraint firstItem="Eik-BG-CGL" firstAttribute="leading" secondItem="wiv-HJ-SHa" secondAttribute="leading" id="M46-v2-MDt"/>
+                            <constraint firstItem="wiv-HJ-SHa" firstAttribute="trailing" secondItem="bHS-J5-H30" secondAttribute="trailing" id="MeZ-kI-MuG"/>
+                            <constraint firstItem="bXe-B5-vGY" firstAttribute="trailing" secondItem="8ph-cB-FXE" secondAttribute="trailing" id="PRp-bf-Dd1"/>
+                            <constraint firstItem="bHS-J5-H30" firstAttribute="top" secondItem="3nz-6O-hbq" secondAttribute="bottom" constant="81" id="PtS-jh-ajG"/>
+                            <constraint firstItem="Rie-F8-aUb" firstAttribute="leading" secondItem="Teg-bz-TJr" secondAttribute="trailing" constant="1" id="SXc-vy-qeN"/>
+                            <constraint firstItem="bXe-B5-vGY" firstAttribute="leading" secondItem="yKc-xg-p5Y" secondAttribute="trailing" id="TzC-xb-B5p"/>
+                            <constraint firstItem="qlp-fW-GpY" firstAttribute="top" secondItem="TLa-dq-NoI" secondAttribute="bottom" constant="31" id="VQq-gc-807"/>
+                            <constraint firstItem="wiv-HJ-SHa" firstAttribute="top" secondItem="Eik-BG-CGL" secondAttribute="bottom" constant="34" id="Vfr-Vx-aAL"/>
+                            <constraint firstItem="Teg-bz-TJr" firstAttribute="top" secondItem="8ph-cB-FXE" secondAttribute="bottom" constant="15" id="Vki-SP-1sS"/>
+                            <constraint firstItem="8ph-cB-FXE" firstAttribute="top" secondItem="wiv-HJ-SHa" secondAttribute="bottom" constant="15" id="Y1E-Ex-enQ"/>
+                            <constraint firstItem="3nz-6O-hbq" firstAttribute="top" secondItem="g8p-RG-Qaa" secondAttribute="bottom" constant="57" id="Z6e-Bp-mYd"/>
+                            <constraint firstItem="bHS-J5-H30" firstAttribute="leading" secondItem="Eik-BG-CGL" secondAttribute="trailing" constant="8" symbolic="YES" id="ZRw-iW-dMc"/>
+                            <constraint firstItem="Teg-bz-TJr" firstAttribute="leading" secondItem="8ph-cB-FXE" secondAttribute="leading" id="dYE-9c-tbQ"/>
+                            <constraint firstItem="3nz-6O-hbq" firstAttribute="leading" secondItem="9Kk-Cf-qGX" secondAttribute="leading" id="e0l-9n-bUq"/>
+                            <constraint firstItem="Eik-BG-CGL" firstAttribute="leading" secondItem="9Kk-Cf-qGX" secondAttribute="leading" id="ebC-6B-MaA"/>
+                            <constraint firstItem="9Kk-Cf-qGX" firstAttribute="trailing" secondItem="3nz-6O-hbq" secondAttribute="trailing" id="ex3-TZ-PEm"/>
+                            <constraint firstItem="yKc-xg-p5Y" firstAttribute="leading" secondItem="Rie-F8-aUb" secondAttribute="trailing" constant="18" id="kka-nK-RlR"/>
+                            <constraint firstItem="Teg-bz-TJr" firstAttribute="bottom" secondItem="Rie-F8-aUb" secondAttribute="bottom" id="kle-ac-4Wv"/>
+                            <constraint firstItem="Teg-bz-TJr" firstAttribute="leading" secondItem="TLa-dq-NoI" secondAttribute="leading" id="mnk-aa-Ymx"/>
+                            <constraint firstItem="Teg-bz-TJr" firstAttribute="baseline" secondItem="yKc-xg-p5Y" secondAttribute="baseline" id="oLd-AF-jGv"/>
+                            <constraint firstItem="bXe-B5-vGY" firstAttribute="baseline" secondItem="Rie-F8-aUb" secondAttribute="baseline" id="pzw-7O-GAl"/>
+                            <constraint firstItem="wiv-HJ-SHa" firstAttribute="top" secondItem="bHS-J5-H30" secondAttribute="bottom" constant="16" id="tDj-Ub-wCF"/>
+                            <constraint firstItem="wiv-HJ-SHa" firstAttribute="leading" secondItem="liH-dX-F9K" secondAttribute="leadingMargin" id="zbB-ZS-N5D"/>
+                            <constraint firstItem="bXe-B5-vGY" firstAttribute="firstBaseline" secondItem="Rie-F8-aUb" secondAttribute="firstBaseline" id="zvp-wx-9vI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addJobOfferDescriptionTextView" destination="wiv-HJ-SHa" id="fdH-5D-9su"/>
+                        <outlet property="addJobOfferIndustryPickerView" destination="9Kk-Cf-qGX" id="1y5-lB-7OP"/>
+                        <outlet property="addJobOfferLatitude" destination="Rie-F8-aUb" id="swi-zi-0hA"/>
+                        <outlet property="addJobOfferLongitude" destination="bXe-B5-vGY" id="O3q-R9-ZHw"/>
+                        <outlet property="addJobOfferSalaryLabel" destination="Eik-BG-CGL" id="HTa-Vf-VqY"/>
+                        <outlet property="addJobOfferTitleLabel" destination="3nz-6O-hbq" id="ebS-AH-i7E"/>
+                        <outlet property="addJobOfferWorkHoursPickerView" destination="bHS-J5-H30" id="LbT-Yu-3za"/>
+                        <segue destination="sa7-DP-zd9" kind="show" identifier="segueFromAddJobOfferToRecruiter" id="m4V-cK-Xsq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BGV-fu-KyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3784" y="3388"/>
+        </scene>
         <!--Job Offer View Controller-->
         <scene sceneID="UwU-sV-QPk">
             <objects>
@@ -531,6 +681,15 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBO-ZK-cnn" customClass="CollapseClick">
                                 <rect key="frame" x="20" y="163" width="560" height="417"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hv-Ch-P6l">
+                                <rect key="frame" x="437" y="29" width="50" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Len-6I-v4L"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="browseJobSeekersButtonTap:" destination="sa7-DP-zd9" eventType="touchUpInside" id="32L-lT-UaN"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEA-wS-yCh">
                                 <rect key="frame" x="485" y="26" width="50" height="51"/>
                                 <constraints>
@@ -548,15 +707,6 @@
                                 </constraints>
                                 <connections>
                                     <action selector="recruiterLogoutButtonTap:" destination="sa7-DP-zd9" eventType="touchUpInside" id="r6n-wr-fFB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hv-Ch-P6l">
-                                <rect key="frame" x="437" y="29" width="50" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Len-6I-v4L"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="browseJobSeekersButtonTap:" destination="sa7-DP-zd9" eventType="touchUpInside" id="32L-lT-UaN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -602,6 +752,7 @@
                         <segue destination="IGg-Gl-XOt" kind="show" identifier="segueFromRecruiterToJobOffer" id="S7l-dB-G9D"/>
                         <segue destination="F2v-BG-bTo" kind="show" identifier="segueFromRecruiterToMatches" id="d4F-Vc-Sp2"/>
                         <segue destination="cSD-9E-WvO" kind="show" identifier="segueFromRecruiterHomeToLogin" id="iuq-Um-KDv"/>
+                        <segue destination="nJY-3C-qIY" kind="show" identifier="segueFromRecruiterToAddJobOffer" id="2ZF-h7-PJS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRX-ia-SeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1139,8 +1290,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iuq-Um-KDv"/>
-        <segue reference="awB-kY-DB0"/>
-        <segue reference="rEL-fh-sK2"/>
+        <segue reference="m4V-cK-Xsq"/>
+        <segue reference="U8i-yP-YwS"/>
         <segue reference="S7l-dB-G9D"/>
         <segue reference="scb-wm-NOw"/>
         <segue reference="XZu-Un-Iar"/>

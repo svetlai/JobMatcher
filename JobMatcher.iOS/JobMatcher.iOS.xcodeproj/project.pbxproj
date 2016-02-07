@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B01BEBA1C660D9200691C74 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B01BEB91C660D9200691C74 /* libsqlite3.tbd */; };
 		9B01BEBD1C660F2900691C74 /* JobMatcherDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BEBC1C660F2900691C74 /* JobMatcherDatabase.m */; };
-		9B01BEE21C66237C00691C74 /* add-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BED91C66237C00691C74 /* add-icon.png */; };
 		9B01BEE31C66237C00691C74 /* delete-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEDA1C66237C00691C74 /* delete-icon.png */; };
-		9B01BEE41C66237C00691C74 /* edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEDB1C66237C00691C74 /* edit-icon.png */; };
 		9B01BEE51C66237C00691C74 /* job-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEDC1C66237C00691C74 /* job-icon.png */; };
 		9B01BEE61C66237C00691C74 /* job-seekers-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEDD1C66237C00691C74 /* job-seekers-icon.png */; };
 		9B01BEE71C66237C00691C74 /* logout-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEDE1C66237C00691C74 /* logout-icon.png */; };
@@ -27,6 +25,11 @@
 		9B01BF081C66C59800691C74 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF071C66C59800691C74 /* SweetAlert.swift */; };
 		9B01BF0D1C6748F500691C74 /* MessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF0C1C6748F500691C74 /* MessageService.m */; };
 		9B01BF101C6749B400691C74 /* AddMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF0F1C6749B400691C74 /* AddMessageViewModel.m */; };
+		9B01BF121C6785C700691C74 /* add-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BF111C6785C700691C74 /* add-icon.png */; };
+		9B01BF141C67865C00691C74 /* edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BF131C67865C00691C74 /* edit-icon.png */; };
+		9B01BF171C6787DA00691C74 /* AddJobOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF161C6787DA00691C74 /* AddJobOfferViewController.m */; };
+		9B01BF1A1C67943300691C74 /* AddJobOfferViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */; };
+		9B01BF1D1C67A63D00691C74 /* LocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF1C1C67A63D00691C74 /* LocationProvider.m */; };
 		9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */; };
 		9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */; };
 		9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */; };
@@ -95,9 +98,7 @@
 		9B01BEB91C660D9200691C74 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9B01BEBB1C660F2900691C74 /* JobMatcherDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobMatcherDatabase.h; path = Data/JobMatcherDatabase.h; sourceTree = "<group>"; };
 		9B01BEBC1C660F2900691C74 /* JobMatcherDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobMatcherDatabase.m; path = Data/JobMatcherDatabase.m; sourceTree = "<group>"; };
-		9B01BED91C66237C00691C74 /* add-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-icon.png"; path = "images/icons/add-icon.png"; sourceTree = "<group>"; };
 		9B01BEDA1C66237C00691C74 /* delete-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete-icon.png"; path = "images/icons/delete-icon.png"; sourceTree = "<group>"; };
-		9B01BEDB1C66237C00691C74 /* edit-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit-icon.png"; path = "images/icons/edit-icon.png"; sourceTree = "<group>"; };
 		9B01BEDC1C66237C00691C74 /* job-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "job-icon.png"; path = "images/icons/job-icon.png"; sourceTree = "<group>"; };
 		9B01BEDD1C66237C00691C74 /* job-seekers-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "job-seekers-icon.png"; path = "images/icons/job-seekers-icon.png"; sourceTree = "<group>"; };
 		9B01BEDE1C66237C00691C74 /* logout-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout-icon.png"; path = "images/icons/logout-icon.png"; sourceTree = "<group>"; };
@@ -120,6 +121,14 @@
 		9B01BF0C1C6748F500691C74 /* MessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageService.m; path = Data/MessageService.m; sourceTree = "<group>"; };
 		9B01BF0E1C6749B400691C74 /* AddMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMessageViewModel.h; path = Models/AddMessageViewModel.h; sourceTree = "<group>"; };
 		9B01BF0F1C6749B400691C74 /* AddMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMessageViewModel.m; path = Models/AddMessageViewModel.m; sourceTree = "<group>"; };
+		9B01BF111C6785C700691C74 /* add-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-icon.png"; sourceTree = "<group>"; };
+		9B01BF131C67865C00691C74 /* edit-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-icon.png"; sourceTree = "<group>"; };
+		9B01BF151C6787DA00691C74 /* AddJobOfferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddJobOfferViewController.h; path = ViewControllers/Recruiter/AddJobOfferViewController.h; sourceTree = "<group>"; };
+		9B01BF161C6787DA00691C74 /* AddJobOfferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddJobOfferViewController.m; path = ViewControllers/Recruiter/AddJobOfferViewController.m; sourceTree = "<group>"; };
+		9B01BF181C67943300691C74 /* AddJobOfferViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddJobOfferViewModel.h; path = Models/AddJobOfferViewModel.h; sourceTree = "<group>"; };
+		9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddJobOfferViewModel.m; path = Models/AddJobOfferViewModel.m; sourceTree = "<group>"; };
+		9B01BF1B1C67A63D00691C74 /* LocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationProvider.h; path = Helpers/LocationProvider.h; sourceTree = "<group>"; };
+		9B01BF1C1C67A63D00691C74 /* LocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationProvider.m; path = Helpers/LocationProvider.m; sourceTree = "<group>"; };
 		9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterProfileViewModel.h; path = Models/RecruiterProfileViewModel.h; sourceTree = "<group>"; };
 		9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterProfileViewModel.m; path = Models/RecruiterProfileViewModel.m; sourceTree = "<group>"; };
 		9B086B261C5FD9CE002E39D3 /* JobOfferTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobOfferTableViewCell.h; sourceTree = "<group>"; };
@@ -262,9 +271,9 @@
 		9B01BED81C6622AC00691C74 /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				9B01BED91C66237C00691C74 /* add-icon.png */,
+				9B01BF131C67865C00691C74 /* edit-icon.png */,
+				9B01BF111C6785C700691C74 /* add-icon.png */,
 				9B01BEDA1C66237C00691C74 /* delete-icon.png */,
-				9B01BEDB1C66237C00691C74 /* edit-icon.png */,
 				9B01BEDC1C66237C00691C74 /* job-icon.png */,
 				9B01BEDD1C66237C00691C74 /* job-seekers-icon.png */,
 				9B01BEDE1C66237C00691C74 /* logout-icon.png */,
@@ -284,6 +293,8 @@
 				9B086B2C1C6003EB002E39D3 /* JobOfferViewController.m */,
 				9B086B561C64D846002E39D3 /* RecruiterMatchesViewController.h */,
 				9B086B571C64D846002E39D3 /* RecruiterMatchesViewController.m */,
+				9B01BF151C6787DA00691C74 /* AddJobOfferViewController.h */,
+				9B01BF161C6787DA00691C74 /* AddJobOfferViewController.m */,
 			);
 			name = Recruiter;
 			sourceTree = "<group>";
@@ -318,6 +329,8 @@
 				9B93F0DC1C56EABB00E39663 /* KeychainUserPass.m */,
 				9B01BF041C66BAC800691C74 /* BackgroundTask.h */,
 				9B01BF051C66BAC800691C74 /* BackgroundTask.m */,
+				9B01BF1B1C67A63D00691C74 /* LocationProvider.h */,
+				9B01BF1C1C67A63D00691C74 /* LocationProvider.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -436,6 +449,8 @@
 				9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */,
 				9B01BF0E1C6749B400691C74 /* AddMessageViewModel.h */,
 				9B01BF0F1C6749B400691C74 /* AddMessageViewModel.m */,
+				9B01BF181C67943300691C74 /* AddJobOfferViewModel.h */,
+				9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -576,10 +591,10 @@
 				9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */,
 				9B01BEE81C66237C00691C74 /* matches-icon.png in Resources */,
 				9B086B421C626588002E39D3 /* JobSeekerMatchTableViewCell.xib in Resources */,
-				9B01BEE41C66237C00691C74 /* edit-icon.png in Resources */,
+				9B01BF141C67865C00691C74 /* edit-icon.png in Resources */,
 				9B01BEE51C66237C00691C74 /* job-icon.png in Resources */,
+				9B01BF121C6785C700691C74 /* add-icon.png in Resources */,
 				9B01BEEA1C66237C00691C74 /* o-message-icon.png in Resources */,
-				9B01BEE21C66237C00691C74 /* add-icon.png in Resources */,
 				9B93F1BF1C5E323B00E39663 /* SkillsTableViewCell.xib in Resources */,
 				9B086B5D1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib in Resources */,
 				9B01BEE31C66237C00691C74 /* delete-icon.png in Resources */,
@@ -611,9 +626,11 @@
 				9B93F16F1C5D15D600E39663 /* MessageViewModel.m in Sources */,
 				9B93F1AF1C5E0D8400E39663 /* CollapseClickArrow.m in Sources */,
 				9B086B4F1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.m in Sources */,
+				9B01BF171C6787DA00691C74 /* AddJobOfferViewController.m in Sources */,
 				9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */,
 				9B01BF101C6749B400691C74 /* AddMessageViewModel.m in Sources */,
 				9BFEBB161C55368900B83A52 /* LoginViewController.m in Sources */,
+				9B01BF1D1C67A63D00691C74 /* LocationProvider.m in Sources */,
 				9B93F1141C58081300E39663 /* RecruiterHomeViewController.m in Sources */,
 				9B93F1D51C5EC56300E39663 /* AddDislikeViewModel.m in Sources */,
 				9B93F0C81C5685A800E39663 /* AccountService.m in Sources */,
@@ -647,6 +664,7 @@
 				9B93F1181C58084700E39663 /* JobSeekerHomeViewController.m in Sources */,
 				9B086B581C64D846002E39D3 /* RecruiterMatchesViewController.m in Sources */,
 				9BFEBAF31C552BFC00B83A52 /* main.m in Sources */,
+				9B01BF1A1C67943300691C74 /* AddJobOfferViewModel.m in Sources */,
 				9B93F1631C5D152A00E39663 /* EducationViewModel.m in Sources */,
 				9B93F1661C5D155500E39663 /* ExperienceViewModel.m in Sources */,
 				9B01BEBD1C660F2900691C74 /* JobMatcherDatabase.m in Sources */,
