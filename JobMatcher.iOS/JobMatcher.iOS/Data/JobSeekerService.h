@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AddProjectViewModel.h"
 
 @interface JobSeekerService : NSObject
 -(void) getProfileWithTarget:(NSObject*) target;
 -(void) getRandomProfileWithTarget:(NSObject*) target;
 -(void) getJobSeekerMessagesWithRecruiterId: (NSInteger) recruiterId andTarget:(NSObject*) target;
+-(void) addProjectWithModel:(AddProjectViewModel*)model andTarget:(NSObject*) target;
+-(void) deleteProjectWithId: (NSInteger) id andTarget:(NSObject*) target;
 @end

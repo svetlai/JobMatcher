@@ -11,7 +11,7 @@
 #import "JobSeekerProfileViewModel.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface JobSeekerHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate>
+@interface JobSeekerHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *helloLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;

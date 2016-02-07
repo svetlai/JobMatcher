@@ -11,12 +11,15 @@
 #import "JobSeekerService.h"
 #import "GlobalConstants.h"
 #import "UserDataModel.h"
+#import "AddProjectViewModel.h"
 
 @implementation JobSeekerService
 
 NSString* const DetailsRoute = @"api/jobseekerprofile/details";
 NSString* const RandomRoute = @"api/jobseekerprofile/random";
 NSString* const MessagesWithRecruiterRoute = @"api/jobseekerprofile/GetMessagesWithRecruiter";
+NSString* const AddProjectRoute = @"api/project/add";
+NSString* const DeleteProjectRoute = @"api/project/delete";
 
 NSString* authorizationToken;
 
@@ -72,5 +75,41 @@ NSString* authorizationToken;
     
     [NSURLConnection connectionWithRequest:request delegate:target];
 }
+
+-(void) addProjectWithModel:(AddProjectViewModel*)model andTarget:(NSObject*) target {
+    
+    NSString* url = [NSString stringWithFormat:@"%@%@", BaseUrl, AddProjectRoute];
+    
+    NSDictionary* postDataAsDict = @{@"Title":model.title,
+                                     @"Description":model.projectDescription,
+                                     @"Url":model.url};
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
+    
+    NSData* postData = [NSJSONSerialization dataWithJSONObject:postDataAsDict options:0 error:nil];
+    
+    [request setHTTPBody:postData];
+    [NSURLConnection connectionWithRequest:request delegate:target];
+}
+
+-(void) deleteProjectWithId: (NSInteger) id andTarget:(NSObject*) target{
+    NSString* url = [NSString stringWithFormat:@"%@%@/%ld", BaseUrl, DeleteProjectRoute, id];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
+    
+    [NSURLConnection connectionWithRequest:request delegate:target];
+}
+
 
 @end

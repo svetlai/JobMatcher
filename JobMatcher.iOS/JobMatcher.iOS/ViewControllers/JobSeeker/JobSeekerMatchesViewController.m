@@ -69,8 +69,9 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
             cell.jobSeekerMatchTitleLabel.text = jobOfferViewModel.title;
             cell.jobSeekerMatchLocationLabel.text = jobOfferViewModel.location;
             cell.jobSeekerMatchSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", jobOfferViewModel.salary];
+            
             cell.jobSeekerMatchMessageButton.tag = indexPath.row;
-[cell.jobSeekerMatchMessageButton addTarget:self action:@selector(jobSeekerMatchMessageButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.jobSeekerMatchMessageButton addTarget:self action:@selector(jobSeekerMatchMessageButtonTap:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
     

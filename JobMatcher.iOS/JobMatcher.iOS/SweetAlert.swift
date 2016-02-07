@@ -21,7 +21,7 @@ public enum AlertStyle {
     case CustomImag(imageFile:String)
 }
 
-@objc class SweetAlert: UIViewController {
+@objc public class SweetAlert: UIViewController {
     let kBakcgroundTansperancy: CGFloat = 0.7
     let kHeightMargin: CGFloat = 10.0
     let KTopMargin: CGFloat = 20.0

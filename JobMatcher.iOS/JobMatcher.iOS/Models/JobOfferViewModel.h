@@ -19,6 +19,7 @@
 @property NSInteger workHours;
 @property NSInteger recruiterProfileId;
 @property (strong, nonatomic) NSArray* interestedJobSeekers;
+@property BOOL isDeleted;
 
 -(instancetype) initWithId:(NSInteger) jobOfferId
                   andTitle:(NSString*) title
@@ -28,7 +29,8 @@
                  andSalary:(double) salary
               andWorkHours:(NSInteger)workHours
      andRecruiterProfileId:(NSInteger)recruiterProfileId
-    andInteresteJobSeekers:(NSArray*) interestedJobSeekers;
+    andInteresteJobSeekers:(NSArray*) interestedJobSeekers
+              andIsDeleted:(BOOL) isDeleted;
 
 +(JobOfferViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;
 

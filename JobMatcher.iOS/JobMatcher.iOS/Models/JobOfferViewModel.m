@@ -18,7 +18,8 @@
                  andSalary:(double) salary
               andWorkHours:(NSInteger)workHours
      andRecruiterProfileId:(NSInteger)recruiterProfileId
-    andInteresteJobSeekers:(NSArray*) interestedJobSeekers{
+    andInteresteJobSeekers:(NSArray*) interestedJobSeekers
+              andIsDeleted:(BOOL) isDeleted{
     
     if (self = [super init]){
         self.jobOfferId = jobOfferId;
@@ -30,6 +31,7 @@
         self.workHours = workHours;
         self.recruiterProfileId = recruiterProfileId;
         self.interestedJobSeekers = interestedJobSeekers;
+        self.isDeleted = isDeleted;
     }
     
     return self;
@@ -45,7 +47,8 @@
             andSalary:[[jsonDictionary objectForKey:@"Salary"] doubleValue]
             andWorkHours:[[jsonDictionary objectForKey:@"WorkHours"] integerValue]
             andRecruiterProfileId:[[jsonDictionary objectForKey:@"RecruiterProfileId"] integerValue]
-            andInteresteJobSeekers:[JobSeekerProfileViewModel arrayOfJobOffersFromJsonDictionary:[jsonDictionary objectForKey:@"InteresteJobSeekers"]]];
+            andInteresteJobSeekers:[JobSeekerProfileViewModel arrayOfJobOffersFromJsonDictionary:[jsonDictionary objectForKey:@"InteresteJobSeekers"]]
+            andIsDeleted:[[jsonDictionary objectForKey:@"IsDeleted"] boolValue]];
 }
 
 +(NSArray*) arrayOfJobOffersFromJsonDictionary: (NSArray*) jsonArray{

@@ -54,33 +54,12 @@
     
     self.addJobOfferLatitude.text = [NSString stringWithFormat:@"%f", currentLatitude];
     self.addJobOfferLongitude.text = [NSString stringWithFormat:@"%f", currentLongitude];
-    
-//    NSString* locationMessage = [NSString stringWithFormat:@"Your position is (%lf, %lf)",
-//                                 location.coordinate.latitude,
-//                                 location.coordinate.longitude];
-//    
-//    [[[UIAlertView alloc] initWithTitle:@"Location updated with target-action"
-//                                message:locationMessage
-//                               delegate:nil
-//                      cancelButtonTitle:@"Ok"
-//                      otherButtonTitles:nil, nil]
-//     show];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;

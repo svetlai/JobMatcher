@@ -73,7 +73,7 @@ NSString* authorizationTokenJobOffer;
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
-    [request setHTTPMethod:@"GET"];
+    [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     

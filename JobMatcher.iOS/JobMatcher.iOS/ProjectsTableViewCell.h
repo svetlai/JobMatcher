@@ -12,5 +12,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *projectTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *projectDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *projectUrlLabel;
+@property (weak, nonatomic) IBOutlet UIButton *projectDeleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *projectEditButton;
+@property (weak, nonatomic) IBOutlet UIButton *projectAddButton;
+
 
 @end

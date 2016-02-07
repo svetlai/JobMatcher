@@ -114,15 +114,6 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
 
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     //    NSLog(@"%@", error);
     if (error){
@@ -160,7 +151,6 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     long code = [httpResponse statusCode];
     NSLog(@"%@", httpResponse);
     
-    // TODO browse another profile
     if ([connectionType isEqualToString:@"DeleteOffer"]){
         if (code == 200){
             message = @"Offer deleted successfully!";
@@ -170,6 +160,7 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     }
     
     if (code != 200) {
+
         message = @"Nope. Try again!";
         [HelperMethods addAlert:message];
     }
@@ -239,14 +230,22 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
         JobOfferTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:jobOffersTableCellIdentifier];
         
         if (recruiterProfileViewModel.jobOffers.count > 0) {
-            JobOfferViewModel *jobOfferViewModel = recruiterProfileViewModel.jobOffers[indexPath.row];
-            cell.jobOfferTitleLabel.text = jobOfferViewModel.title;
-            cell.jobOfferLocationLabel.text = jobOfferViewModel.location;
-            cell.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", jobOfferViewModel.salary];
             
-            [cell.jobOfferDeleteButton addTarget:self action:@selector(deleteJobOfferButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-             [cell.jobOfferAddButton addTarget:self action:@selector(addJobOfferButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-            return cell;
+            JobOfferViewModel *jobOfferViewModel = recruiterProfileViewModel.jobOffers[indexPath.row];
+            
+            //if (!jobOfferViewModel.isDeleted){
+                cell.jobOfferTitleLabel.text = jobOfferViewModel.title;
+                cell.jobOfferLocationLabel.text = jobOfferViewModel.location;
+                cell.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", jobOfferViewModel.salary];
+                
+                
+                cell.jobOfferDeleteButton.tag = indexPath.row;
+                [cell.jobOfferDeleteButton addTarget:self action:@selector(deleteJobOfferButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+                
+                
+                [cell.jobOfferAddButton addTarget:self action:@selector(addJobOfferButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+                return cell;
+            //}
         }
     }
     
@@ -288,7 +287,6 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
             break;
         }
     }
-    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

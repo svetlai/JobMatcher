@@ -98,10 +98,16 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
                                                          options:kNilOptions
                                                            error:nil];
     NSLog(@"%@", json);
-    
-    if ([connectionType isEqualToString:@"GetOffer"]){
+    if ([connectionType isEqualToString:@"AddLike"] || [connectionType isEqualToString:@"AddDislike"]){
+        [jobOfferService getRandomOfferWithTarget:self];
+         connectionType = @"GetOffer";
+        
+    } else if ([connectionType isEqualToString:@"GetOffer"]){
         self.jobOfferViewModel = [JobOfferViewModel fromJsonDictionary:json];
         [self loadData];
+        [self viewDidLoad];
+        
+   
         connectionType = @"";
     }
     
@@ -120,18 +126,19 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
         if (code == 200){
             message = @"Liked!";
             [HelperMethods addAlert:message];
-            [jobOfferService getRandomOfferWithTarget:self];
+//            connectionType = @"GetOffer";
+//            [jobOfferService getRandomOfferWithTarget:self];
         }
-        
-        connectionType = @"GetOffer";
+
     } else if ([connectionType isEqualToString:@"AddDislike"]){
         if (code == 200){
             message = @"Disliked!";
             [HelperMethods addAlert:message];
-            [jobOfferService getRandomOfferWithTarget:self];
+            
+//            connectionType = @"GetOffer";
+//            [jobOfferService getRandomOfferWithTarget:self];
         }
-        
-        connectionType = @"GetOffer";
+
     }
     
     
@@ -154,7 +161,8 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
     self.jobOfferLocationLabel.text = self.jobOfferViewModel.location;
     self.jobOfferWorkHoursLabel.text = [WorkHours objectAtIndex: self.jobOfferViewModel.workHours];
     self.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", self.jobOfferViewModel.salary];
-    self.jobOfferDescriptionLabel = self.jobOfferViewModel.jobOfferDescription; //[self resizeLabel:self.jobOfferDescriptionLabel andText:self.jobOfferViewModel.jobOfferDescription];
+    self.jobOfferDescriptionLabel.text = self.jobOfferViewModel.jobOfferDescription;
+//[self resizeLabel:self.jobOfferDescriptionLabel andText:self.jobOfferViewModel.jobOfferDescription];
 }
 
 //-(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text{

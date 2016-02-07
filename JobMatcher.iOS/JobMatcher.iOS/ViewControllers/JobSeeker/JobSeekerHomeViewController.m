@@ -48,6 +48,7 @@
     UserDataModel* userData;
     UIImagePickerController *jobSeekerImagePicker;
     JobMatcherDatabase* db;
+    NSInteger deleteProjectSender;
 }
 
 @end
@@ -67,10 +68,13 @@ NSString* const SegueFromJobSeekerToRecruiter = @"segueFromJobSeekerToRecruiter"
 NSString* const SegueFromJobSeekerToJobOffer = @"segueFromJobSeekerToJobOffer";
 NSString* const SegueFromJobSeekerToMatches = @"segueFromJobSeekerToMatches";
 NSString* const SegueFromJobSeekerHomeToLogin = @"segueFromJobSeekerHomeToLogin";
+NSString* const SegueFromJobSeekerToAddProject = @"segueFromJobSeekerToAddProject";
+
 static NSString* projectsTableCellIdentifier = @"ProjectsTableViewCell";
 static NSString* skillsTableCellIdentifier = @"SkillsTableViewCell";
 static NSString* experienceTableCellIdentifier = @"ExperienceTableViewCell";
 static NSString* educationTableCellIdentifier = @"EducationTableViewCell";
+
 static JobSeekerService* service;
 static MatchService* matchService;
 static AccountService* accountService;
@@ -353,8 +357,15 @@ static InternetConnectionChecker *internetCheker;
                                                          options:kNilOptions
                                                            error:&error];
     NSLog(@"%@", json);
-    if(error)
+    if(error){
         NSLog(@"%@",error.description);
+    }
+
+    
+    if ([connectionType isEqualToString:@"DeleteProject"]){
+        connectionType = @"";
+        return;
+    }
     
     if ([connectionType isEqualToString:@"GetProfile"]){
         jobSeekerViewModel = [JobSeekerProfileViewModel fromJsonDictionary:json];
@@ -392,6 +403,12 @@ static InternetConnectionChecker *internetCheker;
         }
         
             connectionType = @"GetProfile";
+    }  else if ([connectionType isEqualToString:@"DeleteProject"]){
+        if (code == 200){
+            message = @"Project deleted successfully!";
+            [service getProfileWithTarget:self];
+            [HelperMethods addAlert:message];
+        }
     }
     
     
@@ -449,7 +466,11 @@ static InternetConnectionChecker *internetCheker;
              cell.projectTitleLabel.text = projectViewModel.title;
              cell.projectDescriptionLabel.text = projectViewModel.projectDescription;
              cell.projectUrlLabel.text = projectViewModel.url;
-        
+             
+             cell.projectDeleteButton.tag = indexPath.row;
+             [cell.projectDeleteButton addTarget:self action:@selector(deleteProjectButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+               [cell.projectAddButton addTarget:self action:@selector(addProjectButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+             
              return cell;
          }
     } else if (tableView == skillsTableView){
@@ -786,5 +807,25 @@ static InternetConnectionChecker *internetCheker;
 - (IBAction)jobSeekerLogoutButtonTap:(id)sender {
     [accountService logout];
     [self performSegueWithIdentifier:SegueFromJobSeekerHomeToLogin sender:self];
+}
+
+-(void)deleteProjectButtonTap:(UIButton*)sender
+{
+    for (int i = 0; i < jobSeekerViewModel.projects.count; i++) {
+        if (sender.tag == i)
+        {
+            deleteProjectSender = i;
+            ProjectViewModel* currentProject =[jobSeekerViewModel.projects objectAtIndex:i];
+            NSInteger currentId = currentProject.projectId;
+            [service deleteProjectWithId:currentId andTarget:self];
+            connectionType = @"DeleteProject";
+            NSLog(@"clicked");
+            break;
+        }
+    }
+}
+-(void)addProjectButtonTap:(UIButton*)sender
+{
+[self performSegueWithIdentifier:SegueFromJobSeekerToAddProject sender:self];
 }
 @end

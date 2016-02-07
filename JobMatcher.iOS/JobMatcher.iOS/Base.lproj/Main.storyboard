@@ -650,6 +650,76 @@
             </objects>
             <point key="canvasLocation" x="4286" y="2580"/>
         </scene>
+        <!--Add Project View Controller-->
+        <scene sceneID="6AC-4m-OVv">
+            <objects>
+                <viewController id="poK-Xr-bZA" customClass="AddProjectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mVV-gR-NwV"/>
+                        <viewControllerLayoutGuide type="bottom" id="chp-wa-990"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ipS-kP-vkb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssL-zj-8wI">
+                                <rect key="frame" x="20" y="66" width="560" height="30"/>
+                                <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ub4-xq-l66">
+                                <rect key="frame" x="20" y="337" width="560" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" link="YES"/>
+                                </accessibility>
+                                <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16F-t5-gn4">
+                                <rect key="frame" x="20" y="397" width="560" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addProjectButtonTap:" destination="poK-Xr-bZA" eventType="touchUpInside" id="xkf-vV-sUT"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2ni-lw-HfP">
+                                <rect key="frame" x="20" y="112" width="560" height="204"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="2ni-lw-HfP" firstAttribute="top" secondItem="ssL-zj-8wI" secondAttribute="bottom" constant="16" id="4zE-Er-YDb"/>
+                            <constraint firstItem="2ni-lw-HfP" firstAttribute="trailing" secondItem="ipS-kP-vkb" secondAttribute="trailingMargin" id="7x9-sR-9R5"/>
+                            <constraint firstItem="ssL-zj-8wI" firstAttribute="leading" secondItem="2ni-lw-HfP" secondAttribute="leading" id="GG9-Qh-M9S"/>
+                            <constraint firstItem="ub4-xq-l66" firstAttribute="leading" secondItem="16F-t5-gn4" secondAttribute="leading" id="GmA-2H-Da4"/>
+                            <constraint firstItem="ssL-zj-8wI" firstAttribute="top" secondItem="mVV-gR-NwV" secondAttribute="bottom" constant="46" id="IWq-HD-C3E"/>
+                            <constraint firstItem="2ni-lw-HfP" firstAttribute="trailing" secondItem="ssL-zj-8wI" secondAttribute="trailing" id="LJU-QS-BF6"/>
+                            <constraint firstItem="chp-wa-990" firstAttribute="top" secondItem="16F-t5-gn4" secondAttribute="bottom" constant="173" id="NYo-pA-uDB"/>
+                            <constraint firstItem="ub4-xq-l66" firstAttribute="leading" secondItem="ipS-kP-vkb" secondAttribute="leadingMargin" id="PGs-dv-4nM"/>
+                            <constraint firstItem="ub4-xq-l66" firstAttribute="top" secondItem="2ni-lw-HfP" secondAttribute="bottom" constant="21" id="QJR-QO-kQo"/>
+                            <constraint firstItem="2ni-lw-HfP" firstAttribute="leading" secondItem="ub4-xq-l66" secondAttribute="leading" id="RJv-Cw-ZGA"/>
+                            <constraint firstItem="16F-t5-gn4" firstAttribute="top" secondItem="ub4-xq-l66" secondAttribute="bottom" constant="30" id="UQL-6a-un2"/>
+                            <constraint firstItem="2ni-lw-HfP" firstAttribute="trailing" secondItem="ub4-xq-l66" secondAttribute="trailing" id="faE-Fd-eyA"/>
+                            <constraint firstItem="16F-t5-gn4" firstAttribute="trailing" secondItem="ub4-xq-l66" secondAttribute="trailing" id="uFF-la-har"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addProjectDescriptionTextView" destination="2ni-lw-HfP" id="deM-00-kXD"/>
+                        <outlet property="addProjectTitleTextView" destination="ssL-zj-8wI" id="l7f-OT-876"/>
+                        <outlet property="addProjectUrlTextField" destination="ub4-xq-l66" id="vi1-d9-b97"/>
+                        <segue destination="lwp-AL-lXI" kind="show" identifier="segueFromAddProjectToJobSeeker" id="fPh-kc-Ehw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktf-ih-o6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1773" y="2396"/>
+        </scene>
         <!--Recruiter Home View Controller-->
         <scene sceneID="IIG-XH-0wS">
             <objects>
@@ -878,6 +948,7 @@
                         <segue destination="IGg-Gl-XOt" kind="show" identifier="segueFromJobSeekerToJobOffer" id="F1C-C4-w35"/>
                         <segue destination="EFM-Yb-DFV" kind="show" identifier="segueFromJobSeekerToMatches" id="8MO-Yy-xDs"/>
                         <segue destination="cSD-9E-WvO" kind="show" identifier="segueFromJobSeekerHomeToLogin" id="Nyt-Ff-cIl"/>
+                        <segue destination="poK-Xr-bZA" kind="show" identifier="segueFromJobSeekerToAddProject" id="XE1-eH-jYw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7NZ-ZZ-ldE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1289,10 +1360,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iuq-Um-KDv"/>
-        <segue reference="m4V-cK-Xsq"/>
-        <segue reference="U8i-yP-YwS"/>
-        <segue reference="S7l-dB-G9D"/>
+        <segue reference="Nyt-Ff-cIl"/>
+        <segue reference="fPh-kc-Ehw"/>
+        <segue reference="awB-kY-DB0"/>
+        <segue reference="F1C-C4-w35"/>
         <segue reference="scb-wm-NOw"/>
         <segue reference="XZu-Un-Iar"/>
     </inferredMetricsTieBreakers>

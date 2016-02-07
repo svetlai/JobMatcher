@@ -30,6 +30,8 @@
 		9B01BF171C6787DA00691C74 /* AddJobOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF161C6787DA00691C74 /* AddJobOfferViewController.m */; };
 		9B01BF1A1C67943300691C74 /* AddJobOfferViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */; };
 		9B01BF1D1C67A63D00691C74 /* LocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF1C1C67A63D00691C74 /* LocationProvider.m */; };
+		9B01BF201C67F13300691C74 /* AddProjectViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF1F1C67F13300691C74 /* AddProjectViewModel.m */; };
+		9B01BF231C67F37A00691C74 /* AddProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF221C67F37A00691C74 /* AddProjectViewController.m */; };
 		9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */; };
 		9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */; };
 		9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */; };
@@ -129,6 +131,10 @@
 		9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddJobOfferViewModel.m; path = Models/AddJobOfferViewModel.m; sourceTree = "<group>"; };
 		9B01BF1B1C67A63D00691C74 /* LocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationProvider.h; path = Helpers/LocationProvider.h; sourceTree = "<group>"; };
 		9B01BF1C1C67A63D00691C74 /* LocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationProvider.m; path = Helpers/LocationProvider.m; sourceTree = "<group>"; };
+		9B01BF1E1C67F13300691C74 /* AddProjectViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProjectViewModel.h; path = Models/AddProjectViewModel.h; sourceTree = "<group>"; };
+		9B01BF1F1C67F13300691C74 /* AddProjectViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProjectViewModel.m; path = Models/AddProjectViewModel.m; sourceTree = "<group>"; };
+		9B01BF211C67F37A00691C74 /* AddProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProjectViewController.h; path = ViewControllers/JobSeeker/AddProjectViewController.h; sourceTree = "<group>"; };
+		9B01BF221C67F37A00691C74 /* AddProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProjectViewController.m; path = ViewControllers/JobSeeker/AddProjectViewController.m; sourceTree = "<group>"; };
 		9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterProfileViewModel.h; path = Models/RecruiterProfileViewModel.h; sourceTree = "<group>"; };
 		9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterProfileViewModel.m; path = Models/RecruiterProfileViewModel.m; sourceTree = "<group>"; };
 		9B086B261C5FD9CE002E39D3 /* JobOfferTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobOfferTableViewCell.h; sourceTree = "<group>"; };
@@ -306,6 +312,8 @@
 				9B93F1171C58084700E39663 /* JobSeekerHomeViewController.m */,
 				9B086B311C612E7D002E39D3 /* JobSeekerMatchesViewController.h */,
 				9B086B321C612E7D002E39D3 /* JobSeekerMatchesViewController.m */,
+				9B01BF211C67F37A00691C74 /* AddProjectViewController.h */,
+				9B01BF221C67F37A00691C74 /* AddProjectViewController.m */,
 			);
 			name = JobSeeker;
 			sourceTree = "<group>";
@@ -451,6 +459,8 @@
 				9B01BF0F1C6749B400691C74 /* AddMessageViewModel.m */,
 				9B01BF181C67943300691C74 /* AddJobOfferViewModel.h */,
 				9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */,
+				9B01BF1E1C67F13300691C74 /* AddProjectViewModel.h */,
+				9B01BF1F1C67F13300691C74 /* AddProjectViewModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -657,6 +667,7 @@
 				9B93F1CC1C5E897800E39663 /* RecruiterService.m in Sources */,
 				9B93F1AE1C5E0D8400E39663 /* CollapseClick.m in Sources */,
 				9B01BF0D1C6748F500691C74 /* MessageService.m in Sources */,
+				9B01BF231C67F37A00691C74 /* AddProjectViewController.m in Sources */,
 				9BFEBAF61C552BFC00B83A52 /* AppDelegate.m in Sources */,
 				9B93F1601C5D13FB00E39663 /* ProjectViewModel.m in Sources */,
 				9B086B2D1C6003EB002E39D3 /* JobOfferViewController.m in Sources */,
@@ -671,6 +682,7 @@
 				9BFEBB1F1C554B9D00B83A52 /* RegisterViewController.m in Sources */,
 				9B01BEFD1C6675C000691C74 /* FMDatabasePool.m in Sources */,
 				9B93F1C31C5E3F1100E39663 /* ExperienceTableViewCell.m in Sources */,
+				9B01BF201C67F13300691C74 /* AddProjectViewModel.m in Sources */,
 				9B93F0CB1C56862700E39663 /* UserDataModel.m in Sources */,
 				9B93F1CF1C5EA38700E39663 /* MatchService.m in Sources */,
 			);

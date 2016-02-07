@@ -5,7 +5,7 @@
 //  Created by s i on 2/7/16.
 //  Copyright © 2016 svetlai. All rights reserved.
 //
-
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #import "MessageService.h"
 #import "UserDataModel.h"
 #import "AddMessageViewModel.h"
@@ -28,8 +28,6 @@ NSString* authorizationTokenMessage;
 -(void) addMessageWithModel:(AddMessageViewModel*)model andTarget:(NSObject*) target {
     
     NSString* url = [NSString stringWithFormat:@"%@%@", BaseUrl, MessageAddRoute];
-    NSString* recruiterProfileId = @"0";
-    NSString* jobSeekerProfileId = @"0";
     NSString* senderId = @"0";
     
     NSDictionary* postDataAsDict = @{@"RecruiterProfileId":[NSString stringWithFormat:@"%ld", model.recruiterProfileId],

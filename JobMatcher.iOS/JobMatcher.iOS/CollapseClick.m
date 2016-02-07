@@ -179,7 +179,7 @@
             // Change Arrow orientation
             CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI/2);
             cell.TitleArrow.transform = transform;
-            [cell.AddNewButton setTitle:@"+" forState:UIControlStateNormal];
+            [cell.AddNewButton setTitle:@"-" forState:UIControlStateNormal];
             // Change isClickedArray
             [self.isClickedArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:YES]];
             
@@ -219,7 +219,7 @@
             CGAffineTransform transform = CGAffineTransformMakeRotation(0);
             cell.TitleArrow.transform = transform;
 
-            [cell.AddNewButton setTitle:@"-" forState:UIControlStateNormal];
+            [cell.AddNewButton setTitle:@"+" forState:UIControlStateNormal];
 
             // Change isClickedArray
             [self.isClickedArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:NO]];
