@@ -11,12 +11,13 @@
 #import "JobSeekerProfileViewModel.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface JobSeekerHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate>
+@interface JobSeekerHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *helloLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (strong, nonatomic) JobSeekerProfileViewModel* jobSeekerProfileViewModel;
 - (IBAction)jobSeekerSwipe:(UISwipeGestureRecognizer *)sender;
+
 @property (weak, nonatomic) IBOutlet CollapseClick *collapseClickScrollView;
 - (IBAction)browseJobOffersButtonTap:(id)sender;
 - (IBAction)matchesButtonTap:(id)sender;

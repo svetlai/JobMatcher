@@ -84,8 +84,14 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     accountRecruiterService = [[AccountService alloc] init];
     
     [self attachLongPressGesture];
+    self.recruiterCollapseClickScrollView.minimumZoomScale=0.5;
+    self.recruiterCollapseClickScrollView.maximumZoomScale=1.5;
+    //self.collapseClickScrollView.contentSize=CGSizeMake(1280, 960);
+    [self.recruiterCollapseClickScrollView setClipsToBounds:YES];
+    self.recruiterCollapseClickScrollView.delegate=self;
     self.recruiterCollapseClickScrollView.CollapseClickDelegate = self;
     [self.recruiterCollapseClickScrollView reloadCollapseClick];
+
     // Do any additional setup after loading the view.
 }
 
@@ -268,6 +274,10 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
 - (IBAction)recruiterLogoutButtonTap:(id)sender {
     [accountRecruiterService logout];
     [self performSegueWithIdentifier:SegueFromRecruiterHomeToLogin sender:self];
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    return self.recruiterProfileImage;
 }
 
 // gestures

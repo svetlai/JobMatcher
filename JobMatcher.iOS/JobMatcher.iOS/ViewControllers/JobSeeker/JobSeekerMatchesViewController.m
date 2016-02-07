@@ -103,7 +103,6 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
             NSLog(@"clicked");
         }
     }
-    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -120,9 +119,9 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
             {
                 JobOfferViewModel* model =[self.jobOfferMatches objectAtIndex:i];
                 toChatViewController.recruiterId = model.recruiterProfileId;
+                toChatViewController.messageSubject = [NSString stringWithFormat:@"%ld. %@", model.jobOfferId, model.title];
             }
-        }
-        
+        }        
     }
 }
 //------

@@ -34,6 +34,8 @@
 #import "AccountService.h"
 #import "InternetConnectionChecker.h"
 #import "JobMatcherDatabase.h"
+#import "JobMatcher_iOS-Swift.h"
+
 
 @interface JobSeekerHomeViewController (){
     NSString* message;
@@ -92,6 +94,10 @@ static InternetConnectionChecker *internetCheker;
         return;
     }
     
+//    SweetAlert* sweetAlert = [[SweetAlert alloc] init];
+//    [sweetAlert showAlert:@"test"];
+//    
+    [HelperMethods addAlert:NotConnectedMessage];
     service = [[JobSeekerService alloc] init];
     matchService = [[MatchService alloc] init];
     accountService = [[AccountService alloc] init];
@@ -118,18 +124,15 @@ static InternetConnectionChecker *internetCheker;
     [HelperMethods setSackBarButtonText:self andText:@""];
     
     connectionType = @"GetProfile";
+    self.collapseClickScrollView.minimumZoomScale=0.5;
+    self.collapseClickScrollView.maximumZoomScale=1.5;
+    //self.collapseClickScrollView.contentSize=CGSizeMake(1280, 960);
+    [self.collapseClickScrollView setClipsToBounds:YES];
+    self.collapseClickScrollView.delegate=self;
     
     self.collapseClickScrollView.CollapseClickDelegate = self;
     [self.collapseClickScrollView reloadCollapseClick];
-    
-    [UIView animateWithDuration:2.0 delay:0
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^ {
-                         self.collapseClickScrollView.center = finalPosition;
-                     }
-                     completion:NULL];
 
-    
     [self handleButtons];
     if (userData.profileType == JobSeeker){
         [service getProfileWithTarget:self];
@@ -580,6 +583,9 @@ static InternetConnectionChecker *internetCheker;
     }
     
     NSLog(@"%@", message);
+}
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    return self.profileImage;
 }
 
 -(void) addLike{

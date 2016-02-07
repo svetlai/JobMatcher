@@ -23,6 +23,10 @@
 		9B01BEFA1C66745800691C74 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BEF81C66745800691C74 /* FMResultSet.m */; };
 		9B01BEFD1C6675C000691C74 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BEFC1C6675C000691C74 /* FMDatabasePool.m */; };
 		9B01BEFF1C669A0900691C74 /* JobMatcherDb.db in Resources */ = {isa = PBXBuildFile; fileRef = 9B01BEFE1C669A0900691C74 /* JobMatcherDb.db */; };
+		9B01BF061C66BAC800691C74 /* BackgroundTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF051C66BAC800691C74 /* BackgroundTask.m */; };
+		9B01BF081C66C59800691C74 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF071C66C59800691C74 /* SweetAlert.swift */; };
+		9B01BF0D1C6748F500691C74 /* MessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF0C1C6748F500691C74 /* MessageService.m */; };
+		9B01BF101C6749B400691C74 /* AddMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF0F1C6749B400691C74 /* AddMessageViewModel.m */; };
 		9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */; };
 		9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */; };
 		9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */; };
@@ -108,6 +112,14 @@
 		9B01BEFB1C6675C000691C74 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
 		9B01BEFC1C6675C000691C74 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		9B01BEFE1C669A0900691C74 /* JobMatcherDb.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = JobMatcherDb.db; sourceTree = "<group>"; };
+		9B01BF031C66B2E300691C74 /* JobMatcher.iOS-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JobMatcher.iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		9B01BF041C66BAC800691C74 /* BackgroundTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundTask.h; path = Helpers/BackgroundTask.h; sourceTree = "<group>"; };
+		9B01BF051C66BAC800691C74 /* BackgroundTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundTask.m; path = Helpers/BackgroundTask.m; sourceTree = "<group>"; };
+		9B01BF071C66C59800691C74 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
+		9B01BF0B1C6748F500691C74 /* MessageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageService.h; path = Data/MessageService.h; sourceTree = "<group>"; };
+		9B01BF0C1C6748F500691C74 /* MessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageService.m; path = Data/MessageService.m; sourceTree = "<group>"; };
+		9B01BF0E1C6749B400691C74 /* AddMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMessageViewModel.h; path = Models/AddMessageViewModel.h; sourceTree = "<group>"; };
+		9B01BF0F1C6749B400691C74 /* AddMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMessageViewModel.m; path = Models/AddMessageViewModel.m; sourceTree = "<group>"; };
 		9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterProfileViewModel.h; path = Models/RecruiterProfileViewModel.h; sourceTree = "<group>"; };
 		9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterProfileViewModel.m; path = Models/RecruiterProfileViewModel.m; sourceTree = "<group>"; };
 		9B086B261C5FD9CE002E39D3 /* JobOfferTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobOfferTableViewCell.h; sourceTree = "<group>"; };
@@ -290,6 +302,8 @@
 		9B93F1531C5CE97500E39663 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9B01BF071C66C59800691C74 /* SweetAlert.swift */,
+				9B01BF031C66B2E300691C74 /* JobMatcher.iOS-Bridging-Header.h */,
 				9BFEBB261C555B5400B83A52 /* Reachability.h */,
 				9BFEBB271C555B5400B83A52 /* Reachability.m */,
 				9BFEBB171C553A2F00B83A52 /* GlobalConstants.h */,
@@ -302,6 +316,8 @@
 				9B93F0D01C56B66C00E39663 /* HelperMethods.m */,
 				9B93F0DB1C56EABB00E39663 /* KeychainUserPass.h */,
 				9B93F0DC1C56EABB00E39663 /* KeychainUserPass.m */,
+				9B01BF041C66BAC800691C74 /* BackgroundTask.h */,
+				9B01BF051C66BAC800691C74 /* BackgroundTask.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -387,6 +403,8 @@
 				9B086B2F1C60294D002E39D3 /* JobOfferService.m */,
 				9B01BEBB1C660F2900691C74 /* JobMatcherDatabase.h */,
 				9B01BEBC1C660F2900691C74 /* JobMatcherDatabase.m */,
+				9B01BF0B1C6748F500691C74 /* MessageService.h */,
+				9B01BF0C1C6748F500691C74 /* MessageService.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -416,6 +434,8 @@
 				9B93F1D41C5EC56300E39663 /* AddDislikeViewModel.m */,
 				9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */,
 				9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */,
+				9B01BF0E1C6749B400691C74 /* AddMessageViewModel.h */,
+				9B01BF0F1C6749B400691C74 /* AddMessageViewModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -513,6 +533,11 @@
 				TargetAttributes = {
 					9BFEBAED1C552BFB00B83A52 = {
 						CreatedOnToolsVersion = 7.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -587,11 +612,13 @@
 				9B93F1AF1C5E0D8400E39663 /* CollapseClickArrow.m in Sources */,
 				9B086B4F1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.m in Sources */,
 				9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */,
+				9B01BF101C6749B400691C74 /* AddMessageViewModel.m in Sources */,
 				9BFEBB161C55368900B83A52 /* LoginViewController.m in Sources */,
 				9B93F1141C58081300E39663 /* RecruiterHomeViewController.m in Sources */,
 				9B93F1D51C5EC56300E39663 /* AddDislikeViewModel.m in Sources */,
 				9B93F0C81C5685A800E39663 /* AccountService.m in Sources */,
 				9BFEBB281C555B5400B83A52 /* Reachability.m in Sources */,
+				9B01BF081C66C59800691C74 /* SweetAlert.swift in Sources */,
 				9B086B411C626588002E39D3 /* JobSeekerMatchTableViewCell.m in Sources */,
 				9B086B451C627049002E39D3 /* ChatViewController.m in Sources */,
 				9B93F15A1C5CF99400E39663 /* JobSeekerService.m in Sources */,
@@ -601,6 +628,7 @@
 				9BFEBB221C555A5600B83A52 /* InternetConnectionChecker.m in Sources */,
 				9B086B541C62BE8F002E39D3 /* RecruiterMessageTableViewCell.m in Sources */,
 				9B93F0D41C56DE1200E39663 /* HomeViewController.m in Sources */,
+				9B01BF061C66BAC800691C74 /* BackgroundTask.m in Sources */,
 				9B93F0CE1C56A1B500E39663 /* Validator.m in Sources */,
 				9B086B331C612E7D002E39D3 /* JobSeekerMatchesViewController.m in Sources */,
 				9B93F1D21C5EABF400E39663 /* AddLikeViewModel.m in Sources */,
@@ -611,6 +639,7 @@
 				9BFEBAF91C552BFC00B83A52 /* ViewController.m in Sources */,
 				9B93F1CC1C5E897800E39663 /* RecruiterService.m in Sources */,
 				9B93F1AE1C5E0D8400E39663 /* CollapseClick.m in Sources */,
+				9B01BF0D1C6748F500691C74 /* MessageService.m in Sources */,
 				9BFEBAF61C552BFC00B83A52 /* AppDelegate.m in Sources */,
 				9B93F1601C5D13FB00E39663 /* ProjectViewModel.m in Sources */,
 				9B086B2D1C6003EB002E39D3 /* JobOfferViewController.m in Sources */,
@@ -738,6 +767,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = JobMatcher.iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "svetlai.JobMatcher-iOS";
@@ -752,6 +783,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = JobMatcher.iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "svetlai.JobMatcher-iOS";

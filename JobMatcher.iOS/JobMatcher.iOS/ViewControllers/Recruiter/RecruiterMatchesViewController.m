@@ -117,6 +117,7 @@ NSString* const SegueFromRecruiterMatchesToJobSeekerProfile = @"segueFromRecruit
             {
                 JobSeekerProfileViewModel* model =[self.recruiterMatches objectAtIndex:i];
                 toChatViewController.jobSeekerId = model.profileId;
+                //toChatViewController.messageSubject = [NSString stringWithFormat:@"%@", model.username];
             }
         }
     }

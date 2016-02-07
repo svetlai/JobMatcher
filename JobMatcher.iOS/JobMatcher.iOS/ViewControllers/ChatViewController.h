@@ -12,4 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *messagesTableView;
 @property NSInteger jobSeekerId;
 @property NSInteger recruiterId;
+- (IBAction)addMessageButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *addMessageTextView;
+@property (strong, nonatomic) NSString* messageSubject;
 @end

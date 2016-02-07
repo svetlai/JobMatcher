@@ -154,25 +154,25 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
     self.jobOfferLocationLabel.text = self.jobOfferViewModel.location;
     self.jobOfferWorkHoursLabel.text = [WorkHours objectAtIndex: self.jobOfferViewModel.workHours];
     self.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", self.jobOfferViewModel.salary];
-    self.jobOfferDescriptionLabel = [self resizeLabel:self.jobOfferDescriptionLabel andText:self.jobOfferViewModel.jobOfferDescription];
+    self.jobOfferDescriptionLabel = self.jobOfferViewModel.jobOfferDescription; //[self resizeLabel:self.jobOfferDescriptionLabel andText:self.jobOfferViewModel.jobOfferDescription];
 }
 
--(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text{
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-//    CGFloat screenHeight = screenRect.size.height;
-    
-    [label setText: @""];
-    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y, screenWidth / 2, label.frame.size.height)];
-    [newLabel setTextColor: label.textColor];
-    [newLabel setBackgroundColor: [UIColor clearColor]];
-    [newLabel setFont: label.font];
-    [newLabel setText: text];
-    [newLabel setNumberOfLines:0];
-    [newLabel sizeToFit];
-    [self.view addSubview:newLabel];
-    return newLabel;
-}
+//-(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text{
+//    CGRect screenRect = [[UIScreen mainScreen] bounds];
+//    CGFloat screenWidth = screenRect.size.width;
+////    CGFloat screenHeight = screenRect.size.height;
+//    
+//    [label setText: @""];
+//    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y, screenWidth / 2, label.frame.size.height)];
+//    [newLabel setTextColor: label.textColor];
+//    [newLabel setBackgroundColor: [UIColor clearColor]];
+//    [newLabel setFont: label.font];
+//    [newLabel setText: text];
+//    [newLabel setNumberOfLines:0];
+//    [newLabel sizeToFit];
+//    [self.view addSubview:newLabel];
+//    return newLabel;
+//}
 
 - (IBAction)jobOfferSwipe:(UISwipeGestureRecognizer *)sender {
     switch (sender.direction) {

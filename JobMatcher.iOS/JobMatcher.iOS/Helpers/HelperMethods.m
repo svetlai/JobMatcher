@@ -8,12 +8,16 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #import "HelperMethods.h"
+#import "JobMatcher_iOS-Swift.h"
 
 @implementation HelperMethods
 
 +(void) addAlert: (NSString*) message{
-            [[[UIAlertView alloc] initWithTitle:nil message: message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]
-             show];
+    SweetAlert* sweetAlert = [[SweetAlert alloc] init];
+    [sweetAlert showAlert:message];
+    
+//            [[[UIAlertView alloc] initWithTitle:nil message: message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]
+//             show];
 }
 
 +(void) setPageTitle: (UIViewController*) page andTitle: (NSString*) title{
@@ -65,9 +69,7 @@
     [newLabel setNumberOfLines:0];
     [newLabel sizeToFit];
     [newLabel setTextAlignment:label.textAlignment];
-    
-    
-    
+
     [view addSubview:newLabel];
     return newLabel;
 }

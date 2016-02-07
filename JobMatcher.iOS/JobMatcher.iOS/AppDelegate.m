@@ -11,6 +11,7 @@
 #import "JobSeekerHomeViewController.h"
 #import "RecruiterHomeViewController.h"
 #import "UserDataModel.h"
+#import "BackgroundTask.h"
 
 @interface AppDelegate ()
 
@@ -26,9 +27,21 @@
     }
     
     [self createCopyOfDatabaseIfNeeded];
-
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 * 60 * 10
+                                     target:self
+                                   selector:@selector(runBackgroundTask:)
+                                   userInfo:nil
+                                    repeats:YES];
+    
     // Override point for customization after application launch.
     return YES;
+}
+
+-(void)runBackgroundTask:(NSTimer *)timer{
+    NSLog(@"starteeeed");
+    BackgroundTask* task = [[BackgroundTask alloc] init];
+    [task run];
 }
 
 - (void)createCopyOfDatabaseIfNeeded {
