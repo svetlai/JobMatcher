@@ -43,8 +43,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You're in the middle of a job search? Build your profile and like some offers! Get noticed by the offer's author and connect!" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiQ-wC-3Ka">
-                                <rect key="frame" x="20" y="223" width="194" height="160"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You're in the middle of a job search? Build your profile and like some offers! Get noticed by the offer's author and connect!" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiQ-wC-3Ka">
+                                <rect key="frame" x="20" y="223" width="194" height="168"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.39215686274509803" green="0.6588235294117647" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -140,8 +140,8 @@
                                     <action selector="toRegisterButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbh-Ih-YGC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You're looking for the perfect candidate for your open position? Post some offers, like some profiles and get in touch!" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okE-AG-qCi">
-                                <rect key="frame" x="396" y="228" width="184" height="155"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You're looking for the perfect candidate for your open position? Post some offers, like some profiles and get in touch!" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okE-AG-qCi">
+                                <rect key="frame" x="396" y="228" width="184" height="132"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.39215686274509803" green="0.6588235294117647" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -166,10 +166,10 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BCN-9p-HZt" secondAttribute="bottom" constant="159" id="FfY-cQ-Kda">
                                 <variation key="widthClass=compact" constant="103"/>
                             </constraint>
-                            <constraint firstItem="ZiQ-wC-3Ka" firstAttribute="baseline" secondItem="okE-AG-qCi" secondAttribute="baseline" constant="1" id="J6A-9f-wFk">
+                            <constraint firstItem="ZiQ-wC-3Ka" firstAttribute="baseline" secondItem="okE-AG-qCi" secondAttribute="baseline" constant="31" id="J6A-9f-wFk">
                                 <variation key="widthClass=compact" constant="3"/>
                             </constraint>
-                            <constraint firstItem="BCN-9p-HZt" firstAttribute="top" secondItem="ZiQ-wC-3Ka" secondAttribute="bottom" constant="15" id="M17-aA-xWa">
+                            <constraint firstItem="BCN-9p-HZt" firstAttribute="top" secondItem="ZiQ-wC-3Ka" secondAttribute="bottom" constant="8" id="M17-aA-xWa">
                                 <variation key="widthClass=compact" constant="63"/>
                             </constraint>
                             <constraint firstItem="ZiQ-wC-3Ka" firstAttribute="top" secondItem="1sb-uL-mnO" secondAttribute="bottom" constant="8" symbolic="YES" id="Mgu-5y-OQw"/>
@@ -195,7 +195,7 @@
                                 <variation key="widthClass=compact" constant="17"/>
                             </constraint>
                             <constraint firstItem="1sb-uL-mnO" firstAttribute="top" secondItem="ztC-Bn-ReO" secondAttribute="bottom" constant="57" id="XWJ-ns-BcJ"/>
-                            <constraint firstItem="ZiQ-wC-3Ka" firstAttribute="firstBaseline" secondItem="okE-AG-qCi" secondAttribute="firstBaseline" constant="-4" id="Y0y-cY-3DC">
+                            <constraint firstItem="ZiQ-wC-3Ka" firstAttribute="firstBaseline" secondItem="okE-AG-qCi" secondAttribute="firstBaseline" constant="-5" id="Y0y-cY-3DC">
                                 <variation key="widthClass=compact" constant="-2"/>
                             </constraint>
                             <constraint firstItem="eQy-un-f18" firstAttribute="firstBaseline" secondItem="1sb-uL-mnO" secondAttribute="firstBaseline" id="YmB-9x-GJg"/>
@@ -205,7 +205,7 @@
                             </constraint>
                             <constraint firstItem="ztC-Bn-ReO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="18" id="fOb-o5-4ym"/>
                             <constraint firstItem="GnW-84-H3B" firstAttribute="baseline" secondItem="BCN-9p-HZt" secondAttribute="firstBaseline" id="gBo-Ru-iJD"/>
-                            <constraint firstItem="ZiQ-wC-3Ka" firstAttribute="top" secondItem="ztC-Bn-ReO" secondAttribute="bottom" constant="77" id="gD0-zV-vZV">
+                            <constraint firstItem="ZiQ-wC-3Ka" firstAttribute="top" secondItem="ztC-Bn-ReO" secondAttribute="bottom" constant="76" id="gD0-zV-vZV">
                                 <variation key="widthClass=compact" constant="84"/>
                             </constraint>
                             <constraint firstItem="ztC-Bn-ReO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="gkm-C5-uc4">
@@ -318,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.5" y="389"/>
+            <point key="canvasLocation" x="589" y="389"/>
         </scene>
         <!--Add Job Offer View Controller-->
         <scene sceneID="1wL-1A-veU">
@@ -1275,7 +1275,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sGi-ZO-zOi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sGi-ZO-zOi">
                                 <rect key="frame" x="20" y="159" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mSU-Rj-jDq"/>
@@ -1284,7 +1284,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-kF-9aE">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-kF-9aE">
                                 <rect key="frame" x="20" y="204" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8p9-Fa-1Ue"/>
@@ -1293,7 +1293,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQq-RL-Rab">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQq-RL-Rab">
                                 <rect key="frame" x="20" y="101" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="jjH-EW-efz"/>
@@ -1302,7 +1302,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQu-ph-3R9">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rQu-ph-3R9">
                                 <rect key="frame" x="20" y="286" width="560" height="52"/>
                                 <connections>
                                     <outlet property="dataSource" destination="IqV-Xu-Q1b" id="rhD-DO-rdV"/>
@@ -1328,7 +1328,7 @@
                                     <action selector="loginButtonTap:" destination="IqV-Xu-Q1b" eventType="touchUpInside" id="Gmv-YU-Qhq"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgc-H9-DQT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgc-H9-DQT">
                                 <rect key="frame" x="20" y="248" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="K67-gf-YnZ"/>
@@ -1699,11 +1699,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rEL-fh-sK2"/>
         <segue reference="F1C-C4-w35"/>
-        <segue reference="Nyt-Ff-cIl"/>
+        <segue reference="rEL-fh-sK2"/>
         <segue reference="awB-kY-DB0"/>
         <segue reference="qAP-jP-03E"/>
-        <segue reference="eFI-p9-0ev"/>
+        <segue reference="tJ6-kl-Cz5"/>
+        <segue reference="XZu-Un-Iar"/>
     </inferredMetricsTieBreakers>
 </document>

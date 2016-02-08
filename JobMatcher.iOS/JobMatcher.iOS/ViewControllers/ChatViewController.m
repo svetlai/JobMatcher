@@ -105,8 +105,10 @@ static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell
     if ([connectionType isEqualToString:@"GetMessages"]){
         messages = [MessageViewModel arrayOfMessagesFromJsonDictionary: json];
         [self.messagesTableView reloadData];
-        NSIndexPath* ipath = [NSIndexPath indexPathForRow: messages.count-1 inSection: 0];
-        [self.messagesTableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
+        if (messages.count > 1){
+            NSIndexPath* ipath = [NSIndexPath indexPathForRow: messages.count-1 inSection: 0];
+            [self.messagesTableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
+        }
          connectionType = @"";
     }else if ([connectionType isEqualToString:@"AddMessage"]){
         
