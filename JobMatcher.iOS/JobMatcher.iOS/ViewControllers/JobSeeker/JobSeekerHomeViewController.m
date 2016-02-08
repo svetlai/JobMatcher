@@ -196,7 +196,12 @@ static InternetConnectionChecker *internetCheker;
 }
 
 - (void) setProfileImage{
-    NSString* imagePath = [db getImagePathWithEmail:jobSeekerViewModel.username];
+    NSString* imagePath;
+    if (userData.profileType == JobSeeker){
+        imagePath = [db getImagePathWithEmail:userData.username];
+    } else{
+        imagePath = [db getImagePathWithEmail:jobSeekerViewModel.username];
+    }
     NSURL* assetURL = [NSURL URLWithString:imagePath];
     if (assetURL == nil){
         self.profileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
