@@ -1451,7 +1451,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAz-Im-VQ4">
                                 <rect key="frame" x="20" y="544" width="560" height="30"/>
-                                <state key="normal" title="Add"/>
+                                <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="addSummaryButtonTap:" destination="CcN-5V-Ptl" eventType="touchUpInside" id="R0V-Yu-0TS"/>
                                 </connections>
@@ -1587,10 +1587,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rEL-fh-sK2"/>
-        <segue reference="F1C-C4-w35"/>
+        <segue reference="1wM-fg-yo7"/>
         <segue reference="Nyt-Ff-cIl"/>
         <segue reference="awB-kY-DB0"/>
+        <segue reference="F1C-C4-w35"/>
         <segue reference="scb-wm-NOw"/>
         <segue reference="XZu-Un-Iar"/>
     </inferredMetricsTieBreakers>

@@ -32,30 +32,17 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [HelperMethods setPageTitle:self andTitle:AppName];
     [HelperMethods setSackBarButtonText:self andText:@""];
 
     validator = [[Validator alloc] init];
     service = [[AccountService alloc] init];
     internetCheker = [[InternetConnectionChecker alloc] init];
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)loginButtonTap:(id)sender {
     NSString *status = [internetCheker getConnectionSatus];
@@ -81,7 +68,6 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    //    NSLog(@"%@", error);
     if (error){
         message = @"Uh oh, something went wrong! Try again!";
         [HelperMethods addAlert:message];
@@ -91,7 +77,6 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     long code = [httpResponse statusCode];
-   // NSLog(@"%@", httpResponse);
     if (code == 200){
         message = @"Logged in successfully!";
         [HelperMethods addAlert:message];
@@ -102,10 +87,6 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
 }
 
 -(void)connection:(NSURLRequest*) request didReceiveData:(NSData *)data{
-//    NSLog(@"test");
-//    NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", jsonString);
-    
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
                                                          options:kNilOptions
                                                            error:nil];
@@ -125,14 +106,6 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
     [KeychainUserPass save:KeyChainProfileTypeKey data:profileType];
     [KeychainUserPass save:KeyChainUsernameKey data:username];
     [KeychainUserPass save:KeyChainProfileIdKey data:profileId];
-    
-    // TODO on logout
-    //[KeychainUserPass delete:@"access_token"];
-    
-    // get token
-    //    NSString* token = [KeychainUserPass load:@"access_token"];
-    
-    NSLog(@"%@", profileId);
 }
 
 - (IBAction)registerButtonTap:(id)sender {

@@ -31,14 +31,12 @@ NSString* const SegueToLoginFromRegister = @"segueToLoginFromRegister";
 @synthesize accountTypePicker;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [HelperMethods setPageTitle:self andTitle:AppName];
     [HelperMethods setSackBarButtonText:self andText:@""];
 
     internetCheker = [[InternetConnectionChecker alloc] init];
     validator = [[Validator alloc] init];
     service = [[AccountService alloc] init];
-
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -59,7 +57,6 @@ NSString* const SegueToLoginFromRegister = @"segueToLoginFromRegister";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)registerButtonTap:(id)sender {
@@ -104,7 +101,6 @@ NSString* const SegueToLoginFromRegister = @"segueToLoginFromRegister";
     }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-//    NSLog(@"%@", error);
     if (error){
         message = @"Uh oh, something went wrong! Try again!";
         [HelperMethods addAlert:message];

@@ -50,6 +50,7 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
     jobOfferService = [[JobOfferService alloc] init];
     
     [self handleVisibility];
+    
     if (self.jobOfferViewModel != nil && userData.profileType == Recruiter){
         [self loadData];
     } else if (userData.profileType == JobSeeker){
@@ -57,109 +58,19 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
         connectionType = @"GetOffer";
     }
 
-    // swipe
-    UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                               action:@selector(jobOfferSwipe:)];
-    UISwipeGestureRecognizer *leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                              action:@selector(jobOfferSwipe:)];
-    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:rightSwipeRecognizer];
-    [self.view addGestureRecognizer:leftSwipeRecognizer];
-
-    // Do any additional setup after loading the view.
+    [self attachSwipeGesture];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-// connection
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    //    NSLog(@"%@", error);
-    if (error){
-        message = @"Uh oh, something went wrong! Try again!";
-        [HelperMethods addAlert:message];
-    }
-}
-
--(void)connection:(NSURLRequest*) request didReceiveData:(NSData *)data{
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                                         options:kNilOptions
-                                                           error:nil];
-    NSLog(@"%@", json);
-    if ([connectionType isEqualToString:@"AddLike"] || [connectionType isEqualToString:@"AddDislike"]){
-        [jobOfferService getRandomOfferWithTarget:self];
-         connectionType = @"GetOffer";
-        
-    } else if ([connectionType isEqualToString:@"GetOffer"]){
-        self.jobOfferViewModel = [JobOfferViewModel fromJsonDictionary:json];
-        [self loadData];
-        [self viewDidLoad];
-        
-   
-        connectionType = @"";
-    }
-    
-    //    NSString* username = [NSString stringWithFormat:@"%@", [(NSDictionary*)json objectForKey:@"userName"]];
-    
-    
-}
-
-- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-    long code = [httpResponse statusCode];
-    NSLog(@"%@", httpResponse);
-    // NSLog([NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]]);
-    
-    if ([connectionType isEqualToString:@"AddLike"]){
-        if (code == 200){
-            message = @"Liked!";
-            [HelperMethods addAlert:message];
-//            connectionType = @"GetOffer";
-//            [jobOfferService getRandomOfferWithTarget:self];
-        }
-
-    } else if ([connectionType isEqualToString:@"AddDislike"]){
-        if (code == 200){
-            message = @"Disliked!";
-            [HelperMethods addAlert:message];
-            
-//            connectionType = @"GetOffer";
-//            [jobOfferService getRandomOfferWithTarget:self];
-        }
-
-    }
-    
-    
-//    // TODO - improve browsing logic and end of joboffers
-//    if (code == 400 ){ //&& jobSeekerViewModel.username == NULL
-//        message = @"No more Job Offers to browse.";
-//        [HelperMethods addAlert:message];
-//        [self performSegueWithIdentifier:SegueFromJobOfferToJobSeeker sender:self];
-//        return;
-//    }
-    
-    if (code != 200) {
-        message = @"Nope. Try again!";
-        [HelperMethods addAlert:message];
-    }
-}
+//------------- view ------------
 -(void) handleVisibility{
-    if (userData.profileType == JobSeeker){
+    if (self.matched){
+        self.jobOfferSwipeHintLabel.hidden = YES;
+    } else if (userData.profileType == JobSeeker){
         self.jobOfferSwipeHintLabel.hidden = NO;
-        
     } else if (userData.profileType == Recruiter){
         self.jobOfferSwipeHintLabel.hidden = YES;
     }
@@ -172,25 +83,70 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
     self.jobOfferWorkHoursLabel.text = [WorkHours objectAtIndex: self.jobOfferViewModel.workHours];
     self.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", self.jobOfferViewModel.salary];
     self.jobOfferDescriptionLabel.text = self.jobOfferViewModel.jobOfferDescription;
-//[self resizeLabel:self.jobOfferDescriptionLabel andText:self.jobOfferViewModel.jobOfferDescription];
 }
 
-//-(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text{
-//    CGRect screenRect = [[UIScreen mainScreen] bounds];
-//    CGFloat screenWidth = screenRect.size.width;
-////    CGFloat screenHeight = screenRect.size.height;
-//    
-//    [label setText: @""];
-//    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y, screenWidth / 2, label.frame.size.height)];
-//    [newLabel setTextColor: label.textColor];
-//    [newLabel setBackgroundColor: [UIColor clearColor]];
-//    [newLabel setFont: label.font];
-//    [newLabel setText: text];
-//    [newLabel setNumberOfLines:0];
-//    [newLabel sizeToFit];
-//    [self.view addSubview:newLabel];
-//    return newLabel;
-//}
+// -------connection---------
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    if (error){
+        message = @"Uh oh, something went wrong! Try again!";
+        [HelperMethods addAlert:message];
+    }
+}
+
+-(void)connection:(NSURLRequest*) request didReceiveData:(NSData *)data{
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:kNilOptions
+                                                           error:nil];
+    //NSLog(@"%@", json);
+    if ([connectionType isEqualToString:@"AddLike"] || [connectionType isEqualToString:@"AddDislike"]){
+        [jobOfferService getRandomOfferWithTarget:self];
+         connectionType = @"GetOffer";
+        
+    } else if ([connectionType isEqualToString:@"GetOffer"]){
+        self.jobOfferViewModel = [JobOfferViewModel fromJsonDictionary:json];
+        [self loadData];
+        [self viewDidLoad];
+
+        connectionType = @"";
+    }
+}
+
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    long code = [httpResponse statusCode];
+    //NSLog(@"%@", httpResponse);
+    
+    if ([connectionType isEqualToString:@"AddLike"]){
+        if (code == 200){
+            message = @"Liked!";
+            [HelperMethods addAlert:message];
+        }
+
+    } else if ([connectionType isEqualToString:@"AddDislike"]){
+        if (code == 200){
+            message = @"Disliked!";
+            [HelperMethods addAlert:message];
+        }
+    }
+    
+ // TODO - improve browsing logic and end of joboffers
+    if (code != 200) {
+        message = @"Nope. Try again!";
+        [HelperMethods addAlert:message];
+    }
+}
+
+//---------- gestures ------------
+
+-(void) attachSwipeGesture{
+    UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(jobOfferSwipe:)];
+    UISwipeGestureRecognizer *leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                              action:@selector(jobOfferSwipe:)];
+    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:rightSwipeRecognizer];
+    [self.view addGestureRecognizer:leftSwipeRecognizer];
+}
 
 - (IBAction)jobOfferSwipe:(UISwipeGestureRecognizer *)sender {
     switch (sender.direction) {
@@ -209,12 +165,10 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
             message = @"Swiped left";
             break;
         default:
-            message =@"Not swiped";
             break;
     }
     
     NSLog(@"%@", message);
-
 }
 
 -(void) addLike{

@@ -38,25 +38,13 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
     self.jobSeekerMatchesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
     UINib *nib = [UINib nibWithNibName:jobSeekerMatchesTableCellIdentifier bundle:nil];
     [self.jobSeekerMatchesTableView registerNib:nib forCellReuseIdentifier:jobSeekerMatchesTableCellIdentifier];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-// table view
+// -------table view-----------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
         return self.jobOfferMatches.count;
 }
@@ -79,8 +67,6 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
     return nil;
 }
 
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return JobSeekerMatchesMatchesTableRowHeight;
@@ -88,12 +74,11 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //Value Selected by user
-    //TODO: edit
     selectedJobOffer = [self.jobOfferMatches objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:SegueFromMatchesToJobOffer sender:tableView];
 }
 
+// --------- gestures-------------
 -(void)jobSeekerMatchMessageButtonTap:(UIButton*)sender
 {
     for (int i = 0; i < self.jobOfferMatches.count; i++) {
@@ -111,6 +96,7 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
     if([segue.identifier isEqualToString:SegueFromMatchesToJobOffer]){
         JobOfferViewController* toJobOfferViewController = segue.destinationViewController;
         toJobOfferViewController.jobOfferViewModel = selectedJobOffer;
+        toJobOfferViewController.matched = YES;
     } else if ([segue.identifier isEqualToString:SegueFromJobSeekerMatchesToMessage]){
         ChatViewController* toChatViewController = segue.destinationViewController;
         toChatViewController.jobSeekerId = 0; // TODO: set in backend
@@ -125,7 +111,5 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
         }        
     }
 }
-//------
-
 
 @end

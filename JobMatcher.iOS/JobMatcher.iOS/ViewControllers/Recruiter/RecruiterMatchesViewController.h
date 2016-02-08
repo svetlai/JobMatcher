@@ -12,5 +12,4 @@
 @property (strong, nonatomic) NSArray* recruiterMatches;
 @property (weak, nonatomic) IBOutlet UITableView *recruiterMatchesTableView;
 
-
 @end

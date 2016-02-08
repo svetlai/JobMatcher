@@ -302,6 +302,42 @@
 			name = icons;
 			sourceTree = "<group>";
 		};
+		9B01BF301C683A1C00691C74 /* JobSeeker */ = {
+			isa = PBXGroup;
+			children = (
+				9B93F15B1C5D0FF400E39663 /* JobSeekerProfileViewModel.h */,
+				9B93F15C1C5D0FF400E39663 /* JobSeekerProfileViewModel.m */,
+				9B93F15E1C5D13FB00E39663 /* ProjectViewModel.h */,
+				9B93F15F1C5D13FB00E39663 /* ProjectViewModel.m */,
+				9B93F1611C5D152A00E39663 /* EducationViewModel.h */,
+				9B93F1621C5D152A00E39663 /* EducationViewModel.m */,
+				9B93F1641C5D155500E39663 /* ExperienceViewModel.h */,
+				9B93F1651C5D155500E39663 /* ExperienceViewModel.m */,
+				9B93F1671C5D158E00E39663 /* SkillViewModel.h */,
+				9B93F1681C5D158E00E39663 /* SkillViewModel.m */,
+				9B01BF1E1C67F13300691C74 /* AddProjectViewModel.h */,
+				9B01BF1F1C67F13300691C74 /* AddProjectViewModel.m */,
+				9B01BF271C6803C000691C74 /* AddSkillViewModel.h */,
+				9B01BF281C6803C000691C74 /* AddSkillViewModel.m */,
+				9B01BF2D1C6819B900691C74 /* EditJobSeekerProfileViewModel.h */,
+				9B01BF2E1C6819B900691C74 /* EditJobSeekerProfileViewModel.m */,
+			);
+			name = JobSeeker;
+			sourceTree = "<group>";
+		};
+		9B01BF311C683A3200691C74 /* Recruiter */ = {
+			isa = PBXGroup;
+			children = (
+				9B93F16A1C5D15B600E39663 /* JobOfferViewModel.h */,
+				9B93F16B1C5D15B600E39663 /* JobOfferViewModel.m */,
+				9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */,
+				9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */,
+				9B01BF181C67943300691C74 /* AddJobOfferViewModel.h */,
+				9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */,
+			);
+			name = Recruiter;
+			sourceTree = "<group>";
+		};
 		9B93F1111C5807E600E39663 /* Recruiter */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,36 +487,16 @@
 			children = (
 				9B93F0C91C56862700E39663 /* UserDataModel.h */,
 				9B93F0CA1C56862700E39663 /* UserDataModel.m */,
-				9B93F15B1C5D0FF400E39663 /* JobSeekerProfileViewModel.h */,
-				9B93F15C1C5D0FF400E39663 /* JobSeekerProfileViewModel.m */,
-				9B93F15E1C5D13FB00E39663 /* ProjectViewModel.h */,
-				9B93F15F1C5D13FB00E39663 /* ProjectViewModel.m */,
-				9B93F1611C5D152A00E39663 /* EducationViewModel.h */,
-				9B93F1621C5D152A00E39663 /* EducationViewModel.m */,
-				9B93F1641C5D155500E39663 /* ExperienceViewModel.h */,
-				9B93F1651C5D155500E39663 /* ExperienceViewModel.m */,
-				9B93F1671C5D158E00E39663 /* SkillViewModel.h */,
-				9B93F1681C5D158E00E39663 /* SkillViewModel.m */,
-				9B93F16A1C5D15B600E39663 /* JobOfferViewModel.h */,
-				9B93F16B1C5D15B600E39663 /* JobOfferViewModel.m */,
+				9B01BF301C683A1C00691C74 /* JobSeeker */,
+				9B01BF311C683A3200691C74 /* Recruiter */,
 				9B93F16D1C5D15D600E39663 /* MessageViewModel.h */,
 				9B93F16E1C5D15D600E39663 /* MessageViewModel.m */,
 				9B93F1D01C5EABF400E39663 /* AddLikeViewModel.h */,
 				9B93F1D11C5EABF400E39663 /* AddLikeViewModel.m */,
 				9B93F1D31C5EC56300E39663 /* AddDislikeViewModel.h */,
 				9B93F1D41C5EC56300E39663 /* AddDislikeViewModel.m */,
-				9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */,
-				9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */,
 				9B01BF0E1C6749B400691C74 /* AddMessageViewModel.h */,
 				9B01BF0F1C6749B400691C74 /* AddMessageViewModel.m */,
-				9B01BF181C67943300691C74 /* AddJobOfferViewModel.h */,
-				9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */,
-				9B01BF1E1C67F13300691C74 /* AddProjectViewModel.h */,
-				9B01BF1F1C67F13300691C74 /* AddProjectViewModel.m */,
-				9B01BF271C6803C000691C74 /* AddSkillViewModel.h */,
-				9B01BF281C6803C000691C74 /* AddSkillViewModel.m */,
-				9B01BF2D1C6819B900691C74 /* EditJobSeekerProfileViewModel.h */,
-				9B01BF2E1C6819B900691C74 /* EditJobSeekerProfileViewModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";

@@ -36,24 +36,11 @@ NSString* const SegueFromRecruiterMatchesToJobSeekerProfile = @"segueFromRecruit
     self.recruiterMatchesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
     UINib *nib = [UINib nibWithNibName:recruiterMatchTableViewCellIdentifier bundle:nil];
     [self.recruiterMatchesTableView registerNib:nib forCellReuseIdentifier:recruiterMatchTableViewCellIdentifier];
-
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 //tableview
 
@@ -79,8 +66,6 @@ NSString* const SegueFromRecruiterMatchesToJobSeekerProfile = @"segueFromRecruit
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //Value Selected by user
-    //TODO: edit
     selectedJobSeekerMatch = [self.recruiterMatches objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:SegueFromRecruiterMatchesToJobSeekerProfile sender:tableView];
 }
@@ -108,6 +93,7 @@ NSString* const SegueFromRecruiterMatchesToJobSeekerProfile = @"segueFromRecruit
     if([segue.identifier isEqualToString:SegueFromRecruiterMatchesToJobSeekerProfile]){
         JobSeekerHomeViewController* toJobSeekerHomeViewController = segue.destinationViewController;
         toJobSeekerHomeViewController.jobSeekerProfileViewModel = selectedJobSeekerMatch;
+        toJobSeekerHomeViewController.matched = YES;
     } else if ([segue.identifier isEqualToString:SegueFromRecruiterMatchesToMessages]){
         ChatViewController* toChatViewController = segue.destinationViewController;
         toChatViewController.recruiterId = 0; // TODO: set in backend

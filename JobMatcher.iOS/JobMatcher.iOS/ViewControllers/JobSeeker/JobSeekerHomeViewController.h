@@ -34,6 +34,7 @@
 
 @property (nonatomic,strong) UILongPressGestureRecognizer *jobSeekerLongPressRecognizer;
 @property (nonatomic,strong) UILongPressGestureRecognizer *jobSeekerLabelLongPressRecognizer;
+@property BOOL matched;
 //TODO make job seeker view model a property
 
 @end

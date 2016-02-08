@@ -38,7 +38,6 @@ int const MessageTableRowHeight = 100;
 static NSString* jobSeekerMessageTableViewCell = @"JobSeekerMessageTableViewCell";
 static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell";
 
-    //SingleMessageTableViewCell
 - (void)viewDidLoad {
     [super viewDidLoad];
     [HelperMethods setSackBarButtonText:self andText:@""];
@@ -48,8 +47,7 @@ static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell
     [self.messagesTableView setDelegate:self];
     self.messagesTableView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
     self.messagesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
-//    self.messagesTableView.rowHeight = UITableViewAutomaticDimension;
-//    self.messagesTableView.estimatedRowHeight = 122.0;
+
         userData = [[UserDataModel alloc] init];
     
     if (userData.profileType == JobSeeker){
@@ -70,14 +68,11 @@ static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell
     
     UINib *nibRecruiter = [UINib nibWithNibName:recruiterMessageTableViewCell bundle:nil];
     [self.messagesTableView registerNib:nibRecruiter forCellReuseIdentifier:recruiterMessageTableViewCell];
-
-    // Do any additional setup after loading the view.
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)getMessages{
@@ -90,17 +85,8 @@ static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell
     }
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - TableView
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-// connection
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     //    NSLog(@"%@", error);
     if (error){
@@ -145,7 +131,7 @@ static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell
 }
 
 #pragma mark - TableView
-// table view
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return messages.count;
 }
@@ -156,37 +142,23 @@ static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell
     
     RecruiterMessageTableViewCell* recruiterCell  = [tableView dequeueReusableCellWithIdentifier:recruiterMessageTableViewCell];
     
-    //TODO: table cell height
+    //TODO: table cell height + resizable labels
     if (messages.count > 0) {
         MessageViewModel *messageViewModel = messages[indexPath.row];
         if (messageViewModel.jobSeekerProfileId == messageViewModel.senderId){
-            jobSeekerCell.jobSeekerMessageSubject.text = messageViewModel.messageSubject ;// [HelperMethods resizeLabel:jobSeekerCell.jobSeekerMessageSubject andText:messageViewModel.messageSubject andTarget:jobSeekerCell.contentView];
-            //jobSeekerCell.jobSeekerMessageContent.text = messageViewModel.messageContent;
-            
-//            NSString* text = @"kjasjdlj l kalvldalknb  kjnakh kihAJ KJHSKJDH OFHwoeu rjns KJHDCO nusdho k ABkiuh kjahdfouho H"; //messageViewModel.content;
-// 
-            jobSeekerCell.jobSeekerMessageContent.text = messageViewModel.messageContent ;// [HelperMethods resizeLabel:jobSeekerCell.jobSeekerMessageContent andText:messageViewModel.messageContent andTarget:jobSeekerCell.contentView ];
+            jobSeekerCell.jobSeekerMessageSubject.text = messageViewModel.messageSubject ;
+            jobSeekerCell.jobSeekerMessageContent.text = messageViewModel.messageContent ;
 
             return jobSeekerCell;
         } else if (messageViewModel.recruiterProfileId == messageViewModel.senderId){
-
-            recruiterCell.recruiterMessageSubject.text = messageViewModel.messageSubject;//[HelperMethods resizeLabel:recruiterCell.recruiterMessageSubject andText:messageViewModel.messageSubject andTarget:recruiterCell.contentView];
-            recruiterCell.recruiterMessageContent.text = messageViewModel.messageContent ;//[HelperMethods resizeLabel:recruiterCell.recruiterMessageContent andText:messageViewModel.messageContent andTarget:recruiterCell.contentView];
+            recruiterCell.recruiterMessageSubject.text = messageViewModel.messageSubject;
+            recruiterCell.recruiterMessageContent.text = messageViewModel.messageContent ;
             
             return recruiterCell;
         }
-        
-//        cell.jobSeekerMatchTitleLabel.text = jobOfferViewModel.title;
-//        cell.jobSeekerMatchLocationLabel.text = jobOfferViewModel.location;
-//        cell.jobSeekerMatchSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", jobOfferViewModel.salary];
-//        cell.jobSeekerMatchMessageButton.tag = indexPath.row;
-//        [cell.jobSeekerMatchMessageButton addTarget:self action:@selector(jobSeekerMatchMessageButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-        //return cell;
     }
     
     return recruiterCell;
-
-//    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,7 +187,7 @@ static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell
 
         NSString* messageSenderAccountType = [NSString stringWithFormat:@"%u",[UserDataModel getAccountType]];
     
-                                              AddMessageViewModel* addMessageModel = [AddMessageViewModel messageWithSubject:messageSubject andContent:messageContent andJobSeekerProfileId:self.jobSeekerId andRecruiterProfileId:self.recruiterId andSenderAccountType:messageSenderAccountType];
+        AddMessageViewModel* addMessageModel = [AddMessageViewModel messageWithSubject:messageSubject andContent:messageContent andJobSeekerProfileId:self.jobSeekerId andRecruiterProfileId:self.recruiterId andSenderAccountType:messageSenderAccountType];
     
     
                                             connectionType = @"AddMessage";
