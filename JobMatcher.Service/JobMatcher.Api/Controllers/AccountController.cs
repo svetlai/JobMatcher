@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -268,7 +269,7 @@ namespace JobMatcher.Service.Controllers
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName, user.ProfileType.ToString());
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName, user.ProfileType.ToString(), user.ProfileId.ToString());
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
@@ -350,6 +351,9 @@ namespace JobMatcher.Service.Controllers
                     };
 
                     this.data.JobSeekerProfiles.Add(jobSeeker);
+                    this.data.SaveChanges();
+                    user.ProfileId = jobSeeker.JobSeekerProfileId;
+                    this.data.Users.Update(user);
 
                     break;
                 case ProfileType.Recruiter:
@@ -359,6 +363,10 @@ namespace JobMatcher.Service.Controllers
                     };
 
                     this.data.RecruiterProfiles.Add(recruiter);
+                    this.data.SaveChanges();
+                    user.ProfileId = recruiter.RecruiterProfileId;
+                    this.data.Users.Update(user);
+
                     break;
             }
 

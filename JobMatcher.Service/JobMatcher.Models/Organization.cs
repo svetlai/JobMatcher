@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using JobMatcher.Common.Contracts;
 
 namespace JobMatcher.Models
 {
-    public class Organization
+    public class Organization : IDeletable
     {
         [Key]
         public int Id { get; set; }
@@ -12,6 +13,8 @@ namespace JobMatcher.Models
         public string Name { get; set; }
 
         public Industry Industry { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         //public int LocationId { get; set; }
 

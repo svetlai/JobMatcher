@@ -24,6 +24,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult GetByUser()
         {
             var skills = this.data.Skills.All()
+                .Where(x => !x.IsDeleted)
                 //.Where(x => x.JosSeekerProfile.UserId == this.CurrentUser.Id)
                 .ProjectTo<SkillViewModel>()
                 .ToList();
@@ -34,17 +35,23 @@ namespace JobMatcher.Service.Controllers
         [HttpPost]
         public IHttpActionResult Add(AddSkillViewModel model)
         {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            if (jobSeeker == null)
+            {
+                return this.BadRequest("You must be a job seeker to add a skill");
+            }
+
             if (model != null && ModelState.IsValid)
             {
                 var skill = AutoMapper.Mapper.Map<Skill>(model);
-
-                //skill.JosSeekerProfile =
-                //                  this.data.JobSeekerProfiles.All().FirstOrDefault(x => x.UserId == this.CurrentUser.Id);
 
                 this.data.Skills.Add(skill);
                 this.data.SaveChanges();
 
                 model.Id = skill.Id;
+                jobSeeker.Skills.Add(skill);
 
                 this.data.SaveChanges();
 
@@ -52,6 +59,31 @@ namespace JobMatcher.Service.Controllers
             }
 
             return this.BadRequest();
+        }
+
+        [HttpPost]
+        public IHttpActionResult Delete(int id)      
+        {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            if (jobSeeker == null)
+            {
+                return this.BadRequest("You must be a job seeker to delete a skill");
+            }
+
+            var skill = this.data.Skills.Find(id);
+
+            if (skill != null)
+            {
+                jobSeeker.Skills.Remove(skill);
+                this.data.Skills.Delete(skill);
+                this.data.SaveChanges();
+
+                return this.Ok(skill);
+            }
+
+            return this.BadRequest("The project couldn't be found.");
         }
 
         //TODO edit & delete

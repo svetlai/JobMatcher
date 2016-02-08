@@ -24,6 +24,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult Get()
         {
             var dislikes = this.data.Dislikes.All()
+                .Where(x => !x.IsDeleted)
                 .ToList();
 
             return this.Ok(dislikes);
@@ -35,7 +36,7 @@ namespace JobMatcher.Service.Controllers
             if (model.JobSeekerProfileId == 0 && model.DislikeInitiatorType == ProfileType.JobSeeker)
             {
                 model.JobSeekerProfileId =
-                    this.data.JobSeekerProfiles.All()
+                    this.data.JobSeekerProfiles.All().Where(x => !x.IsDeleted)
                         .First(x => x.UserId == this.CurrentUserId)
                         .JobSeekerProfileId;
             }
@@ -43,7 +44,7 @@ namespace JobMatcher.Service.Controllers
             if (model.RecruiterProfileId == 0 && model.DislikeInitiatorType == ProfileType.Recruiter)
             {
                 model.RecruiterProfileId =
-                    this.data.RecruiterProfiles.All()
+                    this.data.RecruiterProfiles.All().Where(x => !x.IsDeleted)
                         .First(x => x.UserId == this.CurrentUserId)
                         .RecruiterProfileId;
             }
@@ -54,7 +55,7 @@ namespace JobMatcher.Service.Controllers
             }
 
             var existingDislike =
-                this.data.Dislikes.All()
+                this.data.Dislikes.All().Where(x => !x.IsDeleted)
                     .FirstOrDefault(
                         x =>
                             x.RecruiterProfileId == model.RecruiterProfileId &&
@@ -68,7 +69,7 @@ namespace JobMatcher.Service.Controllers
                 dislike.CreatedOn = DateTime.Now;
 
                 var existingLike =
-                this.data.Likes.All()
+                this.data.Likes.All().Where(x => !x.IsDeleted)
                     .FirstOrDefault(
                         x =>
                             x.RecruiterProfileId == model.RecruiterProfileId &&

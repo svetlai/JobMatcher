@@ -303,6 +303,7 @@
     <Compile Include="ViewModels\ExperienceViewModel.cs" />
     <Compile Include="ViewModels\AddProjectViewModel.cs" />
     <Compile Include="ViewModels\AddSkillViewModel.cs" />
+    <Compile Include="ViewModels\EditJobSeekerProfileViewModel.cs" />
     <Compile Include="ViewModels\JobSeekerProfileViewModel.cs" />
     <Compile Include="ViewModels\AddMessageViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />

@@ -31,6 +31,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult Get()
         {
             var jobOffers = this.data.JobOffers.All()
+                .Where(x => !x.IsDeleted)
                 .ProjectTo<JobOfferViewModel>()
                 .ToList();
 
@@ -41,6 +42,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult GetMatched()
         {
             var jobSeeker = this.data.JobSeekerProfiles.All()
+                .Where(x => !x.IsDeleted)
                 .FirstOrDefault(x => x.UserId == this.CurrentUserId);
 
             if (jobSeeker == null)
@@ -54,6 +56,7 @@ namespace JobMatcher.Service.Controllers
 
             var jobOffers = jobSeeker
                 .SelectedJobOffers.AsQueryable()
+                .Where(x => !x.IsDeleted)
                 .ProjectTo<JobOfferViewModel>()
                 .ToList();
 
@@ -64,6 +67,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult Details(int? id)
         {
             var jobOffer = this.data.JobOffers.All()
+                .Where(x => !x.IsDeleted)
                 .Where(x => x.Id == id)
                 .ProjectTo<JobOfferViewModel>()
                 .FirstOrDefault();
@@ -75,6 +79,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult Random()
         {
             var jobSeeker = this.data.JobSeekerProfiles.All()
+                .Where(x => !x.IsDeleted)
                 .FirstOrDefault(x => x.UserId == this.CurrentUserId);
 
             if (jobSeeker == null)
@@ -87,16 +92,19 @@ namespace JobMatcher.Service.Controllers
             //    .Select(x => x.RecruiterProfileId).ToList();
 
             var jobSeekerLikes = this.data.Likes.All()
+                .Where(x => !x.IsDeleted)
                 .Where(x => x.JobSeekerProfileId == jobSeeker.JobSeekerProfileId && x.LikeInitiatorType == ProfileType.JobSeeker)
                 .Select(x => x.JobOfferId).ToList();
 
             var jobSeekerDislikes = this.data.Dislikes.All()
+                .Where(x => !x.IsDeleted)
                 .Where(x => x.JobSeekerProfileId == jobSeeker.JobSeekerProfileId && x.DislikeInitiatorType == ProfileType.JobSeeker)
                 .Select(x => x.JobOfferId).ToList();
 
             var allJobOffers = this.data.JobOffers.All()
+               .Where(x => !x.IsDeleted)
                .Where(x => !jobSeekerLikes.Contains(x.Id)
-                   && !jobSeekerDislikes.Contains(x.Id))
+                   || !jobSeekerDislikes.Contains(x.Id))
                    .Select(x => x)
                    .ToList();
 
@@ -108,6 +116,7 @@ namespace JobMatcher.Service.Controllers
                 int selectedId = allJobOffers[randomIndex].Id;
 
                 var jobOffer = this.data.JobOffers.All()
+                  .Where(x => !x.IsDeleted)
                   .Where(x => x.Id == selectedId)
                   .ProjectTo<JobOfferViewModel>()
                   .FirstOrDefault();
@@ -142,6 +151,38 @@ namespace JobMatcher.Service.Controllers
             return this.BadRequest();
         }
 
+        [HttpPost]
+        public IHttpActionResult Delete(int id)
+        {
+            var recruiter = this.data.RecruiterProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            var jobOffer = this.data.JobOffers.Find(id);
+
+            if (jobOffer != null)
+            {
+                if (!jobOffer.RecruiterProfile.UserId.Equals(this.CurrentUserId))
+                {
+                    return this.BadRequest("This offer isn't yours to delete.");
+                }
+
+               // jobOffer.IsDeleted = true;
+                //this.data.JobOffers.Update(jobOffer);
+                recruiter.JobOffers.Remove(jobOffer);
+                foreach (var jobSeeker in jobOffer.InterestedJobSeekers)
+                {
+                    jobSeeker.SelectedJobOffers.Remove(jobOffer);
+                }
+
+                this.data.JobOffers.Delete(jobOffer);
+                this.data.SaveChanges();
+
+                return this.Ok(jobOffer);
+            }
+
+            return this.BadRequest("The job offer couldn't be found.");
+        }
+
         //TODO edit offer
         //TODO filter by location - range
 
@@ -149,6 +190,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult FilterByIndustry(int industryId)
         {
             var jobOffers = this.data.JobOffers.All()
+                .Where(x => !x.IsDeleted)
                 .Where(x => (int)x.Industry == industryId)
                 .ProjectTo<JobOfferViewModel>()
                 .ToList();
@@ -160,7 +202,7 @@ namespace JobMatcher.Service.Controllers
         {
             var location = new Location()
             {
-                Longtitude = model.Longtitude,
+                Longitude = model.Longitude,
                 Latitude = model.Latitude,
                 Country = model.Country,
                 City = model.City,

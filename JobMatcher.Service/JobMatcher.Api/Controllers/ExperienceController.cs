@@ -22,6 +22,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult GetByUser()
         {
              var experience = this.data.Experience.All()
+                 .Where(x => !x.IsDeleted)
                 //.Where(x => x.JosSeekerProfile.UserId == this.CurrentUser.Id)
                 .ProjectTo<ExperienceViewModel>()
                 .ToList();
@@ -58,7 +59,7 @@ namespace JobMatcher.Service.Controllers
 
         private Organization GetOrganization(AddExperienceViewModel model)
         {
-            var organization = this.data.Organizations.All()
+            var organization = this.data.Organizations.All().Where(x => !x.IsDeleted)
                 .FirstOrDefault(x => x.Name == model.OrganizationName);
 
             if (organization == null)

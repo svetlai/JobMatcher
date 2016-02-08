@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using JobMatcher.Common.Contracts;
 
 namespace JobMatcher.Models
 {
-    public class Dislike
+    public class Dislike : IDeletable
     {
         [Key]
         public int Id { get; set; }
@@ -27,5 +28,7 @@ namespace JobMatcher.Models
         public ProfileType DislikeInitiatorType { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

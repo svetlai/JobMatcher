@@ -22,7 +22,7 @@ namespace JobMatcher.Service.ViewModels
 
         public string Latitude { get; set; }
 
-        public string Longtitude { get; set; }
+        public string Longitude { get; set; }
 
         public string Country { get; set; }
 
@@ -43,7 +43,7 @@ namespace JobMatcher.Service.ViewModels
                 .ForMember(m => m.City, opt => opt.MapFrom(x => x.Location.City))
                 .ForMember(m => m.PostCode, opt => opt.MapFrom(x => x.Location.PostCode))
                 .ForMember(m => m.Latitude, opt => opt.MapFrom(x => x.Location.Latitude))
-                .ForMember(m => m.Longtitude, opt => opt.MapFrom(x => x.Location.Longtitude))
+                .ForMember(m => m.Longitude, opt => opt.MapFrom(x => x.Location.Longitude))
                 .ForMember(m => m.Industry, opt => opt.MapFrom(x => (int)x.Industry))
                 .ForMember(m => m.WorkHours, opt => opt.MapFrom(x => (int)x.WorkHours))
                 .ReverseMap();

@@ -83,6 +83,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JobMatcher.Common\JobMatcher.Common.csproj">
+      <Project>{ac4e2927-e58d-425b-84d3-55a455b475de}</Project>
+      <Name>JobMatcher.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

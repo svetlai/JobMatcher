@@ -24,6 +24,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult Get()
         {
             var recruiters = this.data.RecruiterProfiles.All()
+                .Where(x => !x.IsDeleted)
                 .ProjectTo<RecruiterProfileViewModel>()
                 .ToList();
 
@@ -34,6 +35,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult Details(int? id)
         {
             var recruiter = this.data.RecruiterProfiles.All()
+                .Where(x => !x.IsDeleted)
                 .Where(x => x.RecruiterProfileId == id)
                 .ProjectTo<RecruiterProfileViewModel>()
                 .FirstOrDefault();
@@ -45,6 +47,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult Details()
         {
             var recruiter = this.data.RecruiterProfiles.All()
+                .Where(x => !x.IsDeleted)
                 .Where(x => x.UserId == this.CurrentUserId)
                 .ProjectTo<RecruiterProfileViewModel>()
                 .FirstOrDefault();
@@ -56,6 +59,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult GetMessagesWithJobSeeker(int jobSeekerProfileId)
         {
             var recruiter = this.data.RecruiterProfiles.All()
+                .Where(x => !x.IsDeleted)
                 .FirstOrDefault(x => x.UserId == this.CurrentUserId);
 
             if (recruiter == null)
@@ -64,6 +68,7 @@ namespace JobMatcher.Service.Controllers
             }
 
             var messages = recruiter.Messages
+                .Where(x => !x.IsDeleted)
                 .Where(x => x.JobSeekerProfileId == jobSeekerProfileId)
                 .AsQueryable()
                 .OrderBy(x => x.Id) //TODO add date

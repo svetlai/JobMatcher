@@ -21,6 +21,14 @@ namespace JobMatcher.Service.ViewModels
 
         public string Summary { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        public string CurrentPosition { get; set; }
+
         public virtual Image Image { get; set; }
 
         public virtual ICollection<ExperienceViewModel> Experience { get; set; }

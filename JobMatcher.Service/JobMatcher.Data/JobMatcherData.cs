@@ -1,4 +1,5 @@
-﻿using JobMatcher.Models;
+﻿using JobMatcher.Common.Contracts;
+using JobMatcher.Models;
 
 namespace JobMatcher.Data
 {
@@ -144,7 +145,7 @@ namespace JobMatcher.Data
             this.db.SaveChanges();
         }
 
-        private IRepository<T> GetRepository<T>() where T : class
+        private IRepository<T> GetRepository<T>() where T : class, IDeletable
         {
             var typeOfRepository = typeof(T);
             if (!this.repositories.ContainsKey(typeOfRepository))

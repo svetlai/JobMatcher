@@ -20,6 +20,27 @@ namespace JobMatcher.Service.Controllers
         [HttpPost]
         public IHttpActionResult Add(AddMessageViewModel model)
         {
+            //TODO send ids to client and handle there
+            if (model.JobSeekerProfileId == 0 && model.SenderProfileType == ProfileType.JobSeeker )
+            {
+                model.JobSeekerProfileId =
+                    this.data.JobSeekerProfiles.All().Where(x => !x.IsDeleted)
+                        .FirstOrDefault(x => x.UserId == this.CurrentUserId)
+                        .JobSeekerProfileId;
+
+                model.SenderId = model.JobSeekerProfileId;
+            }
+
+            if (model.RecruiterProfileId == 0 && model.SenderProfileType == ProfileType.Recruiter)
+            {
+                model.RecruiterProfileId =
+                    this.data.RecruiterProfiles.All().Where(x => !x.IsDeleted)
+                        .FirstOrDefault(x => x.UserId == this.CurrentUserId)
+                        .RecruiterProfileId;
+
+                model.SenderId = model.RecruiterProfileId;
+            }
+
             if (model != null && ModelState.IsValid)
             {
                 var message = AutoMapper.Mapper.Map<Message>(model);
@@ -28,11 +49,11 @@ namespace JobMatcher.Service.Controllers
                 this.data.SaveChanges();
 
                 var jobSeeker =
-                    this.data.JobSeekerProfiles.All()
+                    this.data.JobSeekerProfiles.All().Where(x => !x.IsDeleted)
                         .FirstOrDefault(x => x.JobSeekerProfileId == model.JobSeekerProfileId);
 
                 var recruiter =
-                    this.data.RecruiterProfiles.All()
+                    this.data.RecruiterProfiles.All().Where(x => !x.IsDeleted)
                         .FirstOrDefault(x => x.RecruiterProfileId == model.RecruiterProfileId);
 
                 if (jobSeeker == null || recruiter == null)

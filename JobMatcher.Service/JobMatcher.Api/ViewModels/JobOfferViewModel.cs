@@ -34,10 +34,12 @@ namespace JobMatcher.Service.ViewModels
 
         public virtual ICollection<JobSeekerProfile> InterestedJobSeekers { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public void CreateMappings(AutoMapper.IConfiguration configuration)
         {
             configuration.CreateMap<JobOffer, JobOfferViewModel>()
-                .ForMember(m => m.Location, opt => opt.MapFrom(x => x.Location.Country + " / " + x.Location.City))
+                .ForMember(m => m.Location, opt => opt.MapFrom(x => x.Location.Latitude + " / " + x.Location.Longitude))
                 .ReverseMap();
         }
     }

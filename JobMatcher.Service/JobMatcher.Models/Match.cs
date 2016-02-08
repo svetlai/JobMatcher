@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using JobMatcher.Common.Contracts;
 
 namespace JobMatcher.Models
 {
-    public class Match
+    public class Match : IDeletable
     {
         [Key]
         public int Id { get; set; }
@@ -22,5 +23,7 @@ namespace JobMatcher.Models
         //public virtual JobOffer JobOffer { get; set; }
 
         public virtual JobSeekerProfile JobSeekerProfile { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

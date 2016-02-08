@@ -24,6 +24,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult GetByUser()
         {
             var projects = this.data.Projects.All()
+                .Where(x => !x.IsDeleted)
                 .Where(x => x.JosSeekerProfile.UserId == this.CurrentUserId)
                 .ProjectTo<ProjectViewModel>()
                 .ToList();
@@ -34,24 +35,55 @@ namespace JobMatcher.Service.Controllers
         [HttpPost]
         public IHttpActionResult Add(AddProjectViewModel model)
         {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            if (jobSeeker == null)
+            {
+                return this.BadRequest("You must be a job seeker to delete a project");
+            }
+
             if (model != null && ModelState.IsValid)
             {
                 var project = AutoMapper.Mapper.Map<Project>(model);
-
-                project.JosSeekerProfile =
-                                  this.data.JobSeekerProfiles.All().FirstOrDefault(x => x.UserId == this.CurrentUserId);
 
                 this.data.Projects.Add(project);
                 this.data.SaveChanges();
 
                 model.Id = project.Id;
 
+                jobSeeker.Projects.Add(project);
                 this.data.SaveChanges();
 
                 return this.Ok(model);
             }
 
             return this.BadRequest();
+        }
+
+        [HttpPost]
+        public IHttpActionResult Delete(int id)
+        {
+            var jobSeeker = this.data.JobSeekerProfiles.All()
+                .FirstOrDefault(x => x.UserId == this.CurrentUserId);
+
+            var project = this.data.Projects.Find(id);
+
+            if (project != null)
+            {
+                if (!project.JosSeekerProfile.UserId.Equals(this.CurrentUserId))
+                {
+                    return this.BadRequest("This project isn't yours to delete.");
+                }
+
+                jobSeeker.Projects.Remove(project);
+                this.data.Projects.Delete(project);
+                this.data.SaveChanges();
+
+                return this.Ok(project);
+            }
+
+            return this.BadRequest("The project couldn't be found.");
         }
 
         //TODO edit & delete

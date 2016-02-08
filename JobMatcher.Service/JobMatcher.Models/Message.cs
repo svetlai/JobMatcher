@@ -1,6 +1,8 @@
-﻿namespace JobMatcher.Models
+﻿using JobMatcher.Common.Contracts;
+
+namespace JobMatcher.Models
 {
-    public class Message
+    public class Message : IDeletable
     {
         public int Id { get; set; }
 
@@ -17,5 +19,7 @@
         public virtual RecruiterProfile RecruiterProfile { get; set; }
 
         public int SenderId { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

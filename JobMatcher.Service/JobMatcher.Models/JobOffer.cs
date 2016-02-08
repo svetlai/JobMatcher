@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using JobMatcher.Common.Contracts;
 
 namespace JobMatcher.Models
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class JobOffer
+    public class JobOffer : IDeletable
     {
         public JobOffer()
         {
@@ -41,6 +42,8 @@ namespace JobMatcher.Models
         public virtual RecruiterProfile RecruiterProfile { get; set; }
 
         public virtual ICollection<JobSeekerProfile> InterestedJobSeekers { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         //public virtual ICollection<Like> Likes { get; set; }
 

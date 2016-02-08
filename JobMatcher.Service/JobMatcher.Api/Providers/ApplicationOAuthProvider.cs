@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using JobMatcher.Data;
 using JobMatcher.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -45,7 +46,7 @@ namespace JobMatcher.Service.Providers
             ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                 CookieAuthenticationDefaults.AuthenticationType);
 
-            AuthenticationProperties properties = CreateProperties(user.UserName, user.ProfileType.ToString());
+            AuthenticationProperties properties = CreateProperties(user.UserName, user.ProfileType.ToString(), user.ProfileId.ToString());
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
@@ -87,12 +88,13 @@ namespace JobMatcher.Service.Providers
             return Task.FromResult<object>(null);
         }
 
-        public static AuthenticationProperties CreateProperties(string userName, string profileType)
+        public static AuthenticationProperties CreateProperties(string userName, string profileType, string profileId)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
                 { "userName", userName },
-                { "profileType", profileType }
+                { "profileType", profileType }, 
+                { "profileId", profileId }
             };
             return new AuthenticationProperties(data);
         }

@@ -1,9 +1,11 @@
-﻿namespace JobMatcher.Data.Repositories
+﻿using JobMatcher.Common.Contracts;
+
+namespace JobMatcher.Data.Repositories
 {
     using System.Data.Entity;
     using System.Linq;
 
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class, IDeletable
     {
         private DbContext db;
         private IDbSet<T> set;
@@ -34,16 +36,22 @@
             this.ChangeEntityState(entity, EntityState.Modified);
         }
 
+        // TODO Temp workaround; use Deletable repository instead
         public virtual T Delete(T entity)
         {
-            this.ChangeEntityState(entity, EntityState.Deleted);
+            entity.IsDeleted = true;
+            this.ChangeEntityState(entity, EntityState.Modified);
+            //this.ChangeEntityState(entity, EntityState.Deleted);
+
             return entity;
         }
 
         public virtual T Delete(object id)
         {
             var entity = this.Find(id);
-            this.Delete(entity);
+            entity.IsDeleted = true;
+            this.ChangeEntityState(entity, EntityState.Modified);
+            //this.Delete(entity);
             return entity;
         }
 

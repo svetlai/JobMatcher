@@ -23,7 +23,7 @@ namespace JobMatcher.Service.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var matches = this.data.Matches.All()
+            var matches = this.data.Matches.All().Where(x => !x.IsDeleted)
                 .ToList();
 
             return this.Ok(matches);
@@ -33,7 +33,7 @@ namespace JobMatcher.Service.Controllers
         public IHttpActionResult Add(AddMatchViewModel model)
         {
             var match =
-                this.data.Matches.All()
+                this.data.Matches.All().Where(x => !x.IsDeleted)
                     .FirstOrDefault(
                         x =>
                             x.JobSeekerProfileId == model.JobSeekerProfileId &&

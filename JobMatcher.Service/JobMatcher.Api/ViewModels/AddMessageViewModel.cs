@@ -15,6 +15,8 @@ namespace JobMatcher.Service.ViewModels
 
         public int RecruiterProfileId { get; set; }
 
+        public ProfileType SenderProfileType { get; set; }
+
         public int SenderId { get; set; }
 
         public void CreateMappings(AutoMapper.IConfiguration configuration)

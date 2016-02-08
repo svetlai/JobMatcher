@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using JobMatcher.Common.Contracts;
 
 namespace JobMatcher.Models
 {
     using System.Collections.Generic;
 
-    public class JobSeekerProfile
+    public class JobSeekerProfile : IDeletable
     {
         public JobSeekerProfile()
         {
@@ -31,6 +32,8 @@ namespace JobMatcher.Models
 
         public string LastName { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         public string CurrentPosition { get; set; }
 
         public string Summary { get; set; }
@@ -56,5 +59,7 @@ namespace JobMatcher.Models
         public ICollection<Dislike> DislikedJobOffers { get; set; }
 
         public ICollection<Like> LikedJobOffers { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

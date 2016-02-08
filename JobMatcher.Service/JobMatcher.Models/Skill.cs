@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using JobMatcher.Common.Contracts;
 
 namespace JobMatcher.Models
 {
     using JobMatcher.Models.Enums;
 
-    public class Skill
+    public class Skill : IDeletable
     {
         public Skill()
         {
@@ -18,5 +19,7 @@ namespace JobMatcher.Models
         public Level Level { get; set; }
 
         public virtual ICollection<JobSeekerProfile> JosSeekerProfiles { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }
