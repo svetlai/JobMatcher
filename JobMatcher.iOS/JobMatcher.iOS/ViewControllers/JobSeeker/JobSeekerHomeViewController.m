@@ -158,6 +158,8 @@ static InternetConnectionChecker *internetCheker;
         self.jobSeekerBrowseOffersButton.hidden = YES;
         self.jobSeekerLogoutButton.hidden = YES;
         self.jobSeekerEditProfileButton.hidden = YES;
+        self.addProjectBlueButton.hidden = YES;
+        self.addSkillBlueButton.hidden = YES;
     }
 }
 -(void) handleLabelVisibility{
@@ -514,6 +516,20 @@ static InternetConnectionChecker *internetCheker;
             self.jobSeekerProfilePosition.text = jobSeekerViewModel.currentPosition;
         }
         
+        if (userData.profileType == JobSeeker){
+            if (jobSeekerViewModel.projects.count > 0){
+                self.addProjectBlueButton.hidden = YES;
+            }else{
+                self.addProjectBlueButton.hidden = NO;
+            }
+            
+            if (jobSeekerViewModel.skills.count > 0){
+                self.addSkillBlueButton.hidden = YES;
+            }else{
+                self.addSkillBlueButton.hidden = NO;
+            }
+        }
+        
         [self reloadData];
     }
 }
@@ -857,5 +873,13 @@ static InternetConnectionChecker *internetCheker;
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     return self.profileImage;
+}
+
+- (IBAction)addSkillBlueButtonTap:(id)sender {
+        [self performSegueWithIdentifier:SegueFromJobSeekerToAddSkill sender:self];
+}
+
+- (IBAction)addProjectBlueButtonTap:(id)sender {
+        [self performSegueWithIdentifier:SegueFromJobSeekerToAddProject sender:self];
 }
 @end

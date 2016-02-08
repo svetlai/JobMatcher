@@ -12,9 +12,15 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface JobSeekerHomeViewController : UIViewController <CollapseClickDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UINavigationControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *addSkillBlueButton;
 @property (weak, nonatomic) IBOutlet UILabel *jobSeekerProfileName;
 @property (weak, nonatomic) IBOutlet UILabel *jobSeekerProfilePosition;
 @property (weak, nonatomic) IBOutlet UILabel *jobSeekerSwipeHintLabel;
+- (IBAction)addSkillBlueButtonTap:(id)sender;
+- (IBAction)addProjectBlueButtonTap:(id)sender;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *addProjectBlueButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *helloLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
