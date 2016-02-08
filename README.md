@@ -20,7 +20,7 @@ Once connected, Job Seekers and Recruiters can exchange messages and figure out 
 
 ### Technologies
 
-- Backend: Web API
+- Backend: Web API - https://jobmatcherapi.azurewebsites.net/
 - Client: iOS application
 
 #### Gestures
@@ -47,5 +47,6 @@ using your current location rather than having to type it.
 - SQLite used to store path to the user's profile image.
 - ASP.net Web API for the backend logic.
 - Background task to check if you're connected every ten minutes.
+- Animated UIAlert in Swift.
 
 [Demo on YouTube](https://www.youtube.com/watch?v=CqDgQ1nTJjk)

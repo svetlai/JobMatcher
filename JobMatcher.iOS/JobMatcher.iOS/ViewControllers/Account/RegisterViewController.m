@@ -103,6 +103,7 @@ NSString* const SegueToLoginFromRegister = @"segueToLoginFromRegister";
     }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    NSLog(@"%@", error);
     if (error){
         message = @"Uh oh, something went wrong! Try again!";
         [HelperMethods addAlert:message];

@@ -11,7 +11,7 @@
 @implementation GlobalConstants
 
 NSString* const AppName = @"Job Matcher";
-NSString* const BaseUrl = @"http://svetlapc:61177/";
+NSString* const BaseUrl = @"https://jobmatcherapi.azurewebsites.net/";//@"http://svetlapc:61177/";
 NSString* const JobMatcherDb = @"JobMatcherDb";
 
 // Account
