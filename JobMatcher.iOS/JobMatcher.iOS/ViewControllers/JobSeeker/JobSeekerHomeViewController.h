@@ -15,9 +15,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *addSkillBlueButton;
 @property (weak, nonatomic) IBOutlet UILabel *jobSeekerProfileName;
 @property (weak, nonatomic) IBOutlet UILabel *jobSeekerProfilePosition;
-@property (weak, nonatomic) IBOutlet UILabel *jobSeekerSwipeHintLabel;
 - (IBAction)addSkillBlueButtonTap:(id)sender;
 - (IBAction)addProjectBlueButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerSwipeHintYes;
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerSwipeHintNo;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *addProjectBlueButton;

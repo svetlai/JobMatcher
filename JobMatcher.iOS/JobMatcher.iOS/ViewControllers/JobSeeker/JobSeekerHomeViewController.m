@@ -51,6 +51,8 @@
     NSInteger deleteProjectSender;
     NSInteger deleteSkillSender;
     UILabel *summaryLabel;
+    CGFloat screenWidth;
+    CGFloat screenHeight;
 }
 
 @end
@@ -140,6 +142,13 @@ static InternetConnectionChecker *internetCheker;
 }
 
 // --------- view -----------
+
+-(void) getScreenSize{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    screenWidth = screenRect.size.width;
+    screenHeight = screenRect.size.height;
+}
+
 -(void) handleButtons{
     [self.jobSeekerMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
                                            forState:UIControlStateNormal];
@@ -167,11 +176,14 @@ static InternetConnectionChecker *internetCheker;
 }
 -(void) handleLabelVisibility{
     if (self.matched){
-          self.jobSeekerSwipeHintLabel.hidden = YES;
+        self.jobSeekerSwipeHintNo.hidden = YES;
+        self.jobSeekerSwipeHintYes.hidden = YES;
     } else if (userData.profileType == JobSeeker){
-        self.jobSeekerSwipeHintLabel.hidden = YES;
+        self.jobSeekerSwipeHintNo.hidden = YES;
+        self.jobSeekerSwipeHintYes.hidden = YES;
     } else if (userData.profileType == Recruiter){
-        self.jobSeekerSwipeHintLabel.hidden = NO;
+        self.jobSeekerSwipeHintNo.hidden = NO;
+        self.jobSeekerSwipeHintYes.hidden = NO;
     }
 }
 
@@ -208,7 +220,7 @@ static InternetConnectionChecker *internetCheker;
 -(void) setCollapseClick{
     self.collapseClickScrollView.minimumZoomScale=0.5;
     self.collapseClickScrollView.maximumZoomScale=1.5;
-    //self.collapseClickScrollView.contentSize=CGSizeMake(1280, 960);
+    self.collapseClickScrollView.contentSize=CGSizeMake(1280, 960);
     [self.collapseClickScrollView setClipsToBounds:YES];
     self.collapseClickScrollView.delegate=self;
     
@@ -226,8 +238,7 @@ static InternetConnectionChecker *internetCheker;
 }
 
 -(UIView *)getSummaryView{
-    summaryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
-
+    summaryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, screenWidth, 20)];
     [summaryLabel setTextColor: [UIColor colorWithRed:0.263 green:0.522 blue:0.588 alpha:1]];
     [summaryLabel setBackgroundColor:[UIColor clearColor]];
     [summaryLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
@@ -792,14 +803,16 @@ static InternetConnectionChecker *internetCheker;
 }
 
 -(void)attachLongPressGesture{
-    self.jobSeekerLongPressRecognizer
-    = [[UILongPressGestureRecognizer alloc]
-       initWithTarget:self action:@selector(jobSeekerLongPress:)];
-    self.jobSeekerLongPressRecognizer.minimumPressDuration = .5; //seconds
-    self.jobSeekerLongPressRecognizer.delegate = self;
-    self.jobSeekerLongPressRecognizer.delaysTouchesBegan = YES;
-    self.profileImage.userInteractionEnabled = YES;
-    [self.profileImage addGestureRecognizer:self.jobSeekerLongPressRecognizer];
+    if (userData.profileType == JobSeeker){
+        self.jobSeekerLongPressRecognizer
+        = [[UILongPressGestureRecognizer alloc]
+           initWithTarget:self action:@selector(jobSeekerLongPress:)];
+        self.jobSeekerLongPressRecognizer.minimumPressDuration = .5; //seconds
+        self.jobSeekerLongPressRecognizer.delegate = self;
+        self.jobSeekerLongPressRecognizer.delaysTouchesBegan = YES;
+        self.profileImage.userInteractionEnabled = YES;
+        [self.profileImage addGestureRecognizer:self.jobSeekerLongPressRecognizer];
+    }
     
     self.jobSeekerLabelLongPressRecognizer
     = [[UILongPressGestureRecognizer alloc]

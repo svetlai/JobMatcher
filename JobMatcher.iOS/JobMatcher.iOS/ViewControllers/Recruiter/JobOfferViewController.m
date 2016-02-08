@@ -59,7 +59,7 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
     }
 
     [self attachSwipeGesture];
-    
+     self.jobOfferCoverPhotoImageView.image = [UIImage imageNamed:@"join-our-team.jpg"];
       //  self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
@@ -70,17 +70,21 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
 //------------- view ------------
 -(void) handleVisibility{
     if (self.matched){
-        self.jobOfferSwipeHintLabel.hidden = YES;
+        self.jobOfferSwipeHintNo.hidden = YES;
+        self.jobOfferSwipeHintYes.hidden = YES;
     } else if (userData.profileType == JobSeeker){
-        self.jobOfferSwipeHintLabel.hidden = NO;
+        self.jobOfferSwipeHintNo.hidden = NO;
+        self.jobOfferSwipeHintYes.hidden = NO;
     } else if (userData.profileType == Recruiter){
-        self.jobOfferSwipeHintLabel.hidden = YES;
+        self.jobOfferSwipeHintNo.hidden = YES;
+        self.jobOfferSwipeHintYes.hidden = YES;
     }
 }
 
 -(void) loadData{
     [HelperMethods setPageTitle:self andTitle:self.jobOfferViewModel.title];
     self.jobOfferIndustryLabel.text = [Industries objectAtIndex:self.jobOfferViewModel.industry];
+    self.jobOfferPositionLabel.text = self.jobOfferViewModel.title;
     self.jobOfferLocationLabel.text = self.jobOfferViewModel.location;
     self.jobOfferWorkHoursLabel.text = [WorkHours objectAtIndex: self.jobOfferViewModel.workHours];
     self.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", self.jobOfferViewModel.salary];

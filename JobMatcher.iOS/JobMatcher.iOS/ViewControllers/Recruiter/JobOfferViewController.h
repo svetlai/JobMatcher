@@ -15,9 +15,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobOfferWorkHoursLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jobOfferSalaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jobOfferDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *jobOfferSwipeHintLabel;
 @property (strong, nonatomic) JobOfferViewModel* jobOfferViewModel;
 @property BOOL matched;
+@property (weak, nonatomic) IBOutlet UILabel *jobOfferPositionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *jobOfferCoverPhotoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *jobOfferSwipeHintNo;
+@property (weak, nonatomic) IBOutlet UILabel *jobOfferSwipeHintYes;
 
 - (IBAction)jobOfferSwipe:(UISwipeGestureRecognizer *)sender;
 @end
