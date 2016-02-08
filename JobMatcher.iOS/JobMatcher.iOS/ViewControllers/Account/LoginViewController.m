@@ -38,6 +38,8 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
     validator = [[Validator alloc] init];
     service = [[AccountService alloc] init];
     internetCheker = [[InternetConnectionChecker alloc] init];
+    
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)didReceiveMemoryWarning {

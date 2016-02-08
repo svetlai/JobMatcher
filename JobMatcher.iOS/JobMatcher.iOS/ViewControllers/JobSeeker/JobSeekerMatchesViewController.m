@@ -34,10 +34,12 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
     [HelperMethods setPageTitle:self andTitle:@"My Matches"];
     [self.jobSeekerMatchesTableView setDataSource:self];
     [self.jobSeekerMatchesTableView setDelegate:self];
-    self.jobSeekerMatchesTableView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
-    self.jobSeekerMatchesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
+    self.jobSeekerMatchesTableView.backgroundColor = [UIColor colorWithRed:0.949 green:0.929 blue:0.906 alpha:1] /*#f2ede7*/;//[UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
+    self.jobSeekerMatchesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.949 green:0.929 blue:0.906 alpha:1] /*#f2ede7*/;//[UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
     UINib *nib = [UINib nibWithNibName:jobSeekerMatchesTableCellIdentifier bundle:nil];
     [self.jobSeekerMatchesTableView registerNib:nib forCellReuseIdentifier:jobSeekerMatchesTableCellIdentifier];
+    
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)didReceiveMemoryWarning {

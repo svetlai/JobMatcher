@@ -37,6 +37,8 @@ NSString* const SegueToLoginFromRegister = @"segueToLoginFromRegister";
     internetCheker = [[InternetConnectionChecker alloc] init];
     validator = [[Validator alloc] init];
     service = [[AccountService alloc] init];
+    
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

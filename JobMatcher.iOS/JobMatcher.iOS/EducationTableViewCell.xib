@@ -139,7 +139,7 @@
                     <constraint firstItem="Zxh-QL-f35" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="z7o-RW-Ovy"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="educationAddButton" destination="UWS-fI-dgl" id="WLo-Nj-Hyb"/>
                 <outlet property="educationDegreeLabel" destination="CGD-Dq-PnS" id="wbf-WH-0pR"/>

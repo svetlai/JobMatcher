@@ -46,6 +46,8 @@
     
     [locationProvider getLocationWithTarget:self
                                   andAction:@selector(locationUpdated:)];
+    
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 

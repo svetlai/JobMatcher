@@ -25,25 +25,6 @@
                         <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg0-SN-QOA">
-                        <rect key="frame" x="8" y="98" width="611" height="33"/>
-                        <accessibility key="accessibilityConfiguration">
-                            <accessibilityTraits key="traits" link="YES"/>
-                        </accessibility>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="33" id="kIs-61-bx0"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.12941176470588237" green="0.31372549019607843" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description kjnlkl kls lsk lkl slkwlks jllnlskldk l nslsnlskdnflksldn  lksld lkl" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec6-8F-hmS">
-                        <rect key="frame" x="8" y="41" width="611" height="44"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.2627450980392157" green="0.52156862745098043" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                        <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAe-wT-mNW">
                         <rect key="frame" x="588" y="8" width="16" height="15"/>
                         <constraints>
@@ -65,8 +46,27 @@
                             <constraint firstAttribute="height" constant="14" id="lBe-ne-f46"/>
                         </constraints>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description kjnlkl kls lsk lkl slkwlks jllnlskldk l nslsnlskdnflksldn  lksld lkl" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec6-8F-hmS">
+                        <rect key="frame" x="8" y="41" width="611" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.2627450980392157" green="0.52156862745098043" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg0-SN-QOA">
+                        <rect key="frame" x="8" y="98" width="611" height="33"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" link="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="33" id="kIs-61-bx0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.12941176470588237" green="0.31372549019607843" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="uAe-wT-mNW" firstAttribute="leading" secondItem="cTK-Ff-5pi" secondAttribute="trailing" constant="9" id="0VC-wS-Vjd"/>
                     <constraint firstItem="Mgb-cQ-kVd" firstAttribute="leading" secondItem="cTK-Ff-5pi" secondAttribute="trailing" constant="31" id="DgC-oH-68D"/>
@@ -94,7 +94,7 @@
                     <constraint firstItem="uAe-wT-mNW" firstAttribute="firstBaseline" secondItem="cTK-Ff-5pi" secondAttribute="firstBaseline" id="ySo-EB-zym"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="projectAddButton" destination="cTK-Ff-5pi" id="ukL-Zl-6g6"/>
                 <outlet property="projectDeleteButton" destination="Mgb-cQ-kVd" id="8ea-cn-CrJ"/>

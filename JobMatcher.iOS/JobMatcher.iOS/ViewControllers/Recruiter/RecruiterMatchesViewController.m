@@ -32,10 +32,11 @@ NSString* const SegueFromRecruiterMatchesToJobSeekerProfile = @"segueFromRecruit
     [HelperMethods setPageTitle:self andTitle:@"My Matches"];
     [self.recruiterMatchesTableView setDataSource:self];
     [self.recruiterMatchesTableView setDelegate:self];
-    self.recruiterMatchesTableView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
-    self.recruiterMatchesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
+    self.recruiterMatchesTableView.backgroundColor = [UIColor colorWithRed:0.949 green:0.929 blue:0.906 alpha:1] /*#f2ede7*/;//[UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
+    self.recruiterMatchesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.949 green:0.929 blue:0.906 alpha:1] /*#f2ede7*/;//[UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
     UINib *nib = [UINib nibWithNibName:recruiterMatchTableViewCellIdentifier bundle:nil];
     [self.recruiterMatchesTableView registerNib:nib forCellReuseIdentifier:recruiterMatchTableViewCellIdentifier];
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)didReceiveMemoryWarning {

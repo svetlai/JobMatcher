@@ -35,6 +35,8 @@
     userData = [[UserDataModel alloc] init];
     validator = [[Validator alloc] init];
      jobSeekerService = [[JobSeekerService alloc] init];
+    
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)didReceiveMemoryWarning {

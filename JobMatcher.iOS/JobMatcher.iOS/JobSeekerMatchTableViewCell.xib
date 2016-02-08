@@ -58,7 +58,7 @@
                     <constraint firstItem="AEc-Ry-Ucf" firstAttribute="leading" secondItem="11X-U3-0ad" secondAttribute="leading" id="qSW-Tf-g5s"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="jobSeekerMatchLocationLabel" destination="AEc-Ry-Ucf" id="Dnp-cY-T6y"/>
                 <outlet property="jobSeekerMatchMessageButton" destination="T5K-Zb-EeU" id="cwQ-b9-KVC"/>

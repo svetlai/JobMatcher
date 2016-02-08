@@ -125,6 +125,9 @@ static InternetConnectionChecker *internetCheker;
     
     [self attachSwipeGesture];
     [self attachLongPressGesture];
+    
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)viewDidUnload{
@@ -327,7 +330,7 @@ static InternetConnectionChecker *internetCheker;
 }
 
 -(UIColor *)colorForCollapseClickTitleViewAtIndex:(int)index {
-    return [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
+    return [UIColor colorWithRed:0.949 green:0.929 blue:0.906 alpha:1] /*#f2ede7*/; //[UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
 }
 
 -(UIColor *)colorForTitleLabelAtIndex:(int)index {

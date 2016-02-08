@@ -50,7 +50,7 @@
                     <constraint firstItem="jUS-N4-Vfx" firstAttribute="leading" secondItem="Ai0-O9-XQg" secondAttribute="trailing" constant="8" symbolic="YES" id="yXC-7M-iEi"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.94821479661025643" green="0.94821479661025643" blue="0.94821479661025643" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="jobSeekerMessageContent" destination="MVs-uF-knb" id="Bzq-nH-jNu"/>
                 <outlet property="jobSeekerMessageSubject" destination="jUS-N4-Vfx" id="mqo-C0-Za0"/>

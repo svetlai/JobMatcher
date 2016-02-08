@@ -141,7 +141,7 @@
                     <constraint firstItem="RuC-uE-BnE" firstAttribute="firstBaseline" secondItem="VcX-ln-Vym" secondAttribute="firstBaseline" id="yJc-C0-8eO"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="experienceAddButton" destination="PoT-nI-NM3" id="JQu-lC-NG5"/>
                 <outlet property="experienceDeleteButton" destination="Zj1-dF-7Wk" id="rzi-lo-Du0"/>

@@ -50,7 +50,7 @@
                     <constraint firstItem="UWC-F7-UnR" firstAttribute="baseline" secondItem="qll-N6-Bv2" secondAttribute="baseline" constant="-4" id="wsk-jX-wX5"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.81456095045641019" green="0.81456095045641019" blue="0.81456095045641019" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="recruiterMessageContent" destination="3W2-VK-a2O" id="aXe-e5-LrP"/>
                 <outlet property="recruiterMessageSubject" destination="UWC-F7-UnR" id="AmI-DC-38G"/>

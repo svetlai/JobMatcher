@@ -37,6 +37,7 @@
                         </constraints>
                     </button>
                 </subviews>
+                <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="wFg-Iw-ZER" secondAttribute="bottom" constant="17" id="1yP-iV-eKQ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="cRl-WP-uuR" secondAttribute="trailing" constant="33" id="3co-vN-qRU"/>
@@ -50,7 +51,6 @@
                     <constraint firstAttribute="trailing" secondItem="KzQ-MZ-B4J" secondAttribute="trailing" id="tO6-uo-ipc"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="recruiterMatchEmail" destination="cRl-WP-uuR" id="1yi-6V-VT0"/>
                 <outlet property="recruiterMatchMessageButton" destination="KzQ-MZ-B4J" id="4Tm-Gy-XNj"/>

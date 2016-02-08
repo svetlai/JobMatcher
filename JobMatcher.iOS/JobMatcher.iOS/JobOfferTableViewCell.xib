@@ -86,7 +86,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="t6S-yU-Kij" secondAttribute="bottom" constant="2" id="wrG-De-C5C"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="jobOfferAddButton" destination="IA2-fV-EEX" id="CaG-TH-XLL"/>
                 <outlet property="jobOfferDeleteButton" destination="hDH-MA-64w" id="TUr-3D-Waa"/>
