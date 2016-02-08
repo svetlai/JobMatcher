@@ -38,7 +38,7 @@
     jobSeekerService = [[JobSeekerService alloc] init];
     [jobSeekerService getEditProfileWithId:userData.profileId andTarget:self];
     
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
+       // self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)didReceiveMemoryWarning {

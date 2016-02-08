@@ -127,7 +127,7 @@ static InternetConnectionChecker *internetCheker;
     [self attachLongPressGesture];
     
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)viewDidUnload{

@@ -69,7 +69,7 @@ static NSString* recruiterMessageTableViewCell = @"RecruiterMessageTableViewCell
     UINib *nibRecruiter = [UINib nibWithNibName:recruiterMessageTableViewCell bundle:nil];
     [self.messagesTableView registerNib:nibRecruiter forCellReuseIdentifier:recruiterMessageTableViewCell];
     
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
+       // self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 

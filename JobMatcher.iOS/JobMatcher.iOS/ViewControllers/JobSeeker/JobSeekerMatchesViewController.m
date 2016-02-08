@@ -39,7 +39,7 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
     UINib *nib = [UINib nibWithNibName:jobSeekerMatchesTableCellIdentifier bundle:nil];
     [self.jobSeekerMatchesTableView registerNib:nib forCellReuseIdentifier:jobSeekerMatchesTableCellIdentifier];
     
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
+       // self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)didReceiveMemoryWarning {
