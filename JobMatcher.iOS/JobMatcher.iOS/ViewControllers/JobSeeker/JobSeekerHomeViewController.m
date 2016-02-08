@@ -105,7 +105,7 @@ static InternetConnectionChecker *internetCheker;
     connectionType = @"GetProfile";
 
     [HelperMethods setSackBarButtonText:self andText:@""];
-    [self setProfileImage];
+
     [self setCollapseClick];
     [self handleButtons];
     [self handleLabelVisibility];
@@ -124,6 +124,8 @@ static InternetConnectionChecker *internetCheker;
             [self reloadData];
         }
     }
+    
+    [self setProfileImage];
     
     [self attachSwipeGesture];
     [self attachLongPressGesture];
@@ -514,7 +516,7 @@ static InternetConnectionChecker *internetCheker;
         jobSeekerViewModel = [JobSeekerProfileViewModel fromJsonDictionary:json];
         
         self.helloLabel.text = [NSString stringWithFormat:@"%@", jobSeekerViewModel.username];
-        
+        [self setProfileImage];
         if ([jobSeekerViewModel.firstName isEqual:[NSNull null]]) {
             jobSeekerViewModel.firstName = @"";
         }
