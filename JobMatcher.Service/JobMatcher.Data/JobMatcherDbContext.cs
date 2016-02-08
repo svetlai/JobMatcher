@@ -11,7 +11,7 @@
     public class JobMatcherDbContext : IdentityDbContext<User>, IJobMatcherDbContext
     {
         public JobMatcherDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("AzureConnection", throwIfV1Schema: false)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<JobMatcherDbContext, Configuration>());
         }
