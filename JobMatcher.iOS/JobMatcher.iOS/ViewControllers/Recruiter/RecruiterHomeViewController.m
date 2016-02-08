@@ -111,6 +111,11 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     
     [self.recruiterMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
                                            forState:UIControlStateNormal];
+    [self.recruiterEditProfileButton setBackgroundImage:[UIImage imageNamed:@"edit-icon.png"]
+                                           forState:UIControlStateNormal];
+    
+    [self.recruiterAddOfferButton setBackgroundImage:[UIImage imageNamed:@"add-icon.png"]
+                                               forState:UIControlStateNormal];
 
 }
 
@@ -419,4 +424,7 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     }
 }
 
+- (IBAction)recruiterAddOfferButtonTap:(id)sender {
+    [self performSegueWithIdentifier:SegueFromRecruiterToAddJobOffer sender:self];
+}
 @end

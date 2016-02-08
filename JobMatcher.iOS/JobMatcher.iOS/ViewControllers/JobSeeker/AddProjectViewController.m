@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [HelperMethods setPageTitle:self andTitle:@"Add Project"];
+    [HelperMethods setPageTitle:self andTitle:@"Project"];
     [HelperMethods setSackBarButtonText:self andText:@""];
     
     userData = [[UserDataModel alloc] init];
@@ -56,7 +56,7 @@
     }
     
     if (![validator isValidLength:10 andParam:url]){
-        [HelperMethods addAlert:@"Description must be at least 3 symbols."];
+        [HelperMethods addAlert:@"Url must be at least 10 symbols."];
         return;
     }
     

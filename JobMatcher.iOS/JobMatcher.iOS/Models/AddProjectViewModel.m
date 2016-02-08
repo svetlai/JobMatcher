@@ -11,7 +11,7 @@
 @implementation AddProjectViewModel
 -(instancetype) initWithTitle:(NSString*) title
                andDescription:(NSString*) projectDescription
-                       andUrl:(NSString*) url;{
+                       andUrl:(NSString*) url{
     
     if (self = [super init]){
         self.title = title;

@@ -49,6 +49,8 @@
     UIImagePickerController *jobSeekerImagePicker;
     JobMatcherDatabase* db;
     NSInteger deleteProjectSender;
+    NSInteger deleteSkillSender;
+    UILabel *summaryLabel;
 }
 
 @end
@@ -69,6 +71,8 @@ NSString* const SegueFromJobSeekerToJobOffer = @"segueFromJobSeekerToJobOffer";
 NSString* const SegueFromJobSeekerToMatches = @"segueFromJobSeekerToMatches";
 NSString* const SegueFromJobSeekerHomeToLogin = @"segueFromJobSeekerHomeToLogin";
 NSString* const SegueFromJobSeekerToAddProject = @"segueFromJobSeekerToAddProject";
+NSString* const SegueFromJobSeekerToAddSkill = @"segueFromJobSeekerToAddSkill";
+NSString* const SegueFromJobSeekerToAddSummary = @"segueFromJobSeekerToAddSummary";
 
 static NSString* projectsTableCellIdentifier = @"ProjectsTableViewCell";
 static NSString* skillsTableCellIdentifier = @"SkillsTableViewCell";
@@ -104,36 +108,13 @@ static InternetConnectionChecker *internetCheker;
     userData = [[UserDataModel alloc] init];
     db = [JobMatcherDatabase database];
 
-    [self setProfileImage];
-
-    ////    self.tableViewProjects.layer.borderWidth = 1;
-////    self.tableViewProjects.layer.borderColor = [UIColor lightGrayColor].CGColor;
-//    projectsTableView = [[UITableView alloc] initWithFrame:CGRectMake(101, 45, 100, 416)];
-//    [projectsTableView setDataSource:self];
-//    [projectsTableView setDelegate:self];
-//
-//    UINib *nib = [UINib nibWithNibName:cellIdentifier bundle:nil];
-//    [projectsTableView registerNib:nib forCellReuseIdentifier:cellIdentifier];
-//    projectsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//
-//    [self.view addSubview:projectsTableView];
-    
-//    myViewObject = [[[NSBundle mainBundle] loadNibNamed:@"SummaryViewController" owner:self options:nil] objectAtIndex:0];
-    
- 
-    [HelperMethods setSackBarButtonText:self andText:@""];
-    
     connectionType = @"GetProfile";
-    self.collapseClickScrollView.minimumZoomScale=0.5;
-    self.collapseClickScrollView.maximumZoomScale=1.5;
-    //self.collapseClickScrollView.contentSize=CGSizeMake(1280, 960);
-    [self.collapseClickScrollView setClipsToBounds:YES];
-    self.collapseClickScrollView.delegate=self;
-    
-    self.collapseClickScrollView.CollapseClickDelegate = self;
-    [self.collapseClickScrollView reloadCollapseClick];
 
+    [HelperMethods setSackBarButtonText:self andText:@""];
+    [self setProfileImage];
+    [self setCollapseClick];
     [self handleButtons];
+    
     if (userData.profileType == JobSeeker){
         [service getProfileWithTarget:self];
         [HelperMethods setPageTitle:self andTitle:@"Profile"];
@@ -155,6 +136,18 @@ static InternetConnectionChecker *internetCheker;
     // Do any additional setup after loading the view.
 }
 
+-(void) setCollapseClick{
+    self.collapseClickScrollView.minimumZoomScale=0.5;
+    self.collapseClickScrollView.maximumZoomScale=1.5;
+    //self.collapseClickScrollView.contentSize=CGSizeMake(1280, 960);
+    [self.collapseClickScrollView setClipsToBounds:YES];
+    self.collapseClickScrollView.delegate=self;
+    
+    self.collapseClickScrollView.CollapseClickDelegate = self;
+    [self.collapseClickScrollView reloadCollapseClick];
+
+}
+
 -(void) handleButtons{
     [self.jobSeekerMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
                                            forState:UIControlStateNormal];
@@ -163,15 +156,30 @@ static InternetConnectionChecker *internetCheker;
     [self.jobSeekerLogoutButton setBackgroundImage:[UIImage imageNamed:@"logout-icon.png"]
                                           forState:UIControlStateNormal];
     
+    [self.jobSeekerEditProfileButton setBackgroundImage:[UIImage imageNamed:@"edit-icon.png"]
+                                          forState:UIControlStateNormal];
+    
     if (userData.profileType == JobSeeker){
         self.jobSeekerMatchesButton.hidden = NO;
         self.jobSeekerBrowseOffersButton.hidden = NO;
         self.jobSeekerLogoutButton.hidden = NO;
+        self.jobSeekerEditProfileButton.hidden = NO;
+        self.jobSeekerSwipeHintLabel.hidden = YES;
 
     } else if (userData.profileType == Recruiter){
         self.jobSeekerMatchesButton.hidden = YES;
         self.jobSeekerBrowseOffersButton.hidden = YES;
         self.jobSeekerLogoutButton.hidden = YES;
+        self.jobSeekerEditProfileButton.hidden = YES;
+        self.jobSeekerSwipeHintLabel.hidden = NO;
+    }
+}
+
+-(void) handleButtonVisibility: (UIButton*) button{
+    if (userData.profileType == JobSeeker){
+        button.hidden = NO;
+    } else if (userData.profileType == Recruiter){
+        button.hidden = YES;
     }
 }
 
@@ -212,21 +220,52 @@ static InternetConnectionChecker *internetCheker;
 }
 
 -(UIView *)getSummaryView{
-    UILabel *summaryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
+    summaryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
 
     [summaryLabel setTextColor: [UIColor colorWithRed:0.263 green:0.522 blue:0.588 alpha:1]] /*#438596*/;//[UIColor colorWithRed:0.482 green:0.722 blue:0.765 alpha:1]] /*#7bb8c3*/;//[UIColor colorWithRed:0.106 green:0.255 blue:0.282 alpha:1]]; /*#1b4148*/
     [summaryLabel setBackgroundColor:[UIColor clearColor]];
     [summaryLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
-    
-    if (jobSeekerViewModel.summary != nil){
+
+    if (![jobSeekerViewModel.summary isEqual:[NSNull null]]){
         [summaryLabel setText: jobSeekerViewModel.summary]; //@"some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text "];
     }
     
     [summaryLabel setNumberOfLines:0];
     [summaryLabel sizeToFit];
     [self.view addSubview:summaryLabel];
+    
+//    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [editButton addTarget:self
+//               action:@selector(deleteSkillButtonTap:)
+//     forControlEvents:UIControlEventTouchUpInside];
+//    [editButton setTitle:@"" forState:UIControlStateNormal];
+//    editButton.frame = CGRectMake(295, 0, 15, 15);
+//    [editButton setBackgroundImage:[UIImage imageNamed:@"edit-icon.png"]
+//                                      forState:UIControlStateNormal];
+//    [summaryLabel addSubview:editButton];
+    
+//    UIButton* addButton = [self addButtonWithImage:@"add-icon.png" andX:270 andY:0 withWidth:15 andHeight:15 andView:summaryLabel];
+//    [addButton addTarget:self
+//               action:@selector(addSummaryButtonTap:)
+//     forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIButton* editButton =[self addButtonWithImage:@"edit-icon.png" andX:295 andY:0 withWidth:15 andHeight:15 andView:summaryLabel];
+//    [editButton addTarget:self
+//               action:@selector(addSummaryButtonTap:)
+//     forControlEvents:UIControlEventTouchUpInside];
     return (UIView *)summaryLabel;
 }
+
+//-(UIButton*) addButtonWithImage: (NSString*) imageName andX: (int)x andY: (int)y withWidth: (double)width andHeight: (double)height andView:(UIView*) view {
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setTitle:@"" forState:UIControlStateNormal];
+//    button.frame = CGRectMake(x, y, width, height);
+//    [button setBackgroundImage:[UIImage imageNamed:imageName]
+//                         forState:UIControlStateNormal];
+//    [view addSubview:button];
+//    
+//    return button;
+//}
 
 -(UITableView*)getProjectsView{
     NSInteger tableHeight = ProjectsTableRowHeight * jobSeekerViewModel.projects.count;
@@ -326,21 +365,7 @@ static InternetConnectionChecker *internetCheker;
     return [UIColor colorWithRed:0.773 green:0.855 blue:0.867 alpha:1] /*#c5dadd*/;
 }
 
-//-(void)openCollapseClickCellsWithIndexes:(NSArray *)indexArray animated:(BOOL)animated;
-//
-//-(void)closeCollapseClickCellsWithIndexes:(NSArray *)indexArray animated:(BOOL)animated;
-
 //---------------
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 // connection
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
@@ -362,23 +387,37 @@ static InternetConnectionChecker *internetCheker;
     }
 
     
-    if ([connectionType isEqualToString:@"DeleteProject"]){
-        connectionType = @"";
+    if ([connectionType isEqualToString:@"DeleteProject"] || [connectionType isEqualToString:@"DeleteSkill"]){
+        connectionType = @"GetProfile";
         return;
-    }
-    
-    if ([connectionType isEqualToString:@"GetProfile"]){
+    }else if ([connectionType isEqualToString:@"GetProfile"]){
         jobSeekerViewModel = [JobSeekerProfileViewModel fromJsonDictionary:json];
         
         self.helloLabel.text = [NSString stringWithFormat:@"%@", jobSeekerViewModel.username];
         
+        if ([jobSeekerViewModel.firstName isEqual:[NSNull null]]) {
+            jobSeekerViewModel.firstName = @"";
+        }
+        
+        if ([jobSeekerViewModel.lastName isEqual:[NSNull null]]) {
+            jobSeekerViewModel.lastName = @"";
+        }
+        
+        NSString* name = [NSString stringWithFormat:@"%@ %@",jobSeekerViewModel.firstName, jobSeekerViewModel.lastName];
+        
+        self.jobSeekerProfileName.text = name;
+        
+        if (![jobSeekerViewModel.phoneNumber isEqual:[NSNull null]]) {
+            self.jobSeekerPhoneLabel.text = jobSeekerViewModel.phoneNumber;
+        }
+        
+        if (![jobSeekerViewModel.currentPosition isEqual:[NSNull null]]) {
+            self.jobSeekerProfilePosition.text = jobSeekerViewModel.currentPosition;
+        }
+        
         [self reloadData];
 
     }
-
-//    NSString* username = [NSString stringWithFormat:@"%@", [(NSDictionary*)json objectForKey:@"userName"]];
-    
-
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
@@ -406,6 +445,12 @@ static InternetConnectionChecker *internetCheker;
     }  else if ([connectionType isEqualToString:@"DeleteProject"]){
         if (code == 200){
             message = @"Project deleted successfully!";
+            [service getProfileWithTarget:self];
+            [HelperMethods addAlert:message];
+        }
+    } else if ([connectionType isEqualToString:@"DeleteSkill"]){
+        if (code == 200){
+            message = @"Skill deleted successfully!";
             [service getProfileWithTarget:self];
             [HelperMethods addAlert:message];
         }
@@ -471,6 +516,10 @@ static InternetConnectionChecker *internetCheker;
              [cell.projectDeleteButton addTarget:self action:@selector(deleteProjectButtonTap:) forControlEvents:UIControlEventTouchUpInside];
                [cell.projectAddButton addTarget:self action:@selector(addProjectButtonTap:) forControlEvents:UIControlEventTouchUpInside];
              
+            [self handleButtonVisibility:cell.projectAddButton];
+            [self handleButtonVisibility:cell.projectEditButton];
+            [self handleButtonVisibility:cell.projectDeleteButton];
+             
              return cell;
          }
     } else if (tableView == skillsTableView){
@@ -481,6 +530,16 @@ static InternetConnectionChecker *internetCheker;
             SkillViewModel *skillViewModel = jobSeekerViewModel.skills[indexPath.row];
             cell.skillNameLabel.text = skillViewModel.name;
             cell.skillLevelLabel.text = [NSString stringWithFormat:@"%ld", skillViewModel.level];
+            
+            cell.skillDeleteButton.tag = indexPath.row;
+            [cell.skillDeleteButton addTarget:self action:@selector(deleteSkillButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.skillAddButton addTarget:self action:@selector(addSkillButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+            
+            
+            [self handleButtonVisibility:cell.skillAddButton];
+            [self handleButtonVisibility:cell.skillEditButton];
+            [self handleButtonVisibility:cell.skillDeleteButton];
+            
         }
         
         return cell;
@@ -494,9 +553,9 @@ static InternetConnectionChecker *internetCheker;
         
             cell.experienceDescriptionLabel.text = experienceViewModel.experienceDescription; //@"some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text some long text ";//
         
-            float expectedHeight = [cell.experienceDescriptionLabel expectedHeight];
-            ExperienceTableRowHeight += expectedHeight;
-            [self setDynamicLabel:cell.experienceDescriptionLabel andHeight:expectedHeight andWidth:tableView.frame.size.width andView:cell];
+//            float expectedHeight = [cell.experienceDescriptionLabel expectedHeight];
+//            ExperienceTableRowHeight += expectedHeight;
+//            [self setDynamicLabel:cell.experienceDescriptionLabel andHeight:expectedHeight andWidth:tableView.frame.size.width andView:cell];
             //        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, 200);
             //         [tableView addSubview:cell];
             //        tableView.frame = CGRectMake(tableView.frame.origin.x, tableView.frame.origin.y, tableView.frame.size.width, 200);
@@ -511,6 +570,11 @@ static InternetConnectionChecker *internetCheker;
             } else {
                 cell.experienceEndDateLabel.text = [HelperMethods getShortDateString:experienceViewModel.endDate];
             }
+            
+            
+            [self handleButtonVisibility:cell.experienceAddButton];
+            [self handleButtonVisibility:cell.experienceEditButton];
+            [self handleButtonVisibility:cell.experienceDeleteButton];
         }
     
         return cell;
@@ -536,26 +600,15 @@ static InternetConnectionChecker *internetCheker;
             } else {
                 cell.educationEndDateLabel.text = [HelperMethods getShortDateString:educationViewModel.endDate];
             }
+            
+            [self handleButtonVisibility:cell.educationAddButton];
+            [self handleButtonVisibility:cell.educationEditButton];
+            [self handleButtonVisibility:cell.educationDeleteButton];
         }
         
         return cell;
     }
-////
-////    cell.tag = indexPath.row;
-////
-//    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    
-//    // Draw top border only on first cell
-//    if (indexPath.row == 0) {
-//        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 1)];
-//        topLineView.backgroundColor = [UIColor grayColor];
-//        [cell.contentView addSubview:topLineView];
-//    }
-//    
-//    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height, self.view.bounds.size.width, 1)];
-//    bottomLineView.backgroundColor = [UIColor grayColor];
-//    [cell.contentView addSubview:bottomLineView];
-//    
+
     return cell;
 }
 
@@ -827,5 +880,33 @@ static InternetConnectionChecker *internetCheker;
 -(void)addProjectButtonTap:(UIButton*)sender
 {
 [self performSegueWithIdentifier:SegueFromJobSeekerToAddProject sender:self];
+}
+
+-(void)deleteSkillButtonTap:(UIButton*)sender
+{
+    for (int i = 0; i < jobSeekerViewModel.skills.count; i++) {
+        if (sender.tag == i)
+        {
+            deleteSkillSender = i;
+            SkillViewModel* currentSkill =[jobSeekerViewModel.skills objectAtIndex:i];
+            NSInteger currentId = currentSkill.skillId;
+            [service deleteSkillWithId:currentId andTarget:self];
+            connectionType = @"DeleteSkill";
+            NSLog(@"clicked");
+            break;
+        }
+    }
+}
+-(void)addSkillButtonTap:(UIButton*)sender
+{
+    [self performSegueWithIdentifier:SegueFromJobSeekerToAddSkill sender:self];
+}
+
+-(void)addSummaryButtonTap:(UIButton*)sender
+{
+    [self performSegueWithIdentifier:SegueFromJobSeekerToAddSummary sender:self];
+}
+- (IBAction)jobSeekerEditProfileButtonTap:(id)sender {
+       [self performSegueWithIdentifier:SegueFromJobSeekerToAddSummary sender:self];
 }
 @end

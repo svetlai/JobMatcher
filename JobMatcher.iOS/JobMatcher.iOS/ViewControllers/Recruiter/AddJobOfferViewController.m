@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [HelperMethods setPageTitle:self andTitle:@"Add Job Offer"];
+    [HelperMethods setPageTitle:self andTitle:@"Job Offer"];
     [HelperMethods setSackBarButtonText:self andText:@""];
     
     userData = [[UserDataModel alloc] init];
@@ -48,17 +48,19 @@
                                   andAction:@selector(locationUpdated:)];
 }
 
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 -(void) locationUpdated: (CLLocation*) location{
     currentLatitude = location.coordinate.latitude;
     currentLongitude = location.coordinate.longitude;
     
     self.addJobOfferLatitude.text = [NSString stringWithFormat:@"%f", currentLatitude];
     self.addJobOfferLongitude.text = [NSString stringWithFormat:@"%f", currentLongitude];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

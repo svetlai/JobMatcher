@@ -26,7 +26,11 @@
               andEducation:(NSArray*) education
       andSelectedJobOffers:(NSArray*) selectedJobOffers
                andMessages:(NSArray*) messages
-            andProfileType:(NSInteger) profileType{
+            andProfileType:(NSInteger) profileType
+              andFirstName:(NSString*) firstName
+               andLastName:(NSString*) lastName
+            andPhoneNumber:(NSString*) phoneNumber
+        andCurrentPosition:(NSString*) currentPosition{
     
     if (self = [super init]){
         self.profileId = profileId;
@@ -40,6 +44,10 @@
         self.selectedJobOffers = selectedJobOffers;
         self.messages = messages;
         self.profileType = profileType;
+        self.firstName = firstName;
+        self.lastName = lastName;
+        self.phoneNumber = phoneNumber;
+        self.currentPosition = currentPosition;
     }
     
     return self;
@@ -58,7 +66,12 @@
             andEducation:[EducationViewModel arrayOfEducationFromJsonDictionary:[jsonDictionary objectForKey:@"Education"]]
             andSelectedJobOffers:[JobOfferViewModel arrayOfJobOffersFromJsonDictionary:[jsonDictionary  objectForKey:@"SelectedJobOffers"]]
             andMessages:[MessageViewModel arrayOfMessagesFromJsonDictionary:[jsonDictionary objectForKey:@"Messages"]]
-            andProfileType:[[jsonDictionary objectForKey:@"ProfileType"] integerValue]];
+            andProfileType:[[jsonDictionary objectForKey:@"ProfileType"] integerValue]
+            andFirstName:[jsonDictionary objectForKey:@"FirstName"]
+            andLastName:[jsonDictionary objectForKey:@"LastName"]
+            andPhoneNumber:[jsonDictionary objectForKey:@"PhoneNumber"]
+            andCurrentPosition:[jsonDictionary objectForKey:@"CurrentPosition"]];
+            ;
 }
 
 +(NSArray*) arrayOfJobOffersFromJsonDictionary: (NSArray*) jsonArray{

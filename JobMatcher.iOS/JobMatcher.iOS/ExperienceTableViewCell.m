@@ -11,7 +11,14 @@
 @implementation ExperienceTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [self.experienceDeleteButton setBackgroundImage:[UIImage imageNamed:@"delete-icon.png"]
+                                      forState:UIControlStateNormal];
+    
+    [self.experienceAddButton setBackgroundImage:[UIImage imageNamed:@"add-icon.png"]
+                                   forState:UIControlStateNormal];
+    
+    [self.experienceEditButton setBackgroundImage:[UIImage imageNamed:@"edit-icon.png"]
+                                    forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

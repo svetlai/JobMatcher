@@ -49,6 +49,7 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
     jobOfferMatchService = [[MatchService alloc] init];
     jobOfferService = [[JobOfferService alloc] init];
     
+    [self handleVisibility];
     if (self.jobOfferViewModel != nil && userData.profileType == Recruiter){
         [self loadData];
     } else if (userData.profileType == JobSeeker){
@@ -155,6 +156,15 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
         [HelperMethods addAlert:message];
     }
 }
+-(void) handleVisibility{
+    if (userData.profileType == JobSeeker){
+        self.jobOfferSwipeHintLabel.hidden = NO;
+        
+    } else if (userData.profileType == Recruiter){
+        self.jobOfferSwipeHintLabel.hidden = YES;
+    }
+}
+
 -(void) loadData{
     [HelperMethods setPageTitle:self andTitle:self.jobOfferViewModel.title];
     self.jobOfferIndustryLabel.text = [Industries objectAtIndex:self.jobOfferViewModel.industry];

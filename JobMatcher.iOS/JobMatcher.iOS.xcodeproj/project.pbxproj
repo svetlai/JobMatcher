@@ -32,6 +32,10 @@
 		9B01BF1D1C67A63D00691C74 /* LocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF1C1C67A63D00691C74 /* LocationProvider.m */; };
 		9B01BF201C67F13300691C74 /* AddProjectViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF1F1C67F13300691C74 /* AddProjectViewModel.m */; };
 		9B01BF231C67F37A00691C74 /* AddProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF221C67F37A00691C74 /* AddProjectViewController.m */; };
+		9B01BF261C68038B00691C74 /* AddSkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF251C68038B00691C74 /* AddSkillViewController.m */; };
+		9B01BF291C6803C000691C74 /* AddSkillViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF281C6803C000691C74 /* AddSkillViewModel.m */; };
+		9B01BF2C1C6814E700691C74 /* AddSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF2B1C6814E700691C74 /* AddSummaryViewController.m */; };
+		9B01BF2F1C6819B900691C74 /* EditJobSeekerProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01BF2E1C6819B900691C74 /* EditJobSeekerProfileViewModel.m */; };
 		9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */; };
 		9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B271C5FD9CE002E39D3 /* JobOfferTableViewCell.m */; };
 		9B086B2A1C5FD9CE002E39D3 /* JobOfferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B281C5FD9CE002E39D3 /* JobOfferTableViewCell.xib */; };
@@ -135,6 +139,14 @@
 		9B01BF1F1C67F13300691C74 /* AddProjectViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProjectViewModel.m; path = Models/AddProjectViewModel.m; sourceTree = "<group>"; };
 		9B01BF211C67F37A00691C74 /* AddProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProjectViewController.h; path = ViewControllers/JobSeeker/AddProjectViewController.h; sourceTree = "<group>"; };
 		9B01BF221C67F37A00691C74 /* AddProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProjectViewController.m; path = ViewControllers/JobSeeker/AddProjectViewController.m; sourceTree = "<group>"; };
+		9B01BF241C68038B00691C74 /* AddSkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSkillViewController.h; path = ViewControllers/JobSeeker/AddSkillViewController.h; sourceTree = "<group>"; };
+		9B01BF251C68038B00691C74 /* AddSkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSkillViewController.m; path = ViewControllers/JobSeeker/AddSkillViewController.m; sourceTree = "<group>"; };
+		9B01BF271C6803C000691C74 /* AddSkillViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSkillViewModel.h; path = Models/AddSkillViewModel.h; sourceTree = "<group>"; };
+		9B01BF281C6803C000691C74 /* AddSkillViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSkillViewModel.m; path = Models/AddSkillViewModel.m; sourceTree = "<group>"; };
+		9B01BF2A1C6814E700691C74 /* AddSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSummaryViewController.h; path = ViewControllers/JobSeeker/AddSummaryViewController.h; sourceTree = "<group>"; };
+		9B01BF2B1C6814E700691C74 /* AddSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSummaryViewController.m; path = ViewControllers/JobSeeker/AddSummaryViewController.m; sourceTree = "<group>"; };
+		9B01BF2D1C6819B900691C74 /* EditJobSeekerProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditJobSeekerProfileViewModel.h; path = Models/EditJobSeekerProfileViewModel.h; sourceTree = "<group>"; };
+		9B01BF2E1C6819B900691C74 /* EditJobSeekerProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditJobSeekerProfileViewModel.m; path = Models/EditJobSeekerProfileViewModel.m; sourceTree = "<group>"; };
 		9B086B231C5FD4D3002E39D3 /* RecruiterProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruiterProfileViewModel.h; path = Models/RecruiterProfileViewModel.h; sourceTree = "<group>"; };
 		9B086B241C5FD4D3002E39D3 /* RecruiterProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecruiterProfileViewModel.m; path = Models/RecruiterProfileViewModel.m; sourceTree = "<group>"; };
 		9B086B261C5FD9CE002E39D3 /* JobOfferTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobOfferTableViewCell.h; sourceTree = "<group>"; };
@@ -314,6 +326,10 @@
 				9B086B321C612E7D002E39D3 /* JobSeekerMatchesViewController.m */,
 				9B01BF211C67F37A00691C74 /* AddProjectViewController.h */,
 				9B01BF221C67F37A00691C74 /* AddProjectViewController.m */,
+				9B01BF241C68038B00691C74 /* AddSkillViewController.h */,
+				9B01BF251C68038B00691C74 /* AddSkillViewController.m */,
+				9B01BF2A1C6814E700691C74 /* AddSummaryViewController.h */,
+				9B01BF2B1C6814E700691C74 /* AddSummaryViewController.m */,
 			);
 			name = JobSeeker;
 			sourceTree = "<group>";
@@ -461,6 +477,10 @@
 				9B01BF191C67943300691C74 /* AddJobOfferViewModel.m */,
 				9B01BF1E1C67F13300691C74 /* AddProjectViewModel.h */,
 				9B01BF1F1C67F13300691C74 /* AddProjectViewModel.m */,
+				9B01BF271C6803C000691C74 /* AddSkillViewModel.h */,
+				9B01BF281C6803C000691C74 /* AddSkillViewModel.m */,
+				9B01BF2D1C6819B900691C74 /* EditJobSeekerProfileViewModel.h */,
+				9B01BF2E1C6819B900691C74 /* EditJobSeekerProfileViewModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -625,6 +645,7 @@
 			files = (
 				9BFEBB191C553A2F00B83A52 /* GlobalConstants.m in Sources */,
 				9B93F15D1C5D0FF400E39663 /* JobSeekerProfileViewModel.m in Sources */,
+				9B01BF291C6803C000691C74 /* AddSkillViewModel.m in Sources */,
 				9B93F1C81C5E659300E39663 /* EducationTableViewCell.m in Sources */,
 				9B93F0DD1C56EABB00E39663 /* KeychainUserPass.m in Sources */,
 				9BFEBB0E1C552CEA00B83A52 /* HttpRequester.m in Sources */,
@@ -635,6 +656,7 @@
 				9BFEBAFF1C552BFC00B83A52 /* JobMatcher_iOS.xcdatamodeld in Sources */,
 				9B93F16F1C5D15D600E39663 /* MessageViewModel.m in Sources */,
 				9B93F1AF1C5E0D8400E39663 /* CollapseClickArrow.m in Sources */,
+				9B01BF2F1C6819B900691C74 /* EditJobSeekerProfileViewModel.m in Sources */,
 				9B086B4F1C62BD66002E39D3 /* JobSeekerMessageTableViewCell.m in Sources */,
 				9B01BF171C6787DA00691C74 /* AddJobOfferViewController.m in Sources */,
 				9B086B291C5FD9CE002E39D3 /* JobOfferTableViewCell.m in Sources */,
@@ -649,6 +671,7 @@
 				9B086B411C626588002E39D3 /* JobSeekerMatchTableViewCell.m in Sources */,
 				9B086B451C627049002E39D3 /* ChatViewController.m in Sources */,
 				9B93F15A1C5CF99400E39663 /* JobSeekerService.m in Sources */,
+				9B01BF2C1C6814E700691C74 /* AddSummaryViewController.m in Sources */,
 				9B01BEF91C66745800691C74 /* FMDatabase.m in Sources */,
 				9B93F1BA1C5E1F0100E39663 /* UILabel+dynamicSizeMe.m in Sources */,
 				9B086B251C5FD4D3002E39D3 /* RecruiterProfileViewModel.m in Sources */,
@@ -680,6 +703,7 @@
 				9B93F1661C5D155500E39663 /* ExperienceViewModel.m in Sources */,
 				9B01BEBD1C660F2900691C74 /* JobMatcherDatabase.m in Sources */,
 				9BFEBB1F1C554B9D00B83A52 /* RegisterViewController.m in Sources */,
+				9B01BF261C68038B00691C74 /* AddSkillViewController.m in Sources */,
 				9B01BEFD1C6675C000691C74 /* FMDatabasePool.m in Sources */,
 				9B93F1C31C5E3F1100E39663 /* ExperienceTableViewCell.m in Sources */,
 				9B01BF201C67F13300691C74 /* AddProjectViewModel.m in Sources */,

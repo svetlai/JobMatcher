@@ -13,6 +13,10 @@
 @property (strong, nonatomic) NSString* email;
 @property (strong, nonatomic) NSString* username;
 @property (strong, nonatomic) NSString* summary;
+@property (strong, nonatomic) NSString* firstName;
+@property (strong, nonatomic) NSString* lastName;
+@property (strong, nonatomic) NSString* phoneNumber;
+@property (strong, nonatomic) NSString* currentPosition;
 @property (strong, nonatomic) NSArray* projects;
 @property (strong, nonatomic) NSArray* skills;
 @property (strong, nonatomic) NSArray* experience;
@@ -31,7 +35,11 @@
               andEducation:(NSArray*) education
       andSelectedJobOffers:(NSArray*)selectedJobOffers
                andMessages:(NSArray*)messages
-            andProfileType:(NSInteger) profileType;
+            andProfileType:(NSInteger) profileType
+              andFirstName:(NSString*) firstName
+               andLastName:(NSString*) lastName
+            andPhoneNumber:(NSString*) phoneNumber
+        andCurrentPosition:(NSString*) currentPosition;
 
 +(JobSeekerProfileViewModel*) fromJsonDictionary: (NSDictionary*) jsonDictionary;
 
