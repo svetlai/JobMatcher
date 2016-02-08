@@ -12,5 +12,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobOfferTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jobOfferLocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jobOfferSalaryLabel;
+@property (weak, nonatomic) IBOutlet UIButton *jobOfferDeleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *jobOfferEditButton;
+@property (weak, nonatomic) IBOutlet UIButton *jobOfferAddButton;
 
 @end

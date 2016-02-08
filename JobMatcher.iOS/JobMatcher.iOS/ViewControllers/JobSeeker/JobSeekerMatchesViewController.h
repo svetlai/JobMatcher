@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JobSeekerMatchesViewController : UIViewController
+@interface JobSeekerMatchesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) NSArray* jobOfferMatches;
+@property (weak, nonatomic) IBOutlet UITableView *jobSeekerMatchesTableView;
 
 @end

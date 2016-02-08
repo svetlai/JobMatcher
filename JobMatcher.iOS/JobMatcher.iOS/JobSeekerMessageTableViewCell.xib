@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="JobSeekerMessageTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobSeekerMessageTableViewCell" rowHeight="96" id="KGk-i7-Jjw" customClass="JobSeekerMessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="441" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUS-N4-Vfx">
+                        <rect key="frame" x="47" y="8" width="386" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVs-uF-knb">
+                        <rect key="frame" x="47" y="37" width="386" height="50"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20784313730000001" green="0.44705882349999998" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="J" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai0-O9-XQg">
+                        <rect key="frame" x="8" y="3" width="31" height="31"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <color key="textColor" red="0.46077238799999998" green="0.71512901390000005" blue="0.76555076359999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MVs-uF-knb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="39" id="5sh-1v-fdI"/>
+                    <constraint firstItem="MVs-uF-knb" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="19.5" id="BpH-sT-K1I"/>
+                    <constraint firstItem="Ai0-O9-XQg" firstAttribute="baseline" secondItem="jUS-N4-Vfx" secondAttribute="baseline" constant="4" id="Gfo-Z1-c5s"/>
+                    <constraint firstItem="MVs-uF-knb" firstAttribute="leading" secondItem="jUS-N4-Vfx" secondAttribute="leading" id="LMW-ce-IKe"/>
+                    <constraint firstItem="jUS-N4-Vfx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Mkq-Yw-LKL"/>
+                    <constraint firstItem="Ai0-O9-XQg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Qlh-4e-5qA"/>
+                    <constraint firstItem="MVs-uF-knb" firstAttribute="trailing" secondItem="jUS-N4-Vfx" secondAttribute="trailing" id="Wq1-iu-JVd"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ai0-O9-XQg" secondAttribute="bottom" constant="53" id="cGx-GY-kst"/>
+                    <constraint firstItem="Ai0-O9-XQg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="cRh-Zb-HTR"/>
+                    <constraint firstItem="MVs-uF-knb" firstAttribute="top" secondItem="jUS-N4-Vfx" secondAttribute="bottom" constant="8" symbolic="YES" id="wyo-ww-LRl"/>
+                    <constraint firstItem="MVs-uF-knb" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="xV7-wF-wfs"/>
+                    <constraint firstItem="jUS-N4-Vfx" firstAttribute="leading" secondItem="Ai0-O9-XQg" secondAttribute="trailing" constant="8" symbolic="YES" id="yXC-7M-iEi"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.94821479661025643" green="0.94821479661025643" blue="0.94821479661025643" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="jobSeekerMessageContent" destination="MVs-uF-knb" id="Bzq-nH-jNu"/>
+                <outlet property="jobSeekerMessageSubject" destination="jUS-N4-Vfx" id="mqo-C0-Za0"/>
+                <outlet property="jobSeekerProfileLabel" destination="Ai0-O9-XQg" id="qQh-vX-LVL"/>
+            </connections>
+            <point key="canvasLocation" x="496.5" y="363"/>
         </tableViewCell>
     </objects>
 </document>

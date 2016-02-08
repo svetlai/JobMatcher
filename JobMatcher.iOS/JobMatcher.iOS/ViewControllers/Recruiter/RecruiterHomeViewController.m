@@ -5,6 +5,7 @@
 //  Created by s i on 1/26/16.
 //  Copyright © 2016 svetlai. All rights reserved.
 //
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 #import "RecruiterHomeViewController.h"
 #import "UserDataModel.h"
@@ -15,12 +16,23 @@
 #import "JobOfferTableViewCell.h"
 #import "JobOfferViewModel.h"
 #import "JobOfferViewController.h"
+#import "RecruiterMatchesViewController.h"
+#import "AccountService.h"
+#import "InternetConnectionChecker.h"
+#import "GlobalConstants.h"
+#import "JobMatcherDatabase.h"
+#import "JobOfferService.h"
 
 @interface RecruiterHomeViewController (){
     NSString* message;
+    NSString* connectionType;
     RecruiterProfileViewModel* recruiterProfileViewModel;
     UITableView* jobOffersTableView;
     JobOfferViewModel* selectedJobOffer;
+    UserDataModel* userData;
+    JobMatcherDatabase* db;
+    UIImagePickerController *recruiterImagePicker;
+    NSInteger jobOfferSender;
 }
 
 @end
@@ -28,25 +40,59 @@
 @implementation RecruiterHomeViewController
 NSString* const SegueFromRecruiterToJobSeeker = @"segueFromRecruiterToJobSeeker";
 NSString* const SegueFromRecruiterToJobOffer = @"segueFromRecruiterToJobOffer";
+NSString* const SegueFromRecruiterToMatches = @"segueFromRecruiterToMatches";
+NSString* const SegueFromRecruiterHomeToLogin = @"segueFromRecruiterHomeToLogin";
+NSString* const SegueFromRecruiterToAddJobOffer = @"segueFromRecruiterToAddJobOffer";
+
 int const NumberOfSectionsInRecruiter = 1;
-static RecruiterService* recruiterService;
 int const JobOffersTableRowHeight = 65;
+
+static RecruiterService* recruiterService;
+static AccountService* accountRecruiterService;
+static JobOfferService* jobOfferRecruiterService;
+static InternetConnectionChecker *internetCheker;
+
+
 static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    UserDataModel* userData = [[UserDataModel alloc] init];
+    
+    internetCheker = [[InternetConnectionChecker alloc] init];
+    NSString *status = [internetCheker getConnectionSatus];
+    
+    if ([status isEqualToString:NotConnectedStatus]) {
+        [HelperMethods addAlert:NotConnectedMessage];
+        
+        return;
+    }
+    
+    db = [JobMatcherDatabase database];
+    userData = [[UserDataModel alloc] init];
     self.recruiterHelloLabel.text = [NSString stringWithFormat:@"%@", userData.username];
-    self.recruiterProfileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
+    [self setProfileImage];
+    
+    [self handleButtons];
+    
     [HelperMethods setSackBarButtonText:self andText:@""];
     [HelperMethods setPageTitle:self andTitle:@"Profile"];
     
     recruiterService = [[RecruiterService alloc] init];
     [recruiterService getProfileWithTarget:self];
     
+    accountRecruiterService = [[AccountService alloc] init];
+    jobOfferRecruiterService = [[JobOfferService alloc] init];
+    
+    [self attachLongPressGesture];
+    
+    self.recruiterCollapseClickScrollView.minimumZoomScale=0.5;
+    self.recruiterCollapseClickScrollView.maximumZoomScale=1.5;
+    //self.collapseClickScrollView.contentSize=CGSizeMake(1280, 960);
+    [self.recruiterCollapseClickScrollView setClipsToBounds:YES];
+    self.recruiterCollapseClickScrollView.delegate=self;
     self.recruiterCollapseClickScrollView.CollapseClickDelegate = self;
     [self.recruiterCollapseClickScrollView reloadCollapseClick];
+
     // Do any additional setup after loading the view.
 }
 
@@ -56,15 +102,23 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+-(void)handleButtons{
+    [self.recruiterBrowseJobSeekersButton setBackgroundImage:[UIImage imageNamed:@"job-seekers-icon.png"]
+                                                    forState:UIControlStateNormal];
+    
+    [self.recruiterLogoutButton setBackgroundImage:[UIImage imageNamed:@"logout-icon.png"]
+                                          forState:UIControlStateNormal];
+    
+    [self.recruiterMatchesButton setBackgroundImage:[UIImage imageNamed:@"matches-icon.png"]
+                                           forState:UIControlStateNormal];
+    [self.recruiterEditProfileButton setBackgroundImage:[UIImage imageNamed:@"edit-icon.png"]
+                                           forState:UIControlStateNormal];
+    
+    [self.recruiterAddOfferButton setBackgroundImage:[UIImage imageNamed:@"add-icon.png"]
+                                               forState:UIControlStateNormal];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     //    NSLog(@"%@", error);
     if (error){
@@ -74,42 +128,49 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
 }
 
 -(void)connection:(NSURLRequest*) request didReceiveData:(NSData *)data{
+    NSError *error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
                                                          options:kNilOptions
-                                                           error:nil];
+                                                           error:&error];
     NSLog(@"%@", json);
+    if(error)
+        NSLog(@"%@",error.description);
     
-//    if ([connectionType isEqualToString:@"GetProfile"]){
-        recruiterProfileViewModel = [RecruiterProfileViewModel fromJsonDictionary:json];
+    if ([connectionType isEqualToString:@"DeleteOffer"]){
+        connectionType = @"";
+        return;
+    }
+    
+    recruiterProfileViewModel = [RecruiterProfileViewModel fromJsonDictionary:json];
     [jobOffersTableView reloadData];
     
     [self.recruiterCollapseClickScrollView reloadCollapseClick];
-    [self.recruiterCollapseClickScrollView openCollapseClickCellAtIndex:0 animated:NO];    
+    [self.recruiterCollapseClickScrollView openCollapseClickCellAtIndex:0 animated:NO];
+//    NSIndexPath* ipath = [NSIndexPath indexPathForRow: recruiterProfileViewModel.jobOffers.count-1 inSection: 0];
+//    [jobOffersTableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
     
 }
 
-//- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-//    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-//    long code = [httpResponse statusCode];
-//    NSLog(@"%@", httpResponse);
-//    
-//    // TODO browse another profile
-//    if ([connectionType isEqualToString:@"AddLike"]){
-//        if (code == 200){
-//            message = @"Liked!";
-//            [HelperMethods addAlert:message];
-//        }
-//        
-//        connectionType = @"";
-//    }
-//    
-//    if (code != 200) {
-//        message = @"Nope. Try again!";
-//        [HelperMethods addAlert:message];
-//    }
-//}
+- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    long code = [httpResponse statusCode];
+    NSLog(@"%@", httpResponse);
+    
+    if ([connectionType isEqualToString:@"DeleteOffer"]){
+        if (code == 200){
+            message = @"Offer deleted successfully!";
+            [recruiterService getProfileWithTarget:self];
+            [HelperMethods addAlert:message];
+        }
+    }
+    
+    if (code != 200) {
 
-// collapse click
+        message = @"Nope. Try again!";
+        [HelperMethods addAlert:message];
+    }
+}
+
 // collapse click
 
 -(int)numberOfCellsForCollapseClick {
@@ -174,12 +235,22 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
         JobOfferTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:jobOffersTableCellIdentifier];
         
         if (recruiterProfileViewModel.jobOffers.count > 0) {
-            JobOfferViewModel *jobOfferViewModel = recruiterProfileViewModel.jobOffers[indexPath.row];
-            cell.jobOfferTitleLabel.text = jobOfferViewModel.title;
-            cell.jobOfferLocationLabel.text = jobOfferViewModel.location;
-            cell.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", jobOfferViewModel.salary];
             
-            return cell;
+            JobOfferViewModel *jobOfferViewModel = recruiterProfileViewModel.jobOffers[indexPath.row];
+            
+            //if (!jobOfferViewModel.isDeleted){
+                cell.jobOfferTitleLabel.text = jobOfferViewModel.title;
+                cell.jobOfferLocationLabel.text = jobOfferViewModel.location;
+                cell.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", jobOfferViewModel.salary];
+                
+                
+                cell.jobOfferDeleteButton.tag = indexPath.row;
+                [cell.jobOfferDeleteButton addTarget:self action:@selector(deleteJobOfferButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+                
+                
+                [cell.jobOfferAddButton addTarget:self action:@selector(addJobOfferButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+                return cell;
+            //}
         }
     }
     
@@ -202,16 +273,158 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
     [self performSegueWithIdentifier:SegueFromRecruiterToJobOffer sender:tableView];
 }
 
+-(void)addJobOfferButtonTap:(UIButton*)sender
+{
+    [self performSegueWithIdentifier:SegueFromRecruiterToAddJobOffer sender:self];
+}
+
+-(void)deleteJobOfferButtonTap:(UIButton*)sender
+{
+    for (int i = 0; i < recruiterProfileViewModel.jobOffers.count; i++) {
+        if (sender.tag == i)
+        {
+            jobOfferSender = i;
+            JobOfferViewModel* currentOffer =[recruiterProfileViewModel.jobOffers objectAtIndex:i];
+            NSInteger currentId = currentOffer.jobOfferId;
+            [jobOfferRecruiterService deleteOfferWithId:currentId andTarget:self];
+            connectionType = @"DeleteOffer";
+            NSLog(@"clicked");
+            break;
+        }
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:SegueFromRecruiterToJobOffer]){
         JobOfferViewController* toJobOfferViewController = segue.destinationViewController;
         toJobOfferViewController.jobOfferViewModel = selectedJobOffer;
+    } else if([segue.identifier isEqualToString:SegueFromRecruiterToMatches]){
+
+        NSArray* matches = recruiterProfileViewModel.matchedJobSeekers;
+        
+        RecruiterMatchesViewController* toMatchesViewController = segue.destinationViewController;
+        toMatchesViewController.recruiterMatches = matches;
+    } else if([segue.identifier isEqualToString:SegueFromRecruiterToAddJobOffer]){
+        
     }
 }
 //------
 
 - (IBAction)browseJobSeekersButtonTap:(id)sender {
      [self performSegueWithIdentifier:SegueFromRecruiterToJobSeeker sender:self];
+}
+- (IBAction)toMatchesButtonTap:(id)sender {
+    [self performSegueWithIdentifier:SegueFromRecruiterToMatches sender:self];
+}
+- (IBAction)recruiterLogoutButtonTap:(id)sender {
+    [accountRecruiterService logout];
+    [self performSegueWithIdentifier:SegueFromRecruiterHomeToLogin sender:self];
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    return self.recruiterProfileImage;
+}
+
+// gestures
+-(void)attachLongPressGesture{
+    self.recruiterLongPressRecognizer
+    = [[UILongPressGestureRecognizer alloc]
+       initWithTarget:self action:@selector(recruiterLongPress:)];
+    self.recruiterLongPressRecognizer.minimumPressDuration = .5; //seconds
+    self.recruiterLongPressRecognizer.delegate = self;
+    self.recruiterLongPressRecognizer.delaysTouchesBegan = YES;
+    self.recruiterProfileImage.userInteractionEnabled = YES;
+    [self.recruiterProfileImage addGestureRecognizer:self.recruiterLongPressRecognizer];
+}
+
+
+- (void)recruiterLongPress:(UILongPressGestureRecognizer *)sender
+{
+    if ([sender isEqual:self.recruiterLongPressRecognizer]) {
+        if (sender.state == UIGestureRecognizerStateBegan)
+        {
+            recruiterImagePicker = [[UIImagePickerController alloc] init];
+            recruiterImagePicker.delegate = self;
+            recruiterImagePicker.allowsEditing = NO; //YES
+            
+            if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+            {
+                recruiterImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            } else {
+                recruiterImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
+            
+            [self presentModalViewController:recruiterImagePicker animated:YES];
+            
+
+        }
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if (image == nil) {
+        image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    
+    self.recruiterProfileImage.image = image;
+    
+    __block NSURL *imagePath;
+    if(recruiterImagePicker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        imagePath = [self saveImageToCameraRoll:image];
+    }else{
+        imagePath = (NSURL *)[info valueForKey:UIImagePickerControllerReferenceURL];
+    }
+    
+    NSString* imagePathAsString = imagePath.absoluteString;
+    [db addImagePath:imagePathAsString withEmail:userData.username];
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(NSURL *)saveImageToCameraRoll: (UIImage*)image{
+    __block NSURL *imagePath;
+    if(recruiterImagePicker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        // Request to save the image to camera roll
+        [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
+            if (error) {
+                [HelperMethods addAlert:@"Sorry, we couldn't save your photo."];
+            } else {
+                imagePath = assetURL;
+            }
+        }];
+    }
+    
+    return imagePath;
+}
+
+
+- (void) setProfileImage{
+    NSString* imagePath = [db getImagePathWithEmail:userData.username];
+    NSURL* assetURL = [NSURL URLWithString:imagePath];
+    if (assetURL == nil){
+        self.recruiterProfileImage.image = [UIImage imageNamed:@"default_profile_img.jpg"];
+    }else{
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        [library assetForURL:assetURL resultBlock:^(ALAsset *asset)
+         {
+             UIImage  *copyOfOriginalImage = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullResolutionImage]];
+             self.recruiterProfileImage.image = copyOfOriginalImage;
+         }
+                failureBlock:^(NSError *error)
+         {
+             NSLog(@"%@", error.description);
+         }];
+    }
+}
+
+- (IBAction)recruiterAddOfferButtonTap:(id)sender {
+    [self performSegueWithIdentifier:SegueFromRecruiterToAddJobOffer sender:self];
 }
 @end

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -16,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILW-z2-HLJ">
-                        <rect key="frame" x="8" y="0.0" width="611" height="33"/>
+                        <rect key="frame" x="8" y="0.0" width="501" height="33"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="33" id="IlY-dH-mpQ"/>
                         </constraints>
@@ -43,24 +44,62 @@
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAe-wT-mNW">
+                        <rect key="frame" x="588" y="8" width="16" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="6mj-Fd-lvH"/>
+                            <constraint firstAttribute="width" constant="16" id="S4Q-aB-Quf"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTK-Ff-5pi">
+                        <rect key="frame" x="564" y="8" width="15" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="ElP-fm-eiF"/>
+                            <constraint firstAttribute="width" constant="15" id="Qhn-vN-Yjl"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgb-cQ-kVd">
+                        <rect key="frame" x="612" y="8" width="15" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="giT-Az-Sdc"/>
+                            <constraint firstAttribute="height" constant="14" id="lBe-ne-f46"/>
+                        </constraints>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
+                    <constraint firstItem="uAe-wT-mNW" firstAttribute="leading" secondItem="cTK-Ff-5pi" secondAttribute="trailing" constant="9" id="0VC-wS-Vjd"/>
+                    <constraint firstItem="Mgb-cQ-kVd" firstAttribute="leading" secondItem="cTK-Ff-5pi" secondAttribute="trailing" constant="31" id="DgC-oH-68D"/>
+                    <constraint firstItem="Mgb-cQ-kVd" firstAttribute="baseline" secondItem="uAe-wT-mNW" secondAttribute="baseline" id="Ghy-Gz-Kiu"/>
                     <constraint firstItem="Mg0-SN-QOA" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="IUY-uL-MV2"/>
+                    <constraint firstItem="cTK-Ff-5pi" firstAttribute="baseline" secondItem="uAe-wT-mNW" secondAttribute="baseline" id="IcR-Ad-yv8"/>
                     <constraint firstItem="Ec6-8F-hmS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="KLT-4k-Th1"/>
+                    <constraint firstItem="cTK-Ff-5pi" firstAttribute="firstBaseline" secondItem="Mgb-cQ-kVd" secondAttribute="firstBaseline" id="MkN-Rw-zbx"/>
+                    <constraint firstItem="uAe-wT-mNW" firstAttribute="firstBaseline" secondItem="cTK-Ff-5pi" secondAttribute="firstBaseline" id="PxY-TE-PDx"/>
+                    <constraint firstItem="cTK-Ff-5pi" firstAttribute="baseline" secondItem="uAe-wT-mNW" secondAttribute="baseline" id="QB4-VA-47S"/>
+                    <constraint firstItem="Mgb-cQ-kVd" firstAttribute="trailing" secondItem="Ec6-8F-hmS" secondAttribute="trailing" constant="4" id="RxE-S6-GRo"/>
                     <constraint firstItem="Mg0-SN-QOA" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="TQH-37-F2m"/>
                     <constraint firstItem="ILW-z2-HLJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YAK-Rh-IH4"/>
-                    <constraint firstItem="Ec6-8F-hmS" firstAttribute="trailing" secondItem="ILW-z2-HLJ" secondAttribute="trailing" id="ZKI-cc-31Y"/>
+                    <constraint firstItem="Ec6-8F-hmS" firstAttribute="trailing" secondItem="ILW-z2-HLJ" secondAttribute="trailing" constant="110" id="ZKI-cc-31Y"/>
+                    <constraint firstItem="Mgb-cQ-kVd" firstAttribute="baseline" secondItem="cTK-Ff-5pi" secondAttribute="baseline" id="Zdl-la-Sfw"/>
+                    <constraint firstItem="uAe-wT-mNW" firstAttribute="top" secondItem="cTK-Ff-5pi" secondAttribute="top" id="cOS-qJ-m5Y"/>
                     <constraint firstItem="Ec6-8F-hmS" firstAttribute="leading" secondItem="ILW-z2-HLJ" secondAttribute="leading" id="eLY-Gk-JiM"/>
+                    <constraint firstItem="Mgb-cQ-kVd" firstAttribute="top" secondItem="uAe-wT-mNW" secondAttribute="top" id="eaS-sF-vzm"/>
                     <constraint firstItem="Mg0-SN-QOA" firstAttribute="leading" secondItem="Ec6-8F-hmS" secondAttribute="leading" id="fQg-gm-4vm"/>
+                    <constraint firstItem="Mgb-cQ-kVd" firstAttribute="firstBaseline" secondItem="uAe-wT-mNW" secondAttribute="firstBaseline" id="ib5-se-Noh"/>
                     <constraint firstItem="Ec6-8F-hmS" firstAttribute="top" secondItem="ILW-z2-HLJ" secondAttribute="bottom" constant="8" symbolic="YES" id="mqL-xd-Rbd"/>
                     <constraint firstItem="Mg0-SN-QOA" firstAttribute="trailing" secondItem="Ec6-8F-hmS" secondAttribute="trailing" id="sWX-mh-ZXt"/>
                     <constraint firstItem="Mg0-SN-QOA" firstAttribute="top" secondItem="Ec6-8F-hmS" secondAttribute="bottom" constant="13" id="wVi-7b-a8l"/>
+                    <constraint firstItem="Mgb-cQ-kVd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="xki-o5-tPG"/>
+                    <constraint firstItem="uAe-wT-mNW" firstAttribute="firstBaseline" secondItem="cTK-Ff-5pi" secondAttribute="firstBaseline" id="ySo-EB-zym"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="projectAddButton" destination="cTK-Ff-5pi" id="ukL-Zl-6g6"/>
+                <outlet property="projectDeleteButton" destination="Mgb-cQ-kVd" id="8ea-cn-CrJ"/>
                 <outlet property="projectDescriptionLabel" destination="Ec6-8F-hmS" id="iJ0-fr-l4I"/>
+                <outlet property="projectEditButton" destination="uAe-wT-mNW" id="BBU-ZR-fT2"/>
                 <outlet property="projectTitleLabel" destination="ILW-z2-HLJ" id="w4j-HA-b6A"/>
                 <outlet property="projectUrlLabel" destination="Mg0-SN-QOA" id="AK7-FF-qGN"/>
             </connections>

@@ -9,6 +9,9 @@
 #import "InternetConnectionChecker.h"
 
 @implementation InternetConnectionChecker
+NSString* const NotConnectedStatus = @"Not connected";
+NSString* const ConnectedStatus = @"Connected";
+
 -(instancetype)init{
     self = [super init];
     if (self) {
@@ -24,9 +27,9 @@
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     
     if (networkStatus == NotReachable) {
-        return @"Not connected";
+        return NotConnectedStatus;
     } else {
-        return @"Connected";
+        return ConnectedStatus;
     }
 }
 @end

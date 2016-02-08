@@ -5,7 +5,7 @@
 //  Created by s i on 1/31/16.
 //  Copyright © 2016 svetlai. All rights reserved.
 //
-
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #import "UILabel+dynamicSizeMe.h"
 
 @implementation  UILabel (dynamicSizeMe)

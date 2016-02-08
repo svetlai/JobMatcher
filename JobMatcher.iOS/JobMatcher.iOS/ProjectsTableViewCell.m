@@ -11,7 +11,14 @@
 @implementation ProjectsTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [self.projectDeleteButton setBackgroundImage:[UIImage imageNamed:@"delete-icon.png"]
+                                         forState:UIControlStateNormal];
+    
+    [self.projectAddButton setBackgroundImage:[UIImage imageNamed:@"add-icon.png"]
+                                      forState:UIControlStateNormal];
+    
+    [self.projectEditButton setBackgroundImage:[UIImage imageNamed:@"edit-icon.png"]
+                                       forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

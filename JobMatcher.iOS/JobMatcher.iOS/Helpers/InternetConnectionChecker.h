@@ -13,5 +13,6 @@
 @interface InternetConnectionChecker : NSObject
 
 -(NSString *)getConnectionSatus;
-
+extern NSString* const NotConnectedStatus;
+extern NSString* const ConnectedStatus;
 @end

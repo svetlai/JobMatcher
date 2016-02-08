@@ -5,7 +5,7 @@
 //  Created by s i on 1/31/16.
 //  Copyright © 2016 svetlai. All rights reserved.
 //
-
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #import "MatchService.h"
 #import "UserDataModel.h"
 #import "GlobalConstants.h"
@@ -30,9 +30,11 @@ NSString* authorizationTokenMatch;
     NSString* url = [NSString stringWithFormat:@"%@%@", BaseUrl, AddLikeRoute];
     NSString* recruiterProfileId = @"0";
     NSString* jobSeekerProfileId = @"0";
+    NSString* jobOfferId = @"0";
 
     if ([model.myAccountType isEqualToString:[NSString stringWithFormat:@"%u", JobSeeker]]){
         recruiterProfileId = model.likedId;
+        jobOfferId = model.jobOfferId;
     } else if ([model.myAccountType isEqualToString:[NSString stringWithFormat:@"%u", Recruiter]]){
         jobSeekerProfileId = model.likedId;
     }
@@ -40,7 +42,7 @@ NSString* authorizationTokenMatch;
     NSDictionary* postDataAsDict = @{@"RecruiterProfileId":recruiterProfileId,
                                      @"JobSeekerProfileId":jobSeekerProfileId,
                                      @"LikeInitiatorType":model.myAccountType,
-                                     @"JobOfferId":model.jobOfferId};
+                                     @"JobOfferId":jobOfferId};
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
@@ -59,9 +61,11 @@ NSString* authorizationTokenMatch;
     NSString* url = [NSString stringWithFormat:@"%@%@", BaseUrl, AddDislikeRoute];
     NSString* recruiterProfileId = @"0";
     NSString* jobSeekerProfileId = @"0";
+    NSString* jobOfferId = @"0";
  
     if ([model.myAccountType isEqualToString:[NSString stringWithFormat:@"%u", JobSeeker]]){
         recruiterProfileId = model.dislikedId;
+        jobOfferId = model.jobOfferId;
     } else if ([model.myAccountType isEqualToString:[NSString stringWithFormat:@"%u", Recruiter]]){
         jobSeekerProfileId = model.dislikedId;
     }
@@ -69,7 +73,7 @@ NSString* authorizationTokenMatch;
     NSDictionary* postDataAsDict = @{@"RecruiterProfileId":recruiterProfileId,
                                      @"JobSeekerProfileId":jobSeekerProfileId,
                                      @"DislikeInitiatorType":model.myAccountType,
-                                     @"JobOfferId":model.jobOfferId};
+                                     @"JobOfferId":jobOfferId};
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     

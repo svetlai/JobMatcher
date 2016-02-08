@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecruiterMatchesViewController : UIViewController
+@interface RecruiterMatchesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) NSArray* recruiterMatches;
+@property (weak, nonatomic) IBOutlet UITableView *recruiterMatchesTableView;
+
 
 @end

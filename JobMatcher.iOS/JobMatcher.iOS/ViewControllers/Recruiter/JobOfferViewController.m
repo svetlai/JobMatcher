@@ -14,6 +14,7 @@
 #import "AddDislikeViewModel.h"
 #import "MatchService.h"
 #import "JobOfferService.h"
+#import "InternetConnectionChecker.h"
 
 @interface JobOfferViewController (){
     UserDataModel* userData;
@@ -26,10 +27,21 @@
 @implementation JobOfferViewController
 static MatchService* jobOfferMatchService;
 static JobOfferService* jobOfferService;
+static InternetConnectionChecker *internetCheker;
 NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    internetCheker = [[InternetConnectionChecker alloc] init];
+    NSString *status = [internetCheker getConnectionSatus];
+    
+    if ([status isEqualToString:NotConnectedStatus]) {
+        [HelperMethods addAlert:NotConnectedMessage];
+        
+        return;
+    }
+    
     [HelperMethods setSackBarButtonText:self andText:@""];
     [HelperMethods setPageTitle:self andTitle:@"Job Offer"];
     
@@ -37,6 +49,7 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
     jobOfferMatchService = [[MatchService alloc] init];
     jobOfferService = [[JobOfferService alloc] init];
     
+    [self handleVisibility];
     if (self.jobOfferViewModel != nil && userData.profileType == Recruiter){
         [self loadData];
     } else if (userData.profileType == JobSeeker){
@@ -44,8 +57,6 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
         connectionType = @"GetOffer";
     }
 
- 
-    
     // swipe
     UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                                                action:@selector(jobOfferSwipe:)];
@@ -88,10 +99,16 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
                                                          options:kNilOptions
                                                            error:nil];
     NSLog(@"%@", json);
-    
-    if ([connectionType isEqualToString:@"GetOffer"]){
+    if ([connectionType isEqualToString:@"AddLike"] || [connectionType isEqualToString:@"AddDislike"]){
+        [jobOfferService getRandomOfferWithTarget:self];
+         connectionType = @"GetOffer";
+        
+    } else if ([connectionType isEqualToString:@"GetOffer"]){
         self.jobOfferViewModel = [JobOfferViewModel fromJsonDictionary:json];
         [self loadData];
+        [self viewDidLoad];
+        
+   
         connectionType = @"";
     }
     
@@ -110,18 +127,19 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
         if (code == 200){
             message = @"Liked!";
             [HelperMethods addAlert:message];
-            [jobOfferService getRandomOfferWithTarget:self];
+//            connectionType = @"GetOffer";
+//            [jobOfferService getRandomOfferWithTarget:self];
         }
-        
-        connectionType = @"GetOffer";
+
     } else if ([connectionType isEqualToString:@"AddDislike"]){
         if (code == 200){
             message = @"Disliked!";
             [HelperMethods addAlert:message];
-            [jobOfferService getRandomOfferWithTarget:self];
+            
+//            connectionType = @"GetOffer";
+//            [jobOfferService getRandomOfferWithTarget:self];
         }
-        
-        connectionType = @"GetOffer";
+
     }
     
     
@@ -138,31 +156,41 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
         [HelperMethods addAlert:message];
     }
 }
+-(void) handleVisibility{
+    if (userData.profileType == JobSeeker){
+        self.jobOfferSwipeHintLabel.hidden = NO;
+        
+    } else if (userData.profileType == Recruiter){
+        self.jobOfferSwipeHintLabel.hidden = YES;
+    }
+}
+
 -(void) loadData{
     [HelperMethods setPageTitle:self andTitle:self.jobOfferViewModel.title];
     self.jobOfferIndustryLabel.text = [Industries objectAtIndex:self.jobOfferViewModel.industry];
     self.jobOfferLocationLabel.text = self.jobOfferViewModel.location;
     self.jobOfferWorkHoursLabel.text = [WorkHours objectAtIndex: self.jobOfferViewModel.workHours];
     self.jobOfferSalaryLabel.text = [NSString stringWithFormat:@"%.02f €", self.jobOfferViewModel.salary];
-    self.jobOfferDescriptionLabel = [self resizeLabel:self.jobOfferDescriptionLabel andText:self.jobOfferViewModel.jobOfferDescription];
+    self.jobOfferDescriptionLabel.text = self.jobOfferViewModel.jobOfferDescription;
+//[self resizeLabel:self.jobOfferDescriptionLabel andText:self.jobOfferViewModel.jobOfferDescription];
 }
 
--(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text{
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    
-    [label setText: @""];
-    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y, screenWidth / 2, label.frame.size.height)];
-    [newLabel setTextColor: label.textColor];
-    [newLabel setBackgroundColor: [UIColor clearColor]];
-    [newLabel setFont: label.font];
-    [newLabel setText: text];
-    [newLabel setNumberOfLines:0];
-    [newLabel sizeToFit];
-    [self.view addSubview:newLabel];
-    return newLabel;
-}
+//-(UILabel *)resizeLabel:(UILabel*)label andText: (NSString*)text{
+//    CGRect screenRect = [[UIScreen mainScreen] bounds];
+//    CGFloat screenWidth = screenRect.size.width;
+////    CGFloat screenHeight = screenRect.size.height;
+//    
+//    [label setText: @""];
+//    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y, screenWidth / 2, label.frame.size.height)];
+//    [newLabel setTextColor: label.textColor];
+//    [newLabel setBackgroundColor: [UIColor clearColor]];
+//    [newLabel setFont: label.font];
+//    [newLabel setText: text];
+//    [newLabel setNumberOfLines:0];
+//    [newLabel sizeToFit];
+//    [self.view addSubview:newLabel];
+//    return newLabel;
+//}
 
 - (IBAction)jobOfferSwipe:(UISwipeGestureRecognizer *)sender {
     switch (sender.direction) {

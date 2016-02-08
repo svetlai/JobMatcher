@@ -11,6 +11,9 @@
 @implementation RecruiterMessageTableViewCell
 
 - (void)awakeFromNib {
+//    [self.recruiterProfileLabel setBackgroundColor: [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1] /*#cccccc*/];
+//    self.recruiterProfileLabel.layer.masksToBounds = YES;
+//    self.recruiterProfileLabel.layer.cornerRadius = 25.0;
     // Initialization code
 }
 

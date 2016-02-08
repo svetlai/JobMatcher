@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RecruiterMessageTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecruiterMessageTableViewCell" rowHeight="97" id="KGk-i7-Jjw" customClass="RecruiterMessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="97"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="441" height="96"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qll-N6-Bv2">
+                        <rect key="frame" x="402" y="4" width="31" height="31"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <color key="textColor" red="0.46077238799999998" green="0.71512901390000005" blue="0.76555076359999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWC-F7-UnR">
+                        <rect key="frame" x="8" y="9" width="391" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.08235294118" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W2-VK-a2O">
+                        <rect key="frame" x="8" y="38" width="391" height="50"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20784313730000001" green="0.44705882349999998" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qll-N6-Bv2" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="BaJ-D1-OUc"/>
+                    <constraint firstItem="qll-N6-Bv2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-4" id="Ell-xK-WKx"/>
+                    <constraint firstItem="3W2-VK-a2O" firstAttribute="leading" secondItem="UWC-F7-UnR" secondAttribute="leading" id="Hly-V2-dkE"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3W2-VK-a2O" secondAttribute="trailing" constant="34" id="Izz-BR-fnc"/>
+                    <constraint firstItem="UWC-F7-UnR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="NyX-cz-7AX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="qll-N6-Bv2" secondAttribute="bottom" constant="53" id="Og7-vW-kWn"/>
+                    <constraint firstItem="3W2-VK-a2O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Xmg-7h-BrK"/>
+                    <constraint firstItem="3W2-VK-a2O" firstAttribute="top" secondItem="UWC-F7-UnR" secondAttribute="bottom" constant="8" symbolic="YES" id="iUr-Bw-d6y"/>
+                    <constraint firstItem="qll-N6-Bv2" firstAttribute="leading" secondItem="UWC-F7-UnR" secondAttribute="trailing" constant="3" id="j0W-6k-FJ9"/>
+                    <constraint firstItem="3W2-VK-a2O" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="kbm-GO-XZy"/>
+                    <constraint firstItem="UWC-F7-UnR" firstAttribute="trailing" secondItem="3W2-VK-a2O" secondAttribute="trailing" id="na1-5q-FLZ"/>
+                    <constraint firstItem="UWC-F7-UnR" firstAttribute="baseline" secondItem="qll-N6-Bv2" secondAttribute="baseline" constant="-4" id="wsk-jX-wX5"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.81456095045641019" green="0.81456095045641019" blue="0.81456095045641019" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="recruiterMessageContent" destination="3W2-VK-a2O" id="aXe-e5-LrP"/>
+                <outlet property="recruiterMessageSubject" destination="UWC-F7-UnR" id="AmI-DC-38G"/>
+                <outlet property="recruiterProfileLabel" destination="qll-N6-Bv2" id="BQP-Nm-sU3"/>
+            </connections>
+            <point key="canvasLocation" x="496.5" y="363.5"/>
         </tableViewCell>
     </objects>
 </document>

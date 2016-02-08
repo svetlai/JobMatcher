@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface JobSeekerMatchTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerMatchTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerMatchLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerMatchSalaryLabel;
+@property (weak, nonatomic) IBOutlet UIButton *jobSeekerMatchMessageButton;
+
 
 @end

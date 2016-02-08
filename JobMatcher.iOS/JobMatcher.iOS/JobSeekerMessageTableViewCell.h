@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface JobSeekerMessageTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerMessageSubject;
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerMessageContent;
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerProfileLabel;
 
 @end

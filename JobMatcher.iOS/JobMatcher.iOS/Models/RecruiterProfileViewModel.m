@@ -9,13 +9,15 @@
 #import "RecruiterProfileViewModel.h"
 #import "JobOfferViewModel.h"
 #import "MessageViewModel.h"
+#import "JobSeekerProfileViewModel.h"
 
 @implementation RecruiterProfileViewModel
 -(instancetype) initWithId:(NSInteger) profileId
                   andEmail:(NSString*) email
                andUsername:(NSString*) username
               andJobOffers:(NSArray*) jobOffers
-               andMessages:(NSArray*)messages
+               andMessages:(NSArray*) messages
+      andMatchedJobSeekers:(NSArray*) matchedJobSeekers
             andProfileType:(NSInteger) profileType{
     
     if (self = [super init]){
@@ -24,6 +26,7 @@
         self.username = username;
         self.jobOffers = jobOffers;
         self.messages = messages;
+        self.matchedJobSeekers = matchedJobSeekers;
         self.profileType = profileType;
     }
     
@@ -38,6 +41,7 @@
             andUsername:[jsonDictionary objectForKey:@"Username"]
             andJobOffers:[JobOfferViewModel arrayOfJobOffersFromJsonDictionary:[jsonDictionary objectForKey:@"JobOffers"]]
             andMessages:[MessageViewModel arrayOfMessagesFromJsonDictionary:[jsonDictionary objectForKey:@"Messages"]]
+            andMatchedJobSeekers:[JobSeekerProfileViewModel arrayOfJobOffersFromJsonDictionary:[jsonDictionary objectForKey:@"MatchedJobSeekers"]]
             andProfileType:[[jsonDictionary objectForKey:@"ProfileType"] integerValue]];
 }
 @end

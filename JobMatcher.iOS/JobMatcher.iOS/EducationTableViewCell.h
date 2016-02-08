@@ -16,5 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *educationStartDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *educationEndDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *educationDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *educationEditButton;
+@property (weak, nonatomic) IBOutlet UIButton *educationAddButton;
+@property (weak, nonatomic) IBOutlet UIButton *educationDeleteButton;
 
 @end

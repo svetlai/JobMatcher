@@ -11,7 +11,14 @@
 @implementation EducationTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [self.educationDeleteButton setBackgroundImage:[UIImage imageNamed:@"delete-icon.png"]
+                                           forState:UIControlStateNormal];
+    
+    [self.educationAddButton setBackgroundImage:[UIImage imageNamed:@"add-icon.png"]
+                                        forState:UIControlStateNormal];
+    
+    [self.educationEditButton setBackgroundImage:[UIImage imageNamed:@"edit-icon.png"]
+                                         forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

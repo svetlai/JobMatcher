@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatViewController : UIViewController
-
+@interface ChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *messagesTableView;
+@property NSInteger jobSeekerId;
+@property NSInteger recruiterId;
+- (IBAction)addMessageButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *addMessageTextView;
+@property (strong, nonatomic) NSString* messageSubject;
 @end

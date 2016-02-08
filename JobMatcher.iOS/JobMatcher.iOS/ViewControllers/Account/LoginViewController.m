@@ -13,6 +13,7 @@
 #import "HelperMethods.h"
 #import "KeychainUserPass.h"
 #import "UserDataModel.h"
+#import "InternetConnectionChecker.h"
 
 @interface LoginViewController (){
      NSString* message;
@@ -23,6 +24,7 @@
 @implementation LoginViewController
 static AccountService* service;
 static Validator* validator;
+static InternetConnectionChecker *internetCheker;
 
 NSString* const SegueFromLoginToRegister = @"segueFromLoginToRegister";
 NSString* const SegueFromLoginToRecruiterHome = @"segueFromLoginToRecruiterHome";
@@ -36,6 +38,8 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
 
     validator = [[Validator alloc] init];
     service = [[AccountService alloc] init];
+    internetCheker = [[InternetConnectionChecker alloc] init];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +58,14 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
 */
 
 - (IBAction)loginButtonTap:(id)sender {
+    NSString *status = [internetCheker getConnectionSatus];
+    
+    if ([status isEqualToString:NotConnectedStatus]) {
+      [HelperMethods addAlert:NotConnectedMessage];
+        
+        return;
+    }
+    
     NSString *accountEmail = self.accountEmail.text;
     NSString *accountPassword = self.accountPassword.text;
     
@@ -101,7 +113,8 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
     NSString* accessToken = [NSString stringWithFormat:@"%@ %@", @"bearer", [(NSDictionary*)json objectForKey:@"access_token"]];
     NSString* profileType = [NSString stringWithFormat:@"%@", [(NSDictionary*)json objectForKey:@"profileType"]];
     NSString* username = [NSString stringWithFormat:@"%@", [(NSDictionary*)json objectForKey:@"userName"]];
-
+    NSString* profileId = [NSString stringWithFormat:@"%@", [(NSDictionary*)json objectForKey:@"profileId"]];
+    
     if ([profileType isEqualToString:@"JobSeeker"]){
             [self performSegueWithIdentifier:SegueFromLoginToJobSeekerHome sender:self];
     } else if ([profileType isEqualToString:@"Recruiter"]){
@@ -111,6 +124,7 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
     [KeychainUserPass save:KeyChainTokenKey data:accessToken];
     [KeychainUserPass save:KeyChainProfileTypeKey data:profileType];
     [KeychainUserPass save:KeyChainUsernameKey data:username];
+    [KeychainUserPass save:KeyChainProfileIdKey data:profileId];
     
     // TODO on logout
     //[KeychainUserPass delete:@"access_token"];
@@ -118,7 +132,7 @@ NSString* const SegueFromLoginToJobSeekerHome = @"segueFromLoginToJobSeekerHome"
     // get token
     //    NSString* token = [KeychainUserPass load:@"access_token"];
     
-   // NSLog(@"%@", token);
+    NSLog(@"%@", profileId);
 }
 
 - (IBAction)registerButtonTap:(id)sender {

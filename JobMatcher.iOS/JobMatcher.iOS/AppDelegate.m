@@ -11,6 +11,7 @@
 #import "JobSeekerHomeViewController.h"
 #import "RecruiterHomeViewController.h"
 #import "UserDataModel.h"
+#import "BackgroundTask.h"
 
 @interface AppDelegate ()
 
@@ -24,9 +25,43 @@
     if ([UserDataModel isLoggedIn]) {
         [self loadLoggedInView];
     }
-
+    
+    [self createCopyOfDatabaseIfNeeded];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 * 60 * 10
+                                     target:self
+                                   selector:@selector(runBackgroundTask:)
+                                   userInfo:nil
+                                    repeats:YES];
+    
     // Override point for customization after application launch.
     return YES;
+}
+
+-(void)runBackgroundTask:(NSTimer *)timer{
+    NSLog(@"starteeeed");
+    BackgroundTask* task = [[BackgroundTask alloc] init];
+    [task run];
+}
+
+- (void)createCopyOfDatabaseIfNeeded {
+    // First, test for existence.
+    BOOL success;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    // Database filename can have extension db/sqlite.
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *appDBPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.db", JobMatcherDb]];
+    
+    success = [fileManager fileExistsAtPath:appDBPath];
+    if (success) {
+        return;
+    }
+    // The writable database does not exist, so copy the default to the appropriate location.
+    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.db", JobMatcherDb]];
+    success = [fileManager copyItemAtPath:defaultDBPath toPath:appDBPath error:&error];
+    NSAssert(success, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -6,8 +6,11 @@
 //  Copyright © 2016 svetlai. All rights reserved.
 //
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 #import "AccountService.h"
 #import "GlobalConstants.h"
+#import "KeychainUserPass.h"
 
 @implementation AccountService
 
@@ -57,4 +60,9 @@ NSString* const LoginRoute = @"Token";
     [NSURLConnection connectionWithRequest:request delegate:target];
 }
 
+-(void) logout{
+    [KeychainUserPass delete:KeyChainTokenKey];
+    [KeychainUserPass delete:KeyChainProfileTypeKey];
+    [KeychainUserPass delete:KeyChainUsernameKey];
+}
 @end

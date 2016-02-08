@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AddJobOfferViewModel.h"
 
 @interface JobOfferService : NSObject
 -(void) getRandomOfferWithTarget:(NSObject*) target;
+-(void) addOfferWithModel:(AddJobOfferViewModel*)model andTarget:(NSObject*) target;
+-(void) deleteOfferWithId: (NSInteger) id andTarget:(NSObject*) target;
 @end

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface RecruiterMessageTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *recruiterMessageSubject;
+@property (weak, nonatomic) IBOutlet UILabel *recruiterMessageContent;
+@property (weak, nonatomic) IBOutlet UILabel *recruiterProfileLabel;
 
 @end

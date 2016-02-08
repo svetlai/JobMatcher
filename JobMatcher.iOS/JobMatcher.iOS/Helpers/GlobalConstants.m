@@ -12,6 +12,16 @@
 
 NSString* const AppName = @"Job Matcher";
 NSString* const BaseUrl = @"http://svetlapc:61177/";
+NSString* const JobMatcherDb = @"JobMatcherDb";
+
+// Account
+NSString* const KeyChainTokenKey = @"access_token";
+NSString* const KeyChainUsernameKey = @"profile_type";
+NSString* const KeyChainProfileTypeKey = @"userName";
+NSString* const KeyChainProfileIdKey = @"profile_id";
+
+NSString* const NotConnectedMessage = @"You're not connected to the Internet.";
+
 NSArray* AccountTypes;
 NSArray* Industries;
 NSArray* WorkHours;

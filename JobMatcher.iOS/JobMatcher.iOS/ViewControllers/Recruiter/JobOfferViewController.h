@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobOfferSalaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jobOfferDescriptionLabel;
 - (IBAction)jobOfferSwipe:(UISwipeGestureRecognizer *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *jobOfferSwipeHintLabel;
 @property (strong, nonatomic) JobOfferViewModel* jobOfferViewModel;
 @end

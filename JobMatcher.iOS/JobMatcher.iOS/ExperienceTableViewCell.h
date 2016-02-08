@@ -15,5 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *experienceStartDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *experienceEndDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *experienceDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *experienceEditButton;
+@property (weak, nonatomic) IBOutlet UIButton *experienceAddButton;
+@property (weak, nonatomic) IBOutlet UIButton *experienceDeleteButton;
 
 @end

@@ -16,13 +16,10 @@ typedef enum
 
 @interface UserDataModel : NSObject
 
-extern NSString* const KeyChainTokenKey;
-extern NSString* const KeyChainUsernameKey;
-extern NSString* const KeyChainProfileTypeKey;
-
 @property (strong, nonatomic) NSString* username;
 @property (strong, nonatomic) NSString* token;
 @property AccountType profileType;
+@property NSInteger profileId;
 
 +(BOOL)isLoggedIn;
 +(NSString*)getToken;
