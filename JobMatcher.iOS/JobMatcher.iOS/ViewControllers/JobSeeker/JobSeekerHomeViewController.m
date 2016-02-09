@@ -514,7 +514,13 @@ static InternetConnectionChecker *internetCheker;
         return;
     }else if ([connectionType isEqualToString:@"GetProfile"]){
         jobSeekerViewModel = [JobSeekerProfileViewModel fromJsonDictionary:json];
-        
+        if (jobSeekerViewModel == nil && userData.profileType == Recruiter){
+            message = @"No more job seekers.";
+            [HelperMethods addAlert:message];
+            [self performSegueWithIdentifier:SegueFromJobSeekerToRecruiter sender:self];
+            return;
+        }
+
         self.helloLabel.text = [NSString stringWithFormat:@"%@", jobSeekerViewModel.username];
         [self setProfileImage];
         if ([jobSeekerViewModel.firstName isEqual:[NSNull null]]) {
@@ -588,6 +594,11 @@ static InternetConnectionChecker *internetCheker;
             [service getProfileWithTarget:self];
             [HelperMethods addAlert:message];
         }
+    }
+    
+    if (code >= 500) {
+        message = @"Uh oh. You broke the server! Try again in a second!";
+        [HelperMethods addAlert:message];
     }
     
     // TODO - improve browsing logic and end of jobseekers

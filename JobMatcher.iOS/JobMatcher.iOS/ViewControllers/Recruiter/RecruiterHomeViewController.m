@@ -162,6 +162,11 @@ static NSString* jobOffersTableCellIdentifier = @"JobOfferTableViewCell";
         }
     }
     
+    if (code >= 500) {
+        message = @"Uh oh. You broke the server! Try again in a second!";
+        [HelperMethods addAlert:message];
+    }
+    
     if (code != 200) {
 
         message = @"Nope. Try again!";

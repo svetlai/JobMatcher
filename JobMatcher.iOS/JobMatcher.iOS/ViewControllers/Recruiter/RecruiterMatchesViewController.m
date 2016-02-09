@@ -36,14 +36,25 @@ NSString* const SegueFromRecruiterMatchesToJobSeekerProfile = @"segueFromRecruit
     self.recruiterMatchesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.949 green:0.929 blue:0.906 alpha:1] /*#f2ede7*/;//[UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
     UINib *nib = [UINib nibWithNibName:recruiterMatchTableViewCellIdentifier bundle:nil];
     [self.recruiterMatchesTableView registerNib:nib forCellReuseIdentifier:recruiterMatchTableViewCellIdentifier];
+    
+    self.recruiterMatchImageView.image =  [UIImage imageNamed:@"match.png"];
        // self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
+    [self handleVisibility];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-//tableview
+-(void) handleVisibility{
+    if (self.recruiterMatches.count == 0){
+        self.recruiterNoMatchesLabel.hidden = NO;
+    } else {
+        self.recruiterNoMatchesLabel.hidden = YES;
+    }
+}
+
+//--------tableview--------
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.recruiterMatches.count;

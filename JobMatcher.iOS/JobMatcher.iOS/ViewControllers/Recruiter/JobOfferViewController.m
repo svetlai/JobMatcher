@@ -110,6 +110,13 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
         
     } else if ([connectionType isEqualToString:@"GetOffer"]){
         self.jobOfferViewModel = [JobOfferViewModel fromJsonDictionary:json];
+        if (self.jobOfferViewModel == nil && userData.profileType == JobSeeker){
+            message = @"No more job offers.";
+            [HelperMethods addAlert:message];
+            [self performSegueWithIdentifier:SegueFromJobOfferToJobSeeker sender:self];
+            return;
+        }
+        
         [self loadData];
         [self viewDidLoad];
 
@@ -133,6 +140,11 @@ NSString* const SegueFromJobOfferToJobSeeker = @"segueFromJobOfferToJobSeeker";
             message = @"Disliked!";
             [HelperMethods addAlert:message];
         }
+    }
+    
+    if (code >= 500) {
+        message = @"Uh oh. You broke the server! Try again in a second!";
+        [HelperMethods addAlert:message];
     }
     
  // TODO - improve browsing logic and end of joboffers

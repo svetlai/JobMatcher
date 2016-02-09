@@ -11,5 +11,7 @@
 @interface RecruiterMatchesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSArray* recruiterMatches;
 @property (weak, nonatomic) IBOutlet UITableView *recruiterMatchesTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *recruiterMatchImageView;
+@property (weak, nonatomic) IBOutlet UILabel *recruiterNoMatchesLabel;
 
 @end

@@ -54,6 +54,7 @@
 		9B086B581C64D846002E39D3 /* RecruiterMatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B571C64D846002E39D3 /* RecruiterMatchesViewController.m */; };
 		9B086B5C1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B086B5A1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.m */; };
 		9B086B5D1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B086B5B1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib */; };
+		9B4606461C6A62E900AA918C /* match.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4606451C6A62E900AA918C /* match.png */; };
 		9B93F0C81C5685A800E39663 /* AccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0C71C5685A800E39663 /* AccountService.m */; };
 		9B93F0CB1C56862700E39663 /* UserDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0CA1C56862700E39663 /* UserDataModel.m */; };
 		9B93F0CE1C56A1B500E39663 /* Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F0CD1C56A1B500E39663 /* Validator.m */; };
@@ -178,6 +179,7 @@
 		9B086B591C64E2DF002E39D3 /* RecruiterMatchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruiterMatchTableViewCell.h; sourceTree = "<group>"; };
 		9B086B5A1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruiterMatchTableViewCell.m; sourceTree = "<group>"; };
 		9B086B5B1C64E2DF002E39D3 /* RecruiterMatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecruiterMatchTableViewCell.xib; sourceTree = "<group>"; };
+		9B4606451C6A62E900AA918C /* match.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = match.png; sourceTree = "<group>"; };
 		9B93F0C61C5685A800E39663 /* AccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountService.h; path = Data/AccountService.h; sourceTree = "<group>"; };
 		9B93F0C71C5685A800E39663 /* AccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountService.m; path = Data/AccountService.m; sourceTree = "<group>"; };
 		9B93F0C91C56862700E39663 /* UserDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDataModel.h; path = Models/UserDataModel.h; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		9BFEBAF11C552BFC00B83A52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B4606451C6A62E900AA918C /* match.png */,
 				9B01BF461C68D12F00691C74 /* join-our-team.jpg */,
 				9B01BF441C685EA400691C74 /* pattern-w.jpg */,
 				9B01BEEB1C66239100691C74 /* default_profile_img.jpg */,
@@ -631,6 +634,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B4606461C6A62E900AA918C /* match.png in Resources */,
 				9B93F1521C5CDC6F00E39663 /* Main.storyboard in Resources */,
 				9B93F1B11C5E0D8400E39663 /* CollapseClickCell.xib in Resources */,
 				9B01BF451C685EA400691C74 /* pattern-w.jpg in Resources */,

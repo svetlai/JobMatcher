@@ -11,5 +11,7 @@
 @interface JobSeekerMatchesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSArray* jobOfferMatches;
 @property (weak, nonatomic) IBOutlet UITableView *jobSeekerMatchesTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *jobSeekerMatchImageView;
+@property (weak, nonatomic) IBOutlet UILabel *jobSeekerNoMatchesLabel;
 
 @end

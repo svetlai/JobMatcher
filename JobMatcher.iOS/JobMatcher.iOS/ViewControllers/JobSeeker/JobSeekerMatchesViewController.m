@@ -38,12 +38,21 @@ static NSString* jobSeekerMatchesTableCellIdentifier = @"JobSeekerMatchTableView
     self.jobSeekerMatchesTableView.backgroundView.backgroundColor = [UIColor colorWithRed:0.949 green:0.929 blue:0.906 alpha:1] /*#f2ede7*/;//[UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1] /*#e6e6e6*/;
     UINib *nib = [UINib nibWithNibName:jobSeekerMatchesTableCellIdentifier bundle:nil];
     [self.jobSeekerMatchesTableView registerNib:nib forCellReuseIdentifier:jobSeekerMatchesTableCellIdentifier];
-    
+    self.jobSeekerMatchImageView.image = [UIImage imageNamed:@"match.png"];
+    [self handleVisibility];
        // self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-w.jpg"]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void) handleVisibility{
+    if (self.jobOfferMatches.count == 0){
+        self.jobSeekerNoMatchesLabel.hidden = NO;
+    } else {
+        self.jobSeekerNoMatchesLabel.hidden = YES;
+    }
 }
 
 // -------table view-----------
